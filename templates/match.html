@@ -1,0 +1,328 @@
+{% extends "base.html" %}
+
+{% block title %}Match - CodeClash{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <div class="max-w-7xl mx-auto">
+        <!-- Match Header -->
+        <div class="bg-gray-800 rounded-lg shadow-xl p-6 mb-6 border border-gray-700">
+            <div class="flex justify-between items-center mb-4">
+                <h1 class="text-3xl font-bold flex items-center gap-2">
+                    <i class="bi bi-swords text-red-500"></i>
+                    {{ match.title }}
+                </h1>
+                <span id="matchStatus" class="px-4 py-2 rounded font-bold text-sm">
+                    {{ match.status|upper }}
+                </span>
+            </div>
+            
+            <!-- Players -->
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="bg-gray-700 p-4 rounded border-2" id="player1Card">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <i class="bi bi-person-fill text-blue-500 text-2xl"></i>
+                            <div>
+                                <p class="font-bold">{{ match.player1_name }}</p>
+                                <p class="text-sm text-gray-400" id="player1Status">Waiting...</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-sm text-gray-400">Errors</p>
+                            <p class="text-xl font-bold" id="player1Errors">-</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-700 p-4 rounded border-2" id="player2Card">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <i class="bi bi-person-fill text-purple-500 text-2xl"></i>
+                            <div>
+                                <p class="font-bold">{{ match.player2_name }}</p>
+                                <p class="text-sm text-gray-400" id="player2Status">Waiting...</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-sm text-gray-400">Errors</p>
+                            <p class="text-xl font-bold" id="player2Errors">-</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Timer -->
+            <div class="mt-4 text-center">
+                <div class="flex items-center justify-center gap-2">
+                    <i class="bi bi-clock text-yellow-500 text-2xl"></i>
+                    <span class="text-3xl font-mono font-bold" id="timer">00:00</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Challenge Description -->
+        <div class="bg-gray-800 rounded-lg shadow-xl p-6 mb-6 border border-gray-700">
+            <div class="flex justify-between items-start mb-4">
+                <h2 class="text-2xl font-bold">Challenge Description</h2>
+                <span class="px-3 py-1 rounded text-sm" id="difficulty">{{ match.difficulty }}</span>
+            </div>
+            <p class="text-gray-300 mb-4">{{ match.description }}</p>
+        </div>
+
+        <!-- Code Editor and Results -->
+        <div class="grid lg:grid-cols-2 gap-6">
+            <!-- Code Editor -->
+            <div class="bg-gray-800 rounded-lg shadow-xl p-6 border border-gray-700">
+                <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                    <i class="bi bi-code-slash text-green-500"></i>
+                    Your Solution
+                </h2>
+                
+                <textarea id="codeEditor" 
+                          class="w-full h-96 p-4 bg-gray-900 text-green-400 font-mono text-sm rounded border border-gray-600 focus:outline-none focus:border-blue-500"
+                          spellcheck="false">{{ match.starter_code }}</textarea>
+                
+                <div class="flex gap-4 mt-4">
+                    <button id="runBtn" 
+                            class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded transition flex items-center gap-2">
+                        <i class="bi bi-play-fill"></i> Run Code
+                    </button>
+                    <button id="submitBtn" 
+                            class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded transition flex items-center gap-2">
+                        <i class="bi bi-check-circle"></i> Submit Solution
+                    </button>
+                </div>
+            </div>
+
+            <!-- Test Results -->
+            <div class="bg-gray-800 rounded-lg shadow-xl p-6 border border-gray-700">
+                <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                    <i class="bi bi-clipboard-check text-blue-500"></i>
+                    Test Results
+                </h2>
+                
+                <div id="testResults" class="space-y-3">
+                    <p class="text-gray-400">Run your code to see test results...</p>
+                </div>
+                
+                <div id="submissionResult" class="mt-6 hidden">
+                    <div class="p-4 rounded border-2">
+                        <h3 class="font-bold mb-2 text-lg">Submission Results</h3>
+                        <div class="space-y-2">
+                            <p>Tests Passed: <span id="testsPassed" class="font-bold">0</span> / <span id="testsTotal">0</span></p>
+                            <p>Errors: <span id="totalErrors" class="font-bold">0</span></p>
+                            <p>Time: <span id="completionTime" class="font-bold">0.00</span>s</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Winner Modal -->
+<div id="winnerModal" class="fixed inset-0 bg-black/75 hidden flex items-center justify-center z-50">
+    <div class="bg-gray-800 rounded-lg p-8 max-w-md border-2 border-yellow-500">
+        <div class="text-center">
+            <i class="bi bi-trophy-fill text-yellow-500 text-6xl mb-4"></i>
+            <h2 class="text-3xl font-bold mb-4" id="winnerText">Match Complete!</h2>
+            <p class="text-xl mb-2" id="winnerName"></p>
+            <div class="mt-6 space-y-2 text-left bg-gray-700 p-4 rounded">
+                <p><strong>{{ match.player1_name }}:</strong> <span id="finalPlayer1Errors"></span> errors, <span id="finalPlayer1Time"></span>s</p>
+                <p><strong>{{ match.player2_name }}:</strong> <span id="finalPlayer2Errors"></span> errors, <span id="finalPlayer2Time"></span>s</p>
+            </div>
+            <div class="flex gap-4 mt-6">
+                <a href="/tournament" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded transition">
+                    New Match
+                </a>
+                <a href="/leaderboard" class="flex-1 bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded transition">
+                    Leaderboard
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const matchId = {{ match.id }};
+    const userId = {{ user_id }};
+    const player1Id = {{ match.player1_id }};
+    const player2Id = {{ match.player2_id }};
+    let startTime = null;
+    let timerInterval = null;
+    
+    // Set difficulty badge color
+    const difficultyColors = {
+        'Easy': 'bg-green-600',
+        'Medium': 'bg-yellow-600',
+        'Hard': 'bg-red-600'
+    };
+    document.getElementById('difficulty').className = `px-3 py-1 rounded text-sm ${difficultyColors['{{ match.difficulty }}']}`;
+    
+    // Start timer
+    function startTimer() {
+        if (!startTime) {
+            startTime = Date.now();
+        }
+        
+        timerInterval = setInterval(() => {
+            const elapsed = Math.floor((Date.now() - startTime) / 1000);
+            const minutes = Math.floor(elapsed / 60);
+            const seconds = elapsed % 60;
+            document.getElementById('timer').textContent = 
+                `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }, 1000);
+    }
+    
+    // Run code
+    document.getElementById('runBtn').addEventListener('click', async () => {
+        const code = document.getElementById('codeEditor').value;
+        
+        if (!startTime) {
+            startTimer();
+        }
+        
+        const btn = document.getElementById('runBtn');
+        btn.disabled = true;
+        btn.innerHTML = '<i class="bi bi-hourglass-split"></i> Running...';
+        
+        try {
+            const response = await fetch(`/match/${matchId}/submit`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ code })
+            });
+            
+            const data = await response.json();
+            displayTestResults(data);
+        } catch (error) {
+            console.error(error);
+            alert('Error running code');
+        } finally {
+            btn.disabled = false;
+            btn.innerHTML = '<i class="bi bi-play-fill"></i> Run Code';
+        }
+    });
+    
+    // Submit solution
+    document.getElementById('submitBtn').addEventListener('click', async () => {
+        if (!confirm('Are you sure you want to submit? This will finalize your solution.')) {
+            return;
+        }
+        
+        const code = document.getElementById('codeEditor').value;
+        
+        const btn = document.getElementById('submitBtn');
+        btn.disabled = true;
+        btn.innerHTML = '<i class="bi bi-hourglass-split"></i> Submitting...';
+        
+        try {
+            const response = await fetch(`/match/${matchId}/submit`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ code })
+            });
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                displayTestResults(data);
+                document.getElementById('submissionResult').classList.remove('hidden');
+                document.getElementById('testsPassed').textContent = data.passed;
+                document.getElementById('testsTotal').textContent = data.total;
+                document.getElementById('totalErrors').textContent = data.errors;
+                document.getElementById('completionTime').textContent = data.completion_time.toFixed(2);
+                
+                // Disable further submissions
+                btn.disabled = true;
+                btn.innerHTML = '<i class="bi bi-check-circle"></i> Submitted';
+                document.getElementById('runBtn').disabled = true;
+                
+                // Check match status
+                checkMatchStatus();
+            }
+        } catch (error) {
+            console.error(error);
+            alert('Error submitting solution');
+            btn.disabled = false;
+            btn.innerHTML = '<i class="bi bi-check-circle"></i> Submit Solution';
+        }
+    });
+    
+    // Display test results
+    function displayTestResults(data) {
+        const resultsDiv = document.getElementById('testResults');
+        resultsDiv.innerHTML = data.test_results.map((test, i) => {
+            const bgColor = test.passed ? 'bg-green-900' : 'bg-red-900';
+            const icon = test.passed ? 'bi-check-circle-fill text-green-500' : 'bi-x-circle-fill text-red-500';
+            
+            return `
+                <div class="${bgColor} p-3 rounded border border-gray-600">
+                    <div class="flex items-start gap-2">
+                        <i class="bi ${icon} mt-1"></i>
+                        <div class="flex-1">
+                            <p class="font-bold">Test ${i + 1}</p>
+                            <p class="text-sm text-gray-300">Input: ${JSON.stringify(test.input)}</p>
+                            <p class="text-sm text-gray-300">Expected: ${JSON.stringify(test.expected)}</p>
+                            <p class="text-sm text-gray-300">Actual: ${JSON.stringify(test.actual)}</p>
+                            ${test.error ? `<p class="text-sm text-red-400">Error: ${test.error}</p>` : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+    
+    // Check match status
+    async function checkMatchStatus() {
+        const response = await fetch(`/match/${matchId}/status`);
+        const data = await response.json();
+        
+        // Update player cards
+        if (data.player1_submitted) {
+            document.getElementById('player1Status').textContent = 'Submitted';
+            document.getElementById('player1Errors').textContent = data.player1_errors;
+            document.getElementById('player1Card').classList.add('border-green-500');
+        }
+        
+        if (data.player2_submitted) {
+            document.getElementById('player2Status').textContent = 'Submitted';
+            document.getElementById('player2Errors').textContent = data.player2_errors;
+            document.getElementById('player2Card').classList.add('border-green-500');
+        }
+        
+        // Check if match is complete
+        if (data.status === 'completed') {
+            clearInterval(timerInterval);
+            showWinner(data);
+        }
+    }
+    
+    // Show winner modal
+    function showWinner(data) {
+        const modal = document.getElementById('winnerModal');
+        const winnerText = document.getElementById('winnerText');
+        const winnerName = document.getElementById('winnerName');
+        
+        if (data.winner_id === userId) {
+            winnerText.textContent = '🎉 You Won! 🎉';
+            winnerName.textContent = 'Congratulations!';
+        } else {
+            winnerText.textContent = 'Match Complete';
+            winnerName.textContent = `Winner: ${data.winner_name}`;
+        }
+        
+        document.getElementById('finalPlayer1Errors').textContent = data.player1_errors;
+        document.getElementById('finalPlayer1Time').textContent = data.player1_time.toFixed(2);
+        document.getElementById('finalPlayer2Errors').textContent = data.player2_errors;
+        document.getElementById('finalPlayer2Time').textContent = data.player2_time.toFixed(2);
+        
+        modal.classList.remove('hidden');
+    }
+    
+    // Poll for match updates
+    setInterval(checkMatchStatus, 3000);
+    checkMatchStatus();
+</script>
+{% endblock %}

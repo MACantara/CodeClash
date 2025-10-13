@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+
+{% block title %}CodeClash - Home{% endblock %}
+
+{% block content %}
+<div class="min-h-screen flex items-center justify-center px-4">
+    <div class="max-w-4xl w-full">
+        <!-- Hero Section -->
+        <div class="text-center mb-12">
+            <div class="flex justify-center mb-6">
+                <i class="bi bi-lightning-charge-fill text-8xl text-yellow-500 animate-pulse"></i>
+            </div>
+            <h1 class="text-6xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+                CodeClash
+            </h1>
+            <p class="text-2xl text-gray-300 mb-8">
+                Challenge developers in 1v1 Python tournaments
+            </p>
+            <div class="flex gap-4 justify-center text-gray-400">
+                <div class="flex items-center gap-2">
+                    <i class="bi bi-speedometer2 text-blue-500"></i>
+                    <span>Speed Matters</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="bi bi-bug text-red-500"></i>
+                    <span>Zero Errors</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="bi bi-trophy-fill text-yellow-500"></i>
+                    <span>Climb Rankings</span>
+                </div>
+            </div>
+        </div>
+
+        {% if not session.get('user_id') %}
+        <!-- Login/Register Card -->
+        <div class="bg-gray-800 rounded-lg shadow-2xl p-8 border border-gray-700">
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Login Form -->
+                <div>
+                    <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+                        <i class="bi bi-box-arrow-in-right text-blue-500"></i>
+                        Login
+                    </h2>
+                    <form id="loginForm">
+                        <div class="mb-4">
+                            <label class="block text-gray-300 mb-2">Username</label>
+                            <input type="text" 
+                                   id="loginUsername" 
+                                   class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:border-blue-500 text-white"
+                                   placeholder="Enter username"
+                                   required>
+                        </div>
+                        <button type="submit" 
+                                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded transition transform hover:scale-105">
+                            <i class="bi bi-box-arrow-in-right"></i> Login
+                        </button>
+                    </form>
+                    <div id="loginMessage" class="mt-4 text-center"></div>
+                </div>
+
+                <!-- Register Form -->
+                <div>
+                    <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+                        <i class="bi bi-person-plus text-green-500"></i>
+                        Register
+                    </h2>
+                    <form id="registerForm">
+                        <div class="mb-4">
+                            <label class="block text-gray-300 mb-2">Username</label>
+                            <input type="text" 
+                                   id="registerUsername" 
+                                   class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:border-green-500 text-white"
+                                   placeholder="Choose username"
+                                   required>
+                        </div>
+                        <button type="submit" 
+                                class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded transition transform hover:scale-105">
+                            <i class="bi bi-person-plus"></i> Register
+                        </button>
+                    </form>
+                    <div id="registerMessage" class="mt-4 text-center"></div>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <!-- Logged In View -->
+        <div class="bg-gray-800 rounded-lg shadow-2xl p-8 border border-gray-700 text-center">
+            <h2 class="text-3xl font-bold mb-6">Welcome back, {{ session.get('username') }}!</h2>
+            <div class="flex gap-4 justify-center">
+                <a href="/lobby" 
+                   class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg transition transform hover:scale-105 flex items-center gap-2">
+                    <i class="bi bi-door-open-fill"></i> Enter Lobby
+                </a>
+                <a href="/leaderboard" 
+                   class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-8 rounded-lg transition transform hover:scale-105 flex items-center gap-2">
+                    <i class="bi bi-bar-chart-fill"></i> View Leaderboard
+                </a>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Features -->
+        <div class="grid md:grid-cols-3 gap-6 mt-12">
+            <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 text-center">
+                <i class="bi bi-clock-history text-4xl text-blue-500 mb-3"></i>
+                <h3 class="text-xl font-bold mb-2">Real-time Battles</h3>
+                <p class="text-gray-400">Compete against other developers in live coding challenges</p>
+            </div>
+            <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 text-center">
+                <i class="bi bi-graph-up text-4xl text-green-500 mb-3"></i>
+                <h3 class="text-xl font-bold mb-2">Skill Ranking</h3>
+                <p class="text-gray-400">Earn rating points and climb the global leaderboard</p>
+            </div>
+            <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 text-center">
+                <i class="bi bi-code-square text-4xl text-purple-500 mb-3"></i>
+                <h3 class="text-xl font-bold mb-2">Python Challenges</h3>
+                <p class="text-gray-400">Solve algorithmic problems from easy to hard difficulty</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Login form handler
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const username = document.getElementById('loginUsername').value;
+        
+        const response = await fetch('/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username })
+        });
+        
+        const data = await response.json();
+        const messageEl = document.getElementById('loginMessage');
+        
+        if (data.success) {
+            messageEl.innerHTML = '<span class="text-green-500"><i class="bi bi-check-circle"></i> Login successful! Redirecting...</span>';
+            setTimeout(() => window.location.href = '/lobby', 1000);
+        } else {
+            messageEl.innerHTML = `<span class="text-red-500"><i class="bi bi-x-circle"></i> ${data.message}</span>`;
+        }
+    });
+
+    // Register form handler
+    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const username = document.getElementById('registerUsername').value;
+        
+        const response = await fetch('/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username })
+        });
+        
+        const data = await response.json();
+        const messageEl = document.getElementById('registerMessage');
+        
+        if (data.success) {
+            messageEl.innerHTML = '<span class="text-green-500"><i class="bi bi-check-circle"></i> Registration successful! Redirecting...</span>';
+            setTimeout(() => window.location.href = '/lobby', 1000);
+        } else {
+            messageEl.innerHTML = `<span class="text-red-500"><i class="bi bi-x-circle"></i> ${data.message}</span>`;
+        }
+    });
+</script>
+{% endblock %}
