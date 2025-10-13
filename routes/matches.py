@@ -303,12 +303,21 @@ def view_replay(match_id):
         'description': match.challenge.description,
         'difficulty': match.challenge.difficulty,
         'starter_code': match.challenge.starter_code,
+        'player1_id': match.player1_id,
+        'player2_id': match.player2_id,
         'player1_name': match.player1.username,
         'player2_name': match.player2.username,
+        'winner_id': match.winner_id,
         'winner_name': match.winner.username if match.winner else None,
         'player1_code': match.player1_code,
         'player2_code': match.player2_code,
-        'status': match.status
+        'player1_errors': match.player1_errors,
+        'player2_errors': match.player2_errors,
+        'player1_time': match.player1_time,
+        'player2_time': match.player2_time,
+        'status': match.status,
+        'started_at': match.started_at.isoformat() if match.started_at else None,
+        'ended_at': match.ended_at.isoformat() if match.ended_at else None
     }
     
     player1_snapshot_list = [{
