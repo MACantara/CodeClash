@@ -24,7 +24,7 @@ def register_friend_routes(app):
         for f in friendships:
             # Get the other user (not the current user)
             friend_id = f.friend_id if f.user_id == session['user_id'] else f.user_id
-            friend_user = User.query.get(friend_id)
+            friend_user = db.session.get(User, friend_id)
             friends.append({
                 'id': friend_user.id,
                 'username': friend_user.username,
@@ -45,7 +45,7 @@ def register_friend_routes(app):
         
         pending_sent = []
         for f in pending_sent_requests:
-            friend_user = User.query.get(f.friend_id)
+            friend_user = db.session.get(User, f.friend_id)
             pending_sent.append({
                 'id': friend_user.id,
                 'username': friend_user.username,
@@ -60,7 +60,7 @@ def register_friend_routes(app):
         
         pending_received = []
         for f in pending_received_requests:
-            sender_user = User.query.get(f.user_id)
+            sender_user = db.session.get(User, f.user_id)
             pending_received.append({
                 'id': sender_user.id,
                 'username': sender_user.username,
