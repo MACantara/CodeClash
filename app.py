@@ -257,7 +257,7 @@ def submit_solution(match_id):
         
         # Update match status
         match_obj.status = 'completed'
-        match_obj.completed_at = datetime.utcnow()
+        match_obj.ended_at = datetime.utcnow()
         match_obj.winner_id = winner_id
         
         # Update user basic stats
@@ -435,7 +435,7 @@ def match_status(match_id):
         'status': match.status,
         'created_at': match.created_at.isoformat() if match.created_at else None,
         'started_at': match.started_at.isoformat() if match.started_at else None,
-        'completed_at': match.completed_at.isoformat() if match.completed_at else None,
+        'ended_at': match.ended_at.isoformat() if match.ended_at else None,
         'winner_id': match.winner_id,
         'winner_name': match.winner.username if match.winner else None
     }
@@ -616,10 +616,9 @@ def lobby_status(lobby_id):
     
     # Check if match exists for this lobby
     match_id = None
-    if lobby.status == 'in_match':
-        match = Match.query.filter_by(lobby_id=lobby_id).first()
-        if match:
-            match_id = match.id
+    if lobby.status == 'in_match' and lobby.match_id:
+        # Use the lobby's match_id field (proper relationship)
+        match_id = lobby.match_id
     
     lobby_data = {
         'id': lobby.id,
@@ -746,14 +745,14 @@ def start_match_from_lobby(lobby_id):
         player1_id=players[0].user_id,
         player2_id=players[1].user_id,
         challenge_id=lobby.challenge_id,
-        status='pending',
-        lobby_id=lobby_id
+        status='pending'
     )
     db.session.add(match)
     db.session.flush()  # Get the match ID
     
-    # Update lobby status
+    # Update lobby status and link to match
     lobby.status = 'in_match'
+    lobby.match_id = match.id  # Set the lobby's match_id field
     
     db.session.commit()
     
@@ -863,7 +862,7 @@ def user_profile(username=None):
     matches = Match.query.filter(
         db.or_(Match.player1_id == user.id, Match.player2_id == user.id),
         Match.status == 'completed'
-    ).order_by(Match.completed_at.desc()).limit(20).all()
+    ).order_by(Match.ended_at.desc()).limit(20).all()
     
     match_list = []
     for m in matches:
@@ -875,7 +874,7 @@ def user_profile(username=None):
             'player2_name': m.player2.username,
             'winner_name': m.winner.username if m.winner else None,
             'winner_id': m.winner_id,
-            'completed_at': m.completed_at.isoformat() if m.completed_at else None,
+            'ended_at': m.ended_at.isoformat() if m.ended_at else None,
             'status': m.status
         })
     
@@ -913,7 +912,6 @@ def user_profile(username=None):
     user_dict = {
         'id': user.id,
         'username': user.username,
-        'email': user.email,
         'rating': user.rating,
         'wins': user.wins,
         'losses': user.losses,
@@ -997,7 +995,7 @@ def get_spectator_data(match_id):
         'player1_errors': match.player1_errors,
         'player2_errors': match.player2_errors,
         'started_at': match.started_at.isoformat() if match.started_at else None,
-        'completed_at': match.completed_at.isoformat() if match.completed_at else None
+        'ended_at': match.ended_at.isoformat() if match.ended_at else None
     }
     
     return jsonify({
