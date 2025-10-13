@@ -185,6 +185,7 @@ class CodeSnapshot(db.Model):
     match_id = db.Column(db.Integer, db.ForeignKey('matches.id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     code = db.Column(db.Text, nullable=False)
+    elapsed_seconds = db.Column(db.Integer)  # Time elapsed since match start
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     
     # Relationships
