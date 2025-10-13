@@ -168,7 +168,7 @@ def match(match_id):
     if 'user_id' not in session:
         return redirect(url_for('index'))
     
-    match_obj = Match.query.get(match_id)
+    match_obj = db.session.get(Match, match_id)
     
     if not match_obj:
         return "Match not found", 404
@@ -218,7 +218,7 @@ def submit_solution(match_id):
     data = request.json
     code = data.get('code')
     
-    match_obj = Match.query.get(match_id)
+    match_obj = db.session.get(Match, match_id)
     
     if not match_obj:
         return jsonify({'success': False, 'message': 'Match not found'})
@@ -261,8 +261,8 @@ def submit_solution(match_id):
         match_obj.winner_id = winner_id
         
         # Update user basic stats
-        winner = User.query.get(winner_id)
-        loser = User.query.get(loser_id)
+        winner = db.session.get(User, winner_id)
+        loser = db.session.get(User, loser_id)
         winner.wins += 1
         winner.total_matches += 1
         winner.rating += 25
@@ -413,7 +413,7 @@ def determine_winner(match_obj):
 @app.route('/match/<int:match_id>/status')
 def match_status(match_id):
     """Get current match status"""
-    match = Match.query.get(match_id)
+    match = db.session.get(Match, match_id)
     
     if not match:
         return jsonify({'success': False, 'message': 'Match not found'})
@@ -497,7 +497,8 @@ def create_lobby():
         name=name,
         host_id=session['user_id'],
         challenge_id=challenge_id,
-        is_public=is_public
+        is_public=is_public,
+        current_players=1  # Initialize with 1 player (the host)
     )
     db.session.add(lobby)
     db.session.flush()  # Get the lobby ID
@@ -520,7 +521,7 @@ def join_lobby(lobby_id):
         return jsonify({'success': False, 'message': 'Not logged in'})
     
     # Get lobby info
-    lobby = Lobby.query.get(lobby_id)
+    lobby = db.session.get(Lobby, lobby_id)
     
     if not lobby:
         return jsonify({'success': False, 'message': 'Lobby not found'})
@@ -567,7 +568,7 @@ def leave_lobby(lobby_id):
         return jsonify({'success': False, 'message': 'Not logged in'})
     
     # Get lobby
-    lobby = Lobby.query.get(lobby_id)
+    lobby = db.session.get(Lobby, lobby_id)
     
     if not lobby:
         return jsonify({'success': False, 'message': 'Lobby not found'})
@@ -598,7 +599,7 @@ def leave_lobby(lobby_id):
 @app.route('/lobby/<int:lobby_id>/status')
 def lobby_status(lobby_id):
     """Get lobby status"""
-    lobby = Lobby.query.get(lobby_id)
+    lobby = db.session.get(Lobby, lobby_id)
     
     if not lobby:
         return jsonify({'success': False, 'message': 'Lobby not found'})
@@ -724,7 +725,7 @@ def quick_match():
 def start_match_from_lobby(lobby_id):
     """Start a match from a full lobby"""
     # Get lobby details
-    lobby = Lobby.query.get(lobby_id)
+    lobby = db.session.get(Lobby, lobby_id)
     
     # Get players
     players = LobbyPlayer.query.filter_by(lobby_id=lobby_id).order_by(LobbyPlayer.joined_at).limit(2).all()
@@ -967,7 +968,7 @@ def spectate_match(match_id):
 @app.route('/match/<int:match_id>/spectator_data')
 def get_spectator_data(match_id):
     """Get match data for spectators"""
-    match = Match.query.get(match_id)
+    match = db.session.get(Match, match_id)
     
     if not match:
         return jsonify({'success': False, 'message': 'Match not found'})
@@ -1031,7 +1032,7 @@ def save_code_snapshot(match_id):
     data = request.json
     code = data.get('code')
     
-    match = Match.query.get(match_id)
+    match = db.session.get(Match, match_id)
     
     if not match:
         return jsonify({'success': False, 'message': 'Match not found'})
@@ -1110,7 +1111,7 @@ def view_replay(match_id):
 
 def check_and_award_achievements(user_id):
     """Check and award achievements for a user"""
-    user = User.query.get(user_id)
+    user = db.session.get(User, user_id)
     stats = user.statistics
     
     if not stats:
