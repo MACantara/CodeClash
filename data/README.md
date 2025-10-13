@@ -86,10 +86,11 @@ data/
   "description": "Module description",
   "icon": "bi-icon-name",
   "difficulty": "Beginner|Intermediate|Advanced",
-  "order": 1,
-  "estimated_hours": 3
+  "order": 1
 }
 ```
+
+**Note**: The `estimated_hours` field is automatically calculated as the sum of all lesson times within the module, converted to hours (rounded to 1 decimal place).
 
 ### Lesson Format
 ```json
@@ -168,9 +169,12 @@ This will:
 5. **Automatically calculate** estimated reading time for each lesson based on content
 6. Create the database records with proper relationships
 
-### Automatic Reading Time Calculation
+### Automatic Time Calculation
 
-The seeding script includes a `calculate_reading_time()` function that:
+The seeding script automatically calculates all time estimates:
+
+#### Lesson Reading Time (`estimated_minutes`)
+The `calculate_reading_time()` function analyzes each lesson:
 
 - **Analyzes reading_content**: Strips HTML tags and counts words
 - **Analyzes code content**: Counts non-empty, non-comment lines
@@ -181,7 +185,27 @@ The seeding script includes a `calculate_reading_time()` function that:
 - **Rounds intelligently**: Result rounded to nearest 5 minutes
 - **Enforces bounds**: Minimum 5 minutes, maximum 60 minutes
 
-This means you **don't need to specify `estimated_minutes`** in lesson JSON files - it's calculated automatically!
+**You don't need to specify `estimated_minutes`** in lesson JSON files!
+
+#### Module Study Time (`estimated_hours`)
+After all lessons are created, the script:
+
+1. Sums up all `estimated_minutes` from lessons in each module
+2. Converts to hours (divides by 60)
+3. Rounds to 1 decimal place for display
+
+**You don't need to specify `estimated_hours`** in module JSON files!
+
+**Example Output:**
+```
+Creating lessons from 4 folders...
+    ✓ Hello World & Print Function (5 min)
+    ✓ Variables and Data Types (10 min)
+    ✓ Basic Math Operations (10 min)
+
+Calculating module estimated hours...
+  ✓ Python Basics: 25 min = 0.4 hours
+```
 
 ## Important Notes
 
