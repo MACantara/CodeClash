@@ -61,6 +61,9 @@ def list_friends():
             if is_sender:
                 pending_sent.append(friend_data)
             else:
+                # For received requests, add request_id and user_id for template compatibility
+                friend_data['request_id'] = friendship.id
+                friend_data['user_id'] = friendship.id  # Template expects user_id for accept/reject buttons
                 pending_received.append(friend_data)
     
     return jsonify({
@@ -112,16 +115,25 @@ def add_friend():
     db.session.add(friendship)
     db.session.commit()
     
-    return jsonify({'success': True})
+    return jsonify({'success': True, 'message': 'Friend request sent!'})
 
 
-@friends_bp.route('/friends/accept/<int:friendship_id>', methods=['POST'])
-def accept_friend(friendship_id):
+@friends_bp.route('/friends/accept', methods=['POST'])
+@friends_bp.route('/friends/accept/<int:request_id>', methods=['POST'])
+def accept_friend(request_id=None):
     """Accept friend request"""
     if 'user_id' not in session:
         return jsonify({'success': False, 'message': 'Not logged in'})
     
-    friendship = db.session.get(Friendship, friendship_id)
+    # Support both URL parameter and POST body
+    if request_id is None:
+        data = request.json
+        request_id = data.get('user_id')
+    
+    if not request_id:
+        return jsonify({'success': False, 'message': 'Request ID required'})
+    
+    friendship = db.session.get(Friendship, request_id)
     
     if not friendship:
         return jsonify({'success': False, 'message': 'Friend request not found'})
@@ -133,16 +145,25 @@ def accept_friend(friendship_id):
     friendship.status = 'accepted'
     db.session.commit()
     
-    return jsonify({'success': True})
+    return jsonify({'success': True, 'message': 'Friend request accepted!'})
 
 
-@friends_bp.route('/friends/reject/<int:friendship_id>', methods=['POST'])
-def reject_friend(friendship_id):
+@friends_bp.route('/friends/reject', methods=['POST'])
+@friends_bp.route('/friends/reject/<int:request_id>', methods=['POST'])
+def reject_friend(request_id=None):
     """Reject friend request"""
     if 'user_id' not in session:
         return jsonify({'success': False, 'message': 'Not logged in'})
     
-    friendship = db.session.get(Friendship, friendship_id)
+    # Support both URL parameter and POST body
+    if request_id is None:
+        data = request.json
+        request_id = data.get('user_id')
+    
+    if not request_id:
+        return jsonify({'success': False, 'message': 'Request ID required'})
+    
+    friendship = db.session.get(Friendship, request_id)
     
     if not friendship:
         return jsonify({'success': False, 'message': 'Friend request not found'})
@@ -154,7 +175,7 @@ def reject_friend(friendship_id):
     db.session.delete(friendship)
     db.session.commit()
     
-    return jsonify({'success': True})
+    return jsonify({'success': True, 'message': 'Friend request rejected'})
 
 
 @friends_bp.route('/friends/remove/<int:friend_id>', methods=['POST'])
@@ -177,4 +198,4 @@ def remove_friend(friend_id):
     db.session.delete(friendship)
     db.session.commit()
     
-    return jsonify({'success': True})
+    return jsonify({'success': True, 'message': 'Friend removed'})
