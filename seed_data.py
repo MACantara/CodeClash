@@ -114,18 +114,25 @@ def seed_learning_modules():
     # Load modules from JSON files
     modules_data = load_json_files('data/modules/*.json')
     module_map = {}  # Map to store module_id mapping (order -> actual id)
+    module_objects = {}  # Store module objects to update estimated_hours later
     
     print(f"\nCreating {len(modules_data)} modules...")
     for module_data in modules_data:
-        module = Module(**module_data)
+        # Don't use estimated_hours from JSON - will calculate from lessons
+        if 'estimated_hours' in module_data:
+            del module_data['estimated_hours']
+        
+        module = Module(**module_data, estimated_hours=0)  # Temporary value
         db.session.add(module)
         db.session.flush()  # Get the ID
         module_map[module_data['order']] = module.id
+        module_objects[module_data['order']] = module
         print(f"  ✓ {module.title} (ID: {module.id})")
     
     # Load lessons from all module folders
     lessons_created = 0
     lesson_folders = sorted(glob.glob('data/lessons/*'))
+    module_lesson_times = {}  # Track total minutes per module
     
     print(f"\nCreating lessons from {len(lesson_folders)} folders...")
     for lesson_folder in lesson_folders:
@@ -176,7 +183,21 @@ def seed_learning_modules():
             
             db.session.add(lesson)
             lessons_created += 1
-            print(f"    ✓ {lesson.title}")
+            
+            # Track total time for this module
+            if module_order not in module_lesson_times:
+                module_lesson_times[module_order] = 0
+            module_lesson_times[module_order] += estimated_minutes
+            
+            print(f"    ✓ {lesson.title} ({estimated_minutes} min)")
+    
+    # Update module estimated_hours based on cumulative lesson times
+    print(f"\nCalculating module estimated hours...")
+    for module_order, total_minutes in module_lesson_times.items():
+        module = module_objects[module_order]
+        estimated_hours = round(total_minutes / 60, 1)  # Convert to hours with 1 decimal
+        module.estimated_hours = estimated_hours
+        print(f"  ✓ {module.title}: {total_minutes} min = {estimated_hours} hours")
     
     # Commit all changes
     db.session.commit()
