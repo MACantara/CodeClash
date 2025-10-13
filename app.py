@@ -704,7 +704,8 @@ def quick_match():
         name=f"{session['username']}'s Quick Match",
         host_id=session['user_id'],
         challenge_id=challenge.id,
-        is_public=True
+        is_public=True,
+        current_players=1  # Initialize with 1 player (the host)
     )
     db.session.add(new_lobby)
     db.session.flush()  # Get the lobby ID
