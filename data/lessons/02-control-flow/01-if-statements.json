@@ -1,0 +1,28 @@
+{
+  "module_id": 2,
+  "title": "If Statements and Conditions",
+  "order": 1,
+  "estimated_minutes": 25,
+  "reading_content": "\n<h3>Making Decisions in Code</h3>\n<p>If statements allow your program to make decisions based on conditions.</p>\n\n<h4>Basic If Statement:</h4>\n<pre><code>age = 18\nif age >= 18:\n    print(\"You are an adult\")</code></pre>\n\n<h4>If-Else:</h4>\n<pre><code>age = 15\nif age >= 18:\n    print(\"You are an adult\")\nelse:\n    print(\"You are a minor\")</code></pre>\n\n<p><strong>Important:</strong> Indentation matters in Python! Code inside if blocks must be indented.</p>\n        ",
+  "starter_code": "# Write code that checks if a number is positive\n# If number > 0, print \"Positive\"\n# Otherwise print \"Not positive\"\nnumber = 5\n",
+  "solution_code": "number = 5\nif number > 0:\n    print(\"Positive\")\nelse:\n    print(\"Not positive\")",
+  "learning_objectives": [
+    "Write if, elif, and else statements",
+    "Use comparison operators",
+    "Understand Python indentation"
+  ],
+  "key_concepts": ["if/elif/else", "Comparison Operators", "Indentation"],
+  "test_cases": [
+    {
+      "name": "Test 1: Positive number",
+      "input": "",
+      "expected_output": "Positive"
+    }
+  ],
+  "hints": [
+    "Use if number > 0:",
+    "Remember to indent the print statement",
+    "Use else: for the other case"
+  ],
+  "visual_content": {}
+}
