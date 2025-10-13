@@ -1,0 +1,27 @@
+{
+  "module_id": 4,
+  "title": "Creating Your First Function",
+  "order": 1,
+  "estimated_minutes": 25,
+  "reading_content": "\n<h3>What are Functions?</h3>\n<p>Functions are reusable blocks of code that perform specific tasks.</p>\n\n<h4>Defining a Function:</h4>\n<pre><code>def greet():\n    print(\"Hello, World!\")\n\ngreet()  # Call the function</code></pre>\n\n<h4>Return Values:</h4>\n<pre><code>def add(a, b):\n    return a + b\n\nresult = add(5, 3)\nprint(result)  # Output: 8</code></pre>\n        ",
+  "starter_code": "# Define a function called \"multiply\" that takes two parameters\n# The function should return the product of the two numbers\n# Call it with 6 and 7 and print the result\n",
+  "solution_code": "def multiply(a, b):\n    return a * b\n\nresult = multiply(6, 7)\nprint(result)",
+  "learning_objectives": [
+    "Define functions using def keyword",
+    "Return values from functions"
+  ],
+  "key_concepts": ["def", "Parameters", "return"],
+  "test_cases": [
+    {
+      "name": "Test 1: Multiply 6 and 7",
+      "input": "",
+      "expected_output": "42"
+    }
+  ],
+  "hints": [
+    "Use def multiply(a, b): to define the function",
+    "Return the product: return a * b",
+    "Call it: result = multiply(6, 7) then print(result)"
+  ],
+  "visual_content": {}
+}
