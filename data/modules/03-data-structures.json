@@ -3,6 +3,5 @@
   "description": "Master lists, dictionaries, tuples, and sets to organize your data efficiently.",
   "icon": "bi-diagram-3",
   "difficulty": "Intermediate",
-  "order": 3,
-  "estimated_hours": 5
+  "order": 3
 }

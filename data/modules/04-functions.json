@@ -3,6 +3,5 @@
   "description": "Write reusable code with functions, parameters, and return values.",
   "icon": "bi-box-seam",
   "difficulty": "Intermediate",
-  "order": 4,
-  "estimated_hours": 4
+  "order": 4
 }

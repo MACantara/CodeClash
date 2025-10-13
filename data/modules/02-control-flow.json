@@ -3,6 +3,5 @@
   "description": "Learn to make decisions in code with if statements and loops!",
   "icon": "bi-signpost-split",
   "difficulty": "Beginner",
-  "order": 2,
-  "estimated_hours": 4
+  "order": 2
 }
