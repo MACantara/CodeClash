@@ -97,7 +97,6 @@ data/
   "module_id": 1,
   "title": "Lesson Title",
   "order": 1,
-  "estimated_minutes": 15,
   "reading_content": "<h3>HTML content here</h3>",
   "starter_code": "# Starting code",
   "solution_code": "# Solution code",
@@ -114,6 +113,12 @@ data/
   "visual_content": {}
 }
 ```
+
+**Note**: The `estimated_minutes` field is automatically calculated based on:
+- **Word count** in reading_content (200 words/minute reading speed)
+- **Code lines** in starter_code and solution_code (3 lines/minute code reading speed)
+- **Base practice time** (5 minutes minimum)
+- Result is rounded to nearest 5 minutes (min: 5, max: 60)
 
 ## How to Use
 
@@ -160,7 +165,23 @@ This will:
 2. Load all achievements from `data/achievements/*.json`
 3. Load all modules from `data/modules/*.json`
 4. Load all lessons from `data/lessons/**/*.json`
-5. Create the database records with proper relationships
+5. **Automatically calculate** estimated reading time for each lesson based on content
+6. Create the database records with proper relationships
+
+### Automatic Reading Time Calculation
+
+The seeding script includes a `calculate_reading_time()` function that:
+
+- **Analyzes reading_content**: Strips HTML tags and counts words
+- **Analyzes code content**: Counts non-empty, non-comment lines
+- **Calculates time**:
+  - Text reading: 200 words/minute (average adult reading speed)
+  - Code reading: 3 lines/minute (slower due to comprehension)
+  - Base practice time: +5 minutes for hands-on exercises
+- **Rounds intelligently**: Result rounded to nearest 5 minutes
+- **Enforces bounds**: Minimum 5 minutes, maximum 60 minutes
+
+This means you **don't need to specify `estimated_minutes`** in lesson JSON files - it's calculated automatically!
 
 ## Important Notes
 
