@@ -1,0 +1,13 @@
+{
+  "title": "Check Palindrome",
+  "description": "Write a function called `is_palindrome(s)` that returns True if the string is a palindrome, False otherwise. Ignore case and spaces.",
+  "difficulty": "Medium",
+  "starter_code": "def is_palindrome(s):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": ["racecar"], "expected": true},
+    {"input": ["hello"], "expected": false},
+    {"input": ["A man a plan a canal Panama"], "expected": true},
+    {"input": [""], "expected": true}
+  ],
+  "time_limit": 300
+}

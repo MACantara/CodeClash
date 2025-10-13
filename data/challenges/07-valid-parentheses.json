@@ -1,0 +1,14 @@
+{
+  "title": "Valid Parentheses",
+  "description": "Write a function called `is_valid(s)` that returns True if the parentheses string is valid (properly opened and closed).",
+  "difficulty": "Hard",
+  "starter_code": "def is_valid(s):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": ["()"], "expected": true},
+    {"input": ["()[]{}"], "expected": true},
+    {"input": ["(]"], "expected": false},
+    {"input": ["([)]"], "expected": false},
+    {"input": ["{[]}"], "expected": true}
+  ],
+  "time_limit": 300
+}
