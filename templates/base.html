@@ -26,12 +26,21 @@
                     <a href="/lobby" class="text-gray-300 hover:text-white transition flex items-center gap-2">
                         <i class="bi bi-door-open"></i> Lobby
                     </a>
+                    <a href="/matches" class="text-gray-300 hover:text-white transition flex items-center gap-2">
+                        <i class="bi bi-eye"></i> Watch
+                    </a>
+                    <a href="/friends" class="text-gray-300 hover:text-white transition flex items-center gap-2">
+                        <i class="bi bi-people"></i> Friends
+                    </a>
                     <a href="/leaderboard" class="text-gray-300 hover:text-white transition flex items-center gap-2">
                         <i class="bi bi-bar-chart"></i> Leaderboard
                     </a>
+                    <a href="/profile/{{ session.get('username') }}" class="text-gray-300 hover:text-white transition flex items-center gap-2">
+                        <i class="bi bi-person-circle"></i> Profile
+                    </a>
                     <div class="flex items-center gap-3">
-                        <span class="text-blue-400 flex items-center gap-2">
-                            <i class="bi bi-person-circle"></i> {{ session.get('username') }}
+                        <span class="text-blue-400 font-bold">
+                            {{ session.get('username') }}
                         </span>
                         <a href="/logout" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded transition">
                             Logout

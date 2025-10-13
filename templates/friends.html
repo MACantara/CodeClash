@@ -1,0 +1,274 @@
+{% extends "base.html" %}
+
+{% block title %}Friends - CodeClash{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold mb-2 flex items-center justify-center gap-3">
+                <i class="bi bi-people-fill text-blue-500"></i>
+                Friends
+            </h1>
+            <p class="text-gray-400">Connect with other players</p>
+        </div>
+
+        <!-- Add Friend Section -->
+        <div class="bg-gray-800 rounded-lg shadow-xl p-6 mb-6 border border-gray-700">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                <i class="bi bi-person-plus-fill text-green-500"></i>
+                Add Friend
+            </h2>
+            <div class="flex gap-3">
+                <input type="text" 
+                       id="friendUsername" 
+                       placeholder="Enter username..." 
+                       class="flex-1 px-4 py-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:border-blue-500 text-white"
+                       onkeypress="if(event.key==='Enter') addFriend()">
+                <button onclick="addFriend()" 
+                        class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-2 rounded transition">
+                    <i class="bi bi-plus-lg"></i> Add
+                </button>
+            </div>
+        </div>
+
+        <!-- Friend Requests Section -->
+        <div id="requestsSection" class="bg-gray-800 rounded-lg shadow-xl p-6 mb-6 border border-gray-700 hidden">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                <i class="bi bi-inbox-fill text-yellow-500"></i>
+                Friend Requests
+            </h2>
+            <div id="requestsList" class="space-y-3"></div>
+        </div>
+
+        <!-- Friends List -->
+        <div class="bg-gray-800 rounded-lg shadow-xl p-6 border border-gray-700">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold flex items-center gap-2">
+                    <i class="bi bi-people text-blue-500"></i>
+                    My Friends
+                </h2>
+                <button onclick="loadFriends()" 
+                        class="text-gray-400 hover:text-white transition" 
+                        title="Refresh">
+                    <i class="bi bi-arrow-clockwise text-xl"></i>
+                </button>
+            </div>
+            <div id="friendsList" class="space-y-3">
+                <div class="text-center text-gray-400 py-8">
+                    <i class="bi bi-hourglass-split text-4xl mb-2"></i>
+                    <p>Loading friends...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+async function loadFriends() {
+    try {
+        const response = await fetch('/friends/list');
+        const data = await response.json();
+        
+        if (data.success) {
+            // Display pending requests
+            if (data.pending_received.length > 0) {
+                document.getElementById('requestsSection').classList.remove('hidden');
+                const requestsList = document.getElementById('requestsList');
+                requestsList.innerHTML = data.pending_received.map(friend => `
+                    <div class="bg-gray-700 p-4 rounded-lg border border-gray-600 flex justify-between items-center">
+                        <div>
+                            <span class="font-bold text-white">${friend.username}</span>
+                            <span class="text-gray-400 text-sm ml-2">(Rating: ${friend.rating})</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="acceptFriend(${friend.user_id})" 
+                                    class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded transition">
+                                <i class="bi bi-check-lg"></i> Accept
+                            </button>
+                            <button onclick="rejectFriend(${friend.user_id})" 
+                                    class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded transition">
+                                <i class="bi bi-x-lg"></i> Reject
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            } else {
+                document.getElementById('requestsSection').classList.add('hidden');
+            }
+            
+            // Display accepted friends
+            const friendsList = document.getElementById('friendsList');
+            if (data.friends.length === 0) {
+                friendsList.innerHTML = `
+                    <div class="text-center text-gray-400 py-8">
+                        <i class="bi bi-person-x text-4xl mb-2"></i>
+                        <p>No friends yet. Add some players to connect!</p>
+                    </div>
+                `;
+            } else {
+                friendsList.innerHTML = data.friends.map(friend => `
+                    <div class="bg-gray-700 p-4 rounded-lg border border-gray-600 hover:border-blue-500 transition">
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                                    <span class="text-xl font-bold">${friend.username[0].toUpperCase()}</span>
+                                </div>
+                                <div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="font-bold text-white text-lg">${friend.username}</span>
+                                        ${friend.is_online ? '<span class="px-2 py-1 bg-green-600 text-xs rounded">Online</span>' : '<span class="px-2 py-1 bg-gray-600 text-xs rounded">Offline</span>'}
+                                    </div>
+                                    <div class="text-gray-400 text-sm">
+                                        <i class="bi bi-star-fill text-yellow-500"></i> Rating: ${friend.rating} | 
+                                        ${friend.wins}W / ${friend.losses}L
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="/profile/${friend.username}" 
+                                   class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition">
+                                    <i class="bi bi-person"></i> Profile
+                                </a>
+                                <button onclick="removeFriend(${friend.user_id}, '${friend.username}')" 
+                                        class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded transition">
+                                    <i class="bi bi-person-x"></i> Remove
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            // Display pending sent requests
+            if (data.pending_sent.length > 0) {
+                friendsList.innerHTML += `
+                    <div class="mt-6 pt-6 border-t border-gray-700">
+                        <h3 class="text-lg font-bold mb-3 text-gray-400">Pending Requests Sent</h3>
+                        ${data.pending_sent.map(friend => `
+                            <div class="bg-gray-700 p-3 rounded-lg border border-gray-600 flex justify-between items-center mb-2">
+                                <span class="text-gray-300">${friend.username}</span>
+                                <span class="text-xs text-gray-500">Pending...</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            }
+        } else {
+            CodeClash.showNotification(data.message, 'error');
+        }
+    } catch (error) {
+        console.error('Error loading friends:', error);
+        CodeClash.showNotification('Failed to load friends', 'error');
+    }
+}
+
+async function addFriend() {
+    const input = document.getElementById('friendUsername');
+    const username = input.value.trim();
+    
+    if (!username) {
+        CodeClash.showNotification('Please enter a username', 'error');
+        return;
+    }
+    
+    try {
+        const response = await fetch('/friends/add', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username })
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            CodeClash.showNotification(data.message, 'success');
+            input.value = '';
+            loadFriends();
+        } else {
+            CodeClash.showNotification(data.message, 'error');
+        }
+    } catch (error) {
+        console.error('Error adding friend:', error);
+        CodeClash.showNotification('Failed to add friend', 'error');
+    }
+}
+
+async function acceptFriend(userId) {
+    try {
+        const response = await fetch('/friends/accept', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ user_id: userId })
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            CodeClash.showNotification(data.message, 'success');
+            loadFriends();
+        } else {
+            CodeClash.showNotification(data.message, 'error');
+        }
+    } catch (error) {
+        console.error('Error accepting friend:', error);
+        CodeClash.showNotification('Failed to accept friend request', 'error');
+    }
+}
+
+async function rejectFriend(userId) {
+    try {
+        const response = await fetch('/friends/reject', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ user_id: userId })
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            CodeClash.showNotification(data.message, 'info');
+            loadFriends();
+        } else {
+            CodeClash.showNotification(data.message, 'error');
+        }
+    } catch (error) {
+        console.error('Error rejecting friend:', error);
+        CodeClash.showNotification('Failed to reject friend request', 'error');
+    }
+}
+
+async function removeFriend(userId, username) {
+    if (!confirm(`Remove ${username} from your friends?`)) {
+        return;
+    }
+    
+    try {
+        const response = await fetch('/friends/remove', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ user_id: userId })
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            CodeClash.showNotification(data.message, 'info');
+            loadFriends();
+        } else {
+            CodeClash.showNotification(data.message, 'error');
+        }
+    } catch (error) {
+        console.error('Error removing friend:', error);
+        CodeClash.showNotification('Failed to remove friend', 'error');
+    }
+}
+
+// Initialize
+loadFriends();
+
+// Auto-refresh every 10 seconds
+setInterval(loadFriends, 10000);
+</script>
+{% endblock %}

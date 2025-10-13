@@ -149,7 +149,11 @@
     const userId = {{ user_id }};
     const player1Id = {{ match.player1_id }};
     const player2Id = {{ match.player2_id }};
-    let startTime = null;
+    {% if match.started_at %}
+    const matchStarted = new Date('{{ match.started_at }}');
+    {% else %}
+    const matchStarted = new Date();
+    {% endif %}
     let timerInterval = null;
     
     // Set difficulty badge color
@@ -160,14 +164,10 @@
     };
     document.getElementById('difficulty').className = `px-3 py-1 rounded text-sm ${difficultyColors['{{ match.difficulty }}']}`;
     
-    // Start timer
+    // Start timer immediately when page loads
     function startTimer() {
-        if (!startTime) {
-            startTime = Date.now();
-        }
-        
         timerInterval = setInterval(() => {
-            const elapsed = Math.floor((Date.now() - startTime) / 1000);
+            const elapsed = Math.floor((Date.now() - matchStarted.getTime()) / 1000);
             const minutes = Math.floor(elapsed / 60);
             const seconds = elapsed % 60;
             document.getElementById('timer').textContent = 
@@ -175,13 +175,28 @@
         }, 1000);
     }
     
+    // Start timer immediately
+    startTimer();
+    
+    // Auto-save code snapshots every 30 seconds for replay feature
+    setInterval(async () => {
+        const code = document.getElementById('codeEditor').value;
+        if (code && code.trim() !== '') {
+            try {
+                await fetch(`/match/${matchId}/save_snapshot`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ code })
+                });
+            } catch (error) {
+                console.error('Failed to save snapshot:', error);
+            }
+        }
+    }, 30000);
+    
     // Run code
     document.getElementById('runBtn').addEventListener('click', async () => {
         const code = document.getElementById('codeEditor').value;
-        
-        if (!startTime) {
-            startTimer();
-        }
         
         const btn = document.getElementById('runBtn');
         btn.disabled = true;

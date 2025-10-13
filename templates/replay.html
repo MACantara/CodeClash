@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+
+{% block title %}Match Replay - CodeClash{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <div class="max-w-7xl mx-auto">
+        <!-- Header -->
+        <div class="bg-gray-800 rounded-lg shadow-xl p-6 mb-6 border border-gray-700">
+            <h1 class="text-3xl font-bold mb-2">
+                <i class="bi bi-play-circle-fill text-blue-500"></i> Match Replay
+            </h1>
+            <div class="flex justify-between items-center">
+                <p class="text-gray-400">{{ match.challenge_name }} - {{ match.difficulty }}</p>
+                <div class="text-sm">
+                    <span class="text-green-400 font-bold">Winner: {{ match.winner_name }}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline Controls -->
+        <div class="bg-gray-800 rounded-lg shadow-xl p-6 mb-6 border border-gray-700">
+            <div class="flex items-center gap-4">
+                <button onclick="playPause()" id="playBtn" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition">
+                    <i class="bi bi-play-fill" id="playIcon"></i>
+                </button>
+                <input type="range" id="timeline" min="0" max="100" value="0" 
+                       class="flex-1 h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer">
+                <span id="timeDisplay" class="text-gray-400 min-w-[80px]">0:00 / 0:00</span>
+            </div>
+            <div class="flex justify-between text-xs text-gray-500 mt-2">
+                <span>Match Start</span>
+                <span>Match End</span>
+            </div>
+        </div>
+
+        <!-- Code Comparison -->
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <!-- Player 1 Code -->
+            <div class="bg-gray-800 rounded-lg shadow-xl border border-blue-500">
+                <div class="p-4 border-b border-gray-700">
+                    <h2 class="text-xl font-bold text-blue-400">
+                        <i class="bi bi-person-circle"></i> {{ match.player1_name }}
+                    </h2>
+                    <div class="text-sm text-gray-400 mt-1">
+                        Errors: <span class="text-red-400 font-bold">{{ match.player1_errors }}</span> | 
+                        Time: <span class="text-green-400 font-bold">{{ "%.2f"|format(match.player1_time) }}s</span>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <pre id="player1Code" class="bg-gray-900 p-4 rounded text-sm overflow-auto max-h-96 border border-gray-700"><code class="language-python">{{ match.player1_code or '# No code submitted' }}</code></pre>
+                </div>
+            </div>
+
+            <!-- Player 2 Code -->
+            <div class="bg-gray-800 rounded-lg shadow-xl border border-purple-500">
+                <div class="p-4 border-b border-gray-700">
+                    <h2 class="text-xl font-bold text-purple-400">
+                        <i class="bi bi-person-circle"></i> {{ match.player2_name }}
+                    </h2>
+                    <div class="text-sm text-gray-400 mt-1">
+                        Errors: <span class="text-red-400 font-bold">{{ match.player2_errors }}</span> | 
+                        Time: <span class="text-green-400 font-bold">{{ "%.2f"|format(match.player2_time) }}s</span>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <pre id="player2Code" class="bg-gray-900 p-4 rounded text-sm overflow-auto max-h-96 border border-gray-700"><code class="language-python">{{ match.player2_code or '# No code submitted' }}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Challenge Description -->
+        <div class="bg-gray-800 rounded-lg shadow-xl p-6 mb-6 border border-gray-700">
+            <h2 class="text-xl font-bold mb-3">Challenge: {{ match.challenge_name }}</h2>
+            <div class="prose prose-invert max-w-none">
+                <p class="text-gray-300">{{ match.challenge_description }}</p>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="flex gap-4 justify-center">
+            <a href="/lobby" class="bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded transition">
+                <i class="bi bi-arrow-left"></i> Back to Lobby
+            </a>
+            <a href="/profile/{{ match.winner_name }}" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded transition">
+                <i class="bi bi-person"></i> View Winner's Profile
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+const matchId = {{ match.id }};
+const player1Snapshots = {{ player1_snapshots | tojson }};
+const player2Snapshots = {{ player2_snapshots | tojson }};
+
+let isPlaying = false;
+let currentIndex = 0;
+let playInterval = null;
+
+const timeline = document.getElementById('timeline');
+const timeDisplay = document.getElementById('timeDisplay');
+const player1CodeEl = document.getElementById('player1Code');
+const player2CodeEl = document.getElementById('player2Code');
+const playIcon = document.getElementById('playIcon');
+
+// Set timeline max to number of snapshots
+const maxSnapshots = Math.max(player1Snapshots.length, player2Snapshots.length, 1);
+timeline.max = maxSnapshots - 1;
+
+function formatTime(seconds) {
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+}
+
+function updateDisplay() {
+    // Update player 1 code if snapshot exists
+    if (player1Snapshots[currentIndex]) {
+        player1CodeEl.textContent = player1Snapshots[currentIndex].code || '# No code yet';
+    }
+    
+    // Update player 2 code if snapshot exists
+    if (player2Snapshots[currentIndex]) {
+        player2CodeEl.textContent = player2Snapshots[currentIndex].code || '# No code yet';
+    }
+    
+    // Update time display
+    const currentTime = currentIndex * 30; // Snapshots every 30 seconds
+    const totalTime = (maxSnapshots - 1) * 30;
+    timeDisplay.textContent = `${formatTime(currentTime)} / ${formatTime(totalTime)}`;
+    
+    // Update timeline slider
+    timeline.value = currentIndex;
+}
+
+function playPause() {
+    isPlaying = !isPlaying;
+    
+    if (isPlaying) {
+        playIcon.className = 'bi bi-pause-fill';
+        playInterval = setInterval(() => {
+            if (currentIndex < maxSnapshots - 1) {
+                currentIndex++;
+                updateDisplay();
+            } else {
+                playPause(); // Stop at end
+            }
+        }, 1000); // Change snapshot every second
+    } else {
+        playIcon.className = 'bi bi-play-fill';
+        if (playInterval) {
+            clearInterval(playInterval);
+        }
+    }
+}
+
+// Manual timeline scrubbing
+timeline.addEventListener('input', (e) => {
+    currentIndex = parseInt(e.target.value);
+    updateDisplay();
+    
+    // Pause if playing
+    if (isPlaying) {
+        playPause();
+    }
+});
+
+// Initial display
+updateDisplay();
+
+// If no snapshots, show final code
+if (maxSnapshots === 1) {
+    CodeClash.showNotification('No code snapshots saved during this match', 'info');
+}
+</script>
+{% endblock %}
