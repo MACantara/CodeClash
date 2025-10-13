@@ -197,7 +197,7 @@ def match(match_id):
         'player2_time': match_obj.player2_time,
         'player1_submitted': match_obj.player1_submitted,
         'player2_submitted': match_obj.player2_submitted,
-        'started_at': match_obj.started_at.isoformat() if match_obj.started_at else None,
+        'started_at': match_obj.started_at.isoformat() + 'Z' if match_obj.started_at else None,
         'title': match_obj.challenge.title,
         'description': match_obj.challenge.description,
         'difficulty': match_obj.challenge.difficulty,
