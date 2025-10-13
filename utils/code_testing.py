@@ -3,6 +3,57 @@ import sys
 from io import StringIO
 
 
+def test_code(code, test_input='', expected_output=''):
+    """
+    Test code with simple input/output comparison.
+    
+    Args:
+        code: Python code string to execute
+        test_input: Input string (for input() function)
+        expected_output: Expected output string
+        
+    Returns:
+        Dictionary with 'passed', 'output', and optional 'error' keys
+    """
+    try:
+        # Capture stdout
+        old_stdout = sys.stdout
+        old_stdin = sys.stdin
+        sys.stdout = StringIO()
+        
+        # Mock input if provided
+        if test_input:
+            sys.stdin = StringIO(test_input)
+        
+        # Execute the code
+        namespace = {}
+        exec(code, namespace)
+        
+        # Get output
+        output = sys.stdout.getvalue().strip()
+        sys.stdout = old_stdout
+        sys.stdin = old_stdin
+        
+        # Compare output
+        expected = expected_output.strip()
+        passed = output == expected
+        
+        return {
+            'passed': passed,
+            'output': output,
+            'expected': expected
+        }
+        
+    except Exception as e:
+        sys.stdout = old_stdout
+        sys.stdin = old_stdin
+        return {
+            'passed': False,
+            'output': '',
+            'error': str(e)
+        }
+
+
 def run_code_tests(code, test_cases):
     """
     Run code against test cases.
