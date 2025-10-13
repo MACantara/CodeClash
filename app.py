@@ -652,18 +652,26 @@ def quick_match():
     data = request.json
     difficulty = data.get('difficulty', None)
     
-    # Find available lobby
+    # Check if user is already in a lobby
+    existing_lobby_player = LobbyPlayer.query.filter_by(user_id=session['user_id']).first()
+    if existing_lobby_player:
+        existing_lobby = db.session.get(Lobby, existing_lobby_player.lobby_id)
+        if existing_lobby and existing_lobby.status == 'waiting':
+            return jsonify({'success': True, 'lobby_id': existing_lobby.id, 'already_in_lobby': True, 'match_started': False})
+    
+    # Find available lobby (prioritize oldest lobbies first)
     query = Lobby.query.join(Challenge).filter(
         Lobby.status == 'waiting',
         Lobby.is_public == True,
         Lobby.current_players < Lobby.max_players,
-        Lobby.host_id != session['user_id']
+        Lobby.host_id != session['user_id']  # Don't join your own lobby
     )
     
     if difficulty:
         query = query.filter(Challenge.difficulty == difficulty)
     
-    lobby = query.order_by(Lobby.created_at).first()
+    # Order by created_at ASC to join the oldest (first created) lobby
+    lobby = query.order_by(Lobby.created_at.asc()).first()
     
     if lobby:
         # Join existing lobby
