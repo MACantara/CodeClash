@@ -178,3 +178,139 @@ textarea:focus {
     background-color: #ef4444;
     color: white;
 }
+
+/* Learning Module Styles */
+.tab-btn {
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    background-color: #2563eb;
+    color: white;
+}
+
+.tab-btn:not(.active) {
+    color: #9ca3af;
+}
+
+.tab-btn:not(.active):hover {
+    background-color: #374151;
+    color: white;
+}
+
+.tab-content {
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Ace Editor container */
+#editor {
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+/* Progress bar animation */
+.progress-bar {
+    transition: width 0.5s ease-in-out;
+}
+
+/* Lesson card hover */
+.lesson-card {
+    transition: all 0.3s ease;
+}
+
+.lesson-card:hover {
+    transform: translateX(5px);
+}
+
+/* Code syntax highlighting for prose content */
+.prose code {
+    background-color: #374151;
+    color: #e2e8f0;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+}
+
+.prose pre {
+    background-color: #1f2937;
+    border: 1px solid #374151;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    overflow-x: auto;
+}
+
+.prose pre code {
+    background-color: transparent;
+    padding: 0;
+    color: #e2e8f0;
+}
+
+/* Test result styling */
+.test-passed {
+    background-color: rgba(34, 197, 94, 0.1);
+    border-color: rgba(34, 197, 94, 0.3);
+}
+
+.test-failed {
+    background-color: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.3);
+}
+
+/* Hint reveal animation */
+.hint-reveal {
+    animation: slideDown 0.4s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        max-height: 0;
+        opacity: 0;
+    }
+    to {
+        max-height: 500px;
+        opacity: 1;
+    }
+}
+
+/* Visual learning animations */
+.visual-element {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.visual-element.highlight {
+    filter: brightness(1.5);
+    transform: scale(1.1);
+}
+
+/* Module progress circle */
+.progress-circle {
+    transform: rotate(-90deg);
+    transform-origin: center;
+}
+
+/* Celebration confetti animation */
+@keyframes confetti {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+.confetti {
+    animation: confetti 3s ease-out;
+}
