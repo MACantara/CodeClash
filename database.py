@@ -92,6 +92,134 @@ def init_database():
         )
     ''')
     
+    # Create friends table
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS friendships (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL,
+            friend_id INTEGER NOT NULL,
+            status TEXT DEFAULT 'pending',
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (user_id) REFERENCES users(id),
+            FOREIGN KEY (friend_id) REFERENCES users(id)
+        )
+    ''')
+    
+    # Create lobby_invitations table
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS lobby_invitations (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            lobby_id INTEGER NOT NULL,
+            from_user_id INTEGER NOT NULL,
+            to_user_id INTEGER NOT NULL,
+            status TEXT DEFAULT 'pending',
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (lobby_id) REFERENCES lobbies(id),
+            FOREIGN KEY (from_user_id) REFERENCES users(id),
+            FOREIGN KEY (to_user_id) REFERENCES users(id)
+        )
+    ''')
+    
+    # Create chat_messages table
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS chat_messages (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            lobby_id INTEGER NOT NULL,
+            user_id INTEGER NOT NULL,
+            message TEXT NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (lobby_id) REFERENCES lobbies(id),
+            FOREIGN KEY (user_id) REFERENCES users(id)
+        )
+    ''')
+    
+    # Create match_spectators table
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS match_spectators (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            match_id INTEGER NOT NULL,
+            user_id INTEGER NOT NULL,
+            joined_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (match_id) REFERENCES matches(id),
+            FOREIGN KEY (user_id) REFERENCES users(id)
+        )
+    ''')
+    
+    # Create code_snapshots table for replay feature
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS code_snapshots (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            match_id INTEGER NOT NULL,
+            user_id INTEGER NOT NULL,
+            code TEXT NOT NULL,
+            timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            elapsed_seconds INTEGER,
+            FOREIGN KEY (match_id) REFERENCES matches(id),
+            FOREIGN KEY (user_id) REFERENCES users(id)
+        )
+    ''')
+    
+    # Create achievements table
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS achievements (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            description TEXT NOT NULL,
+            icon TEXT NOT NULL,
+            criteria TEXT NOT NULL,
+            points INTEGER DEFAULT 0,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+    
+    # Create user_achievements table
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS user_achievements (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL,
+            achievement_id INTEGER NOT NULL,
+            earned_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (user_id) REFERENCES users(id),
+            FOREIGN KEY (achievement_id) REFERENCES achievements(id)
+        )
+    ''')
+    
+    # Create user_statistics table
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS user_statistics (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL UNIQUE,
+            current_win_streak INTEGER DEFAULT 0,
+            best_win_streak INTEGER DEFAULT 0,
+            total_errors INTEGER DEFAULT 0,
+            fastest_solve_time REAL,
+            average_solve_time REAL,
+            challenges_solved INTEGER DEFAULT 0,
+            perfect_matches INTEGER DEFAULT 0,
+            FOREIGN KEY (user_id) REFERENCES users(id)
+        )
+    ''')
+    
+    # Add achievements if they don't exist
+    cursor.execute('SELECT COUNT(*) FROM achievements')
+    if cursor.fetchone()[0] == 0:
+        achievements = [
+            ('First Blood', 'Win your first match', 'bi-trophy', 'first_win', 10),
+            ('Winning Streak', 'Win 5 matches in a row', 'bi-fire', 'win_streak_5', 50),
+            ('Perfect Game', 'Win a match with zero errors', 'bi-star-fill', 'perfect_match', 25),
+            ('Speed Demon', 'Solve a challenge in under 60 seconds', 'bi-lightning-charge-fill', 'solve_under_60', 30),
+            ('Veteran', 'Play 50 matches', 'bi-shield-fill', 'play_50_matches', 40),
+            ('Master Coder', 'Win 100 matches', 'bi-award-fill', 'win_100', 100),
+            ('Challenge Accepted', 'Complete all difficulty levels', 'bi-check-circle-fill', 'all_difficulties', 75),
+            ('Social Butterfly', 'Add 10 friends', 'bi-people-fill', 'add_10_friends', 20),
+            ('Comeback King', 'Win after being behind', 'bi-arrow-up-circle-fill', 'comeback_win', 35),
+            ('No Mercy', 'Win by more than 10 errors difference', 'bi-x-circle-fill', 'dominate_win', 40),
+        ]
+        cursor.executemany('''
+            INSERT INTO achievements (name, description, icon, criteria, points)
+            VALUES (?, ?, ?, ?, ?)
+        ''', achievements)
+    
     # Check if challenges already exist
     cursor.execute('SELECT COUNT(*) FROM challenges')
     if cursor.fetchone()[0] == 0:
