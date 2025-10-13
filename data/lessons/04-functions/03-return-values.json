@@ -1,0 +1,59 @@
+{
+  "module_id": 4,
+  "title": "Return Values & Return Statements",
+  "order": 3,
+  "reading_content": "\n<h3>Return Statements</h3>\n<p>The <code>return</code> statement sends a value back to the caller and exits the function.</p>\n\n<h4>Basic Return:</h4>\n<pre><code># Function without return (returns None)\ndef greet(name):\n    print(f\"Hello, {name}!\")\n\nresult = greet(\"Alice\")  # Prints: Hello, Alice!\nprint(result)            # None\n\n# Function with return\ndef add(a, b):\n    return a + b\n\nresult = add(5, 3)\nprint(result)  # 8\n\n# Return stops function execution\ndef check_age(age):\n    if age < 18:\n        return \"Too young\"\n    return \"Eligible\"\n\nprint(check_age(15))  # Too young (function exits at first return)\nprint(check_age(25))  # Eligible\n</code></pre>\n\n<h4>Returning Multiple Values:</h4>\n<pre><code># Return multiple values as tuple\ndef get_stats(numbers):\n    return min(numbers), max(numbers), sum(numbers) / len(numbers)\n\ndata = [10, 20, 30, 40, 50]\nminimum, maximum, average = get_stats(data)\nprint(f\"Min: {minimum}, Max: {maximum}, Avg: {average}\")\n# Output: Min: 10, Max: 50, Avg: 30.0\n\n# Or capture as tuple\nstats = get_stats(data)\nprint(stats)  # (10, 50, 30.0)\nprint(type(stats))  # <class 'tuple'>\n\n# Return different types\ndef divide(a, b):\n    if b == 0:\n        return None, \"Cannot divide by zero\"\n    return a / b, \"Success\"\n\nresult, message = divide(10, 2)\nprint(f\"Result: {result}, Message: {message}\")  # Result: 5.0, Message: Success\n\nresult, message = divide(10, 0)\nprint(f\"Result: {result}, Message: {message}\")  # Result: None, Message: Cannot divide by zero\n</code></pre>\n\n<h4>Return vs Print:</h4>\n<pre><code># print() shows output but doesn't return anything\ndef greet_print(name):\n    print(f\"Hello, {name}!\")\n\n# return sends value back\ndef greet_return(name):\n    return f\"Hello, {name}!\"\n\n# Using print version\nresult1 = greet_print(\"Alice\")  # Prints: Hello, Alice!\nprint(result1)                   # None\n# Can't use result further!\n\n# Using return version\nresult2 = greet_return(\"Bob\")   # Nothing printed yet\nprint(result2)                   # Hello, Bob!\nmessage = result2.upper()        # Can manipulate result\nprint(message)                   # HELLO, BOB!\n</code></pre>\n\n<h4>Early Returns:</h4>\n<pre><code># Return early to avoid nested conditions\ndef calculate_discount(price, membership):\n    if price < 0:\n        return 0  # Invalid price\n    \n    if membership == \"gold\":\n        return price * 0.20\n    \n    if membership == \"silver\":\n        return price * 0.10\n    \n    return 0  # No discount\n\nprint(calculate_discount(100, \"gold\"))    # 20.0\nprint(calculate_discount(100, \"silver\"))  # 10.0\nprint(calculate_discount(100, \"bronze\"))  # 0\n\n# Validation with early return\ndef process_user(name, age):\n    if not name:\n        return \"Error: Name required\"\n    \n    if age < 0:\n        return \"Error: Invalid age\"\n    \n    if age < 18:\n        return \"Error: Must be 18+\"\n    \n    return f\"User {name} processed successfully\"\n\nprint(process_user(\"\", 25))      # Error: Name required\nprint(process_user(\"Alice\", -5)) # Error: Invalid age\nprint(process_user(\"Bob\", 15))   # Error: Must be 18+\nprint(process_user(\"Charlie\", 25)) # User Charlie processed successfully\n</code></pre>\n\n<h4>Returning Collections:</h4>\n<pre><code># Return list\ndef get_even_numbers(numbers):\n    evens = [num for num in numbers if num % 2 == 0]\n    return evens\n\nresult = get_even_numbers([1, 2, 3, 4, 5, 6])\nprint(result)  # [2, 4, 6]\n\n# Return dictionary\ndef analyze_text(text):\n    words = text.split()\n    return {\n        'word_count': len(words),\n        'char_count': len(text),\n        'first_word': words[0] if words else None\n    }\n\nstats = analyze_text(\"Hello World Python\")\nprint(stats)  # {'word_count': 3, 'char_count': 18, 'first_word': 'Hello'}\n\n# Return nested structure\ndef get_user_data():\n    return {\n        'user': {\n            'name': 'Alice',\n            'age': 25\n        },\n        'scores': [85, 92, 78]\n    }\n\ndata = get_user_data()\nprint(data['user']['name'])  # Alice\nprint(data['scores'][0])      # 85\n</code></pre>\n\n<h4>Returning Functions (Advanced):</h4>\n<pre><code># Functions can return other functions\ndef create_multiplier(factor):\n    def multiply(x):\n        return x * factor\n    return multiply\n\n# Create specialized functions\ndouble = create_multiplier(2)\ntriple = create_multiplier(3)\n\nprint(double(5))  # 10\nprint(triple(5))  # 15\n\n# Practical: Create validators\ndef create_validator(min_value, max_value):\n    def validate(value):\n        return min_value <= value <= max_value\n    return validate\n\nage_validator = create_validator(0, 120)\nprint(age_validator(25))   # True\nprint(age_validator(150))  # False\n</code></pre>\n\n<h4>None as Return Value:</h4>\n<pre><code># Explicit None return\ndef find_item(items, target):\n    for item in items:\n        if item == target:\n            return item\n    return None  # Not found\n\nresult = find_item([1, 2, 3], 2)\nif result is not None:\n    print(f\"Found: {result}\")\nelse:\n    print(\"Not found\")\n\n# Implicit None (no return statement)\ndef process_data(data):\n    # Do some processing\n    data.sort()\n    # No return statement\n\nresult = process_data([3, 1, 2])\nprint(result)  # None\n</code></pre>\n\n<h4>Practical Examples:</h4>\n<pre><code># Login function\ndef authenticate(username, password):\n    # Simplified example\n    valid_users = {\n        'alice': 'pass123',\n        'bob': 'secret456'\n    }\n    \n    if username not in valid_users:\n        return False, \"User not found\"\n    \n    if valid_users[username] != password:\n        return False, \"Incorrect password\"\n    \n    return True, \"Login successful\"\n\nsuccess, message = authenticate(\"alice\", \"pass123\")\nprint(f\"Success: {success}, Message: {message}\")\n\n# Calculate grade\ndef get_grade(score):\n    if score >= 90:\n        return 'A'\n    elif score >= 80:\n        return 'B'\n    elif score >= 70:\n        return 'C'\n    elif score >= 60:\n        return 'D'\n    else:\n        return 'F'\n\nprint(get_grade(95))  # A\nprint(get_grade(75))  # C\n\n# Parse API response\ndef parse_response(response):\n    if response.get('status') != 'success':\n        return None\n    \n    return {\n        'data': response.get('data'),\n        'timestamp': response.get('timestamp'),\n        'count': len(response.get('data', []))\n    }\n\napi_response = {'status': 'success', 'data': [1, 2, 3], 'timestamp': '2024-01-15'}\nresult = parse_response(api_response)\nif result:\n    print(f\"Received {result['count']} items\")\n</code></pre>\n\n<h4>Best Practices:</h4>\n<pre><code># ✓ Good: Single return type\ndef calculate_area(radius):\n    if radius < 0:\n        return 0  # Same type as valid result\n    return 3.14 * radius ** 2\n\n# ✗ Avoid: Mixed return types\ndef bad_function(x):\n    if x > 0:\n        return x  # Returns int\n    return \"Invalid\"  # Returns string - confusing!\n\n# ✓ Good: Clear function purpose\ndef is_valid_email(email):\n    return '@' in email and '.' in email\n\n# ✓ Good: Use None for \"not found\" cases\ndef find_user(user_id):\n    # Search logic\n    if not found:\n        return None\n    return user_data\n</code></pre>\n        ",
+  "starter_code": "# TODO: Create a function called 'analyze_numbers' that:\n# 1. Takes a list of numbers as parameter\n# 2. Returns THREE values: sum, average, and count\n# 3. Test with: analyze_numbers([10, 20, 30, 40, 50])\n# 4. Unpack and print: \"Sum: X, Average: Y, Count: Z\"\n\n",
+  "solution_code": "def analyze_numbers(numbers):\n    total = sum(numbers)\n    avg = total / len(numbers)\n    count = len(numbers)\n    return total, avg, count\n\ntotal, avg, count = analyze_numbers([10, 20, 30, 40, 50])\nprint(f\"Sum: {total}, Average: {avg}, Count: {count}\")",
+  "learning_objectives": [
+    "Use return statements to send values back to the caller",
+    "Return multiple values from functions using tuples",
+    "Understand the difference between return and print",
+    "Apply early returns for cleaner conditional logic"
+  ],
+  "key_concepts": [
+    "return Statement",
+    "Multiple Return Values",
+    "Early Returns",
+    "None Return Value",
+    "Returning Collections",
+    "return vs print"
+  ],
+  "test_cases": [
+    {
+      "name": "Test: Analyze numbers",
+      "input": "",
+      "expected_output": "Sum: 150, Average: 30.0, Count: 5"
+    }
+  ],
+  "hints": [
+    "Calculate sum: sum(numbers)",
+    "Calculate average: sum / len(numbers)",
+    "Count: len(numbers)",
+    "Return all three: return total, avg, count",
+    "Unpack: total, avg, count = analyze_numbers(...)"
+  ],
+  "visual_content": {
+    "flowchart": {
+      "type": "return_flow",
+      "title": "How return Works",
+      "steps": [
+        {"step": 1, "action": "Function is called", "code": "result = add(5, 3)"},
+        {"step": 2, "action": "Function executes", "code": "def add(a, b):\\n    return a + b"},
+        {"step": 3, "action": "return statement hit", "code": "return 8"},
+        {"step": 4, "action": "Value sent back", "code": "result gets 8"},
+        {"step": 5, "action": "Function exits", "code": "Execution continues after call"}
+      ],
+      "comparison": {
+        "with_return": {
+          "code": "def add(a, b):\\n    return a + b\\nresult = add(5, 3)\\nprint(result)  # 8",
+          "output": "8"
+        },
+        "without_return": {
+          "code": "def add(a, b):\\n    print(a + b)\\nresult = add(5, 3)\\nprint(result)  # None",
+          "output": "8\\nNone"
+        }
+      }
+    }
+  }
+}

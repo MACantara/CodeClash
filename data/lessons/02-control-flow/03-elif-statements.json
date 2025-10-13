@@ -1,0 +1,43 @@
+{
+  "module_id": 2,
+  "title": "Conditional Statements - elif",
+  "order": 3,
+  "reading_content": "\n<h3>Multi-way Decisions with elif</h3>\n<p>The <code>elif</code> (else if) statement allows you to check multiple conditions in sequence.</p>\n\n<h4>Basic elif Syntax:</h4>\n<pre><code>score = 85\n\nif score >= 90:\n    print(\"Grade: A\")\nelif score >= 80:\n    print(\"Grade: B\")\nelif score >= 70:\n    print(\"Grade: C\")\nelif score >= 60:\n    print(\"Grade: D\")\nelse:\n    print(\"Grade: F\")\n# Output: Grade: B\n</code></pre>\n\n<h4>How elif Works:</h4>\n<ol>\n    <li>Python checks the <code>if</code> condition first</li>\n    <li>If False, it checks each <code>elif</code> condition in order</li>\n    <li>The <strong>first True condition</strong> executes its block</li>\n    <li>All remaining conditions are <strong>skipped</strong></li>\n    <li>If all are False, the <code>else</code> block executes (if present)</li>\n</ol>\n\n<h4>Multiple elif Statements:</h4>\n<pre><code>temperature = 25\n\nif temperature > 30:\n    print(\"It's hot!\")\nelif temperature > 20:\n    print(\"It's warm\")\nelif temperature > 10:\n    print(\"It's cool\")\nelif temperature > 0:\n    print(\"It's cold\")\nelse:\n    print(\"It's freezing!\")\n# Output: It's warm\n</code></pre>\n\n<h4>elif vs Multiple if Statements:</h4>\n<pre><code># Using elif (only ONE block executes)\nscore = 95\nif score >= 90:\n    print(\"Excellent!\")  # This executes\nelif score >= 80:\n    print(\"Good\")       # This is skipped\n\n# Using multiple if statements (BOTH blocks execute)\nscore = 95\nif score >= 90:\n    print(\"Excellent!\")  # This executes\nif score >= 80:\n    print(\"Good\")        # This ALSO executes\n</code></pre>\n\n<h4>Nested Conditions with elif:</h4>\n<pre><code>age = 25\nhas_ticket = True\n\nif age >= 18:\n    if has_ticket:\n        print(\"Welcome to the concert!\")\n    else:\n        print(\"Please buy a ticket\")\nelif age >= 13:\n    print(\"Teen price: $10\")\nelse:\n    print(\"Child price: $5\")\n</code></pre>\n\n<h4>Real-World Example - BMI Calculator:</h4>\n<pre><code>weight = 70  # kg\nheight = 1.75  # meters\nbmi = weight / (height ** 2)\n\nif bmi < 18.5:\n    category = \"Underweight\"\nelif bmi < 25:\n    category = \"Normal weight\"\nelif bmi < 30:\n    category = \"Overweight\"\nelse:\n    category = \"Obese\"\n\nprint(f\"BMI: {bmi:.1f} - {category}\")\n</code></pre>\n        ",
+  "starter_code": "# Create a simple traffic light program\n# Input: color (string) = \"yellow\"\n# Rules:\n#   - If color is \"green\": print \"Go\"\n#   - If color is \"yellow\": print \"Slow down\"\n#   - If color is \"red\": print \"Stop\"\n#   - Otherwise: print \"Invalid color\"\n\ncolor = \"yellow\"\n\n",
+  "solution_code": "color = \"yellow\"\n\nif color == \"green\":\n    print(\"Go\")\nelif color == \"yellow\":\n    print(\"Slow down\")\nelif color == \"red\":\n    print(\"Stop\")\nelse:\n    print(\"Invalid color\")",
+  "learning_objectives": [
+    "Use elif statements for multiple conditions",
+    "Understand the execution flow of if-elif-else chains",
+    "Differentiate between elif and multiple if statements",
+    "Implement multi-way decision logic"
+  ],
+  "key_concepts": ["elif", "Multi-way Decisions", "Condition Chaining", "Control Flow", "Exclusive Conditions"],
+  "test_cases": [
+    {
+      "name": "Test: Yellow light",
+      "input": "",
+      "expected_output": "Slow down"
+    }
+  ],
+  "hints": [
+    "Use if for the first condition (green)",
+    "Use elif for second and third conditions (yellow, red)",
+    "Use else for invalid colors"
+  ],
+  "visual_content": {
+    "flowchart": {
+      "type": "if_elif_else",
+      "nodes": [
+        {"id": 1, "type": "start", "label": "Start"},
+        {"id": 2, "type": "decision", "label": "color == 'green'?", "yes": 3, "no": 4},
+        {"id": 3, "type": "action", "label": "Print 'Go'", "next": 9},
+        {"id": 4, "type": "decision", "label": "color == 'yellow'?", "yes": 5, "no": 6},
+        {"id": 5, "type": "action", "label": "Print 'Slow down'", "next": 9},
+        {"id": 6, "type": "decision", "label": "color == 'red'?", "yes": 7, "no": 8},
+        {"id": 7, "type": "action", "label": "Print 'Stop'", "next": 9},
+        {"id": 8, "type": "action", "label": "Print 'Invalid color'", "next": 9},
+        {"id": 9, "type": "end", "label": "End"}
+      ]
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "module_id": 3,
+  "title": "String Methods & Manipulation",
+  "order": 2,
+  "reading_content": "\n<h3>String Methods</h3>\n<p>Python strings come with many built-in methods for manipulation and transformation.</p>\n\n<h4>Case Conversion Methods:</h4>\n<pre><code>text = \"Hello World\"\n\nprint(text.upper())      # HELLO WORLD\nprint(text.lower())      # hello world\nprint(text.capitalize()) # Hello world (first letter only)\nprint(text.title())      # Hello World (each word capitalized)\nprint(text.swapcase())   # hELLO wORLD (swap case)\n</code></pre>\n\n<h4>Whitespace Methods:</h4>\n<pre><code>text = \"   Hello Python   \"\n\nprint(text.strip())   # \"Hello Python\" (both sides)\nprint(text.lstrip())  # \"Hello Python   \" (left side)\nprint(text.rstrip())  # \"   Hello Python\" (right side)\n\n# Strip specific characters\ntext2 = \"###Hello###\"\nprint(text2.strip('#'))  # \"Hello\"\n</code></pre>\n\n<h4>Search & Replace Methods:</h4>\n<pre><code>text = \"Python is amazing. Python is powerful.\"\n\n# Find substring position\nprint(text.find('Python'))      # 0 (first occurrence)\nprint(text.find('Python', 5))   # 19 (start searching from index 5)\nprint(text.find('Java'))        # -1 (not found)\n\n# Count occurrences\nprint(text.count('Python'))     # 2\nprint(text.count('is'))         # 2\n\n# Replace substring\nprint(text.replace('Python', 'Java'))  # All occurrences replaced\nprint(text.replace('Python', 'Java', 1))  # Only first occurrence\n</code></pre>\n\n<h4>Split & Join Methods:</h4>\n<pre><code># Split string into list\ntext = \"apple,banana,cherry\"\nfruits = text.split(',')  # ['apple', 'banana', 'cherry']\n\nsentence = \"Hello World Python\"\nwords = sentence.split()  # ['Hello', 'World', 'Python'] (default: space)\n\n# Join list into string\nfruits = ['apple', 'banana', 'cherry']\ntext = ', '.join(fruits)  # \"apple, banana, cherry\"\n\nwords = ['Python', 'is', 'awesome']\nsentence = ' '.join(words)  # \"Python is awesome\"\n</code></pre>\n\n<h4>Checking Methods:</h4>\n<pre><code>text = \"Hello123\"\n\nprint(text.isalpha())      # False (has numbers)\nprint(text.isdigit())      # False (has letters)\nprint(text.isalnum())      # True (alphanumeric)\nprint(text.isupper())      # False\nprint(text.islower())      # False\nprint(text.startswith('H')) # True\nprint(text.endswith('3'))   # True\n\n# Check whitespace\nspace = \"   \"\nprint(space.isspace())     # True\n</code></pre>\n\n<h4>Practical Examples:</h4>\n<pre><code># Email validation\nemail = \"user@example.com\"\nif '@' in email and email.endswith('.com'):\n    print(\"Valid email format\")\n\n# Clean user input\nname = input(\"Enter name: \").strip().title()\nprint(f\"Hello, {name}!\")\n\n# Parse CSV data\ndata = \"John,25,Engineer\"\nname, age, job = data.split(',')\nprint(f\"Name: {name}, Age: {age}, Job: {job}\")\n\n# Build a sentence\nwords = ['I', 'love', 'Python', 'programming']\nsentence = ' '.join(words) + '!'\nprint(sentence)  # I love Python programming!\n</code></pre>\n\n<h4>String Method Chaining:</h4>\n<pre><code># You can chain multiple methods\ntext = \"   HELLO world   \"\nresult = text.strip().lower().capitalize()\nprint(result)  # \"Hello world\"\n\n# Clean and format user input\nuser_input = \"   python programming   \"\ncleaned = user_input.strip().title().replace(' ', '-')\nprint(cleaned)  # \"Python-Programming\"\n</code></pre>\n        ",
+  "starter_code": "# Given this messy string:\ntext = \"   hello PYTHON world   \"\n\n# TODO:\n# 1. Remove whitespace from both sides\n# 2. Convert to title case (first letter of each word capitalized)\n# 3. Print the result\n\n",
+  "solution_code": "text = \"   hello PYTHON world   \"\nresult = text.strip().title()\nprint(result)",
+  "learning_objectives": [
+    "Use string methods for case conversion",
+    "Apply strip(), split(), and join() methods",
+    "Search and replace text within strings",
+    "Validate and clean user input with string methods"
+  ],
+  "key_concepts": [
+    "String Methods",
+    "upper()/lower()",
+    "strip()/lstrip()/rstrip()",
+    "split()/join()",
+    "find()/replace()",
+    "startswith()/endswith()",
+    "Method Chaining"
+  ],
+  "test_cases": [
+    {
+      "name": "Test: Clean and format string",
+      "input": "",
+      "expected_output": "Hello Python World"
+    }
+  ],
+  "hints": [
+    "Use .strip() to remove whitespace from both sides",
+    "Use .title() to capitalize the first letter of each word",
+    "You can chain methods: text.strip().title()"
+  ],
+  "visual_content": {
+    "diagram": {
+      "type": "string_methods_reference",
+      "categories": [
+        {
+          "name": "Case Conversion",
+          "methods": ["upper()", "lower()", "capitalize()", "title()", "swapcase()"]
+        },
+        {
+          "name": "Whitespace",
+          "methods": ["strip()", "lstrip()", "rstrip()"]
+        },
+        {
+          "name": "Search & Replace",
+          "methods": ["find()", "count()", "replace()"]
+        },
+        {
+          "name": "Split & Join",
+          "methods": ["split()", "join()"]
+        },
+        {
+          "name": "Checking",
+          "methods": ["startswith()", "endswith()", "isalpha()", "isdigit()", "isalnum()"]
+        }
+      ]
+    }
+  }
+}

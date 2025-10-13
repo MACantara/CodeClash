@@ -1,0 +1,59 @@
+{
+  "module_id": 4,
+  "title": "Function Parameters & Arguments",
+  "order": 2,
+  "reading_content": "\n<h3>Function Parameters</h3>\n<p>Parameters allow functions to accept input values, making them flexible and reusable.</p>\n\n<h4>Positional Parameters:</h4>\n<pre><code># Basic parameters\ndef greet(name, age):\n    print(f\"Hello {name}, you are {age} years old\")\n\ngreet(\"Alice\", 25)  # Hello Alice, you are 25 years old\ngreet(\"Bob\", 30)    # Hello Bob, you are 30 years old\n\n# Order matters!\ngreet(25, \"Alice\")  # Wrong! Will cause issues\n\n# Number must match\n# greet(\"Alice\")  # ❌ TypeError: missing 1 required positional argument\n# greet(\"Alice\", 25, \"NYC\")  # ❌ TypeError: takes 2 arguments but 3 were given\n</code></pre>\n\n<h4>Default Parameters:</h4>\n<pre><code># Parameters with default values\ndef greet(name, greeting=\"Hello\"):\n    print(f\"{greeting}, {name}!\")\n\ngreet(\"Alice\")              # Hello, Alice! (uses default)\ngreet(\"Bob\", \"Hi\")          # Hi, Bob! (overrides default)\ngreet(\"Charlie\", \"Welcome\") # Welcome, Charlie!\n\n# Multiple defaults\ndef create_user(name, age=18, country=\"USA\"):\n    print(f\"{name}, {age}, from {country}\")\n\ncreate_user(\"Alice\")                    # Alice, 18, from USA\ncreate_user(\"Bob\", 25)                  # Bob, 25, from USA\ncreate_user(\"Charlie\", 30, \"Canada\")    # Charlie, 30, from Canada\n\n# Important: Default parameters must come AFTER non-default\n# def invalid(name=\"Alice\", age):  # ❌ SyntaxError\n</code></pre>\n\n<h4>Keyword Arguments:</h4>\n<pre><code># Call function using parameter names\ndef create_profile(name, age, city):\n    print(f\"{name}, {age}, {city}\")\n\n# Positional\ncreate_profile(\"Alice\", 25, \"NYC\")\n\n# Keyword arguments (order doesn't matter!)\ncreate_profile(name=\"Bob\", age=30, city=\"LA\")\ncreate_profile(city=\"Boston\", name=\"Charlie\", age=35)\ncreate_profile(age=40, city=\"Seattle\", name=\"David\")\n\n# Mix positional and keyword (positional must come first)\ncreate_profile(\"Eve\", city=\"Miami\", age=28)\n# create_profile(name=\"Eve\", 28, \"Miami\")  # ❌ SyntaxError\n</code></pre>\n\n<h4>*args - Variable Positional Arguments:</h4>\n<pre><code># Accept any number of positional arguments\ndef sum_all(*numbers):\n    total = 0\n    for num in numbers:\n        total += num\n    return total\n\nprint(sum_all(1, 2, 3))        # 6\nprint(sum_all(10, 20, 30, 40)) # 100\nprint(sum_all(5))              # 5\nprint(sum_all())               # 0 (no arguments)\n\n# *args creates a tuple\ndef print_args(*args):\n    print(type(args))  # <class 'tuple'>\n    print(args)\n\nprint_args(1, 2, 3)  # (1, 2, 3)\n\n# Mix regular parameters with *args\ndef greet(greeting, *names):\n    for name in names:\n        print(f\"{greeting}, {name}!\")\n\ngreet(\"Hello\", \"Alice\", \"Bob\", \"Charlie\")\n# Output:\n# Hello, Alice!\n# Hello, Bob!\n# Hello, Charlie!\n</code></pre>\n\n<h4>**kwargs - Variable Keyword Arguments:</h4>\n<pre><code># Accept any number of keyword arguments\ndef print_info(**kwargs):\n    print(type(kwargs))  # <class 'dict'>\n    for key, value in kwargs.items():\n        print(f\"{key}: {value}\")\n\nprint_info(name=\"Alice\", age=25, city=\"NYC\")\n# Output:\n# name: Alice\n# age: 25\n# city: NYC\n\nprint_info(product=\"Laptop\", price=999.99, brand=\"Dell\")\n# Output:\n# product: Laptop\n# price: 999.99\n# brand: Dell\n\n# Build flexible functions\ndef create_user(**user_data):\n    print(\"Creating user with:\")\n    for key, value in user_data.items():\n        print(f\"  {key}: {value}\")\n\ncreate_user(name=\"Alice\", email=\"alice@example.com\")\ncreate_user(name=\"Bob\", age=30, city=\"LA\", country=\"USA\")\n</code></pre>\n\n<h4>Combining All Parameter Types:</h4>\n<pre><code># Order: regular, *args, default, **kwargs\ndef complex_function(required, *args, default=\"value\", **kwargs):\n    print(f\"Required: {required}\")\n    print(f\"Args: {args}\")\n    print(f\"Default: {default}\")\n    print(f\"Kwargs: {kwargs}\")\n\ncomplex_function(\"A\", \"B\", \"C\", default=\"custom\", x=1, y=2)\n# Output:\n# Required: A\n# Args: ('B', 'C')\n# Default: custom\n# Kwargs: {'x': 1, 'y': 2}\n\n# Proper order is crucial!\n# def invalid(required, default=\"value\", *args):  # ❌ SyntaxError\n</code></pre>\n\n<h4>Unpacking Arguments:</h4>\n<pre><code># Unpack list/tuple with *\ndef add(a, b, c):\n    return a + b + c\n\nnumbers = [1, 2, 3]\nprint(add(*numbers))  # 6 (unpacks to add(1, 2, 3))\n\n# Unpack dictionary with **\ndef greet(name, age):\n    print(f\"{name} is {age} years old\")\n\nuser = {'name': 'Alice', 'age': 25}\ngreet(**user)  # Alice is 25 years old (unpacks to greet(name='Alice', age=25))\n</code></pre>\n\n<h4>Practical Examples:</h4>\n<pre><code># Flexible calculator\ndef calculate(operation, *numbers):\n    if operation == 'sum':\n        return sum(numbers)\n    elif operation == 'product':\n        result = 1\n        for num in numbers:\n            result *= num\n        return result\n    elif operation == 'average':\n        return sum(numbers) / len(numbers)\n\nprint(calculate('sum', 1, 2, 3, 4))       # 10\nprint(calculate('product', 2, 3, 4))      # 24\nprint(calculate('average', 10, 20, 30))   # 20.0\n\n# Build query strings\ndef build_query(base_url, **params):\n    query = base_url + \"?\"\n    query += \"&\".join([f\"{k}={v}\" for k, v in params.items()])\n    return query\n\nurl = build_query(\"https://api.example.com/search\", \n                  q=\"python\", page=1, limit=10)\nprint(url)  # https://api.example.com/search?q=python&page=1&limit=10\n\n# Send email with optional attachments\ndef send_email(to, subject, body, *attachments, cc=None):\n    print(f\"To: {to}\")\n    print(f\"Subject: {subject}\")\n    print(f\"Body: {body}\")\n    if cc:\n        print(f\"CC: {cc}\")\n    if attachments:\n        print(f\"Attachments: {', '.join(attachments)}\")\n\nsend_email(\"alice@example.com\", \"Hello\", \"Hi Alice!\")\nsend_email(\"bob@example.com\", \"Report\", \"See attached\", \n           \"report.pdf\", \"data.csv\", cc=\"boss@example.com\")\n</code></pre>\n        ",
+  "starter_code": "# TODO: Create a function called 'calculate_total' that:\n# 1. Takes a required 'tax_rate' parameter\n# 2. Accepts any number of prices using *args\n# 3. Calculates subtotal (sum of all prices)\n# 4. Calculates tax (subtotal * tax_rate)\n# 5. Returns total (subtotal + tax)\n#\n# Test with: calculate_total(0.08, 10, 20, 30)\n# Expected: 64.8 (subtotal: 60, tax: 4.8, total: 64.8)\n\n",
+  "solution_code": "def calculate_total(tax_rate, *prices):\n    subtotal = sum(prices)\n    tax = subtotal * tax_rate\n    total = subtotal + tax\n    return total\n\nresult = calculate_total(0.08, 10, 20, 30)\nprint(result)",
+  "learning_objectives": [
+    "Define functions with positional and default parameters",
+    "Use *args to accept variable positional arguments",
+    "Use **kwargs to accept variable keyword arguments",
+    "Unpack sequences and dictionaries when calling functions"
+  ],
+  "key_concepts": [
+    "Parameters",
+    "Default Parameters",
+    "Keyword Arguments",
+    "*args",
+    "**kwargs",
+    "Argument Unpacking",
+    "Parameter Order"
+  ],
+  "test_cases": [
+    {
+      "name": "Test: Calculate total with tax",
+      "input": "",
+      "expected_output": "64.8"
+    }
+  ],
+  "hints": [
+    "Define function: def calculate_total(tax_rate, *prices)",
+    "Use sum(prices) to add all prices",
+    "Calculate tax: subtotal * tax_rate",
+    "Return: subtotal + tax"
+  ],
+  "visual_content": {
+    "reference_guide": {
+      "type": "parameter_types",
+      "order": [
+        {"position": 1, "type": "Required Parameters", "syntax": "def func(a, b)", "example": "func(1, 2)"},
+        {"position": 2, "type": "*args", "syntax": "def func(*args)", "example": "func(1, 2, 3, ...)"},
+        {"position": 3, "type": "Default Parameters", "syntax": "def func(a=10)", "example": "func() or func(20)"},
+        {"position": 4, "type": "**kwargs", "syntax": "def func(**kwargs)", "example": "func(x=1, y=2)"}
+      ],
+      "examples": [
+        {
+          "title": "*args Example",
+          "code": "def sum_all(*nums):\\n    return sum(nums)",
+          "calls": ["sum_all(1, 2, 3) → 6", "sum_all(10, 20) → 30"]
+        },
+        {
+          "title": "**kwargs Example",
+          "code": "def print_info(**data):\\n    for k, v in data.items():\\n        print(f'{k}: {v}')",
+          "calls": ["print_info(name='Alice', age=25)", "print_info(x=1, y=2, z=3)"]
+        }
+      ]
+    }
+  }
+}

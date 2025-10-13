@@ -1,0 +1,7 @@
+{
+  "title": "Modules & Error Handling",
+  "description": "Master importing modules, using packages, and handling errors gracefully with try-except blocks.",
+  "icon": "bi-plugin",
+  "difficulty": "Advanced",
+  "order": 6
+}

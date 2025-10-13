@@ -1,0 +1,63 @@
+{
+  "module_id": 3,
+  "title": "Tuples & Tuple Operations",
+  "order": 6,
+  "reading_content": "\n<h3>Understanding Tuples</h3>\n<p>Tuples are immutable sequences - once created, they cannot be modified. They're perfect for storing data that shouldn't change.</p>\n\n<h4>Creating Tuples:</h4>\n<pre><code># Using parentheses\npoint = (3, 5)\nprint(point)  # (3, 5)\n\n# Without parentheses (tuple packing)\ncoordinates = 10, 20, 30\nprint(coordinates)  # (10, 20, 30)\n\n# Single element tuple (comma required!)\nsingle = (5,)  # ✓ Correct\nprint(type(single))  # <class 'tuple'>\n\nnot_tuple = (5)  # ✗ This is just an int!\nprint(type(not_tuple))  # <class 'int'>\n\n# Empty tuple\nempty = ()\nprint(empty)  # ()\n\n# Using tuple() constructor\nlist_to_tuple = tuple([1, 2, 3])\nprint(list_to_tuple)  # (1, 2, 3)\n</code></pre>\n\n<h4>Accessing Tuple Elements:</h4>\n<pre><code>colors = ('red', 'green', 'blue', 'yellow')\n\n# Indexing (same as lists)\nprint(colors[0])   # red\nprint(colors[-1])  # yellow\n\n# Slicing\nprint(colors[1:3])  # ('green', 'blue')\nprint(colors[::2])  # ('red', 'blue')\n\n# Length\nprint(len(colors))  # 4\n\n# Membership\nprint('green' in colors)  # True\nprint('purple' in colors)  # False\n</code></pre>\n\n<h4>Immutability - Why Tuples Can't Change:</h4>\n<pre><code>point = (3, 5)\n\n# This will cause an error!\n# point[0] = 10  # ❌ TypeError: 'tuple' object does not support item assignment\n\n# To \"change\" a tuple, create a new one\npoint = (10, 5)  # Create new tuple\nprint(point)  # (10, 5)\n\n# Tuples with mutable elements\ndata = ([1, 2], [3, 4])\ndata[0].append(3)  # ✓ Can modify the list inside\nprint(data)  # ([1, 2, 3], [3, 4])\n# data[0] = [5, 6]  # ❌ Can't replace the list\n</code></pre>\n\n<h4>Tuple Methods:</h4>\n<pre><code>numbers = (1, 2, 3, 2, 4, 2, 5)\n\n# count() - Count occurrences\nprint(numbers.count(2))  # 3\n\n# index() - Find first occurrence\nprint(numbers.index(4))  # 4 (index position)\n\n# That's it! Tuples have only 2 methods because they're immutable\n</code></pre>\n\n<h4>Tuple Unpacking:</h4>\n<pre><code># Basic unpacking\npoint = (3, 5)\nx, y = point\nprint(f\"x={x}, y={y}\")  # x=3, y=5\n\n# Multiple assignment\nname, age, city = ('Alice', 25, 'NYC')\nprint(f\"{name} is {age} years old\")\n\n# Swapping variables (uses tuple packing/unpacking)\na = 5\nb = 10\na, b = b, a  # Swap!\nprint(f\"a={a}, b={b}\")  # a=10, b=5\n\n# Extended unpacking with *\nfirst, *middle, last = (1, 2, 3, 4, 5)\nprint(first)   # 1\nprint(middle)  # [2, 3, 4]\nprint(last)    # 5\n</code></pre>\n\n<h4>Returning Multiple Values:</h4>\n<pre><code># Functions can return tuples\ndef get_user_info():\n    name = \"Alice\"\n    age = 25\n    city = \"NYC\"\n    return name, age, city  # Returns a tuple\n\n# Unpack the returned tuple\nuser_name, user_age, user_city = get_user_info()\nprint(f\"{user_name}, {user_age}, {user_city}\")\n\n# Or use the tuple directly\nuser_info = get_user_info()\nprint(user_info)  # ('Alice', 25, 'NYC')\n</code></pre>\n\n<h4>Tuples vs Lists - When to Use Each:</h4>\n<table border='1' style='border-collapse: collapse; padding: 8px;'>\n    <tr>\n        <th>Feature</th>\n        <th>Tuple</th>\n        <th>List</th>\n    </tr>\n    <tr>\n        <td><strong>Mutability</strong></td>\n        <td>Immutable (can't change)</td>\n        <td>Mutable (can change)</td>\n    </tr>\n    <tr>\n        <td><strong>Syntax</strong></td>\n        <td>(1, 2, 3)</td>\n        <td>[1, 2, 3]</td>\n    </tr>\n    <tr>\n        <td><strong>Performance</strong></td>\n        <td>Faster (less memory)</td>\n        <td>Slower (more memory)</td>\n    </tr>\n    <tr>\n        <td><strong>Use Case</strong></td>\n        <td>Fixed data (coordinates, RGB colors)</td>\n        <td>Data that changes (shopping cart, to-do list)</td>\n    </tr>\n    <tr>\n        <td><strong>Methods</strong></td>\n        <td>count(), index()</td>\n        <td>append(), remove(), sort(), etc.</td>\n    </tr>\n</table>\n\n<h4>Practical Examples:</h4>\n<pre><code># Geographic coordinates (shouldn't change)\nlocation = (40.7128, -74.0060)  # NYC latitude, longitude\n\n# RGB color values (fixed)\nred = (255, 0, 0)\ngreen = (0, 255, 0)\n\n# Database records (immutable after fetch)\nuser_record = (1, 'Alice', 'alice@example.com', '2024-01-15')\nuser_id, name, email, created = user_record\n\n# Dictionary keys (must be immutable)\nlocations = {\n    (40.7128, -74.0060): 'New York',\n    (34.0522, -118.2437): 'Los Angeles'\n}\nprint(locations[(40.7128, -74.0060)])  # New York\n\n# Function returning multiple statistics\ndef analyze_data(numbers):\n    return min(numbers), max(numbers), sum(numbers) / len(numbers)\n\ndata = [10, 20, 30, 40, 50]\nminimum, maximum, average = analyze_data(data)\nprint(f\"Min: {minimum}, Max: {maximum}, Avg: {average}\")\n</code></pre>\n\n<h4>Named Tuples (Advanced):</h4>\n<pre><code>from collections import namedtuple\n\n# Create a named tuple type\nPoint = namedtuple('Point', ['x', 'y'])\n\n# Create instances\np1 = Point(3, 5)\nprint(p1.x, p1.y)  # 3 5 (access by name!)\nprint(p1[0], p1[1])  # 3 5 (still works by index)\n\n# More readable code\nUser = namedtuple('User', ['name', 'age', 'email'])\nuser = User('Alice', 25, 'alice@example.com')\nprint(f\"{user.name} is {user.age} years old\")  # Much clearer!\n</code></pre>\n        ",
+  "starter_code": "# Given this tuple:\nstudent = ('Alice', 85, 92, 78, 95)\n\n# TODO:\n# 1. Unpack the tuple: first element is name, rest are grades\n# 2. Calculate the average grade\n# 3. Print: \"[name]'s average grade is [average]\"\n\n",
+  "solution_code": "student = ('Alice', 85, 92, 78, 95)\n\nname, *grades = student\naverage = sum(grades) / len(grades)\n\nprint(f\"{name}'s average grade is {average}\")",
+  "learning_objectives": [
+    "Create and access tuples using proper syntax",
+    "Understand tuple immutability and when to use tuples vs lists",
+    "Use tuple unpacking to extract multiple values",
+    "Apply tuples for returning multiple values from functions"
+  ],
+  "key_concepts": [
+    "Tuples",
+    "Immutability",
+    "Tuple Packing",
+    "Tuple Unpacking",
+    "count()/index()",
+    "Extended Unpacking (*)",
+    "namedtuple"
+  ],
+  "test_cases": [
+    {
+      "name": "Test: Calculate average from tuple",
+      "input": "",
+      "expected_output": "Alice's average grade is 87.5"
+    }
+  ],
+  "hints": [
+    "Use extended unpacking: name, *grades = student",
+    "grades will be a list of the remaining numbers",
+    "Calculate average: sum(grades) / len(grades)",
+    "Use f-string to format output"
+  ],
+  "visual_content": {
+    "comparison_diagram": {
+      "type": "tuple_vs_list",
+      "examples": [
+        {
+          "scenario": "Shopping Cart",
+          "tuple": "❌ (item changes frequently)",
+          "list": "✓ ['milk', 'bread'] - can add/remove"
+        },
+        {
+          "scenario": "GPS Coordinates",
+          "tuple": "✓ (40.7128, -74.0060) - fixed location",
+          "list": "❌ (shouldn't change)"
+        },
+        {
+          "scenario": "RGB Color",
+          "tuple": "✓ (255, 0, 0) - immutable red",
+          "list": "❌ (color values shouldn't change)"
+        },
+        {
+          "scenario": "To-Do List",
+          "tuple": "❌ (tasks get added/removed)",
+          "list": "✓ ['task1', 'task2'] - mutable"
+        }
+      ]
+    }
+  }
+}

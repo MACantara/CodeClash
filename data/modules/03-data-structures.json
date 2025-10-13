@@ -1,6 +1,6 @@
 {
-  "title": "Data Structures",
-  "description": "Master lists, dictionaries, tuples, and sets to organize your data efficiently.",
+  "title": "Data Structures & String Manipulation",
+  "description": "Master lists, tuples, dictionaries, sets, and powerful string operations including comprehensions and advanced methods.",
   "icon": "bi-diagram-3",
   "difficulty": "Intermediate",
   "order": 3

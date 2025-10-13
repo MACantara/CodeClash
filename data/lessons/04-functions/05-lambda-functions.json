@@ -1,0 +1,75 @@
+{
+  "module_id": 4,
+  "title": "Lambda Functions & Functional Programming",
+  "order": 5,
+  "reading_content": "\n<h3>Lambda Functions</h3>\n<p>Lambda functions are small anonymous functions defined with the <code>lambda</code> keyword. They can have any number of parameters but only one expression.</p>\n\n<h4>Basic Lambda Syntax:</h4>\n<pre><code># Regular function\ndef square(x):\n    return x ** 2\n\nprint(square(5))  # 25\n\n# Lambda equivalent\nsquare_lambda = lambda x: x ** 2\nprint(square_lambda(5))  # 25\n\n# Syntax: lambda parameters: expression\n# The expression is automatically returned\n\n# Multiple parameters\nadd = lambda a, b: a + b\nprint(add(3, 5))  # 8\n\n# No parameters\nget_pi = lambda: 3.14159\nprint(get_pi())  # 3.14159\n</code></pre>\n\n<h4>When to Use Lambda:</h4>\n<pre><code># ✓ Good: Short, simple operations\ndouble = lambda x: x * 2\n\n# ✓ Good: As argument to higher-order functions\nnumbers = [1, 2, 3, 4, 5]\nsquared = map(lambda x: x ** 2, numbers)\n\n# ✗ Avoid: Complex logic (use def instead)\n# bad_lambda = lambda x: x if x > 0 else -x if x < 0 else 0  # Too complex!\n\n# ✓ Better: Use regular function for complex logic\ndef absolute_value(x):\n    if x > 0:\n        return x\n    elif x < 0:\n        return -x\n    else:\n        return 0\n</code></pre>\n\n<h4>Lambda with map():</h4>\n<pre><code># map() applies function to each item\nnumbers = [1, 2, 3, 4, 5]\n\n# Using lambda\nsquares = list(map(lambda x: x ** 2, numbers))\nprint(squares)  # [1, 4, 9, 16, 25]\n\n# Multiple lists\nnums1 = [1, 2, 3]\nnums2 = [10, 20, 30]\nsums = list(map(lambda x, y: x + y, nums1, nums2))\nprint(sums)  # [11, 22, 33]\n\n# Transform strings\nnames = ['alice', 'bob', 'charlie']\ncapitalized = list(map(lambda s: s.capitalize(), names))\nprint(capitalized)  # ['Alice', 'Bob', 'Charlie']\n</code></pre>\n\n<h4>Lambda with filter():</h4>\n<pre><code># filter() keeps items where function returns True\nnumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\n\n# Get even numbers\nevens = list(filter(lambda x: x % 2 == 0, numbers))\nprint(evens)  # [2, 4, 6, 8, 10]\n\n# Get numbers greater than 5\ngreater_than_5 = list(filter(lambda x: x > 5, numbers))\nprint(greater_than_5)  # [6, 7, 8, 9, 10]\n\n# Filter strings by length\nwords = ['hi', 'hello', 'hey', 'goodbye', 'yo']\nlong_words = list(filter(lambda w: len(w) > 3, words))\nprint(long_words)  # ['hello', 'goodbye']\n</code></pre>\n\n<h4>Lambda with sorted():</h4>\n<pre><code># Sort with custom key\nstudents = [\n    {'name': 'Alice', 'age': 25, 'grade': 85},\n    {'name': 'Bob', 'age': 22, 'grade': 92},\n    {'name': 'Charlie', 'age': 23, 'grade': 78}\n]\n\n# Sort by age\nby_age = sorted(students, key=lambda s: s['age'])\nprint([s['name'] for s in by_age])  # ['Bob', 'Charlie', 'Alice']\n\n# Sort by grade (descending)\nby_grade = sorted(students, key=lambda s: s['grade'], reverse=True)\nprint([s['name'] for s in by_grade])  # ['Bob', 'Alice', 'Charlie']\n\n# Sort strings by length\nwords = ['python', 'is', 'awesome', 'language']\nby_length = sorted(words, key=lambda w: len(w))\nprint(by_length)  # ['is', 'python', 'awesome', 'language']\n\n# Sort tuples by second element\npairs = [(1, 5), (3, 2), (2, 8), (4, 1)]\nsorted_pairs = sorted(pairs, key=lambda p: p[1])\nprint(sorted_pairs)  # [(4, 1), (3, 2), (1, 5), (2, 8)]\n</code></pre>\n\n<h4>Lambda with reduce() (from functools):</h4>\n<pre><code>from functools import reduce\n\n# reduce() applies function cumulatively\nnumbers = [1, 2, 3, 4, 5]\n\n# Sum all numbers\ntotal = reduce(lambda x, y: x + y, numbers)\nprint(total)  # 15 (1+2+3+4+5)\n\n# Find maximum\nmaximum = reduce(lambda x, y: x if x > y else y, numbers)\nprint(maximum)  # 5\n\n# Multiply all numbers\nproduct = reduce(lambda x, y: x * y, numbers)\nprint(product)  # 120 (1*2*3*4*5)\n\n# Concatenate strings\nwords = ['Python', 'is', 'awesome']\nsentence = reduce(lambda x, y: x + ' ' + y, words)\nprint(sentence)  # Python is awesome\n</code></pre>\n\n<h4>Practical Examples:</h4>\n<pre><code># Example 1: Data transformation pipeline\nprices = [10, 20, 30, 40, 50]\n\n# Apply 10% discount, then tax\ndiscounted = map(lambda p: p * 0.9, prices)\nwith_tax = map(lambda p: p * 1.08, discounted)\nfinal_prices = list(with_tax)\nprint(final_prices)  # [9.72, 19.44, 29.16, 38.88, 48.6]\n\n# Example 2: Filter and transform\nusers = [\n    {'name': 'Alice', 'age': 25, 'active': True},\n    {'name': 'Bob', 'age': 17, 'active': True},\n    {'name': 'Charlie', 'age': 30, 'active': False},\n    {'name': 'David', 'age': 22, 'active': True}\n]\n\n# Get names of active adult users\nactive_adults = filter(lambda u: u['active'] and u['age'] >= 18, users)\nnames = map(lambda u: u['name'], active_adults)\nprint(list(names))  # ['Alice', 'David']\n\n# Example 3: Custom sorting\nproducts = [\n    {'name': 'Laptop', 'price': 1000, 'rating': 4.5},\n    {'name': 'Mouse', 'price': 25, 'rating': 4.8},\n    {'name': 'Keyboard', 'price': 75, 'rating': 4.2},\n    {'name': 'Monitor', 'price': 300, 'rating': 4.7}\n]\n\n# Sort by rating (highest first)\nbest_rated = sorted(products, key=lambda p: p['rating'], reverse=True)\nprint([p['name'] for p in best_rated])  # ['Mouse', 'Monitor', 'Laptop', 'Keyboard']\n\n# Sort by price (lowest first)\nbudget_friendly = sorted(products, key=lambda p: p['price'])\nprint([p['name'] for p in budget_friendly])  # ['Mouse', 'Keyboard', 'Monitor', 'Laptop']\n</code></pre>\n\n<h4>Lambda in List Comprehensions (Alternative):</h4>\n<pre><code># Often list comprehensions are clearer than map/filter\nnumbers = [1, 2, 3, 4, 5]\n\n# Using map + lambda\nsquares_map = list(map(lambda x: x ** 2, numbers))\n\n# Using list comprehension (more Pythonic)\nsquares_comp = [x ** 2 for x in numbers]\n\nprint(squares_map == squares_comp)  # True\n\n# Using filter + lambda\nevens_filter = list(filter(lambda x: x % 2 == 0, numbers))\n\n# Using list comprehension (more Pythonic)\nevens_comp = [x for x in numbers if x % 2 == 0]\n\nprint(evens_filter == evens_comp)  # True\n</code></pre>\n\n<h4>Lambda Limitations:</h4>\n<pre><code># ✗ Can't have multiple statements\n# bad = lambda x: (\n#     y = x * 2,  # ❌ SyntaxError\n#     return y\n# )\n\n# ✗ Can't have assignments\n# bad = lambda x: x = x + 1  # ❌ SyntaxError\n\n# ✗ No type hints (use def)\n# def add(a: int, b: int) -> int:  # ✓ Type hints\n#     return a + b\n# add_lambda = lambda a, b: a + b  # ✗ No type hints\n\n# ✗ Hard to debug (no function name)\n# numbers = [1, 2, 'a', 4]\n# squared = map(lambda x: x ** 2, numbers)  # Error in \"<lambda>\" (unclear)\n\n# ✓ Better with def (named function in traceback)\ndef square(x):\n    return x ** 2\nsquared = map(square, numbers)  # Error in \"square\" (clear!)\n</code></pre>\n\n<h4>Best Practices:</h4>\n<table border='1' style='border-collapse: collapse; padding: 8px;'>\n    <tr>\n        <th>Use Lambda When</th>\n        <th>Use def When</th>\n    </tr>\n    <tr>\n        <td>Simple, one-line operations</td>\n        <td>Complex logic or multiple statements</td>\n    </tr>\n    <tr>\n        <td>Passing function as argument</td>\n        <td>Function will be reused multiple times</td>\n    </tr>\n    <tr>\n        <td>Quick transformations</td>\n        <td>Need type hints or docstrings</td>\n    </tr>\n    <tr>\n        <td>Throwaway functions</td>\n        <td>Need meaningful function name</td>\n    </tr>\n</table>\n        ",
+  "starter_code": "# Given this list of numbers:\nnumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\n\n# TODO: Use lambda functions to:\n# 1. Filter to get only even numbers (use filter)\n# 2. Square each even number (use map)\n# 3. Convert to list and print\n# Expected: [4, 16, 36, 64, 100]\n\n",
+  "solution_code": "numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\n\nevens = filter(lambda x: x % 2 == 0, numbers)\nsquared = map(lambda x: x ** 2, evens)\nresult = list(squared)\n\nprint(result)",
+  "learning_objectives": [
+    "Create lambda functions for simple operations",
+    "Use lambda with map(), filter(), and sorted()",
+    "Understand when to use lambda vs regular functions",
+    "Apply functional programming concepts in Python"
+  ],
+  "key_concepts": [
+    "Lambda Functions",
+    "Anonymous Functions",
+    "map()",
+    "filter()",
+    "reduce()",
+    "sorted() with key",
+    "Functional Programming"
+  ],
+  "test_cases": [
+    {
+      "name": "Test: Filter and square evens",
+      "input": "",
+      "expected_output": "[4, 16, 36, 64, 100]"
+    }
+  ],
+  "hints": [
+    "Use filter() with lambda x: x % 2 == 0 to get evens",
+    "Use map() with lambda x: x ** 2 to square",
+    "Chain operations: evens = filter(...), squared = map(..., evens)",
+    "Convert to list: list(squared)"
+  ],
+  "visual_content": {
+    "comparison_table": {
+      "type": "lambda_vs_def",
+      "examples": [
+        {
+          "task": "Square a number",
+          "def_syntax": "def square(x):\\n    return x ** 2",
+          "lambda_syntax": "square = lambda x: x ** 2"
+        },
+        {
+          "task": "Add two numbers",
+          "def_syntax": "def add(a, b):\\n    return a + b",
+          "lambda_syntax": "add = lambda a, b: a + b"
+        },
+        {
+          "task": "Check if even",
+          "def_syntax": "def is_even(x):\\n    return x % 2 == 0",
+          "lambda_syntax": "is_even = lambda x: x % 2 == 0"
+        }
+      ],
+      "functional_tools": [
+        {
+          "function": "map(func, iterable)",
+          "purpose": "Apply function to each item",
+          "example": "map(lambda x: x*2, [1, 2, 3]) → [2, 4, 6]"
+        },
+        {
+          "function": "filter(func, iterable)",
+          "purpose": "Keep items where func returns True",
+          "example": "filter(lambda x: x>2, [1, 2, 3, 4]) → [3, 4]"
+        },
+        {
+          "function": "sorted(iterable, key=func)",
+          "purpose": "Sort using custom key function",
+          "example": "sorted(['a', 'bbb', 'cc'], key=lambda s: len(s)) → ['a', 'cc', 'bbb']"
+        }
+      ]
+    }
+  }
+}

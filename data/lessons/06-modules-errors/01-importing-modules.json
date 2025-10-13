@@ -1,0 +1,82 @@
+{
+  "module_id": 6,
+  "title": "Importing Modules",
+  "order": 1,
+  "reading_content": "\n<h3>Working with Python Modules</h3>\n<p>Modules are Python files containing reusable code (functions, classes, variables). Python's extensive standard library provides modules for almost everything!</p>\n\n<h4>Basic import Statement:</h4>\n<pre><code># Import entire module\nimport math\n\nprint(math.pi)           # 3.141592653589793\nprint(math.sqrt(16))     # 4.0\nprint(math.ceil(4.3))    # 5\nprint(math.floor(4.9))   # 4\n\n# Import multiple modules\nimport random\nimport datetime\n\nprint(random.randint(1, 10))       # Random number 1-10\nprint(datetime.datetime.now())     # Current date and time\n</code></pre>\n\n<h4>from ... import (Specific Items):</h4>\n<pre><code># Import specific functions/classes\nfrom math import pi, sqrt, pow\n\nprint(pi)         # 3.141592653589793 (no math. prefix needed)\nprint(sqrt(25))   # 5.0\nprint(pow(2, 3))  # 8.0\n\n# Import multiple specific items\nfrom random import randint, choice, shuffle\n\nnumber = randint(1, 100)\ncolor = choice(['red', 'green', 'blue'])\nprint(f\"Number: {number}, Color: {color}\")\n</code></pre>\n\n<h4>import ... as (Aliases):</h4>\n<pre><code># Give module a shorter name\nimport datetime as dt\n\nnow = dt.datetime.now()\nprint(now)  # 2024-01-15 14:30:00.123456\n\n# Common aliases\nimport numpy as np        # NumPy (scientific computing)\nimport pandas as pd       # Pandas (data analysis)\nimport matplotlib.pyplot as plt  # Matplotlib (plotting)\n\n# Alias for specific imports\nfrom math import factorial as fact\n\nprint(fact(5))  # 120\n</code></pre>\n\n<h4>from module import * (Import Everything):</h4>\n<pre><code># Import everything from module (NOT RECOMMENDED in production!)\nfrom math import *\n\nprint(sqrt(16))   # 4.0\nprint(sin(0))     # 0.0\nprint(cos(0))     # 1.0\n\n# ❌ Problem: Can overwrite existing names\ndef sqrt(x):\n    return \"My custom sqrt\"\n\nfrom math import *  # Overwrites your sqrt function!\nprint(sqrt(16))  # 4.0 (math's sqrt, not yours)\n\n# ✅ Better: Import specific items or use module prefix\n</code></pre>\n\n<h4>Standard Library Modules:</h4>\n<pre><code># math - Mathematical functions\nimport math\nprint(math.factorial(5))    # 120\nprint(math.gcd(24, 18))     # 6 (greatest common divisor)\n\n# random - Random number generation\nimport random\nprint(random.random())           # Float 0.0-1.0\nprint(random.choice([1,2,3]))    # Random element\nrandom.shuffle([1, 2, 3, 4])     # Shuffle in-place\n\n# datetime - Date and time\nfrom datetime import datetime, timedelta\n\nnow = datetime.now()\ntomorrow = now + timedelta(days=1)\nprint(f\"Today: {now.strftime('%Y-%m-%d')}\")\nprint(f\"Tomorrow: {tomorrow.strftime('%Y-%m-%d')}\")\n\n# os - Operating system interface\nimport os\n\nprint(os.getcwd())           # Current working directory\nprint(os.listdir('.'))       # List files in current directory\n# os.mkdir('new_folder')     # Create directory\n\n# sys - System-specific parameters\nimport sys\n\nprint(sys.version)           # Python version\nprint(sys.platform)          # Platform (win32, linux, darwin)\nprint(sys.argv)              # Command line arguments\n\n# json - JSON encoding/decoding\nimport json\n\ndata = {'name': 'Alice', 'age': 25, 'city': 'NYC'}\njson_string = json.dumps(data)\nprint(json_string)  # '{\"name\": \"Alice\", \"age\": 25, \"city\": \"NYC\"}'\n\nparsed_data = json.loads(json_string)\nprint(parsed_data['name'])  # Alice\n\n# collections - Specialized container datatypes\nfrom collections import Counter, defaultdict, deque\n\n# Counter - Count occurrences\nwords = ['apple', 'banana', 'apple', 'cherry', 'banana', 'apple']\ncounts = Counter(words)\nprint(counts)  # Counter({'apple': 3, 'banana': 2, 'cherry': 1})\nprint(counts['apple'])  # 3\n\n# defaultdict - Dict with default value\nfrom collections import defaultdict\n\ngrades = defaultdict(list)  # Default value is empty list\ngrades['Alice'].append(90)\ngrades['Bob'].append(85)\nprint(grades)  # defaultdict(<class 'list'>, {'Alice': [90], 'Bob': [85]})\n\n# deque - Double-ended queue (fast append/pop on both ends)\nfrom collections import deque\n\nqueue = deque([1, 2, 3])\nqueue.append(4)        # Add to right\nqueue.appendleft(0)    # Add to left\nprint(queue)           # deque([0, 1, 2, 3, 4])\nqueue.pop()            # Remove from right\nqueue.popleft()        # Remove from left\nprint(queue)           # deque([1, 2, 3])\n</code></pre>\n\n<h4>time Module:</h4>\n<pre><code>import time\n\n# Current time in seconds since epoch\nprint(time.time())  # 1705329600.123456\n\n# Sleep (pause execution)\nprint(\"Waiting...\")\ntime.sleep(2)  # Sleep for 2 seconds\nprint(\"Done!\")\n\n# Measure execution time\nstart = time.time()\n# Some code here\ntotal = sum(range(1000000))\nend = time.time()\n\nprint(f\"Execution time: {end - start:.4f} seconds\")\n</code></pre>\n\n<h4>Where Python Looks for Modules:</h4>\n<pre><code>import sys\n\n# Python searches these directories in order:\nfor path in sys.path:\n    print(path)\n\n# Output (example):\n# /current/directory         (1. Current directory)\n# /usr/lib/python3.12        (2. Standard library)\n# /usr/local/lib/python3.12  (3. Third-party packages)\n# ...\n\n# Add custom directory to search path\nimport sys\nsys.path.append('/my/custom/directory')\n</code></pre>\n\n<h4>Practical Example - File Utilities:</h4>\n<pre><code>import os\nimport shutil\nfrom datetime import datetime\n\ndef get_file_info(filename):\n    \"\"\"Get information about a file.\"\"\"\n    if not os.path.exists(filename):\n        return \"File not found\"\n    \n    size = os.path.getsize(filename)  # Size in bytes\n    modified_time = os.path.getmtime(filename)  # Last modified timestamp\n    modified_date = datetime.fromtimestamp(modified_time)\n    \n    return {\n        'name': filename,\n        'size': size,\n        'modified': modified_date.strftime('%Y-%m-%d %H:%M:%S')\n    }\n\ndef backup_file(filename):\n    \"\"\"Create a backup of a file.\"\"\"\n    if os.path.exists(filename):\n        backup_name = f\"{filename}.backup\"\n        shutil.copy2(filename, backup_name)  # Preserve metadata\n        return f\"Backed up to {backup_name}\"\n    return \"File not found\"\n\n# Example usage\ninfo = get_file_info('data.txt')\nprint(info)\nprint(backup_file('data.txt'))\n</code></pre>\n\n<h4>Practical Example - Data Processing:</h4>\n<pre><code>from collections import Counter\nimport statistics\nimport random\n\ndef analyze_data(numbers):\n    \"\"\"Analyze a list of numbers.\"\"\"\n    return {\n        'count': len(numbers),\n        'sum': sum(numbers),\n        'mean': statistics.mean(numbers),\n        'median': statistics.median(numbers),\n        'mode': statistics.mode(numbers) if len(numbers) > 1 else numbers[0],\n        'min': min(numbers),\n        'max': max(numbers),\n        'range': max(numbers) - min(numbers),\n        'frequency': dict(Counter(numbers).most_common(3))  # Top 3\n    }\n\n# Generate sample data\ndata = [random.randint(1, 10) for _ in range(100)]\nresults = analyze_data(data)\n\nfor key, value in results.items():\n    print(f\"{key.capitalize()}: {value}\")\n</code></pre>\n\n<h4>Module Best Practices:</h4>\n<table border='1' style='border-collapse: collapse; padding: 8px;'>\n    <tr>\n        <th>Practice</th>\n        <th>Why</th>\n    </tr>\n    <tr>\n        <td><strong>Import at top of file</strong></td>\n        <td>Clear dependencies, easier to find</td>\n    </tr>\n    <tr>\n        <td><strong>Use specific imports</strong></td>\n        <td>from math import sqrt (clearer than *)</td>\n    </tr>\n    <tr>\n        <td><strong>Group imports</strong></td>\n        <td>1. Standard library 2. Third-party 3. Your modules</td>\n    </tr>\n    <tr>\n        <td><strong>Use aliases for long names</strong></td>\n        <td>import datetime as dt (shorter code)</td>\n    </tr>\n    <tr>\n        <td><strong>Avoid circular imports</strong></td>\n        <td>Module A imports B, B imports A (causes errors)</td>\n    </tr>\n</table>\n\n<h4>Import Styles Comparison:</h4>\n<pre><code># Style 1: Import module\nimport math\nresult = math.sqrt(16)  # Clear where sqrt comes from\n\n# Style 2: Import specific items\nfrom math import sqrt\nresult = sqrt(16)  # Shorter, but less clear for large codebases\n\n# Style 3: Import with alias\nimport math as m\nresult = m.sqrt(16)  # Good for commonly used modules with long names\n\n# Style 4: Import everything (❌ avoid)\nfrom math import *\nresult = sqrt(16)  # Unclear where sqrt comes from, can cause naming conflicts\n\n# ✅ Recommended: Use style 1 or 2 depending on context\n</code></pre>\n        ",
+  "starter_code": "# TODO: Create a function that uses multiple standard library modules:\n# 1. Import random and datetime modules\n# 2. Create function generate_lottery_ticket() that:\n#    - Generates 6 random numbers between 1 and 49 (no duplicates)\n#    - Sorts the numbers\n#    - Gets current date/time\n#    - Returns a dictionary with 'numbers' and 'date' keys\n#\n# Test:\n# ticket = generate_lottery_ticket()\n# print(ticket)\n# Example output: {'numbers': [3, 12, 23, 34, 41, 48], 'date': '2024-01-15 14:30:00'}\n\n",
+  "solution_code": "import random\nfrom datetime import datetime\n\ndef generate_lottery_ticket():\n    numbers = random.sample(range(1, 50), 6)  # 6 unique numbers\n    numbers.sort()  # Sort in ascending order\n    current_date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')\n    \n    return {\n        'numbers': numbers,\n        'date': current_date\n    }\n\nticket = generate_lottery_ticket()\nprint(ticket)",
+  "learning_objectives": [
+    "Import and use Python's standard library modules",
+    "Understand different import styles (import, from...import, as)",
+    "Use common modules (math, random, datetime, os, sys)",
+    "Know where Python searches for modules"
+  ],
+  "key_concepts": [
+    "Modules",
+    "import Statement",
+    "from...import",
+    "import...as (Aliases)",
+    "Standard Library",
+    "sys.path",
+    "Module Search Path"
+  ],
+  "test_cases": [
+    {
+      "name": "Test: Lottery ticket generation",
+      "input": "",
+      "expected_output": "6 sorted unique numbers between 1-49 with current date"
+    }
+  ],
+  "hints": [
+    "Import modules at top: import random, from datetime import datetime",
+    "Generate unique numbers: random.sample(range(1, 50), 6)",
+    "Sort numbers: numbers.sort() or sorted(numbers)",
+    "Get current date: datetime.now().strftime('%Y-%m-%d %H:%M:%S')",
+    "Return dictionary with 'numbers' and 'date' keys"
+  ],
+  "visual_content": {
+    "diagram": {
+      "type": "import_styles",
+      "title": "Python Import Styles",
+      "styles": [
+        {
+          "name": "Import Module",
+          "syntax": "import math",
+          "usage": "math.sqrt(16)",
+          "pros": "Clear origin of functions",
+          "cons": "More typing"
+        },
+        {
+          "name": "Import Specific",
+          "syntax": "from math import sqrt",
+          "usage": "sqrt(16)",
+          "pros": "Less typing, cleaner code",
+          "cons": "Less clear origin in large files"
+        },
+        {
+          "name": "Import with Alias",
+          "syntax": "import datetime as dt",
+          "usage": "dt.datetime.now()",
+          "pros": "Shorter names for long modules",
+          "cons": "Need to remember alias"
+        },
+        {
+          "name": "Import All (avoid)",
+          "syntax": "from math import *",
+          "usage": "sqrt(16)",
+          "pros": "Import everything at once",
+          "cons": "Namespace pollution, naming conflicts"
+        }
+      ],
+      "search_path": {
+        "title": "Module Search Order",
+        "steps": [
+          "1. Current directory",
+          "2. PYTHONPATH environment variable",
+          "3. Standard library directories",
+          "4. Site-packages (third-party)"
+        ]
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 {
   "title": "Control Flow",
-  "description": "Learn to make decisions in code with if statements and loops!",
+  "description": "Master program flow with conditional statements, loops (for/while), and loop control (break/continue) to build dynamic programs.",
   "icon": "bi-signpost-split",
   "difficulty": "Beginner",
   "order": 2

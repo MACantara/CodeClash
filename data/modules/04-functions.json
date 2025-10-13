@@ -1,6 +1,6 @@
 {
-  "title": "Functions",
-  "description": "Write reusable code with functions, parameters, and return values.",
+  "title": "Functions & Scope",
+  "description": "Write reusable, modular code with functions, parameters, return values, and understand variable scope.",
   "icon": "bi-box-seam",
   "difficulty": "Intermediate",
   "order": 4

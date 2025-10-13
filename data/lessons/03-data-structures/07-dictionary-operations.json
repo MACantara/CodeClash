@@ -1,0 +1,74 @@
+{
+  "module_id": 3,
+  "title": "Dictionary Operations",
+  "order": 7,
+  "reading_content": "\n<h3>Working with Dictionaries</h3>\n<p>Dictionaries store key-value pairs for fast lookup and data organization.</p>\n\n<h4>Creating Dictionaries:</h4>\n<pre><code># Using curly braces\nuser = {'name': 'Alice', 'age': 25, 'city': 'NYC'}\nprint(user)  # {'name': 'Alice', 'age': 25, 'city': 'NYC'}\n\n# Using dict() constructor\nuser2 = dict(name='Bob', age=30, city='LA')\nprint(user2)  # {'name': 'Bob', 'age': 30, 'city': 'LA'}\n\n# Empty dictionary\nempty_dict = {}\nprint(empty_dict)  # {}\n\n# From list of tuples\npairs = [('name', 'Charlie'), ('age', 35)]\nuser3 = dict(pairs)\nprint(user3)  # {'name': 'Charlie', 'age': 35}\n</code></pre>\n\n<h4>Accessing Values:</h4>\n<pre><code>user = {'name': 'Alice', 'age': 25, 'city': 'NYC'}\n\n# Using square brackets\nprint(user['name'])  # Alice\nprint(user['age'])   # 25\n\n# KeyError if key doesn't exist\n# print(user['email'])  # ❌ KeyError: 'email'\n\n# Using get() - safer (returns None if not found)\nprint(user.get('name'))   # Alice\nprint(user.get('email'))  # None (no error!)\n\n# get() with default value\nprint(user.get('email', 'No email'))  # No email\n</code></pre>\n\n<h4>Adding and Modifying:</h4>\n<pre><code>user = {'name': 'Alice', 'age': 25}\n\n# Add new key-value pair\nuser['city'] = 'NYC'\nprint(user)  # {'name': 'Alice', 'age': 25, 'city': 'NYC'}\n\n# Modify existing value\nuser['age'] = 26\nprint(user)  # {'name': 'Alice', 'age': 26, 'city': 'NYC'}\n\n# update() - Add multiple key-value pairs\nuser.update({'email': 'alice@example.com', 'phone': '555-1234'})\nprint(user)  # All fields added\n\n# update() also modifies existing keys\nuser.update({'age': 27, 'city': 'Boston'})\nprint(user)  # age and city updated\n</code></pre>\n\n<h4>Removing Items:</h4>\n<pre><code>user = {'name': 'Alice', 'age': 25, 'city': 'NYC', 'email': 'alice@example.com'}\n\n# pop() - Remove and return value\nemail = user.pop('email')\nprint(email)  # alice@example.com\nprint(user)   # email removed\n\n# pop() with default (no error if key missing)\nphone = user.pop('phone', 'No phone')\nprint(phone)  # No phone\n\n# popitem() - Remove and return last inserted pair\nlast_item = user.popitem()\nprint(last_item)  # ('city', 'NYC')\nprint(user)       # city removed\n\n# del - Delete by key\ndel user['age']\nprint(user)  # age removed\n\n# clear() - Remove all items\nuser.clear()\nprint(user)  # {}\n</code></pre>\n\n<h4>Dictionary Methods:</h4>\n<pre><code>user = {'name': 'Alice', 'age': 25, 'city': 'NYC'}\n\n# keys() - Get all keys\nprint(user.keys())  # dict_keys(['name', 'age', 'city'])\nprint(list(user.keys()))  # ['name', 'age', 'city']\n\n# values() - Get all values\nprint(user.values())  # dict_values(['Alice', 25, 'NYC'])\nprint(list(user.values()))  # ['Alice', 25, 'NYC']\n\n# items() - Get key-value pairs as tuples\nprint(user.items())  # dict_items([('name', 'Alice'), ('age', 25), ('city', 'NYC')])\nprint(list(user.items()))  # [('name', 'Alice'), ('age', 25), ('city', 'NYC')]\n\n# in - Check if key exists\nprint('name' in user)   # True\nprint('email' in user)  # False\n\n# len() - Number of key-value pairs\nprint(len(user))  # 3\n</code></pre>\n\n<h4>Looping Through Dictionaries:</h4>\n<pre><code>user = {'name': 'Alice', 'age': 25, 'city': 'NYC'}\n\n# Loop through keys (default)\nfor key in user:\n    print(key)  # name, age, city\n\n# Loop through keys explicitly\nfor key in user.keys():\n    print(key, user[key])\n\n# Loop through values\nfor value in user.values():\n    print(value)  # Alice, 25, NYC\n\n# Loop through key-value pairs (most common)\nfor key, value in user.items():\n    print(f\"{key}: {value}\")\n# Output:\n# name: Alice\n# age: 25\n# city: NYC\n</code></pre>\n\n<h4>Dictionary Comprehensions:</h4>\n<pre><code># Create dictionary from lists\nkeys = ['name', 'age', 'city']\nvalues = ['Alice', 25, 'NYC']\nuser = {k: v for k, v in zip(keys, values)}\nprint(user)  # {'name': 'Alice', 'age': 25, 'city': 'NYC'}\n\n# Square numbers\nsquares = {x: x**2 for x in range(5)}\nprint(squares)  # {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}\n\n# Filter dictionary\nprices = {'apple': 1.20, 'banana': 0.50, 'cherry': 3.00}\nexpensive = {k: v for k, v in prices.items() if v > 1.00}\nprint(expensive)  # {'apple': 1.2, 'cherry': 3.0}\n\n# Transform values\ntemps_c = {'morning': 20, 'afternoon': 25, 'evening': 18}\ntemps_f = {time: (temp * 9/5) + 32 for time, temp in temps_c.items()}\nprint(temps_f)  # {'morning': 68.0, 'afternoon': 77.0, 'evening': 64.4}\n</code></pre>\n\n<h4>Nested Dictionaries:</h4>\n<pre><code># Dictionary of dictionaries\nusers = {\n    'user1': {'name': 'Alice', 'age': 25},\n    'user2': {'name': 'Bob', 'age': 30},\n    'user3': {'name': 'Charlie', 'age': 35}\n}\n\n# Access nested values\nprint(users['user1']['name'])  # Alice\nprint(users['user2']['age'])   # 30\n\n# Loop through nested dict\nfor user_id, user_info in users.items():\n    print(f\"{user_id}: {user_info['name']}, Age {user_info['age']}\")\n</code></pre>\n\n<h4>Practical Examples:</h4>\n<pre><code># Word frequency counter\ntext = \"the quick brown fox jumps over the lazy dog\"\nwords = text.split()\nfrequency = {}\nfor word in words:\n    frequency[word] = frequency.get(word, 0) + 1\nprint(frequency)  # {'the': 2, 'quick': 1, ...}\n\n# Or using dict comprehension\nfrom collections import Counter\nfrequency = Counter(words)\nprint(frequency)  # Counter({'the': 2, 'quick': 1, ...})\n\n# Student grades management\nstudents = {\n    'Alice': [85, 92, 78],\n    'Bob': [88, 95, 90],\n    'Charlie': [75, 80, 85]\n}\n\nfor name, grades in students.items():\n    avg = sum(grades) / len(grades)\n    print(f\"{name}: {avg:.1f}\")\n\n# Configuration settings\nconfig = {\n    'database': {\n        'host': 'localhost',\n        'port': 3306,\n        'name': 'mydb'\n    },\n    'api': {\n        'key': 'abc123',\n        'timeout': 30\n    }\n}\n\ndb_host = config['database']['host']\napi_key = config['api']['key']\n</code></pre>\n\n<h4>Common Patterns:</h4>\n<pre><code># setdefault() - Get value or set default if missing\ncart = {}\ncart.setdefault('apples', 0)\ncart['apples'] += 3\nprint(cart)  # {'apples': 3}\n\n# Merging dictionaries (Python 3.9+)\ndefaults = {'color': 'blue', 'size': 'medium'}\nuser_prefs = {'color': 'red'}\nfinal = defaults | user_prefs  # user_prefs overwrites\nprint(final)  # {'color': 'red', 'size': 'medium'}\n\n# Or use update()\nfinal = defaults.copy()\nfinal.update(user_prefs)\n</code></pre>\n        ",
+  "starter_code": "# Given this dictionary:\ninventory = {\n    'apples': 50,\n    'bananas': 30,\n    'oranges': 40\n}\n\n# TODO:\n# 1. Add 'grapes': 25 to the inventory\n# 2. Update bananas quantity to 35\n# 3. Calculate total quantity of all fruits\n# 4. Print each fruit and its quantity\n# 5. Print the total\n\n",
+  "solution_code": "inventory = {\n    'apples': 50,\n    'bananas': 30,\n    'oranges': 40\n}\n\ninventory['grapes'] = 25\ninventory['bananas'] = 35\n\ntotal = sum(inventory.values())\n\nfor fruit, quantity in inventory.items():\n    print(f\"{fruit}: {quantity}\")\n    \nprint(f\"Total: {total}\")",
+  "learning_objectives": [
+    "Create and manipulate dictionaries with key-value pairs",
+    "Use dictionary methods like get(), keys(), values(), items()",
+    "Add, modify, and remove dictionary entries",
+    "Loop through dictionaries and work with nested dictionaries"
+  ],
+  "key_concepts": [
+    "Dictionaries",
+    "Key-Value Pairs",
+    "get()",
+    "keys()/values()/items()",
+    "update()",
+    "Dictionary Comprehensions",
+    "Nested Dictionaries"
+  ],
+  "test_cases": [
+    {
+      "name": "Test: Inventory management",
+      "input": "",
+      "expected_output": "apples: 50\nbananas: 35\noranges: 40\ngrapes: 25\nTotal: 150"
+    }
+  ],
+  "hints": [
+    "Add grapes: inventory['grapes'] = 25",
+    "Update bananas: inventory['bananas'] = 35",
+    "Sum all values: sum(inventory.values())",
+    "Loop: for fruit, quantity in inventory.items()",
+    "Use f-strings for formatted output"
+  ],
+  "visual_content": {
+    "reference_guide": {
+      "type": "dictionary_methods",
+      "methods": [
+        {
+          "category": "Access",
+          "items": [
+            {"method": "dict[key]", "description": "Get value (KeyError if missing)"},
+            {"method": "dict.get(key, default)", "description": "Get value (returns default if missing)"}
+          ]
+        },
+        {
+          "category": "Add/Modify",
+          "items": [
+            {"method": "dict[key] = value", "description": "Add or update key"},
+            {"method": "dict.update({...})", "description": "Add/update multiple keys"}
+          ]
+        },
+        {
+          "category": "Remove",
+          "items": [
+            {"method": "dict.pop(key)", "description": "Remove and return value"},
+            {"method": "del dict[key]", "description": "Delete key"},
+            {"method": "dict.clear()", "description": "Remove all items"}
+          ]
+        },
+        {
+          "category": "View",
+          "items": [
+            {"method": "dict.keys()", "description": "Get all keys"},
+            {"method": "dict.values()", "description": "Get all values"},
+            {"method": "dict.items()", "description": "Get (key, value) tuples"}
+          ]
+        }
+      ]
+    }
+  }
+}

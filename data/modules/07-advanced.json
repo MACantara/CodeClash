@@ -1,0 +1,7 @@
+{
+  "title": "Advanced Python Concepts",
+  "description": "Explore advanced topics: multithreading, generators, decorators, and powerful built-in functions for expert-level Python.",
+  "icon": "bi-lightning-charge",
+  "difficulty": "Advanced",
+  "order": 7
+}
