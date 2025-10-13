@@ -15,6 +15,7 @@ from .lobby import Lobby, LobbyPlayer, LobbyInvitation
 from .friendship import Friendship
 from .chat import ChatMessage
 from .achievement import Achievement, UserAchievement
+from .learning import Module, Lesson, LessonProgress, Quiz, QuizAttempt
 
 # Export all models
 __all__ = [
@@ -32,4 +33,9 @@ __all__ = [
     'ChatMessage',
     'Achievement',
     'UserAchievement',
+    'Module',
+    'Lesson',
+    'LessonProgress',
+    'Quiz',
+    'QuizAttempt',
 ]
