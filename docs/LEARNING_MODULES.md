@@ -68,7 +68,7 @@ The CodeClash learning module system provides an interactive Python education pl
 - hints: JSON array of progressive hints
 - learning_objectives: JSON array
 - key_concepts: JSON array
-- estimated_minutes: Time estimate
+- estimated_minutes: Time estimate calculated based on content length
 ```
 
 ### LessonProgress
@@ -175,7 +175,6 @@ lesson = Lesson(
     module_id=1,
     title="Variables in Python",
     order=1,
-    estimated_minutes=20,
     reading_content="""<h3>Variables</h3><p>Content here...</p>""",
     starter_code='# Write your code here\n',
     solution_code='x = 10\nprint(x)'
