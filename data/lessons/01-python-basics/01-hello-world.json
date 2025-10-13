@@ -1,0 +1,37 @@
+{
+  "module_id": 1,
+  "title": "Hello World & Print Function",
+  "order": 1,
+  "estimated_minutes": 15,
+  "reading_content": "\n<h3>Welcome to Python!</h3>\n<p>The <code>print()</code> function is your first tool for displaying output in Python. It's one of the most used functions!</p>\n\n<h4>Basic Syntax:</h4>\n<pre><code>print(\"Hello, World!\")</code></pre>\n\n<p>You can print multiple items by separating them with commas:</p>\n<pre><code>print(\"Hello\", \"World\", \"!\")\n# Output: Hello World !</code></pre>\n\n<p>The <code>print()</code> function automatically adds spaces between items and a newline at the end.</p>\n\n<h4>Printing Numbers:</h4>\n<pre><code>print(42)\nprint(3.14)\nprint(100 + 50)  # Output: 150</code></pre>\n\n<h4>Special Characters:</h4>\n<ul>\n    <li><code>\\n</code> - New line</li>\n    <li><code>\\t</code> - Tab</li>\n    <li><code>\\\"</code> - Quote character</li>\n</ul>\n\n<pre><code>print(\"Line 1\\nLine 2\\nLine 3\")</code></pre>\n        ",
+  "starter_code": "# Write code to print \"Hello, Python!\"\n",
+  "solution_code": "print(\"Hello, Python!\")",
+  "learning_objectives": [
+    "Understand how to use the print() function",
+    "Display text and numbers in Python",
+    "Use special characters in strings"
+  ],
+  "key_concepts": ["print()", "Strings", "Output"],
+  "test_cases": [
+    {
+      "name": "Test 1: Print exact message",
+      "input": "",
+      "expected_output": "Hello, Python!"
+    }
+  ],
+  "hints": [
+    "Use the print() function",
+    "Put your text in quotes: print(\"text\")",
+    "The exact message is: Hello, Python!"
+  ],
+  "visual_content": {
+    "animation": {
+      "type": "code_flow",
+      "steps": [
+        {"step": 1, "description": "Python reads the print() function call"},
+        {"step": 2, "description": "Evaluates the string inside quotes"},
+        {"step": 3, "description": "Outputs the text to the console"}
+      ]
+    }
+  }
+}
