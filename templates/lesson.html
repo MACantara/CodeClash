@@ -1,0 +1,487 @@
+{% extends "base.html" %}
+
+{% block title %}{{ lesson.title }} - Learn Python{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-2 sm:px-4 py-4 sm:py-8">
+    <!-- Breadcrumb -->
+    <div class="mb-4">
+        <nav class="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-gray-400">
+            <a href="/learn" class="hover:text-white transition">Learn</a>
+            <i class="bi bi-chevron-right"></i>
+            <a href="/learn/module/{{ module.id }}" class="hover:text-white transition">{{ module.title }}</a>
+            <i class="bi bi-chevron-right"></i>
+            <span class="text-white">{{ lesson.title }}</span>
+        </nav>
+    </div>
+
+    <!-- Lesson Header -->
+    <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 sm:p-6 mb-6">
+        <h1 class="text-xl sm:text-2xl md:text-3xl font-bold mb-3">{{ lesson.title }}</h1>
+        <div class="flex flex-wrap items-center gap-3 mb-3">
+            <span class="text-xs sm:text-sm text-gray-400">
+                <i class="bi bi-clock"></i> ~{{ lesson.estimated_minutes }} minutes
+            </span>
+            <span class="px-2 py-1 text-xs 
+                {% if progress.status == 'completed' %}bg-green-600/20 text-green-400 border border-green-600
+                {% elif progress.status == 'in_progress' %}bg-yellow-600/20 text-yellow-400 border border-yellow-600
+                {% else %}bg-gray-700 text-gray-400 border border-gray-600{% endif %} rounded">
+                {% if progress.status == 'completed' %}
+                    <i class="bi bi-check-circle"></i> Completed
+                {% elif progress.status == 'in_progress' %}
+                    <i class="bi bi-play-circle"></i> In Progress
+                {% else %}
+                    <i class="bi bi-circle"></i> Not Started
+                {% endif %}
+            </span>
+        </div>
+
+        <!-- Learning Objectives -->
+        {% set objectives = lesson.get_learning_objectives() %}
+        {% if objectives %}
+        <div class="bg-blue-600/10 border border-blue-500/30 rounded-lg p-3 sm:p-4">
+            <h3 class="text-sm sm:text-base font-bold mb-2 flex items-center gap-2">
+                <i class="bi bi-lightbulb text-blue-400"></i>
+                Learning Objectives
+            </h3>
+            <ul class="space-y-1 text-xs sm:text-sm text-gray-300">
+                {% for objective in objectives %}
+                <li class="flex items-start gap-2">
+                    <i class="bi bi-check2 text-blue-400 mt-0.5"></i>
+                    <span>{{ objective }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="mb-6">
+        <div class="flex flex-wrap gap-2 bg-gray-800 p-2 rounded-lg border border-gray-700">
+            <button onclick="switchTab('reading')" id="tab-reading" 
+                    class="tab-btn active flex items-center gap-2 px-3 sm:px-4 py-2 rounded text-xs sm:text-sm font-semibold transition">
+                <i class="bi bi-book"></i> <span class="hidden sm:inline">Reading</span>
+            </button>
+            <button onclick="switchTab('visual')" id="tab-visual" 
+                    class="tab-btn flex items-center gap-2 px-3 sm:px-4 py-2 rounded text-xs sm:text-sm font-semibold transition">
+                <i class="bi bi-eye"></i> <span class="hidden sm:inline">Visual</span>
+            </button>
+            <button onclick="switchTab('practice')" id="tab-practice" 
+                    class="tab-btn flex items-center gap-2 px-3 sm:px-4 py-2 rounded text-xs sm:text-sm font-semibold transition">
+                <i class="bi bi-code-slash"></i> <span class="hidden sm:inline">Practice</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Tab Content -->
+    <div class="space-y-6">
+        <!-- Reading Tab -->
+        <div id="content-reading" class="tab-content">
+            <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 sm:p-6">
+                <h2 class="text-lg sm:text-xl md:text-2xl font-bold mb-4 flex items-center gap-2">
+                    <i class="bi bi-book text-green-500"></i>
+                    Read & Learn
+                </h2>
+                <div class="prose prose-invert prose-sm sm:prose-base max-w-none">
+                    {{ lesson.reading_content | safe }}
+                </div>
+
+                <!-- Key Concepts -->
+                {% set concepts = lesson.get_key_concepts() %}
+                {% if concepts %}
+                <div class="mt-6 bg-purple-600/10 border border-purple-500/30 rounded-lg p-3 sm:p-4">
+                    <h3 class="text-sm sm:text-base font-bold mb-3 flex items-center gap-2">
+                        <i class="bi bi-star text-purple-400"></i>
+                        Key Concepts
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        {% for concept in concepts %}
+                        <span class="px-3 py-1 bg-purple-600/20 text-purple-300 rounded-full text-xs sm:text-sm border border-purple-600">
+                            {{ concept }}
+                        </span>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Visual Tab -->
+        <div id="content-visual" class="tab-content hidden">
+            <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 sm:p-6">
+                <h2 class="text-lg sm:text-xl md:text-2xl font-bold mb-4 flex items-center gap-2">
+                    <i class="bi bi-eye text-purple-500"></i>
+                    Visual Learning
+                </h2>
+                
+                <div id="visualContent" class="space-y-4">
+                    <!-- Visual content will be rendered here dynamically -->
+                </div>
+
+                {% if lesson.video_url %}
+                <div class="mt-6">
+                    <h3 class="text-base sm:text-lg font-bold mb-3">
+                        <i class="bi bi-play-btn"></i> Video Tutorial
+                    </h3>
+                    <div class="aspect-video bg-black rounded-lg overflow-hidden">
+                        <iframe src="{{ lesson.video_url }}" 
+                                class="w-full h-full" 
+                                frameborder="0" 
+                                allowfullscreen></iframe>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Practice Tab -->
+        <div id="content-practice" class="tab-content hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+                <!-- Code Editor -->
+                <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 sm:p-6">
+                    <h2 class="text-lg sm:text-xl font-bold mb-4 flex items-center gap-2">
+                        <i class="bi bi-code-slash text-orange-500"></i>
+                        Code Editor
+                    </h2>
+                    
+                    <div class="mb-4">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                            <label class="text-xs sm:text-sm text-gray-400">Write your Python code:</label>
+                            <div class="flex gap-2">
+                                <button onclick="resetCode()" 
+                                        class="px-3 py-1 bg-gray-700 hover:bg-gray-600 rounded text-xs transition">
+                                    <i class="bi bi-arrow-clockwise"></i> Reset
+                                </button>
+                                <button onclick="requestHint()" id="hintBtn"
+                                        class="px-3 py-1 bg-purple-600 hover:bg-purple-700 rounded text-xs transition">
+                                    <i class="bi bi-lightbulb"></i> Hint (<span id="hintsUsed">{{ progress.hints_used }}</span>)
+                                </button>
+                            </div>
+                        </div>
+                        <div id="editor" class="border border-gray-600 rounded-lg" style="height: 300px; width: 100%;"></div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-2 sm:gap-3">
+                        <button onclick="runCode()" id="runBtn"
+                                class="flex-1 bg-green-600 hover:bg-green-700 py-2 sm:py-3 rounded font-semibold transition text-sm sm:text-base">
+                            <i class="bi bi-play-fill"></i> Run Tests
+                        </button>
+                        <button onclick="viewSolution()" id="solutionBtn"
+                                class="bg-yellow-600 hover:bg-yellow-700 px-4 sm:px-6 py-2 sm:py-3 rounded font-semibold transition text-sm sm:text-base">
+                            <i class="bi bi-eye"></i> Solution
+                        </button>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="mt-4 grid grid-cols-2 gap-2 sm:gap-3 text-xs sm:text-sm">
+                        <div class="bg-gray-700 rounded p-2 sm:p-3">
+                            <div class="text-gray-400">Attempts</div>
+                            <div class="text-lg sm:text-xl font-bold" id="attempts">{{ progress.attempts }}</div>
+                        </div>
+                        <div class="bg-gray-700 rounded p-2 sm:p-3">
+                            <div class="text-gray-400">Tests Passed</div>
+                            <div class="text-lg sm:text-xl font-bold" id="testsPassed">
+                                {{ progress.passed_test_cases }}/{{ progress.total_test_cases or lesson.get_test_cases()|length }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Output & Test Results -->
+                <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 sm:p-6">
+                    <h2 class="text-lg sm:text-xl font-bold mb-4 flex items-center gap-2">
+                        <i class="bi bi-terminal text-blue-500"></i>
+                        Output & Results
+                    </h2>
+
+                    <!-- Test Results -->
+                    <div id="testResults" class="space-y-2 mb-4">
+                        <div class="text-sm text-gray-400 text-center py-8">
+                            <i class="bi bi-info-circle text-2xl sm:text-3xl mb-2 block"></i>
+                            Run your code to see test results
+                        </div>
+                    </div>
+
+                    <!-- Hint Display -->
+                    <div id="hintDisplay" class="hidden bg-purple-600/10 border border-purple-500/30 rounded-lg p-3 sm:p-4 mb-4">
+                        <h3 class="text-sm font-bold mb-2 flex items-center gap-2">
+                            <i class="bi bi-lightbulb text-purple-400"></i>
+                            Hint
+                        </h3>
+                        <p id="hintText" class="text-xs sm:text-sm text-gray-300"></p>
+                    </div>
+
+                    <!-- Success Message -->
+                    <div id="successMessage" class="hidden bg-green-600/10 border border-green-500/30 rounded-lg p-3 sm:p-4">
+                        <div class="flex items-center gap-3">
+                            <i class="bi bi-check-circle-fill text-2xl sm:text-3xl text-green-400"></i>
+                            <div>
+                                <h3 class="text-sm sm:text-base font-bold text-green-400">Congratulations!</h3>
+                                <p class="text-xs sm:text-sm text-gray-300">All tests passed! You've mastered this lesson.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+        <div>
+            {% if prev_lesson %}
+            <a href="/learn/lesson/{{ prev_lesson.id }}" 
+               class="inline-flex items-center gap-2 text-gray-400 hover:text-white transition text-sm sm:text-base">
+                <i class="bi bi-arrow-left"></i> Previous: {{ prev_lesson.title }}
+            </a>
+            {% else %}
+            <a href="/learn/module/{{ module.id }}" 
+               class="inline-flex items-center gap-2 text-gray-400 hover:text-white transition text-sm sm:text-base">
+                <i class="bi bi-arrow-left"></i> Back to Module
+            </a>
+            {% endif %}
+        </div>
+
+        <div>
+            {% if next_lesson %}
+            <a href="/learn/lesson/{{ next_lesson.id }}" 
+               class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 px-4 sm:px-6 py-2 sm:py-3 rounded transition text-sm sm:text-base font-semibold">
+                Next: {{ next_lesson.title }} <i class="bi bi-arrow-right"></i>
+            </a>
+            {% else %}
+            <a href="/learn/module/{{ module.id }}" 
+               class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 px-4 sm:px-6 py-2 sm:py-3 rounded transition text-sm sm:text-base font-semibold">
+                <i class="bi bi-check-circle"></i> Complete Module
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Lesson data
+const lessonId = {{ lesson.id }};
+const starterCode = {{ lesson.starter_code | tojson | safe }};
+const visualContentData = {{ lesson.get_visual_content() | tojson | safe }};
+
+// Initialize Ace Editor
+let editor;
+document.addEventListener('DOMContentLoaded', function() {
+    editor = ace.edit("editor");
+    editor.setTheme("ace/theme/monokai");
+    editor.session.setMode("ace/mode/python");
+    editor.setOptions({
+        enableBasicAutocompletion: true,
+        enableLiveAutocompletion: true,
+        fontSize: "14px",
+        showPrintMargin: false,
+        highlightActiveLine: true
+    });
+    
+    // Set starter code
+    if (starterCode) {
+        editor.setValue(starterCode, -1);
+    }
+    
+    // Load visual content
+    renderVisualContent();
+});
+
+// Tab switching
+function switchTab(tabName) {
+    // Remove active class from all tabs
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active', 'bg-blue-600', 'text-white');
+        btn.classList.add('text-gray-400');
+    });
+    
+    // Hide all content
+    document.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.add('hidden');
+    });
+    
+    // Activate selected tab
+    const activeBtn = document.getElementById('tab-' + tabName);
+    activeBtn.classList.add('active', 'bg-blue-600', 'text-white');
+    activeBtn.classList.remove('text-gray-400');
+    
+    // Show selected content
+    document.getElementById('content-' + tabName).classList.remove('hidden');
+}
+
+// Run code and tests
+async function runCode() {
+    const code = editor.getValue();
+    const runBtn = document.getElementById('runBtn');
+    const testResults = document.getElementById('testResults');
+    
+    runBtn.disabled = true;
+    runBtn.innerHTML = '<i class="bi bi-hourglass-split"></i> Running...';
+    
+    try {
+        const response = await fetch(`/learn/lesson/${lessonId}/submit`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ code: code })
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            displayTestResults(data.results, data.all_passed);
+            
+            // Update stats
+            document.getElementById('attempts').textContent = data.attempts || parseInt(document.getElementById('attempts').textContent) + 1;
+            document.getElementById('testsPassed').textContent = `${data.passed}/${data.total}`;
+            
+            // Show success message if all passed
+            if (data.all_passed) {
+                document.getElementById('successMessage').classList.remove('hidden');
+            }
+        }
+    } catch (error) {
+        testResults.innerHTML = `
+            <div class="bg-red-600/10 border border-red-500/30 rounded-lg p-4">
+                <p class="text-red-400 text-sm">Error: ${error.message}</p>
+            </div>
+        `;
+    } finally {
+        runBtn.disabled = false;
+        runBtn.innerHTML = '<i class="bi bi-play-fill"></i> Run Tests';
+    }
+}
+
+// Display test results
+function displayTestResults(results, allPassed) {
+    const container = document.getElementById('testResults');
+    let html = '';
+    
+    results.forEach((result, index) => {
+        const bgColor = result.passed ? 'bg-green-600/10 border-green-500/30' : 'bg-red-600/10 border-red-500/30';
+        const icon = result.passed ? 'bi-check-circle-fill text-green-400' : 'bi-x-circle-fill text-red-400';
+        
+        html += `
+            <div class="border ${bgColor} rounded-lg p-3">
+                <div class="flex items-center gap-2 mb-2">
+                    <i class="bi ${icon}"></i>
+                    <span class="font-semibold text-sm">${result.name}</span>
+                </div>
+                ${!result.passed ? `
+                    <div class="text-xs space-y-1 ml-6">
+                        ${result.error ? `<p class="text-red-400">Error: ${result.error}</p>` : ''}
+                        <p class="text-gray-400">Expected: <code class="bg-gray-700 px-2 py-0.5 rounded">${result.expected}</code></p>
+                        <p class="text-gray-400">Got: <code class="bg-gray-700 px-2 py-0.5 rounded">${result.output || 'No output'}</code></p>
+                    </div>
+                ` : ''}
+            </div>
+        `;
+    });
+    
+    container.innerHTML = html;
+}
+
+// Request hint
+async function requestHint() {
+    try {
+        const response = await fetch(`/learn/lesson/${lessonId}/hint`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            document.getElementById('hintDisplay').classList.remove('hidden');
+            document.getElementById('hintText').textContent = data.hint;
+            document.getElementById('hintsUsed').textContent = data.hints_used;
+        } else {
+            alert(data.error || 'No more hints available');
+        }
+    } catch (error) {
+        alert('Error requesting hint: ' + error.message);
+    }
+}
+
+// View solution
+async function viewSolution() {
+    if (!confirm('Are you sure you want to view the solution? Try solving it yourself first!')) {
+        return;
+    }
+    
+    try {
+        const response = await fetch(`/learn/lesson/${lessonId}/solution`);
+        const data = await response.json();
+        
+        if (data.success) {
+            editor.setValue(data.solution, -1);
+        } else {
+            alert(data.error || 'Solution not available yet. Make at least 3 attempts first.');
+        }
+    } catch (error) {
+        alert('Error loading solution: ' + error.message);
+    }
+}
+
+// Reset code
+function resetCode() {
+    if (confirm('Reset to starter code? Your current code will be lost.')) {
+        editor.setValue(starterCode || '', -1);
+    }
+}
+
+// Render visual content
+function renderVisualContent() {
+    const container = document.getElementById('visualContent');
+    
+    if (!visualContentData || Object.keys(visualContentData).length === 0) {
+        container.innerHTML = `
+            <div class="text-center py-8 text-gray-400">
+                <i class="bi bi-image text-4xl mb-3 block"></i>
+                <p class="text-sm">Visual content coming soon for this lesson</p>
+            </div>
+        `;
+        return;
+    }
+    
+    // Render different types of visual content
+    if (visualContentData.flowchart) {
+        container.innerHTML += `
+            <div class="bg-gray-700 rounded-lg p-4">
+                <h3 class="font-bold mb-3 flex items-center gap-2">
+                    <i class="bi bi-diagram-3"></i> Flowchart
+                </h3>
+                <div class="bg-white rounded p-4">
+                    ${visualContentData.flowchart}
+                </div>
+            </div>
+        `;
+    }
+    
+    if (visualContentData.animation) {
+        container.innerHTML += `
+            <div class="bg-gray-700 rounded-lg p-4">
+                <h3 class="font-bold mb-3 flex items-center gap-2">
+                    <i class="bi bi-play-circle"></i> Interactive Animation
+                </h3>
+                <div id="animationContainer" class="bg-gray-800 rounded p-4 min-h-[200px]">
+                    <!-- Animation will be rendered here -->
+                </div>
+            </div>
+        `;
+        
+        // Initialize animation based on type
+        setTimeout(() => initAnimation(visualContentData.animation), 100);
+    }
+}
+
+// Initialize animations
+function initAnimation(animationData) {
+    // This is a placeholder for animation logic
+    // In production, you'd integrate with libraries like D3.js, anime.js, etc.
+    console.log('Animation data:', animationData);
+}
+</script>
+{% endblock %}
