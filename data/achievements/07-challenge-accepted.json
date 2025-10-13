@@ -1,0 +1,10 @@
+{
+  "name": "Challenge Accepted",
+  "description": "Complete at least one challenge of each difficulty",
+  "icon": "bi-trophy",
+  "points": 40,
+  "criteria": {
+    "type": "all_difficulties",
+    "value": true
+  }
+}

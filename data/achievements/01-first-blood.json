@@ -1,0 +1,10 @@
+{
+  "name": "First Blood",
+  "description": "Win your first match",
+  "icon": "bi-trophy-fill",
+  "points": 10,
+  "criteria": {
+    "type": "wins",
+    "value": 1
+  }
+}

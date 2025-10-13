@@ -1,0 +1,10 @@
+{
+  "name": "Master Coder",
+  "description": "Solve 10 different challenges",
+  "icon": "bi-code-slash",
+  "points": 50,
+  "criteria": {
+    "type": "unique_challenges",
+    "value": 10
+  }
+}

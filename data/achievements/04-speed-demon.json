@@ -1,0 +1,10 @@
+{
+  "name": "Speed Demon",
+  "description": "Solve a challenge in under 30 seconds",
+  "icon": "bi-lightning-charge-fill",
+  "points": 20,
+  "criteria": {
+    "type": "fastest_time",
+    "value": 30
+  }
+}

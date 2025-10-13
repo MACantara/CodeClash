@@ -1,0 +1,10 @@
+{
+  "name": "Perfect Game",
+  "description": "Win 3 matches with zero errors",
+  "icon": "bi-star-fill",
+  "points": 30,
+  "criteria": {
+    "type": "perfect_matches",
+    "value": 3
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "Winning Streak",
+  "description": "Win 5 matches in a row",
+  "icon": "bi-fire",
+  "points": 25,
+  "criteria": {
+    "type": "win_streak",
+    "value": 5
+  }
+}
