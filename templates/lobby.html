@@ -3,46 +3,46 @@
 {% block title %}Lobby - CodeClash{% endblock %}
 
 {% block content %}
-<div class="container mx-auto px-4 py-8">
+<div class="container mx-auto px-2 sm:px-4 py-4 sm:py-8">
     <div class="max-w-7xl mx-auto">
         <!-- Header -->
-        <div class="text-center mb-8">
-            <h1 class="text-4xl font-bold mb-2 flex items-center justify-center gap-3">
-                <i class="bi bi-door-open-fill text-blue-500"></i>
-                Matchmaking Lobby
+        <div class="text-center mb-6 sm:mb-8">
+            <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 flex items-center justify-center gap-2 sm:gap-3">
+                <i class="bi bi-door-open-fill text-blue-500 text-2xl sm:text-3xl"></i>
+                <span>Matchmaking Lobby</span>
             </h1>
-            <p class="text-gray-400">Find opponents and start your coding battle!</p>
+            <p class="text-sm sm:text-base text-gray-400">Find opponents and start your coding battle!</p>
         </div>
 
         <!-- Quick Actions -->
-        <div class="grid md:grid-cols-3 gap-4 mb-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8">
             <!-- Quick Match -->
             <button onclick="quickMatch()" 
-                    class="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-bold py-6 rounded-lg shadow-xl transition transform hover:scale-105 flex flex-col items-center gap-3">
-                <i class="bi bi-lightning-charge-fill text-5xl"></i>
+                    class="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-bold py-5 sm:py-6 rounded-lg shadow-xl transition transform hover:scale-105 flex flex-col items-center gap-2 sm:gap-3">
+                <i class="bi bi-lightning-charge-fill text-4xl sm:text-5xl"></i>
                 <div>
-                    <div class="text-xl">Quick Match</div>
-                    <div class="text-sm opacity-90">Auto-match with any player</div>
+                    <div class="text-lg sm:text-xl">Quick Match</div>
+                    <div class="text-xs sm:text-sm opacity-90">Auto-match with any player</div>
                 </div>
             </button>
 
             <!-- Quick Match by Difficulty -->
-            <div class="bg-gray-800 p-4 rounded-lg border border-gray-700">
-                <h3 class="font-bold mb-3 flex items-center gap-2">
+            <div class="bg-gray-800 p-3 sm:p-4 rounded-lg border border-gray-700">
+                <h3 class="font-bold mb-2 sm:mb-3 flex items-center gap-2 text-sm sm:text-base">
                     <i class="bi bi-funnel text-blue-500"></i>
-                    Quick Match by Difficulty
+                    <span class="hidden sm:inline">Quick Match by</span> Difficulty
                 </h3>
                 <div class="space-y-2">
                     <button onclick="quickMatch('Easy')" 
-                            class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition">
+                            class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-3 sm:px-4 rounded transition text-sm sm:text-base">
                         Easy
                     </button>
                     <button onclick="quickMatch('Medium')" 
-                            class="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded transition">
+                            class="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-3 sm:px-4 rounded transition text-sm sm:text-base">
                         Medium
                     </button>
                     <button onclick="quickMatch('Hard')" 
-                            class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition">
+                            class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-3 sm:px-4 rounded transition text-sm sm:text-base">
                         Hard
                     </button>
                 </div>
@@ -50,30 +50,30 @@
 
             <!-- Create Room -->
             <button onclick="showCreateRoomModal()" 
-                    class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-6 rounded-lg shadow-xl transition transform hover:scale-105 flex flex-col items-center gap-3">
-                <i class="bi bi-plus-circle-fill text-5xl"></i>
+                    class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-5 sm:py-6 rounded-lg shadow-xl transition transform hover:scale-105 flex flex-col items-center gap-2 sm:gap-3">
+                <i class="bi bi-plus-circle-fill text-4xl sm:text-5xl"></i>
                 <div>
-                    <div class="text-xl">Create Room</div>
-                    <div class="text-sm opacity-90">Host your own lobby</div>
+                    <div class="text-lg sm:text-xl">Create Room</div>
+                    <div class="text-xs sm:text-sm opacity-90">Host your own lobby</div>
                 </div>
             </button>
         </div>
 
         <!-- Active Lobbies -->
-        <div class="bg-gray-800 rounded-lg shadow-xl p-6 mb-8 border border-gray-700">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-2xl font-bold flex items-center gap-2">
+        <div class="bg-gray-800 rounded-lg shadow-xl p-4 sm:p-6 mb-6 sm:mb-8 border border-gray-700">
+            <div class="flex justify-between items-center mb-4 sm:mb-6">
+                <h2 class="text-lg sm:text-xl md:text-2xl font-bold flex items-center gap-2">
                     <i class="bi bi-people-fill text-blue-500"></i>
-                    Available Rooms
+                    <span>Open Rooms</span>
                 </h2>
                 <button onclick="loadLobbies()" 
                         class="text-gray-400 hover:text-white transition" 
                         title="Refresh">
-                    <i class="bi bi-arrow-clockwise text-xl"></i>
+                    <i class="bi bi-arrow-clockwise text-lg sm:text-xl"></i>
                 </button>
             </div>
 
-            <div id="lobbiesList" class="space-y-4">
+            <div id="lobbiesList" class="space-y-3 sm:space-y-4">
                 <div class="text-center text-gray-400 py-8">
                     <i class="bi bi-hourglass-split text-4xl mb-2"></i>
                     <p>Loading lobbies...</p>

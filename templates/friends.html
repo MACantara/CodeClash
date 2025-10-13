@@ -3,62 +3,62 @@
 {% block title %}Friends - CodeClash{% endblock %}
 
 {% block content %}
-<div class="container mx-auto px-4 py-8">
+<div class="container mx-auto px-2 sm:px-4 py-4 sm:py-8">
     <div class="max-w-4xl mx-auto">
         <!-- Header -->
-        <div class="text-center mb-8">
-            <h1 class="text-4xl font-bold mb-2 flex items-center justify-center gap-3">
-                <i class="bi bi-people-fill text-blue-500"></i>
+        <div class="text-center mb-6 sm:mb-8">
+            <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 flex items-center justify-center gap-2 sm:gap-3">
+                <i class="bi bi-people-fill text-blue-500 text-2xl sm:text-3xl"></i>
                 Friends
             </h1>
-            <p class="text-gray-400">Connect with other players</p>
+            <p class="text-sm sm:text-base text-gray-400">Connect with other players</p>
         </div>
 
         <!-- Add Friend Section -->
-        <div class="bg-gray-800 rounded-lg shadow-xl p-6 mb-6 border border-gray-700">
-            <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+        <div class="bg-gray-800 rounded-lg shadow-xl p-4 sm:p-6 mb-4 sm:mb-6 border border-gray-700">
+            <h2 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4 flex items-center gap-2">
                 <i class="bi bi-person-plus-fill text-green-500"></i>
-                Add Friend
+                <span>Add Friend</span>
             </h2>
-            <div class="flex gap-3">
+            <div class="flex flex-col sm:flex-row gap-2 sm:gap-3">
                 <input type="text" 
                        id="friendUsername" 
                        placeholder="Enter username..." 
-                       class="flex-1 px-4 py-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:border-blue-500 text-white"
+                       class="flex-1 px-3 sm:px-4 py-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:border-blue-500 text-white text-sm sm:text-base"
                        onkeypress="if(event.key==='Enter') addFriend()">
                 <button onclick="addFriend()" 
-                        class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-2 rounded transition">
+                        class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 sm:px-6 py-2 rounded transition text-sm sm:text-base whitespace-nowrap">
                     <i class="bi bi-plus-lg"></i> Add
                 </button>
             </div>
         </div>
 
         <!-- Friend Requests Section -->
-        <div id="requestsSection" class="bg-gray-800 rounded-lg shadow-xl p-6 mb-6 border border-gray-700 hidden">
-            <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+        <div id="requestsSection" class="bg-gray-800 rounded-lg shadow-xl p-4 sm:p-6 mb-4 sm:mb-6 border border-gray-700 hidden">
+            <h2 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4 flex items-center gap-2">
                 <i class="bi bi-inbox-fill text-yellow-500"></i>
-                Friend Requests
+                <span>Friend Requests</span>
             </h2>
-            <div id="requestsList" class="space-y-3"></div>
+            <div id="requestsList" class="space-y-2 sm:space-y-3"></div>
         </div>
 
         <!-- Friends List -->
-        <div class="bg-gray-800 rounded-lg shadow-xl p-6 border border-gray-700">
-            <div class="flex justify-between items-center mb-4">
-                <h2 class="text-xl font-bold flex items-center gap-2">
+        <div class="bg-gray-800 rounded-lg shadow-xl p-4 sm:p-6 border border-gray-700">
+            <div class="flex justify-between items-center mb-3 sm:mb-4">
+                <h2 class="text-lg sm:text-xl font-bold flex items-center gap-2">
                     <i class="bi bi-people text-blue-500"></i>
-                    My Friends
+                    <span>My Friends</span>
                 </h2>
                 <button onclick="loadFriends()" 
                         class="text-gray-400 hover:text-white transition" 
                         title="Refresh">
-                    <i class="bi bi-arrow-clockwise text-xl"></i>
+                    <i class="bi bi-arrow-clockwise text-lg sm:text-xl"></i>
                 </button>
             </div>
-            <div id="friendsList" class="space-y-3">
-                <div class="text-center text-gray-400 py-8">
-                    <i class="bi bi-hourglass-split text-4xl mb-2"></i>
-                    <p>Loading friends...</p>
+            <div id="friendsList" class="space-y-2 sm:space-y-3">
+                <div class="text-center text-gray-400 py-6 sm:py-8">
+                    <i class="bi bi-hourglass-split text-3xl sm:text-4xl mb-2"></i>
+                    <p class="text-sm sm:text-base">Loading friends...</p>
                 </div>
             </div>
         </div>

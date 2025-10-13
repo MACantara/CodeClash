@@ -3,30 +3,30 @@
 {% block title %}Match Replay - CodeClash{% endblock %}
 
 {% block content %}
-<div class="container mx-auto px-4 py-8">
+<div class="container mx-auto px-2 sm:px-4 py-4 sm:py-8">
     <div class="max-w-7xl mx-auto">
         <!-- Header -->
-        <div class="bg-gray-800 rounded-lg shadow-xl p-6 mb-6 border border-gray-700">
-            <h1 class="text-3xl font-bold mb-2">
-                <i class="bi bi-play-circle-fill text-blue-500"></i> Match Replay
+        <div class="bg-gray-800 rounded-lg shadow-xl p-4 sm:p-6 mb-4 sm:mb-6 border border-gray-700">
+            <h1 class="text-xl sm:text-2xl md:text-3xl font-bold mb-2 flex items-center gap-2">
+                <i class="bi bi-play-circle-fill text-blue-500"></i> <span>Match Replay</span>
             </h1>
-            <div class="flex justify-between items-center">
-                <p class="text-gray-400">{{ match.challenge_name }} - {{ match.difficulty }}</p>
-                <div class="text-sm">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                <p class="text-sm sm:text-base text-gray-400">{{ match.challenge_name }} - {{ match.difficulty }}</p>
+                <div class="text-xs sm:text-sm">
                     <span class="text-green-400 font-bold">Winner: {{ match.winner_name }}</span>
                 </div>
             </div>
         </div>
 
         <!-- Timeline Controls -->
-        <div class="bg-gray-800 rounded-lg shadow-xl p-6 mb-6 border border-gray-700">
-            <div class="flex items-center gap-4">
-                <button onclick="playPause()" id="playBtn" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition">
+        <div class="bg-gray-800 rounded-lg shadow-xl p-4 sm:p-6 mb-4 sm:mb-6 border border-gray-700">
+            <div class="flex items-center gap-2 sm:gap-4">
+                <button onclick="playPause()" id="playBtn" class="bg-blue-600 hover:bg-blue-700 text-white px-3 sm:px-4 py-2 rounded transition flex-shrink-0">
                     <i class="bi bi-play-fill" id="playIcon"></i>
                 </button>
                 <input type="range" id="timeline" min="0" max="100" value="0" 
                        class="flex-1 h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer">
-                <span id="timeDisplay" class="text-gray-400 min-w-[80px]">0:00 / 0:00</span>
+                <span id="timeDisplay" class="text-gray-400 text-xs sm:text-sm min-w-[60px] sm:min-w-[80px]">0:00 / 0:00</span>
             </div>
             <div class="flex justify-between text-xs text-gray-500 mt-2">
                 <span>Match Start</span>
@@ -35,54 +35,54 @@
         </div>
 
         <!-- Code Comparison -->
-        <div class="grid md:grid-cols-2 gap-6 mb-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
             <!-- Player 1 Code -->
             <div class="bg-gray-800 rounded-lg shadow-xl border border-blue-500">
-                <div class="p-4 border-b border-gray-700">
-                    <h2 class="text-xl font-bold text-blue-400">
+                <div class="p-3 sm:p-4 border-b border-gray-700">
+                    <h2 class="text-base sm:text-lg md:text-xl font-bold text-blue-400 truncate">
                         <i class="bi bi-person-circle"></i> {{ match.player1_name }}
                     </h2>
-                    <div class="text-sm text-gray-400 mt-1">
+                    <div class="text-xs sm:text-sm text-gray-400 mt-1">
                         Errors: <span class="text-red-400 font-bold">{{ match.player1_errors }}</span> | 
                         Time: <span class="text-green-400 font-bold">{{ "%.2f"|format(match.player1_time) }}s</span>
                     </div>
                 </div>
-                <div class="p-4">
-                    <pre id="player1Code" class="bg-gray-900 p-4 rounded text-sm overflow-auto max-h-96 border border-gray-700"><code class="language-python">{{ match.player1_code or '# No code submitted' }}</code></pre>
+                <div class="p-3 sm:p-4">
+                    <pre id="player1Code" class="bg-gray-900 p-2 sm:p-4 rounded text-xs sm:text-sm overflow-auto max-h-64 sm:max-h-96 border border-gray-700"><code class="language-python">{{ match.player1_code or '# No code submitted' }}</code></pre>
                 </div>
             </div>
 
             <!-- Player 2 Code -->
             <div class="bg-gray-800 rounded-lg shadow-xl border border-purple-500">
-                <div class="p-4 border-b border-gray-700">
-                    <h2 class="text-xl font-bold text-purple-400">
+                <div class="p-3 sm:p-4 border-b border-gray-700">
+                    <h2 class="text-base sm:text-lg md:text-xl font-bold text-purple-400 truncate">
                         <i class="bi bi-person-circle"></i> {{ match.player2_name }}
                     </h2>
-                    <div class="text-sm text-gray-400 mt-1">
+                    <div class="text-xs sm:text-sm text-gray-400 mt-1">
                         Errors: <span class="text-red-400 font-bold">{{ match.player2_errors }}</span> | 
                         Time: <span class="text-green-400 font-bold">{{ "%.2f"|format(match.player2_time) }}s</span>
                     </div>
                 </div>
-                <div class="p-4">
-                    <pre id="player2Code" class="bg-gray-900 p-4 rounded text-sm overflow-auto max-h-96 border border-gray-700"><code class="language-python">{{ match.player2_code or '# No code submitted' }}</code></pre>
+                <div class="p-3 sm:p-4">
+                    <pre id="player2Code" class="bg-gray-900 p-2 sm:p-4 rounded text-xs sm:text-sm overflow-auto max-h-64 sm:max-h-96 border border-gray-700"><code class="language-python">{{ match.player2_code or '# No code submitted' }}</code></pre>
                 </div>
             </div>
         </div>
 
         <!-- Challenge Description -->
-        <div class="bg-gray-800 rounded-lg shadow-xl p-6 mb-6 border border-gray-700">
-            <h2 class="text-xl font-bold mb-3">Challenge: {{ match.challenge_name }}</h2>
+        <div class="bg-gray-800 rounded-lg shadow-xl p-4 sm:p-6 mb-4 sm:mb-6 border border-gray-700">
+            <h2 class="text-base sm:text-lg md:text-xl font-bold mb-3">Challenge: {{ match.challenge_name }}</h2>
             <div class="prose prose-invert max-w-none">
-                <p class="text-gray-300">{{ match.challenge_description }}</p>
+                <p class="text-sm sm:text-base text-gray-300">{{ match.challenge_description }}</p>
             </div>
         </div>
 
         <!-- Actions -->
-        <div class="flex gap-4 justify-center">
-            <a href="/lobby" class="bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded transition">
+        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+            <a href="/lobby" class="bg-gray-700 hover:bg-gray-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded transition text-center text-sm sm:text-base">
                 <i class="bi bi-arrow-left"></i> Back to Lobby
             </a>
-            <a href="/profile/{{ match.winner_name }}" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded transition">
+            <a href="/profile/{{ match.winner_name }}" class="bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 py-2 sm:py-3 rounded transition text-center text-sm sm:text-base">
                 <i class="bi bi-person"></i> View Winner's Profile
             </a>
         </div>
