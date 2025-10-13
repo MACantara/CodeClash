@@ -35,8 +35,8 @@ def spectate_match(match_id):
     
     match_data = {
         'id': match.id,
-        'title': match.challenge.title,
-        'description': match.challenge.description,
+        'challenge_name': match.challenge.title,
+        'challenge_description': match.challenge.description,
         'difficulty': match.challenge.difficulty,
         'player1_name': match.player1.username,
         'player2_name': match.player2.username,
@@ -66,6 +66,9 @@ def get_spectator_data(match_id):
         'player1_name': match.player1.username,
         'player2_name': match.player2.username,
         'challenge_id': match.challenge_id,
+        'challenge_name': match.challenge.title,
+        'challenge_description': match.challenge.description,
+        'difficulty': match.challenge.difficulty,
         'status': match.status,
         'player1_submitted': match.player1_submitted,
         'player2_submitted': match.player2_submitted,
