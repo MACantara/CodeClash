@@ -149,18 +149,18 @@ IT-Olympics-Python-Programming/
 
 ## Future Enhancements
 
-- ✅ ~~Matchmaking lobby system~~ (IMPLEMENTED!)
-- ✅ ~~Quick match feature~~ (IMPLEMENTED!)
-- Real-time multiplayer with WebSockets
-- Tournament brackets with elimination rounds
-- Practice mode (solve challenges without competing)
-- More programming languages (JavaScript, Java, C++)
-- Code replay feature
-- Friend system and invitations
-- Chat functionality in lobbies
-- Spectator mode
-- Match history and statistics
-- Achievements and badges
+- [x] Matchmaking lobby system
+- [x] Quick match feature
+- [x] Real-time multiplayer with WebSockets
+- [x] Tournament brackets with elimination rounds
+- [ ] Practice mode (solve challenges without competing)
+- [ ] More programming languages (JavaScript, Java, C++)
+- [x] Code replay feature
+- [x] Friend system and invitations
+- [x] Chat functionality in lobbies
+- [x] Spectator mode
+- [x] Match history and statistics
+- [x] Achievements and badges
 
 ## License
 
