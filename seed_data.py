@@ -18,6 +18,52 @@ def load_json_files(pattern):
             data.append(json.load(f))
     return data
 
+def calculate_reading_time(reading_content, starter_code='', solution_code=''):
+    """
+    Calculate estimated reading time in minutes based on content length.
+    
+    Average reading speed: 200-250 words per minute
+    Code reading is slower: ~100-150 words per minute
+    We'll use conservative estimates and add base time for hands-on practice.
+    
+    Args:
+        reading_content: HTML content with explanations
+        starter_code: Starting code to understand
+        solution_code: Solution code to review
+    
+    Returns:
+        int: Estimated time in minutes (minimum 5, maximum 60)
+    """
+    import re
+    
+    # Remove HTML tags to get actual text content
+    text_content = re.sub(r'<[^>]+>', '', reading_content)
+    
+    # Count words in text content
+    text_words = len(text_content.split())
+    
+    # Count lines of code (non-empty, non-comment)
+    code_lines = 0
+    for code in [starter_code, solution_code]:
+        if code:
+            lines = [line.strip() for line in code.split('\n') 
+                    if line.strip() and not line.strip().startswith('#')]
+            code_lines += len(lines)
+    
+    # Calculate reading time
+    # Text: 200 words per minute
+    # Code: 50 words per line, 150 words per minute = ~3 lines per minute
+    text_time = text_words / 200
+    code_time = code_lines / 3
+    
+    # Add base time for practice (5 minutes minimum)
+    total_time = text_time + code_time + 5
+    
+    # Round to nearest 5 minutes and enforce bounds
+    estimated_minutes = max(5, min(60, round(total_time / 5) * 5))
+    
+    return estimated_minutes
+
 def seed_challenges():
     """Seed initial challenges from JSON files"""
     print("Loading challenges from JSON files...")
@@ -94,15 +140,26 @@ def seed_learning_modules():
             # Map the module_id from order to actual database ID
             lesson_data['module_id'] = module_map[module_order]
             
+            # Calculate estimated reading time based on content
+            reading_content = lesson_data.get('reading_content', '')
+            starter_code = lesson_data.get('starter_code', '')
+            solution_code = lesson_data.get('solution_code', '')
+            
+            estimated_minutes = calculate_reading_time(
+                reading_content, 
+                starter_code, 
+                solution_code
+            )
+            
             # Create the lesson
             lesson = Lesson(
                 module_id=lesson_data['module_id'],
                 title=lesson_data['title'],
                 order=lesson_data['order'],
-                estimated_minutes=lesson_data['estimated_minutes'],
-                reading_content=lesson_data.get('reading_content', ''),
-                starter_code=lesson_data.get('starter_code', ''),
-                solution_code=lesson_data.get('solution_code', '')
+                estimated_minutes=estimated_minutes,
+                reading_content=reading_content,
+                starter_code=starter_code,
+                solution_code=solution_code
             )
             
             # Set the JSON-based fields using the setter methods
