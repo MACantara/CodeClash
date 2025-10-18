@@ -1,0 +1,13 @@
+{
+  "title": "Boolean Logic",
+  "description": "Write a function called `check_range(num, min_val, max_val)` that returns True if num is between min_val and max_val (inclusive), False otherwise.",
+  "difficulty": "Easy",
+  "starter_code": "def check_range(num, min_val, max_val):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": [5, 1, 10], "expected": true},
+    {"input": [15, 1, 10], "expected": false},
+    {"input": [1, 1, 10], "expected": true},
+    {"input": [10, 1, 10], "expected": true}
+  ],
+  "time_limit": 300
+}

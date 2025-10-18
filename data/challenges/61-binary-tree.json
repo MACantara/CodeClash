@@ -1,0 +1,13 @@
+{
+  "title": "Binary Tree Traversal",
+  "description": "Given a binary tree as nested lists [value, left, right], write `inorder_traversal(tree)` that returns inorder traversal. None represents no child.",
+  "difficulty": "Hard",
+  "starter_code": "def inorder_traversal(tree):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": [[1, [2, null, null], [3, null, null]]], "expected": [2, 1, 3]},
+    {"input": [[5, [3, [1, null, null], [4, null, null]], [7, null, null]]], "expected": [1, 3, 4, 5, 7]},
+    {"input": [[10, null, null]], "expected": [10]},
+    {"input": [[2, [1, null, null], null]], "expected": [1, 2]}
+  ],
+  "time_limit": 300
+}

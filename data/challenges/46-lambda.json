@@ -1,0 +1,13 @@
+{
+  "title": "Lambda Filter",
+  "description": "Write a function called `filter_strings(strings, min_length)` that uses a lambda function to filter strings with length >= min_length.",
+  "difficulty": "Easy",
+  "starter_code": "def filter_strings(strings, min_length):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": [["apple", "pie", "banana"], 5], "expected": ["apple", "banana"]},
+    {"input": [["a", "ab", "abc", "abcd"], 3], "expected": ["abc", "abcd"]},
+    {"input": [["hello", "hi", "hey"], 4], "expected": ["hello"]},
+    {"input": [["one", "two", "three"], 4], "expected": ["three"]}
+  ],
+  "time_limit": 300
+}

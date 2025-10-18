@@ -1,0 +1,13 @@
+{
+  "title": "Count Vowels",
+  "description": "Write a function called `count_vowels(s)` that counts and returns the number of vowels (a, e, i, o, u) in a string (case-insensitive).",
+  "difficulty": "Easy",
+  "starter_code": "def count_vowels(s):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": ["hello"], "expected": 2},
+    {"input": ["Python"], "expected": 1},
+    {"input": ["aeiou"], "expected": 5},
+    {"input": ["bcdfg"], "expected": 0}
+  ],
+  "time_limit": 300
+}

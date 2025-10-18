@@ -1,0 +1,13 @@
+{
+  "title": "Sum Until Threshold",
+  "description": "Write a function called `sum_until(limit)` that returns the sum of all positive integers from 1 up to but not exceeding the limit when added.",
+  "difficulty": "Medium",
+  "starter_code": "def sum_until(limit):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": [10], "expected": 10},
+    {"input": [20], "expected": 15},
+    {"input": [100], "expected": 55},
+    {"input": [5], "expected": 6}
+  ],
+  "time_limit": 300
+}

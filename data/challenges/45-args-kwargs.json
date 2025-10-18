@@ -1,0 +1,13 @@
+{
+  "title": "Variable Arguments",
+  "description": "Write a function called `sum_all(*args)` that returns the sum of all arguments passed to it.",
+  "difficulty": "Easy",
+  "starter_code": "def sum_all(*args):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": [1, 2, 3], "expected": 6},
+    {"input": [10, 20], "expected": 30},
+    {"input": [5], "expected": 5},
+    {"input": [1, 2, 3, 4, 5], "expected": 15}
+  ],
+  "time_limit": 300
+}

@@ -1,0 +1,13 @@
+{
+  "title": "Merge Sort",
+  "description": "Write a function called `merge_sort(arr)` that implements the merge sort algorithm and returns the sorted array.",
+  "difficulty": "Hard",
+  "starter_code": "def merge_sort(arr):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": [[38, 27, 43, 3, 9, 82, 10]], "expected": [3, 9, 10, 27, 38, 43, 82]},
+    {"input": [[12, 11, 13, 5, 6, 7]], "expected": [5, 6, 7, 11, 12, 13]},
+    {"input": [[5, 2, 8, 1]], "expected": [1, 2, 5, 8]},
+    {"input": [[1]], "expected": [1]}
+  ],
+  "time_limit": 300
+}

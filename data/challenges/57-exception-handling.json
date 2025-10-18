@@ -1,0 +1,13 @@
+{
+  "title": "Parse Integer Safely",
+  "description": "Write a function called `parse_int_safe(s)` that tries to convert a string to int. If it fails (ValueError), return None.",
+  "difficulty": "Easy",
+  "starter_code": "def parse_int_safe(s):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": ["123"], "expected": 123},
+    {"input": ["abc"], "expected": null},
+    {"input": ["45"], "expected": 45},
+    {"input": ["12.5"], "expected": null}
+  ],
+  "time_limit": 300
+}

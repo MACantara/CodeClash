@@ -1,0 +1,13 @@
+{
+  "title": "Set Union and Intersection",
+  "description": "Write a function called `set_operations(set1, set2)` that returns a tuple with (union, intersection) of two sets as lists (sorted).",
+  "difficulty": "Easy",
+  "starter_code": "def set_operations(set1, set2):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": [[1, 2, 3], [2, 3, 4]], "expected": [[1, 2, 3, 4], [2, 3]]},
+    {"input": [["a", "b"], ["b", "c"]], "expected": [["a", "b", "c"], ["b"]]},
+    {"input": [[1, 2], [3, 4]], "expected": [[1, 2, 3, 4], []]},
+    {"input": [[5, 6, 7], [5, 6, 7]], "expected": [[5, 6, 7], [5, 6, 7]]}
+  ],
+  "time_limit": 300
+}

@@ -1,0 +1,13 @@
+{
+  "title": "Bitwise Operations",
+  "description": "Write a function called `bitwise_and_or(a, b)` that returns a tuple with (a AND b, a OR b, a XOR b).",
+  "difficulty": "Medium",
+  "starter_code": "def bitwise_and_or(a, b):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": [5, 3], "expected": [1, 7, 6]},
+    {"input": [12, 10], "expected": [8, 14, 6]},
+    {"input": [7, 7], "expected": [7, 7, 0]},
+    {"input": [15, 1], "expected": [1, 15, 14]}
+  ],
+  "time_limit": 300
+}
