@@ -277,4 +277,4 @@ Ensure your JSON files are valid:
 ---
 
 **Last Updated**: October 18, 2025
-**Data Files**: 67 challenges, 10 achievements, 7 modules, lessons
+**Data Files**: 67 challenges, 10 achievements, 7 modules, 41 lessons
