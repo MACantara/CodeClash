@@ -7,15 +7,23 @@ All seed data is now organized in JSON files within the `data/` folder for easy 
 
 ```
 data/
-├── challenges/          # Coding challenges
-│   ├── 01-sum-of-two-numbers.json
-│   ├── 02-reverse-string.json
-│   ├── 03-find-maximum.json
-│   ├── 04-check-palindrome.json
-│   ├── 05-fibonacci-sequence.json
-│   ├── 06-two-sum.json
-│   ├── 07-valid-parentheses.json
-│   └── 08-merge-sorted-arrays.json
+├── challenges/          # Coding challenges (67 total)
+│   ├── 01-08: Original challenges
+│   ├── 09-12: Output & Variables
+│   ├── 13-15: Data Types, Numbers & Casting
+│   ├── 16-20: Strings
+│   ├── 21-23: Booleans & Operators
+│   ├── 24-28: Lists
+│   ├── 29-31: Tuples
+│   ├── 32-34: Sets
+│   ├── 35-38: Dictionaries
+│   ├── 39-43: Control Flow
+│   ├── 44-48: Functions
+│   ├── 49-52: OOP
+│   ├── 53-55: Modules, JSON & RegEx
+│   ├── 56-58: Error Handling & Files
+│   ├── 59-62: Data Structures
+│   └── 63-67: Algorithms
 │
 ├── achievements/        # User achievements
 │   ├── 01-first-blood.json
@@ -268,5 +276,5 @@ Ensure your JSON files are valid:
 
 ---
 
-**Last Updated**: October 13, 2025
-**Data Files**: 8 challenges, 10 achievements, 4 modules, 7 lessons
+**Last Updated**: October 18, 2025
+**Data Files**: 67 challenges, 10 achievements, 7 modules, lessons

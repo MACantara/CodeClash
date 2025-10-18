@@ -6,7 +6,7 @@
   "test_cases": [
     {"input": [1, 2], "expected": [2, 1]},
     {"input": ["hello", "world"], "expected": ["world", "hello"]},
-    {"input": [True, False], "expected": [false, true]},
+    {"input": [true, false], "expected": [false, true]},
     {"input": [10.5, 20.3], "expected": [20.3, 10.5]}
   ],
   "time_limit": 300
