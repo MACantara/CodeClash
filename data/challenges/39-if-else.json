@@ -1,0 +1,13 @@
+{
+  "title": "Grade Calculator",
+  "description": "Write a function called `get_grade(score)` that returns 'A' for 90+, 'B' for 80-89, 'C' for 70-79, 'D' for 60-69, and 'F' for below 60.",
+  "difficulty": "Easy",
+  "starter_code": "def get_grade(score):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": [95], "expected": "A"},
+    {"input": [85], "expected": "B"},
+    {"input": [75], "expected": "C"},
+    {"input": [55], "expected": "F"}
+  ],
+  "time_limit": 300
+}

@@ -1,0 +1,13 @@
+{
+  "title": "Identity and Membership",
+  "description": "Write a function called `check_membership(item, collection)` that returns True if item is in collection, False otherwise.",
+  "difficulty": "Easy",
+  "starter_code": "def check_membership(item, collection):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": [5, [1, 2, 3, 4, 5]], "expected": true},
+    {"input": ["a", ["x", "y", "z"]], "expected": false},
+    {"input": ["hello", ["hello", "world"]], "expected": true},
+    {"input": [0, [1, 2, 3]], "expected": false}
+  ],
+  "time_limit": 300
+}

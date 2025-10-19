@@ -9,16 +9,24 @@
         <div class="bg-gray-800 rounded-lg shadow-xl p-3 sm:p-6 mb-4 sm:mb-6 border border-gray-700">
             <div class="flex justify-between items-center mb-3 sm:mb-4">
                 <h1 class="text-lg sm:text-2xl md:text-3xl font-bold flex items-center gap-2">
-                    <i class="bi bi-swords text-red-500 text-xl sm:text-2xl"></i>
+                    {% if match.mode == 'practice' %}
+                        <i class="bi bi-person-fill text-green-500 text-xl sm:text-2xl"></i>
+                    {% else %}
+                        <i class="bi bi-flag-fill text-red-500 text-xl sm:text-2xl"></i>
+                    {% endif %}
                     <span class="truncate">{{ match.title }}</span>
                 </h1>
-                <span id="matchStatus" class="px-2 sm:px-4 py-1 sm:py-2 rounded font-bold text-xs sm:text-sm whitespace-nowrap">
-                    {{ match.status|upper }}
-                </span>
+                <div class="flex items-center gap-2">
+                    <span class="px-2 sm:px-3 py-1 sm:py-2 rounded font-bold text-xs sm:text-sm whitespace-nowrap {% if match.mode == 'practice' %}bg-blue-600{% else %}bg-red-600{% endif %}">
+                        {% if match.mode == 'practice' %}PRACTICE{% else %}1v1 PvP{% endif %}
+                    </span>
+                    <span id="matchStatus" class="px-2 sm:px-4 py-1 sm:py-2 rounded font-bold text-xs sm:text-sm whitespace-nowrap">
+                        {{ match.status|upper }}
+                    </span>
+                </div>
             </div>
             
-            <!-- Players -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+            <!-- Player 1 -->
                 <div class="bg-gray-700 p-3 sm:p-4 rounded border-2" id="player1Card">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center gap-2">
@@ -35,6 +43,8 @@
                     </div>
                 </div>
                 
+                {% if match.mode == 'pvp' and match.player2_name %}
+                <!-- Player 2 (only in PvP mode) -->
                 <div class="bg-gray-700 p-3 sm:p-4 rounded border-2" id="player2Card">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center gap-2">
@@ -50,7 +60,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+                {% endif %}
             
             <!-- Timer -->
             <div class="mt-3 sm:mt-4 text-center">
@@ -79,9 +89,7 @@
                     <span>Your Solution</span>
                 </h2>
                 
-                <textarea id="codeEditor" 
-                          class="w-full h-64 sm:h-80 md:h-96 p-2 sm:p-4 bg-gray-900 text-green-400 font-mono text-xs sm:text-sm rounded border border-gray-600 focus:outline-none focus:border-blue-500"
-                          spellcheck="false">{{ match.starter_code }}</textarea>
+                <div id="codeEditor" class="w-full rounded border border-gray-600" style="height: 400px;"></div>
                 
                 <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-3 sm:mt-4">
                     <button id="runBtn" 
@@ -128,17 +136,35 @@
             <i class="bi bi-trophy-fill text-yellow-500 text-5xl sm:text-6xl mb-4"></i>
             <h2 class="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4" id="winnerText">Match Complete!</h2>
             <p class="text-lg sm:text-xl mb-2" id="winnerName"></p>
-            <div class="mt-4 sm:mt-6 space-y-2 text-left bg-gray-700 p-3 sm:p-4 rounded text-sm sm:text-base">
+            
+            <!-- PvP Stats -->
+            <div id="pvpStats" class="mt-4 sm:mt-6 space-y-2 text-left bg-gray-700 p-3 sm:p-4 rounded text-sm sm:text-base hidden">
                 <p class="truncate"><strong>{{ match.player1_name }}:</strong> <span id="finalPlayer1Errors"></span> errors, <span id="finalPlayer1Time"></span>s</p>
                 <p class="truncate"><strong>{{ match.player2_name }}:</strong> <span id="finalPlayer2Errors"></span> errors, <span id="finalPlayer2Time"></span>s</p>
             </div>
+            
+            <!-- Practice Stats -->
+            <div id="practiceStats" class="mt-4 sm:mt-6 space-y-2 text-left bg-gray-700 p-3 sm:p-4 rounded text-sm sm:text-base hidden">
+                <p><strong>Errors:</strong> <span id="practiceErrors"></span></p>
+                <p><strong>Time:</strong> <span id="practiceTime"></span>s</p>
+            </div>
+            
             <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-4 sm:mt-6">
+                {% if match.mode == 'practice' %}
+                <a href="/lobby" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 sm:py-3 px-4 sm:px-6 rounded transition text-sm sm:text-base">
+                    Another Practice
+                </a>
+                <a href="/leaderboard" class="flex-1 bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 sm:py-3 px-4 sm:px-6 rounded transition text-sm sm:text-base">
+                    Leaderboard
+                </a>
+                {% else %}
                 <a href="/tournament" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 sm:py-3 px-4 sm:px-6 rounded transition text-sm sm:text-base">
                     New Match
                 </a>
                 <a href="/leaderboard" class="flex-1 bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 sm:py-3 px-4 sm:px-6 rounded transition text-sm sm:text-base">
                     Leaderboard
                 </a>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -147,14 +173,37 @@
 <script>
     const matchId = {{ match.id }};
     const userId = {{ user_id }};
+    const matchMode = '{{ match.mode }}';
     const player1Id = {{ match.player1_id }};
-    const player2Id = {{ match.player2_id }};
+    const player2Id = {{ match.player2_id if match.player2_id else 'null' }};
     {% if match.started_at %}
     const matchStarted = new Date('{{ match.started_at }}');
     {% else %}
     const matchStarted = new Date();
     {% endif %}
     let timerInterval = null;
+    let aceEditor = null;
+    
+    // Initialize Ace Editor
+    function initializeAceEditor() {
+        aceEditor = ace.edit('codeEditor');
+        aceEditor.setTheme('ace/theme/dracula');
+        aceEditor.session.setMode('ace/mode/python');
+        aceEditor.setFontSize(14);
+        aceEditor.session.setTabSize(4);
+        aceEditor.session.setUseSoftTabs(true);
+        aceEditor.setShowPrintMargin(false);
+        aceEditor.setValue(`{{ match.starter_code }}`);
+        aceEditor.session.selection.clearSelection();
+        aceEditor.setOptions({
+            enableBasicAutocompletion: true,
+            enableLiveAutocompletion: true,
+            enableSnippets: true
+        });
+    }
+    
+    // Initialize editor when page loads
+    initializeAceEditor();
     
     // Set difficulty badge color
     const difficultyColors = {
@@ -178,32 +227,16 @@
     // Start timer immediately
     startTimer();
     
-    // Auto-save code snapshots every 1 second for replay feature
-    setInterval(async () => {
-        const code = document.getElementById('codeEditor').value;
-        if (code && code.trim() !== '') {
-            try {
-                await fetch(`/match/${matchId}/save_snapshot`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ code })
-                });
-            } catch (error) {
-                console.error('Failed to save snapshot:', error);
-            }
-        }
-    }, 1000); // Save every 1 second for detailed replay
-    
     // Run code
     document.getElementById('runBtn').addEventListener('click', async () => {
-        const code = document.getElementById('codeEditor').value;
+        const code = aceEditor.getValue();
         
         const btn = document.getElementById('runBtn');
         btn.disabled = true;
         btn.innerHTML = '<i class="bi bi-hourglass-split"></i> Running...';
         
         try {
-            const response = await fetch(`/match/${matchId}/submit`, {
+            const response = await fetch(`/match/${matchId}/run`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ code })
@@ -226,7 +259,7 @@
             return;
         }
         
-        const code = document.getElementById('codeEditor').value;
+        const code = aceEditor.getValue();
         
         const btn = document.getElementById('submitBtn');
         btn.disabled = true;
@@ -253,6 +286,7 @@
                 btn.disabled = true;
                 btn.innerHTML = '<i class="bi bi-check-circle"></i> Submitted';
                 document.getElementById('runBtn').disabled = true;
+                aceEditor.setReadOnly(true);
                 
                 // Check match status
                 checkMatchStatus();
@@ -294,28 +328,43 @@
         const response = await fetch(`/match/${matchId}/status`);
         const data = await response.json();
         
-        // Update player cards
-        if (data.player1_submitted) {
-            document.getElementById('player1Status').textContent = 'Submitted';
-            document.getElementById('player1Errors').textContent = data.player1_errors;
-            document.getElementById('player1Card').classList.add('border-green-500');
-        }
-        
-        if (data.player2_submitted) {
-            document.getElementById('player2Status').textContent = 'Submitted';
-            document.getElementById('player2Errors').textContent = data.player2_errors;
-            document.getElementById('player2Card').classList.add('border-green-500');
-        }
-        
-        // Check if match is complete
-        if (data.status === 'completed') {
-            clearInterval(timerInterval);
-            showWinner(data);
+        if (matchMode === 'practice') {
+            // Practice mode: check if player submitted
+            if (data.player1_submitted) {
+                document.getElementById('player1Status').textContent = 'Completed';
+                document.getElementById('player1Errors').textContent = data.player1_errors;
+                document.getElementById('player1Card').classList.add('border-green-500');
+            }
+            
+            // Check if match is complete
+            if (data.status === 'completed') {
+                clearInterval(timerInterval);
+                showWinnerPractice(data);
+            }
+        } else {
+            // PvP mode: check if both players submitted
+            if (data.player1_submitted) {
+                document.getElementById('player1Status').textContent = 'Submitted';
+                document.getElementById('player1Errors').textContent = data.player1_errors;
+                document.getElementById('player1Card').classList.add('border-green-500');
+            }
+            
+            if (data.player2_submitted) {
+                document.getElementById('player2Status').textContent = 'Submitted';
+                document.getElementById('player2Errors').textContent = data.player2_errors;
+                document.getElementById('player2Card').classList.add('border-green-500');
+            }
+            
+            // Check if match is complete
+            if (data.status === 'completed') {
+                clearInterval(timerInterval);
+                showWinnerPvP(data);
+            }
         }
     }
     
-    // Show winner modal
-    function showWinner(data) {
+    // Show winner for PvP
+    function showWinnerPvP(data) {
         const modal = document.getElementById('winnerModal');
         const winnerText = document.getElementById('winnerText');
         const winnerName = document.getElementById('winnerName');
@@ -332,6 +381,29 @@
         document.getElementById('finalPlayer1Time').textContent = data.player1_time.toFixed(2);
         document.getElementById('finalPlayer2Errors').textContent = data.player2_errors;
         document.getElementById('finalPlayer2Time').textContent = data.player2_time.toFixed(2);
+        
+        // Hide opponent stats, show both players
+        document.getElementById('pvpStats').classList.remove('hidden');
+        document.getElementById('practiceStats').classList.add('hidden');
+        
+        modal.classList.remove('hidden');
+    }
+    
+    // Show winner for Practice
+    function showWinnerPractice(data) {
+        const modal = document.getElementById('winnerModal');
+        const winnerText = document.getElementById('winnerText');
+        const winnerName = document.getElementById('winnerName');
+        
+        winnerText.textContent = '🎉 Challenge Completed! 🎉';
+        winnerName.textContent = 'Great Job!';
+        
+        document.getElementById('practiceErrors').textContent = data.player1_errors;
+        document.getElementById('practiceTime').textContent = data.player1_time.toFixed(2);
+        
+        // Show practice stats, hide opponent stats
+        document.getElementById('practiceStats').classList.remove('hidden');
+        document.getElementById('pvpStats').classList.add('hidden');
         
         modal.classList.remove('hidden');
     }

@@ -7,6 +7,7 @@ All data will be lost!
 """
 from config import create_app, init_database
 from models import db
+from sqlalchemy import text
 
 if __name__ == '__main__':
     print("=" * 70)
@@ -34,7 +35,17 @@ if __name__ == '__main__':
     # Drop all existing tables
     print("\n🗑️  Dropping existing tables...")
     with app.app_context():
+        # Disable foreign key checks before dropping tables
+        with db.engine.connect() as connection:
+            connection.execute(text("SET FOREIGN_KEY_CHECKS = 0"))
+            connection.commit()
+        
         db.drop_all()
+        
+        with db.engine.connect() as connection:
+            connection.execute(text("SET FOREIGN_KEY_CHECKS = 1"))
+            connection.commit()
+        
         print("✅ All tables dropped successfully!")
     
     # Initialize database (create tables and seed data)

@@ -1,0 +1,13 @@
+{
+  "title": "List Access and Modification",
+  "description": "Write a function called `modify_list(lst, index, value)` that creates a copy of the list, changes the element at the given index to the new value, and returns the modified list.",
+  "difficulty": "Easy",
+  "starter_code": "def modify_list(lst, index, value):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": [[1, 2, 3, 4], 2, 10], "expected": [1, 2, 10, 4]},
+    {"input": [["a", "b", "c"], 0, "z"], "expected": ["z", "b", "c"]},
+    {"input": [[5, 10, 15], 1, 20], "expected": [5, 20, 15]},
+    {"input": [[true, false], 1, true], "expected": [true, true]}
+  ],
+  "time_limit": 300
+}

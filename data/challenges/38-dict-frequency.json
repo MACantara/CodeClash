@@ -1,0 +1,13 @@
+{
+  "title": "Count Character Frequency",
+  "description": "Write a function called `char_frequency(s)` that returns a dictionary with character counts for each character in the string.",
+  "difficulty": "Medium",
+  "starter_code": "def char_frequency(s):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": ["hello"], "expected": {"h": 1, "e": 1, "l": 2, "o": 1}},
+    {"input": ["aaa"], "expected": {"a": 3}},
+    {"input": ["abc"], "expected": {"a": 1, "b": 1, "c": 1}},
+    {"input": ["programming"], "expected": {"p": 1, "r": 2, "o": 1, "g": 2, "a": 1, "m": 2, "i": 1, "n": 1}}
+  ],
+  "time_limit": 300
+}

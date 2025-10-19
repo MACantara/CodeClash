@@ -1,0 +1,13 @@
+{
+  "title": "Merge Two Lists",
+  "description": "Write a function called `merge_alternating(list1, list2)` that merges two lists by alternating elements. If one list is longer, append the remaining elements.",
+  "difficulty": "Medium",
+  "starter_code": "def merge_alternating(list1, list2):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": [[1, 2, 3], ["a", "b", "c"]], "expected": [1, "a", 2, "b", 3, "c"]},
+    {"input": [[1, 2], ["a", "b", "c", "d"]], "expected": [1, "a", 2, "b", "c", "d"]},
+    {"input": [[10, 20, 30, 40], ["x", "y"]], "expected": [10, "x", 20, "y", 30, 40]},
+    {"input": [[], [1, 2, 3]], "expected": [1, 2, 3]}
+  ],
+  "time_limit": 300
+}

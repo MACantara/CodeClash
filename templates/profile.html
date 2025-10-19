@@ -16,16 +16,10 @@
                         <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">{{ user.username }}</h1>
                         <div class="flex flex-col sm:flex-row gap-2 sm:gap-4 text-sm sm:text-base text-gray-300">
                             <span><i class="bi bi-star-fill text-yellow-500"></i> Rating: {{ user.rating }}</span>
-                            <span><i class="bi bi-people-fill text-blue-500"></i> {{ friends_count }} Friends</span>
                             <span><i class="bi bi-trophy-fill text-green-500"></i> {{ achievements|length }} Achievements</span>
                         </div>
                     </div>
                 </div>
-                {% if not is_own_profile %}
-                <button onclick="addFriend()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 py-2 rounded transition text-sm sm:text-base whitespace-nowrap w-full sm:w-auto">
-                    <i class="bi bi-person-plus"></i> Add Friend
-                </button>
-                {% endif %}
             </div>
         </div>
 
@@ -128,12 +122,6 @@
                                 vs {{ match.player1_name if match.player1_name != user.username else match.player2_name }}
                             </div>
                         </div>
-                        <div class="text-right">
-                            <a href="/match/{{ match.id }}/replay" 
-                               class="text-blue-400 hover:text-blue-300 transition">
-                                <i class="bi bi-play-circle"></i> Replay
-                            </a>
-                        </div>
                     </div>
                 </div>
                 {% endfor %}
@@ -145,19 +133,4 @@
     </div>
 </div>
 
-<script>
-function addFriend() {
-    fetch('/friends/add', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username: '{{ user.username }}' })
-    }).then(r => r.json()).then(data => {
-        if (data.success) {
-            CodeClash.showNotification(data.message, 'success');
-        } else {
-            CodeClash.showNotification(data.message, 'error');
-        }
-    });
-}
-</script>
 {% endblock %}

@@ -1,0 +1,13 @@
+{
+  "title": "String to File-like Operations",
+  "description": "Write a function called `count_lines(text)` that counts the number of non-empty lines in a text string (simulate file reading). Split by newline.",
+  "difficulty": "Easy",
+  "starter_code": "def count_lines(text):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": ["line1\\nline2\\nline3"], "expected": 3},
+    {"input": ["hello\\n\\nworld"], "expected": 2},
+    {"input": ["single line"], "expected": 1},
+    {"input": ["a\\nb\\nc\\nd"], "expected": 4}
+  ],
+  "time_limit": 300
+}

@@ -155,10 +155,10 @@ IT-Olympics-Python-Programming/
 - [x] Tournament brackets with elimination rounds
 - [ ] Practice mode (solve challenges without competing)
 - [ ] More programming languages (JavaScript, Java, C++)
-- [x] Code replay feature
-- [x] Friend system and invitations
-- [x] Chat functionality in lobbies
-- [x] Spectator mode
+- [ ] Code replay feature
+- [ ] Friend system and invitations
+- [ ] Chat functionality in lobbies
+- [ ] Spectator mode
 - [x] Match history and statistics
 - [x] Achievements and badges
 

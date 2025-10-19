@@ -1,7 +1,0 @@
-{
-  "title": "Control Flow",
-  "description": "Master program flow with conditional statements, loops (for/while), and loop control (break/continue) to build dynamic programs.",
-  "icon": "bi-signpost-split",
-  "difficulty": "Beginner",
-  "order": 2
-}

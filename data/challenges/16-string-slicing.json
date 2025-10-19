@@ -1,0 +1,13 @@
+{
+  "title": "Extract Substring",
+  "description": "Write a function called `extract_middle(s)` that returns the middle portion of a string from index 2 to index -2 (excluding the last 2 characters).",
+  "difficulty": "Easy",
+  "starter_code": "def extract_middle(s):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": ["Python"], "expected": "tho"},
+    {"input": ["Programming"], "expected": "ogrammin"},
+    {"input": ["Hello"], "expected": "ll"},
+    {"input": ["abcdef"], "expected": "cd"}
+  ],
+  "time_limit": 300
+}

@@ -1,0 +1,13 @@
+{
+  "title": "Bubble Sort",
+  "description": "Write a function called `bubble_sort(arr)` that implements the bubble sort algorithm and returns the sorted array.",
+  "difficulty": "Medium",
+  "starter_code": "def bubble_sort(arr):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": [[5, 2, 8, 1, 9]], "expected": [1, 2, 5, 8, 9]},
+    {"input": [[3, 3, 1, 2]], "expected": [1, 2, 3, 3]},
+    {"input": [[10, 5, 3, 8]], "expected": [3, 5, 8, 10]},
+    {"input": [[1]], "expected": [1]}
+  ],
+  "time_limit": 300
+}

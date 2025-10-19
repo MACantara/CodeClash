@@ -1,0 +1,13 @@
+{
+  "title": "Format Output with Variables",
+  "description": "Write a function called `format_greeting(name, age)` that returns a formatted string: 'Hello, [name]! You are [age] years old.'",
+  "difficulty": "Easy",
+  "starter_code": "def format_greeting(name, age):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": ["Alice", 25], "expected": "Hello, Alice! You are 25 years old."},
+    {"input": ["Bob", 30], "expected": "Hello, Bob! You are 30 years old."},
+    {"input": ["Charlie", 18], "expected": "Hello, Charlie! You are 18 years old."},
+    {"input": ["Diana", 45], "expected": "Hello, Diana! You are 45 years old."}
+  ],
+  "time_limit": 300
+}

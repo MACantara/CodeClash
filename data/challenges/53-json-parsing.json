@@ -1,0 +1,13 @@
+{
+  "title": "JSON Parsing",
+  "description": "Write a function called `parse_json_string(json_str)` that parses a JSON string and returns the value of the 'name' key. Use the json module.",
+  "difficulty": "Easy",
+  "starter_code": "import json\n\ndef parse_json_string(json_str):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": ["{\"name\": \"Alice\", \"age\": 30}"], "expected": "Alice"},
+    {"input": ["{\"name\": \"Bob\", \"city\": \"NYC\"}"], "expected": "Bob"},
+    {"input": ["{\"age\": 25, \"name\": \"Charlie\"}"], "expected": "Charlie"},
+    {"input": ["{\"name\": \"Diana\"}"], "expected": "Diana"}
+  ],
+  "time_limit": 300
+}

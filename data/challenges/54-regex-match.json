@@ -1,0 +1,13 @@
+{
+  "title": "Regular Expression Match",
+  "description": "Write a function called `find_emails(text)` that uses regex to find and return a list of all email addresses in the text (format: word@word.word). Use the re module.",
+  "difficulty": "Medium",
+  "starter_code": "import re\n\ndef find_emails(text):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": ["Contact us at info@example.com"], "expected": ["info@example.com"]},
+    {"input": ["Email: john@test.com or jane@test.com"], "expected": ["john@test.com", "jane@test.com"]},
+    {"input": ["No emails here"], "expected": []},
+    {"input": ["Send to admin@site.org"], "expected": ["admin@site.org"]}
+  ],
+  "time_limit": 300
+}

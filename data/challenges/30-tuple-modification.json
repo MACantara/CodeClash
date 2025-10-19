@@ -1,0 +1,13 @@
+{
+  "title": "Tuple to List Conversion",
+  "description": "Write a function called `tuple_to_list_modify(tup, index, value)` that converts a tuple to a list, modifies the element at index, and returns it as a tuple.",
+  "difficulty": "Medium",
+  "starter_code": "def tuple_to_list_modify(tup, index, value):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": [[1, 2, 3], 1, 10], "expected": [1, 10, 3]},
+    {"input": [["a", "b", "c"], 0, "z"], "expected": ["z", "b", "c"]},
+    {"input": [[5, 10, 15, 20], 3, 25], "expected": [5, 10, 15, 25]},
+    {"input": [[true, false], 1, true], "expected": [true, true]}
+  ],
+  "time_limit": 300
+}

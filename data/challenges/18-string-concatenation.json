@@ -1,0 +1,13 @@
+{
+  "title": "String Concatenation",
+  "description": "Write a function called `join_with_separator(words, separator)` that joins a list of words with the given separator.",
+  "difficulty": "Easy",
+  "starter_code": "def join_with_separator(words, separator):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": [["apple", "banana", "cherry"], ", "], "expected": "apple, banana, cherry"},
+    {"input": [["one", "two", "three"], "-"], "expected": "one-two-three"},
+    {"input": [["hello", "world"], " "], "expected": "hello world"},
+    {"input": [["a", "b", "c"], ""], "expected": "abc"}
+  ],
+  "time_limit": 300
+}

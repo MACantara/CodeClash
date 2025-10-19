@@ -1,0 +1,13 @@
+{
+  "title": "Class Inheritance",
+  "description": "Create a base class `Animal` with __init__(name) and a `Dog` subclass that adds a method bark() returning '{name} says Woof!'. Write a function called `make_dog_bark(name)` that creates a Dog and returns the bark message.",
+  "difficulty": "Medium",
+  "starter_code": "class Animal:\n    # Write your code here\n    pass\n\nclass Dog(Animal):\n    # Write your code here\n    pass\n\ndef make_dog_bark(name):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": ["Buddy"], "expected": "Buddy says Woof!"},
+    {"input": ["Max"], "expected": "Max says Woof!"},
+    {"input": ["Charlie"], "expected": "Charlie says Woof!"},
+    {"input": ["Rocky"], "expected": "Rocky says Woof!"}
+  ],
+  "time_limit": 300
+}

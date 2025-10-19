@@ -1,0 +1,13 @@
+{
+  "title": "Check Data Type",
+  "description": "Write a function called `identify_type(value)` that returns the type name of the input value as a string (e.g., 'int', 'str', 'list', 'dict').",
+  "difficulty": "Easy",
+  "starter_code": "def identify_type(value):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": [42], "expected": "int"},
+    {"input": ["hello"], "expected": "str"},
+    {"input": [[1, 2, 3]], "expected": "list"},
+    {"input": [{"key": "value"}], "expected": "dict"}
+  ],
+  "time_limit": 300
+}
