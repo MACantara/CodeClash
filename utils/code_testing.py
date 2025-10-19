@@ -54,13 +54,29 @@ def test_code(code, test_input='', expected_output=''):
         }
 
 
+def extract_function_name(code):
+    """
+    Extract the first function name from Python code.
+    
+    Args:
+        code: Python code string
+        
+    Returns:
+        Function name as string, or None if not found
+    """
+    import re
+    match = re.search(r'def\s+(\w+)\s*\(', code)
+    return match.group(1) if match else None
+
+
 def run_code_tests(code, test_cases):
     """
     Run code against test cases.
     
     Args:
         code: Python code string to test
-        test_cases: List of test case dictionaries with 'function', 'input', and 'expected' keys
+        test_cases: List of test case dictionaries with 'input' and 'expected' keys
+                   (optionally with 'function' key; if missing, extracts from code)
         
     Returns:
         Dictionary with 'passed', 'total', 'errors', and 'details' keys
@@ -69,6 +85,11 @@ def run_code_tests(code, test_cases):
     total = len(test_cases)
     errors = 0
     details = []
+    
+    # Extract function name from code if not specified in test cases
+    func_name = None
+    if test_cases and 'function' not in test_cases[0]:
+        func_name = extract_function_name(code)
     
     for test in test_cases:
         try:
@@ -80,12 +101,15 @@ def run_code_tests(code, test_cases):
             namespace = {}
             exec(code, namespace)
             
-            # Get the function to test (assume it's the first function defined)
-            func_name = test['function']
-            if func_name not in namespace:
-                raise Exception(f"Function '{func_name}' not found")
+            # Get the function to test
+            target_func_name = test.get('function', func_name)
+            if target_func_name is None:
+                raise Exception("Could not determine function name from code")
             
-            func = namespace[func_name]
+            if target_func_name not in namespace:
+                raise Exception(f"Function '{target_func_name}' not found")
+            
+            func = namespace[target_func_name]
             
             # Run the test
             result = func(*test['input'])
