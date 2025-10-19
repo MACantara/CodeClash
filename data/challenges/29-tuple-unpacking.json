@@ -1,0 +1,13 @@
+{
+  "title": "Tuple Unpacking",
+  "description": "Write a function called `unpack_tuple(data)` that takes a tuple of (name, age, city) and returns a formatted string: '{name} is {age} years old and lives in {city}'.",
+  "difficulty": "Easy",
+  "starter_code": "def unpack_tuple(data):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": [["Alice", 30, "NYC"]], "expected": "Alice is 30 years old and lives in NYC"},
+    {"input": [["Bob", 25, "LA"]], "expected": "Bob is 25 years old and lives in LA"},
+    {"input": [["Charlie", 35, "Chicago"]], "expected": "Charlie is 35 years old and lives in Chicago"},
+    {"input": [["Diana", 28, "Boston"]], "expected": "Diana is 28 years old and lives in Boston"}
+  ],
+  "time_limit": 300
+}

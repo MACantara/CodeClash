@@ -1,0 +1,13 @@
+{
+  "title": "Format String Template",
+  "description": "Write a function called `create_email(name, domain)` that returns an email address in the format: '{name}@{domain}.com' (all lowercase).",
+  "difficulty": "Easy",
+  "starter_code": "def create_email(name, domain):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": ["John", "example"], "expected": "john@example.com"},
+    {"input": ["Alice", "company"], "expected": "alice@company.com"},
+    {"input": ["BOB", "TEST"], "expected": "bob@test.com"},
+    {"input": ["Sarah", "gmail"], "expected": "sarah@gmail.com"}
+  ],
+  "time_limit": 300
+}

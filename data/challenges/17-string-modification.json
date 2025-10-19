@@ -1,0 +1,13 @@
+{
+  "title": "String Modifications",
+  "description": "Write a function called `modify_string(s)` that returns the string in uppercase with all spaces removed.",
+  "difficulty": "Easy",
+  "starter_code": "def modify_string(s):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": ["hello world"], "expected": "HELLOWORLD"},
+    {"input": ["python programming"], "expected": "PYTHONPROGRAMMING"},
+    {"input": ["code clash"], "expected": "CODECLASH"},
+    {"input": ["a b c"], "expected": "ABC"}
+  ],
+  "time_limit": 300
+}

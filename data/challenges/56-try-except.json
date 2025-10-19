@@ -1,0 +1,13 @@
+{
+  "title": "Safe Division with Exception",
+  "description": "Write a function called `divide_safe(a, b)` that returns the division result. If division by zero occurs, catch the exception and return 'Error'.",
+  "difficulty": "Easy",
+  "starter_code": "def divide_safe(a, b):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": [10, 2], "expected": 5.0},
+    {"input": [15, 3], "expected": 5.0},
+    {"input": [10, 0], "expected": "Error"},
+    {"input": [100, 4], "expected": 25.0}
+  ],
+  "time_limit": 300
+}

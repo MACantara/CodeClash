@@ -1,0 +1,13 @@
+{
+  "title": "Invert Dictionary",
+  "description": "Write a function called `invert_dict(d)` that swaps keys and values in a dictionary. Assume all values are unique.",
+  "difficulty": "Medium",
+  "starter_code": "def invert_dict(d):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": [{"a": 1, "b": 2, "c": 3}], "expected": {"1": "a", "2": "b", "3": "c"}},
+    {"input": [{"name": "Alice", "age": "30"}], "expected": {"Alice": "name", "30": "age"}},
+    {"input": [{"x": "10", "y": "20"}], "expected": {"10": "x", "20": "y"}},
+    {"input": [{"key": "value"}], "expected": {"value": "key"}}
+  ],
+  "time_limit": 300
+}

@@ -1,0 +1,13 @@
+{
+  "title": "Linear Search",
+  "description": "Write a function called `linear_search(arr, target)` that returns the index of target in arr, or -1 if not found.",
+  "difficulty": "Easy",
+  "starter_code": "def linear_search(arr, target):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": [[1, 2, 3, 4, 5], 3], "expected": 2},
+    {"input": [[10, 20, 30, 40], 40], "expected": 3},
+    {"input": [[5, 10, 15], 7], "expected": -1},
+    {"input": [["a", "b", "c"], "b"], "expected": 1}
+  ],
+  "time_limit": 300
+}

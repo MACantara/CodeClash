@@ -1,0 +1,13 @@
+{
+  "title": "Count in Tuple",
+  "description": "Write a function called `count_occurrences(tup, value)` that returns the number of times a value appears in a tuple.",
+  "difficulty": "Easy",
+  "starter_code": "def count_occurrences(tup, value):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": [[1, 2, 3, 2, 2, 4], 2], "expected": 3},
+    {"input": [["a", "b", "a", "c", "a"], "a"], "expected": 3},
+    {"input": [[5, 5, 5, 5], 5], "expected": 4},
+    {"input": [[1, 2, 3], 4], "expected": 0}
+  ],
+  "time_limit": 300
+}

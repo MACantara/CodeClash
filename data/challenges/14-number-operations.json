@@ -1,0 +1,13 @@
+{
+  "title": "Number Operations",
+  "description": "Write a function called `calculate(a, b)` that returns a dictionary with keys 'sum', 'difference', 'product', and 'quotient' containing the respective calculations. Use floor division for quotient.",
+  "difficulty": "Easy",
+  "starter_code": "def calculate(a, b):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": [10, 5], "expected": {"sum": 15, "difference": 5, "product": 50, "quotient": 2}},
+    {"input": [20, 4], "expected": {"sum": 24, "difference": 16, "product": 80, "quotient": 5}},
+    {"input": [15, 3], "expected": {"sum": 18, "difference": 12, "product": 45, "quotient": 5}},
+    {"input": [100, 10], "expected": {"sum": 110, "difference": 90, "product": 1000, "quotient": 10}}
+  ],
+  "time_limit": 300
+}

@@ -1,0 +1,13 @@
+{
+  "title": "Type Conversion",
+  "description": "Write a function called `convert_and_sum(str_num1, str_num2)` that takes two string numbers, converts them to integers, and returns their sum.",
+  "difficulty": "Easy",
+  "starter_code": "def convert_and_sum(str_num1, str_num2):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": ["10", "20"], "expected": 30},
+    {"input": ["5", "15"], "expected": 20},
+    {"input": ["-3", "3"], "expected": 0},
+    {"input": ["100", "200"], "expected": 300}
+  ],
+  "time_limit": 300
+}

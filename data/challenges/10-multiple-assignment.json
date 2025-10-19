@@ -1,0 +1,13 @@
+{
+  "title": "Swap Variables",
+  "description": "Write a function called `swap_values(a, b)` that returns a tuple with the values swapped.",
+  "difficulty": "Easy",
+  "starter_code": "def swap_values(a, b):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": [1, 2], "expected": [2, 1]},
+    {"input": ["hello", "world"], "expected": ["world", "hello"]},
+    {"input": [true, false], "expected": [false, true]},
+    {"input": [10.5, 20.3], "expected": [20.3, 10.5]}
+  ],
+  "time_limit": 300
+}

@@ -1,0 +1,13 @@
+{
+  "title": "Method Overriding",
+  "description": "Create a base class `Shape` with area() returning 0. Create `Circle` subclass with __init__(radius) that overrides area() to return π*r². Write function `get_circle_area(radius)` (use 3.14 for π).",
+  "difficulty": "Medium",
+  "starter_code": "class Shape:\n    # Write your code here\n    pass\n\nclass Circle(Shape):\n    # Write your code here\n    pass\n\ndef get_circle_area(radius):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": [5], "expected": 78.5},
+    {"input": [10], "expected": 314.0},
+    {"input": [3], "expected": 28.26},
+    {"input": [1], "expected": 3.14}
+  ],
+  "time_limit": 300
+}

@@ -1,0 +1,13 @@
+{
+  "title": "Factorial Recursion",
+  "description": "Write a function called `factorial(n)` that calculates the factorial of n using recursion. Return 1 for n <= 1.",
+  "difficulty": "Medium",
+  "starter_code": "def factorial(n):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": [5], "expected": 120},
+    {"input": [3], "expected": 6},
+    {"input": [0], "expected": 1},
+    {"input": [1], "expected": 1}
+  ],
+  "time_limit": 300
+}

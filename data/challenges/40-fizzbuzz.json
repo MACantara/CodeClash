@@ -1,0 +1,13 @@
+{
+  "title": "FizzBuzz",
+  "description": "Write a function called `fizzbuzz(n)` that returns a list of strings from 1 to n. For multiples of 3, use 'Fizz'. For multiples of 5, use 'Buzz'. For multiples of both, use 'FizzBuzz'.",
+  "difficulty": "Medium",
+  "starter_code": "def fizzbuzz(n):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": [15], "expected": ["1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz", "11", "Fizz", "13", "14", "FizzBuzz"]},
+    {"input": [5], "expected": ["1", "2", "Fizz", "4", "Buzz"]},
+    {"input": [3], "expected": ["1", "2", "Fizz"]},
+    {"input": [1], "expected": ["1"]}
+  ],
+  "time_limit": 300
+}

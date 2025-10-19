@@ -1,0 +1,13 @@
+{
+  "title": "Range Sum",
+  "description": "Write a function called `sum_range(start, end, step)` that returns the sum of numbers from start to end (exclusive) with the given step.",
+  "difficulty": "Easy",
+  "starter_code": "def sum_range(start, end, step):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": [1, 10, 1], "expected": 45},
+    {"input": [0, 10, 2], "expected": 20},
+    {"input": [5, 15, 3], "expected": 24},
+    {"input": [10, 20, 5], "expected": 30}
+  ],
+  "time_limit": 300
+}

@@ -1,0 +1,13 @@
+{
+  "title": "Custom Iterator",
+  "description": "Create a class `Counter` that implements __iter__ and __next__ to count from 0 to n-1. Write function `count_to(n)` that returns a list of all values from Counter(n).",
+  "difficulty": "Hard",
+  "starter_code": "class Counter:\n    # Write your code here\n    pass\n\ndef count_to(n):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": [5], "expected": [0, 1, 2, 3, 4]},
+    {"input": [3], "expected": [0, 1, 2]},
+    {"input": [1], "expected": [0]},
+    {"input": [10], "expected": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
+  ],
+  "time_limit": 300
+}

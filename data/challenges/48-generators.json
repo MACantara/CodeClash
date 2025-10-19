@@ -1,0 +1,13 @@
+{
+  "title": "Number Generator",
+  "description": "Write a function called `generate_numbers(n)` that is a generator yielding numbers from 0 to n-1. Return the list of all generated numbers.",
+  "difficulty": "Medium",
+  "starter_code": "def generate_numbers(n):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": [5], "expected": [0, 1, 2, 3, 4]},
+    {"input": [3], "expected": [0, 1, 2]},
+    {"input": [1], "expected": [0]},
+    {"input": [10], "expected": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
+  ],
+  "time_limit": 300
+}

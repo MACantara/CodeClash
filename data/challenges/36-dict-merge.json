@@ -1,0 +1,13 @@
+{
+  "title": "Merge Dictionaries",
+  "description": "Write a function called `merge_dicts(dict1, dict2)` that merges two dictionaries. If a key exists in both, use the value from dict2.",
+  "difficulty": "Easy",
+  "starter_code": "def merge_dicts(dict1, dict2):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": [{"a": 1, "b": 2}, {"b": 3, "c": 4}], "expected": {"a": 1, "b": 3, "c": 4}},
+    {"input": [{"x": 10}, {"y": 20}], "expected": {"x": 10, "y": 20}},
+    {"input": [{"name": "Alice"}, {"name": "Bob", "age": 30}], "expected": {"name": "Bob", "age": 30}},
+    {"input": [{}, {"key": "value"}], "expected": {"key": "value"}}
+  ],
+  "time_limit": 300
+}

@@ -1,0 +1,13 @@
+{
+  "title": "Create a Simple Class",
+  "description": "Write a class called `Rectangle` with __init__(width, height) and a method area() that returns the area. Then create a function called `get_area(width, height)` that creates a Rectangle and returns its area.",
+  "difficulty": "Easy",
+  "starter_code": "class Rectangle:\n    # Write your code here\n    pass\n\ndef get_area(width, height):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": [5, 10], "expected": 50},
+    {"input": [3, 7], "expected": 21},
+    {"input": [10, 10], "expected": 100},
+    {"input": [2, 8], "expected": 16}
+  ],
+  "time_limit": 300
+}

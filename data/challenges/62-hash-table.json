@@ -1,0 +1,13 @@
+{
+  "title": "Hash Table - Word Count",
+  "description": "Write a function called `count_words(text)` that returns a dictionary with word counts. Split by spaces and ignore case.",
+  "difficulty": "Easy",
+  "starter_code": "def count_words(text):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": ["hello world hello"], "expected": {"hello": 2, "world": 1}},
+    {"input": ["Python is fun Python"], "expected": {"python": 2, "is": 1, "fun": 1}},
+    {"input": ["one two three"], "expected": {"one": 1, "two": 1, "three": 1}},
+    {"input": ["a a a"], "expected": {"a": 3}}
+  ],
+  "time_limit": 300
+}
