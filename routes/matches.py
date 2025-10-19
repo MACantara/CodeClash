@@ -91,6 +91,36 @@ def match(match_id):
     return render_template('match.html', match=match_data, user_id=session['user_id'])
 
 
+@matches_bp.route('/match/<int:match_id>/run', methods=['POST'])
+def run_solution(match_id):
+    """Run code without submitting (for testing)"""
+    if 'user_id' not in session:
+        return jsonify({'success': False, 'message': 'Not logged in'})
+    
+    data = request.json
+    code = data.get('code')
+    
+    match_obj = db.session.get(Match, match_id)
+    
+    if not match_obj:
+        return jsonify({'success': False, 'message': 'Match not found'})
+    
+    if session['user_id'] not in [match_obj.player1_id, match_obj.player2_id]:
+        return jsonify({'success': False, 'message': 'Unauthorized'})
+    
+    # Run test cases
+    test_cases = match_obj.challenge.get_test_cases()
+    results = run_code_tests(code, test_cases)
+    
+    return jsonify({
+        'success': True,
+        'passed': results['passed'],
+        'total': results['total'],
+        'errors': results['errors'],
+        'test_results': results['details']
+    })
+
+
 @matches_bp.route('/match/<int:match_id>/submit', methods=['POST'])
 def submit_solution(match_id):
     """Submit solution for a match"""

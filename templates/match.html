@@ -207,7 +207,7 @@
         btn.innerHTML = '<i class="bi bi-hourglass-split"></i> Running...';
         
         try {
-            const response = await fetch(`/match/${matchId}/submit`, {
+            const response = await fetch(`/match/${matchId}/run`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ code })
