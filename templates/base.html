@@ -34,17 +34,8 @@
                         <i class="bi bi-house-door"></i> <span class="hidden lg:inline">Home</span>
                     </a>
                     {% if session.get('user_id') %}
-                    <a href="/learn" class="text-gray-300 hover:text-white transition flex items-center gap-2 text-sm lg:text-base">
-                        <i class="bi bi-book"></i> <span class="hidden lg:inline">Learn</span>
-                    </a>
                     <a href="/lobby" class="text-gray-300 hover:text-white transition flex items-center gap-2 text-sm lg:text-base">
                         <i class="bi bi-door-open"></i> <span class="hidden lg:inline">Lobby</span>
-                    </a>
-                    <a href="/matches" class="text-gray-300 hover:text-white transition flex items-center gap-2 text-sm lg:text-base">
-                        <i class="bi bi-eye"></i> <span class="hidden lg:inline">Watch</span>
-                    </a>
-                    <a href="/friends" class="text-gray-300 hover:text-white transition flex items-center gap-2 text-sm lg:text-base">
-                        <i class="bi bi-people"></i> <span class="hidden lg:inline">Friends</span>
                     </a>
                     <a href="/leaderboard" class="text-gray-300 hover:text-white transition flex items-center gap-2 text-sm lg:text-base">
                         <i class="bi bi-bar-chart"></i> <span class="hidden lg:inline">Leaderboard</span>
@@ -74,17 +65,8 @@
                     <i class="bi bi-house-door"></i> Home
                 </a>
                 {% if session.get('user_id') %}
-                <a href="/learn" class="block text-gray-300 hover:text-white hover:bg-gray-700 px-4 py-3 rounded transition">
-                    <i class="bi bi-book"></i> Learn Python
-                </a>
                 <a href="/lobby" class="block text-gray-300 hover:text-white hover:bg-gray-700 px-4 py-3 rounded transition">
                     <i class="bi bi-door-open"></i> Lobby
-                </a>
-                <a href="/matches" class="block text-gray-300 hover:text-white hover:bg-gray-700 px-4 py-3 rounded transition">
-                    <i class="bi bi-eye"></i> Watch Matches
-                </a>
-                <a href="/friends" class="block text-gray-300 hover:text-white hover:bg-gray-700 px-4 py-3 rounded transition">
-                    <i class="bi bi-people"></i> Friends
                 </a>
                 <a href="/leaderboard" class="block text-gray-300 hover:text-white hover:bg-gray-700 px-4 py-3 rounded transition">
                     <i class="bi bi-bar-chart"></i> Leaderboard

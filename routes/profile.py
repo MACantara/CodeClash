@@ -1,6 +1,6 @@
 """Profile and leaderboard routes"""
 from flask import Blueprint, render_template, session, redirect, url_for
-from models import db, User, Match, UserAchievement, Friendship
+from models import db, User, Match, UserAchievement
 
 profile_bp = Blueprint('profile', __name__)
 
@@ -85,12 +85,6 @@ def user_profile(username=None):
             'earned_at': ua.earned_at.isoformat() if ua.earned_at else None
         })
     
-    # Get friends count
-    friends_count = Friendship.query.filter(
-        db.or_(Friendship.user_id == user.id, Friendship.friend_id == user.id),
-        Friendship.status == 'accepted'
-    ).count()
-    
     # Convert stats to dict
     stats_dict = {
         'user_id': stats.user_id,
@@ -117,5 +111,4 @@ def user_profile(username=None):
                          stats=stats_dict,
                          matches=match_list,
                          achievements=achievement_list,
-                         friends_count=friends_count,
                          is_own_profile=(session.get('user_id') == user.id))

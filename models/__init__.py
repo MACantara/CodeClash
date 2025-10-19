@@ -10,12 +10,10 @@ db = SQLAlchemy()
 # Import all models
 from .user import User, UserStatistics
 from .challenge import Challenge
-from .match import Match, MatchSpectator, CodeSnapshot
+from .match import Match
 from .lobby import Lobby, LobbyPlayer, LobbyInvitation
-from .friendship import Friendship
 from .chat import ChatMessage
 from .achievement import Achievement, UserAchievement
-from .learning import Module, Lesson, LessonProgress, Quiz, QuizAttempt
 
 # Export all models
 __all__ = [
@@ -24,18 +22,10 @@ __all__ = [
     'UserStatistics',
     'Challenge',
     'Match',
-    'MatchSpectator',
-    'CodeSnapshot',
     'Lobby',
     'LobbyPlayer',
     'LobbyInvitation',
-    'Friendship',
     'ChatMessage',
     'Achievement',
     'UserAchievement',
-    'Module',
-    'Lesson',
-    'LessonProgress',
-    'Quiz',
-    'QuizAttempt',
 ]

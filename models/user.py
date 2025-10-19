@@ -18,8 +18,6 @@ class User(db.Model):
     # Relationships
     statistics = db.relationship('UserStatistics', backref='user', uselist=False, cascade='all, delete-orphan')
     achievements = db.relationship('UserAchievement', backref='user', cascade='all, delete-orphan')
-    friendships_sent = db.relationship('Friendship', foreign_keys='Friendship.user_id', backref='sender', cascade='all, delete-orphan')
-    friendships_received = db.relationship('Friendship', foreign_keys='Friendship.friend_id', backref='receiver', cascade='all, delete-orphan')
     
     def __repr__(self):
         return f'<User {self.username}>'

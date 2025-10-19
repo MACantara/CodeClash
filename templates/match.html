@@ -178,22 +178,6 @@
     // Start timer immediately
     startTimer();
     
-    // Auto-save code snapshots every 1 second for replay feature
-    setInterval(async () => {
-        const code = document.getElementById('codeEditor').value;
-        if (code && code.trim() !== '') {
-            try {
-                await fetch(`/match/${matchId}/save_snapshot`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ code })
-                });
-            } catch (error) {
-                console.error('Failed to save snapshot:', error);
-            }
-        }
-    }, 1000); // Save every 1 second for detailed replay
-    
     // Run code
     document.getElementById('runBtn').addEventListener('click', async () => {
         const code = document.getElementById('codeEditor').value;
