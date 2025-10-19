@@ -15,7 +15,17 @@
         </div>
 
         <!-- Quick Actions -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8">
+            <!-- Practice Mode -->
+            <button onclick="startPractice()" 
+                    class="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold py-5 sm:py-6 rounded-lg shadow-xl transition transform hover:scale-105 flex flex-col items-center gap-2 sm:gap-3">
+                <i class="bi bi-book-fill text-4xl sm:text-5xl"></i>
+                <div>
+                    <div class="text-lg sm:text-xl">Practice</div>
+                    <div class="text-xs sm:text-sm opacity-90">Solo challenges</div>
+                </div>
+            </button>
+            
             <!-- Quick Match -->
             <button onclick="quickMatch()" 
                     class="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-bold py-5 sm:py-6 rounded-lg shadow-xl transition transform hover:scale-105 flex flex-col items-center gap-2 sm:gap-3">
@@ -29,8 +39,8 @@
             <!-- Quick Match by Difficulty -->
             <div class="bg-gray-800 p-3 sm:p-4 rounded-lg border border-gray-700">
                 <h3 class="font-bold mb-2 sm:mb-3 flex items-center gap-2 text-sm sm:text-base">
-                    <i class="bi bi-funnel text-blue-500"></i>
-                    <span class="hidden sm:inline">Quick Match by</span> Difficulty
+                    <i class="bi bi-funnel text-green-500"></i>
+                    <span class="hidden sm:inline">Match by</span> Difficulty
                 </h3>
                 <div class="space-y-2">
                     <button onclick="quickMatch('Easy')" 
@@ -42,6 +52,28 @@
                         Medium
                     </button>
                     <button onclick="quickMatch('Hard')" 
+                            class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-3 sm:px-4 rounded transition text-sm sm:text-base">
+                        Hard
+                    </button>
+                </div>
+            </div>
+
+            <!-- Practice by Difficulty -->
+            <div class="bg-gray-800 p-3 sm:p-4 rounded-lg border border-gray-700">
+                <h3 class="font-bold mb-2 sm:mb-3 flex items-center gap-2 text-sm sm:text-base">
+                    <i class="bi bi-funnel text-blue-500"></i>
+                    <span class="hidden sm:inline">Practice by</span> Difficulty
+                </h3>
+                <div class="space-y-2">
+                    <button onclick="startPractice('Easy')" 
+                            class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-3 sm:px-4 rounded transition text-sm sm:text-base">
+                        Easy
+                    </button>
+                    <button onclick="startPractice('Medium')" 
+                            class="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-3 sm:px-4 rounded transition text-sm sm:text-base">
+                        Medium
+                    </button>
+                    <button onclick="startPractice('Hard')" 
                             class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-3 sm:px-4 rounded transition text-sm sm:text-base">
                         Hard
                     </button>
@@ -252,6 +284,47 @@
             }
         } else {
             CodeClash.showNotification(data.message, 'error');
+        }
+    }
+
+    // Start practice mode
+    async function startPractice(difficulty = null) {
+        const response = await fetch('/challenges', {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        });
+        
+        let challenges = await response.json();
+        
+        // Filter by difficulty if specified
+        if (difficulty) {
+            challenges = challenges.filter(c => c.difficulty === difficulty);
+        }
+        
+        if (challenges.length === 0) {
+            CodeClash.showNotification('No challenges available for this difficulty', 'error');
+            return;
+        }
+        
+        // Pick a random challenge
+        const challenge = challenges[Math.floor(Math.random() * challenges.length)];
+        
+        // Create a practice match
+        const createResponse = await fetch('/match/create', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                mode: 'practice',
+                challenge_id: challenge.id
+            })
+        });
+        
+        const matchData = await createResponse.json();
+        
+        if (matchData.success) {
+            window.location.href = `/match/${matchData.match_id}`;
+        } else {
+            CodeClash.showNotification(matchData.message || 'Failed to start practice', 'error');
         }
     }
 

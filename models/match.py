@@ -7,8 +7,9 @@ class Match(db.Model):
     __tablename__ = 'matches'
     
     id = db.Column(db.Integer, primary_key=True)
+    mode = db.Column(db.String(20), default='pvp')  # 'pvp' or 'practice'
     player1_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    player2_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    player2_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=True)  # NULL for practice mode
     challenge_id = db.Column(db.Integer, db.ForeignKey('challenges.id'), nullable=False)
     status = db.Column(db.String(20), default='pending')
     player1_code = db.Column(db.Text)
