@@ -175,7 +175,7 @@
     const userId = {{ user_id }};
     const matchMode = '{{ match.mode }}';
     const player1Id = {{ match.player1_id }};
-    const player2Id = {{ match.player2_id }};
+    const player2Id = {{ match.player2_id if match.player2_id else 'null' }};
     {% if match.started_at %}
     const matchStarted = new Date('{{ match.started_at }}');
     {% else %}
