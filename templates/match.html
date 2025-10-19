@@ -79,9 +79,7 @@
                     <span>Your Solution</span>
                 </h2>
                 
-                <textarea id="codeEditor" 
-                          class="w-full h-64 sm:h-80 md:h-96 p-2 sm:p-4 bg-gray-900 text-green-400 font-mono text-xs sm:text-sm rounded border border-gray-600 focus:outline-none focus:border-blue-500"
-                          spellcheck="false">{{ match.starter_code }}</textarea>
+                <div id="codeEditor" class="w-full rounded border border-gray-600" style="height: 400px;"></div>
                 
                 <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-3 sm:mt-4">
                     <button id="runBtn" 
@@ -155,6 +153,28 @@
     const matchStarted = new Date();
     {% endif %}
     let timerInterval = null;
+    let aceEditor = null;
+    
+    // Initialize Ace Editor
+    function initializeAceEditor() {
+        aceEditor = ace.edit('codeEditor');
+        aceEditor.setTheme('ace/theme/dracula');
+        aceEditor.session.setMode('ace/mode/python');
+        aceEditor.setFontSize(14);
+        aceEditor.session.setTabSize(4);
+        aceEditor.session.setUseSoftTabs(true);
+        aceEditor.setShowPrintMargin(false);
+        aceEditor.setValue(`{{ match.starter_code }}`);
+        aceEditor.session.selection.clearSelection();
+        aceEditor.setOptions({
+            enableBasicAutocompletion: true,
+            enableLiveAutocompletion: true,
+            enableSnippets: true
+        });
+    }
+    
+    // Initialize editor when page loads
+    initializeAceEditor();
     
     // Set difficulty badge color
     const difficultyColors = {
@@ -180,7 +200,7 @@
     
     // Run code
     document.getElementById('runBtn').addEventListener('click', async () => {
-        const code = document.getElementById('codeEditor').value;
+        const code = aceEditor.getValue();
         
         const btn = document.getElementById('runBtn');
         btn.disabled = true;
@@ -210,7 +230,7 @@
             return;
         }
         
-        const code = document.getElementById('codeEditor').value;
+        const code = aceEditor.getValue();
         
         const btn = document.getElementById('submitBtn');
         btn.disabled = true;
@@ -237,6 +257,7 @@
                 btn.disabled = true;
                 btn.innerHTML = '<i class="bi bi-check-circle"></i> Submitted';
                 document.getElementById('runBtn').disabled = true;
+                aceEditor.setReadOnly(true);
                 
                 // Check match status
                 checkMatchStatus();
