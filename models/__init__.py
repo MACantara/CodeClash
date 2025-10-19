@@ -12,7 +12,6 @@ from .user import User, UserStatistics
 from .challenge import Challenge
 from .match import Match
 from .lobby import Lobby, LobbyPlayer, LobbyInvitation
-from .chat import ChatMessage
 from .achievement import Achievement, UserAchievement
 
 # Export all models
@@ -25,7 +24,6 @@ __all__ = [
     'Lobby',
     'LobbyPlayer',
     'LobbyInvitation',
-    'ChatMessage',
     'Achievement',
     'UserAchievement',
 ]

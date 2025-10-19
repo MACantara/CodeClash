@@ -301,11 +301,9 @@ Returns: { success, lobby_id, match_started, created?, match_id? }
 3. **Tournament Mode**: Bracket-style multi-round competitions
 4. **Team Battles**: 2v2 or team-based coding challenges
 5. **Spectator Mode**: Watch matches in progress
-6. **Lobby Chat**: Communication before match starts
 7. **Private Lobbies**: Password-protected rooms
-8. **Custom Match Settings**: Time limits, specific constraints
-9. **Rematch System**: Quick rematches after games
-10. **Friend Invites**: Direct invitation system
+8. **Rematch System**: Quick rematches after games
+9. **Friend Invites**: Direct invitation system
 
 ## Conclusion
 

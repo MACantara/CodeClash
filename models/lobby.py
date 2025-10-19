@@ -22,7 +22,6 @@ class Lobby(db.Model):
     challenge = db.relationship('Challenge')
     match = db.relationship('Match', foreign_keys=[match_id])
     players = db.relationship('LobbyPlayer', backref='lobby', cascade='all, delete-orphan')
-    messages = db.relationship('ChatMessage', backref='lobby', cascade='all, delete-orphan')
     invitations = db.relationship('LobbyInvitation', backref='lobby', cascade='all, delete-orphan')
     
     def __repr__(self):

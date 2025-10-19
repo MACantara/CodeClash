@@ -81,11 +81,11 @@
             </div>
         </div>
 
-        <!-- Player Status with Chat -->
+        <!-- Player Status -->
         <div id="playerStatus" class="hidden bg-blue-900/30 rounded-lg p-6 border-2 border-blue-500">
-            <div class="grid md:grid-cols-3 gap-6">
+            <div>
                 <!-- Lobby Info -->
-                <div class="md:col-span-2">
+                <div>
                     <div class="flex justify-between items-start mb-4">
                         <div>
                             <h3 class="text-xl font-bold mb-2 flex items-center gap-2">
@@ -102,32 +102,6 @@
                         <button onclick="leaveLobby()" 
                                 class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded transition">
                             Leave Lobby
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Lobby Chat -->
-                <div class="bg-gray-800 rounded-lg p-4 border border-gray-700">
-                    <h4 class="font-bold mb-3 flex items-center gap-2">
-                        <i class="bi bi-chat-dots-fill text-blue-500"></i>
-                        Lobby Chat
-                    </h4>
-                    
-                    <!-- Messages -->
-                    <div id="chatMessages" class="bg-gray-900 rounded p-3 h-48 overflow-y-auto mb-3 text-sm">
-                        <p class="text-gray-500 text-center text-xs">Chat is active when in a lobby</p>
-                    </div>
-
-                    <!-- Input -->
-                    <div class="flex gap-2">
-                        <input type="text" 
-                               id="chatInput" 
-                               placeholder="Type a message..." 
-                               class="flex-1 px-3 py-2 bg-gray-700 border border-gray-600 rounded text-sm focus:outline-none focus:border-blue-500"
-                               onkeypress="if(event.key==='Enter') sendChatMessage()">
-                        <button onclick="sendChatMessage()" 
-                                class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition">
-                            <i class="bi bi-send-fill"></i>
                         </button>
                     </div>
                 </div>
@@ -332,7 +306,7 @@
         document.getElementById('playerStatus').classList.add('hidden');
     }
 
-    // Poll lobby status and chat
+    // Poll lobby status
     function startPolling() {
         if (pollInterval) return;
         
@@ -352,9 +326,6 @@
                 document.getElementById('currentLobbyName').textContent = lobby.name;
                 document.getElementById('currentChallengeName').textContent = lobby.challenge_name;
                 document.getElementById('currentPlayers').textContent = `${lobby.current_players}/${lobby.max_players}`;
-                
-                // Load chat messages
-                loadChatMessages();
                 
                 // Check if match started
                 if (lobby.status === 'in_match' && data.match_id) {
@@ -423,66 +394,6 @@
     // Auto-refresh lobbies
     setInterval(loadLobbies, 5000);
     
-    // Load chat messages
-    async function loadChatMessages() {
-        if (!currentLobbyId) return;
-        
-        try {
-            const response = await fetch(`/lobby/${currentLobbyId}/messages`);
-            const data = await response.json();
-            
-            if (data.success) {
-                const chatMessages = document.getElementById('chatMessages');
-                
-                if (data.messages.length === 0) {
-                    chatMessages.innerHTML = '<p class="text-gray-500 text-center text-xs">No messages yet. Say hello!</p>';
-                } else {
-                    chatMessages.innerHTML = data.messages.map(msg => `
-                        <div class="mb-2">
-                            <span class="font-bold text-blue-400">${msg.username}:</span>
-                            <span class="text-gray-300">${msg.message}</span>
-                        </div>
-                    `).join('');
-                    
-                    // Auto-scroll to bottom
-                    chatMessages.scrollTop = chatMessages.scrollHeight;
-                }
-            }
-        } catch (error) {
-            console.error('Error loading chat:', error);
-        }
-    }
-
-    // Send chat message
-    async function sendChatMessage() {
-        if (!currentLobbyId) return;
-        
-        const input = document.getElementById('chatInput');
-        const message = input.value.trim();
-        
-        if (!message) return;
-        
-        try {
-            const response = await fetch(`/lobby/${currentLobbyId}/send_message`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ message })
-            });
-            
-            const data = await response.json();
-            
-            if (data.success) {
-                input.value = '';
-                loadChatMessages(); // Reload messages immediately
-            } else {
-                CodeClash.showNotification(data.message, 'error');
-            }
-        } catch (error) {
-            console.error('Error sending message:', error);
-            CodeClash.showNotification('Failed to send message', 'error');
-        }
-    }
-
     // Cleanup on page unload
     window.addEventListener('beforeunload', () => {
         stopPolling();
