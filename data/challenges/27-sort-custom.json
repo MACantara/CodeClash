@@ -1,13 +1,95 @@
 {
-  "title": "Sort by Custom Key",
+  "problem_number": 27,
+  "problem_name": "Sort by Custom Key",
+  "difficulty": "easy",
+  "programming_language": "python",
   "description": "Write a function called `sort_by_length(strings)` that returns a list of strings sorted by their length (shortest first).",
-  "difficulty": "Easy",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[['apple', 'pie', 'banana']]",
+    "[['a', 'abc', 'ab']]",
+    "[['hello', 'hi', 'hey']]",
+    "[['one', 'two', 'three']]"
+  ],
+  "sample_outputs": [
+    "['pie', 'apple', 'banana']",
+    "['a', 'ab', 'abc']",
+    "['hi', 'hey', 'hello']",
+    "['one', 'two', 'three']"
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "def sort_by_length(strings):\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": [["apple", "pie", "banana"]], "expected": ["pie", "apple", "banana"]},
-    {"input": [["a", "abc", "ab"]], "expected": ["a", "ab", "abc"]},
-    {"input": [["hello", "hi", "hey"]], "expected": ["hi", "hey", "hello"]},
-    {"input": [["one", "two", "three"]], "expected": ["one", "two", "three"]}
+    {
+      "input": [
+        [
+          "apple",
+          "pie",
+          "banana"
+        ]
+      ],
+      "expected": [
+        "pie",
+        "apple",
+        "banana"
+      ]
+    },
+    {
+      "input": [
+        [
+          "a",
+          "abc",
+          "ab"
+        ]
+      ],
+      "expected": [
+        "a",
+        "ab",
+        "abc"
+      ]
+    },
+    {
+      "input": [
+        [
+          "hello",
+          "hi",
+          "hey"
+        ]
+      ],
+      "expected": [
+        "hi",
+        "hey",
+        "hello"
+      ]
+    },
+    {
+      "input": [
+        [
+          "one",
+          "two",
+          "three"
+        ]
+      ],
+      "expected": [
+        "one",
+        "two",
+        "three"
+      ]
+    }
   ],
   "time_limit": 300
 }

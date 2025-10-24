@@ -1,13 +1,67 @@
 {
-  "title": "Safe Division with Exception",
+  "problem_number": 56,
+  "problem_name": "Safe Division with Exception",
+  "difficulty": "easy",
+  "programming_language": "python",
   "description": "Write a function called `divide_safe(a, b)` that returns the division result. If division by zero occurs, catch the exception and return 'Error'.",
-  "difficulty": "Easy",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[10, 2]",
+    "[15, 3]",
+    "[10, 0]",
+    "[100, 4]"
+  ],
+  "sample_outputs": [
+    "5.0",
+    "5.0",
+    "Error",
+    "25.0"
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "def divide_safe(a, b):\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": [10, 2], "expected": 5.0},
-    {"input": [15, 3], "expected": 5.0},
-    {"input": [10, 0], "expected": "Error"},
-    {"input": [100, 4], "expected": 25.0}
+    {
+      "input": [
+        10,
+        2
+      ],
+      "expected": 5.0
+    },
+    {
+      "input": [
+        15,
+        3
+      ],
+      "expected": 5.0
+    },
+    {
+      "input": [
+        10,
+        0
+      ],
+      "expected": "Error"
+    },
+    {
+      "input": [
+        100,
+        4
+      ],
+      "expected": 25.0
+    }
   ],
   "time_limit": 300
 }

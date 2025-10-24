@@ -1,13 +1,107 @@
 {
-  "title": "Unique Elements",
+  "problem_number": 34,
+  "problem_name": "Unique Elements",
+  "difficulty": "easy",
+  "programming_language": "python",
   "description": "Write a function called `get_unique_elements(lst)` that returns a sorted list of unique elements from the input list.",
-  "difficulty": "Easy",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[[1, 2, 2, 3, 4, 4, 5]]",
+    "[['apple', 'banana', 'apple']]",
+    "[[5, 5, 5]]",
+    "[[3, 1, 4, 1, 5, 9, 2, 6]]"
+  ],
+  "sample_outputs": [
+    "[1, 2, 3, 4, 5]",
+    "['apple', 'banana']",
+    "[5]",
+    "[1, 2, 3, 4, 5, 6, 9]"
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "def get_unique_elements(lst):\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": [[1, 2, 2, 3, 4, 4, 5]], "expected": [1, 2, 3, 4, 5]},
-    {"input": [["apple", "banana", "apple"]], "expected": ["apple", "banana"]},
-    {"input": [[5, 5, 5]], "expected": [5]},
-    {"input": [[3, 1, 4, 1, 5, 9, 2, 6]], "expected": [1, 2, 3, 4, 5, 6, 9]}
+    {
+      "input": [
+        [
+          1,
+          2,
+          2,
+          3,
+          4,
+          4,
+          5
+        ]
+      ],
+      "expected": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "input": [
+        [
+          "apple",
+          "banana",
+          "apple"
+        ]
+      ],
+      "expected": [
+        "apple",
+        "banana"
+      ]
+    },
+    {
+      "input": [
+        [
+          5,
+          5,
+          5
+        ]
+      ],
+      "expected": [
+        5
+      ]
+    },
+    {
+      "input": [
+        [
+          3,
+          1,
+          4,
+          1,
+          5,
+          9,
+          2,
+          6
+        ]
+      ],
+      "expected": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        9
+      ]
+    }
   ],
   "time_limit": 300
 }

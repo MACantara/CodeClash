@@ -1,13 +1,63 @@
 {
-  "title": "String to File-like Operations",
+  "problem_number": 58,
+  "problem_name": "String to File-like Operations",
+  "difficulty": "easy",
+  "programming_language": "python",
   "description": "Write a function called `count_lines(text)` that counts the number of non-empty lines in a text string (simulate file reading). Split by newline.",
-  "difficulty": "Easy",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "['line1\\\\nline2\\\\nline3']",
+    "['hello\\\\n\\\\nworld']",
+    "['single line']",
+    "['a\\\\nb\\\\nc\\\\nd']"
+  ],
+  "sample_outputs": [
+    "3",
+    "2",
+    "1",
+    "4"
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "def count_lines(text):\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": ["line1\\nline2\\nline3"], "expected": 3},
-    {"input": ["hello\\n\\nworld"], "expected": 2},
-    {"input": ["single line"], "expected": 1},
-    {"input": ["a\\nb\\nc\\nd"], "expected": 4}
+    {
+      "input": [
+        "line1\\nline2\\nline3"
+      ],
+      "expected": 3
+    },
+    {
+      "input": [
+        "hello\\n\\nworld"
+      ],
+      "expected": 2
+    },
+    {
+      "input": [
+        "single line"
+      ],
+      "expected": 1
+    },
+    {
+      "input": [
+        "a\\nb\\nc\\nd"
+      ],
+      "expected": 4
+    }
   ],
   "time_limit": 300
 }

@@ -1,13 +1,63 @@
 {
-  "title": "Grade Calculator",
+  "problem_number": 39,
+  "problem_name": "Grade Calculator",
+  "difficulty": "easy",
+  "programming_language": "python",
   "description": "Write a function called `get_grade(score)` that returns 'A' for 90+, 'B' for 80-89, 'C' for 70-79, 'D' for 60-69, and 'F' for below 60.",
-  "difficulty": "Easy",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[95]",
+    "[85]",
+    "[75]",
+    "[55]"
+  ],
+  "sample_outputs": [
+    "A",
+    "B",
+    "C",
+    "F"
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "def get_grade(score):\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": [95], "expected": "A"},
-    {"input": [85], "expected": "B"},
-    {"input": [75], "expected": "C"},
-    {"input": [55], "expected": "F"}
+    {
+      "input": [
+        95
+      ],
+      "expected": "A"
+    },
+    {
+      "input": [
+        85
+      ],
+      "expected": "B"
+    },
+    {
+      "input": [
+        75
+      ],
+      "expected": "C"
+    },
+    {
+      "input": [
+        55
+      ],
+      "expected": "F"
+    }
   ],
   "time_limit": 300
 }

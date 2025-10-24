@@ -1,13 +1,106 @@
 {
-  "title": "Set Difference",
+  "problem_number": 33,
+  "problem_name": "Set Difference",
+  "difficulty": "average",
+  "programming_language": "python",
   "description": "Write a function called `symmetric_difference(set1, set2)` that returns elements that are in either set1 or set2, but not in both (as a sorted list).",
-  "difficulty": "Medium",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[[1, 2, 3], [2, 3, 4]]",
+    "[['a', 'b', 'c'], ['b', 'c', 'd']]",
+    "[[1, 2], [3, 4]]",
+    "[[5, 6], [5, 6]]"
+  ],
+  "sample_outputs": [
+    "[1, 4]",
+    "['a', 'd']",
+    "[1, 2, 3, 4]",
+    "[]"
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "def symmetric_difference(set1, set2):\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": [[1, 2, 3], [2, 3, 4]], "expected": [1, 4]},
-    {"input": [["a", "b", "c"], ["b", "c", "d"]], "expected": ["a", "d"]},
-    {"input": [[1, 2], [3, 4]], "expected": [1, 2, 3, 4]},
-    {"input": [[5, 6], [5, 6]], "expected": []}
+    {
+      "input": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "expected": [
+        1,
+        4
+      ]
+    },
+    {
+      "input": [
+        [
+          "a",
+          "b",
+          "c"
+        ],
+        [
+          "b",
+          "c",
+          "d"
+        ]
+      ],
+      "expected": [
+        "a",
+        "d"
+      ]
+    },
+    {
+      "input": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "expected": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "input": [
+        [
+          5,
+          6
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "expected": []
+    }
   ],
   "time_limit": 300
 }

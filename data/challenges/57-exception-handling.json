@@ -1,13 +1,63 @@
 {
-  "title": "Parse Integer Safely",
+  "problem_number": 57,
+  "problem_name": "Parse Integer Safely",
+  "difficulty": "easy",
+  "programming_language": "python",
   "description": "Write a function called `parse_int_safe(s)` that tries to convert a string to int. If it fails (ValueError), return None.",
-  "difficulty": "Easy",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "['123']",
+    "['abc']",
+    "['45']",
+    "['12.5']"
+  ],
+  "sample_outputs": [
+    "123",
+    "None",
+    "45",
+    "None"
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "def parse_int_safe(s):\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": ["123"], "expected": 123},
-    {"input": ["abc"], "expected": null},
-    {"input": ["45"], "expected": 45},
-    {"input": ["12.5"], "expected": null}
+    {
+      "input": [
+        "123"
+      ],
+      "expected": 123
+    },
+    {
+      "input": [
+        "abc"
+      ],
+      "expected": null
+    },
+    {
+      "input": [
+        "45"
+      ],
+      "expected": 45
+    },
+    {
+      "input": [
+        "12.5"
+      ],
+      "expected": null
+    }
   ],
   "time_limit": 300
 }

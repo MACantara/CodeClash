@@ -1,13 +1,79 @@
 {
-  "title": "Find Maximum",
+  "problem_number": 3,
+  "problem_name": "Find Maximum",
+  "difficulty": "easy",
+  "programming_language": "python",
   "description": "Write a function called `find_max(numbers)` that returns the maximum number in a list.",
-  "difficulty": "Easy",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[[1, 5, 3, 9, 2]]",
+    "[[-1, -5, -3]]",
+    "[[42]]",
+    "[[0, 0, 0]]"
+  ],
+  "sample_outputs": [
+    "9",
+    "-1",
+    "42",
+    "0"
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "def find_max(numbers):\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": [[1, 5, 3, 9, 2]], "expected": 9},
-    {"input": [[-1, -5, -3]], "expected": -1},
-    {"input": [[42]], "expected": 42},
-    {"input": [[0, 0, 0]], "expected": 0}
+    {
+      "input": [
+        [
+          1,
+          5,
+          3,
+          9,
+          2
+        ]
+      ],
+      "expected": 9
+    },
+    {
+      "input": [
+        [
+          -1,
+          -5,
+          -3
+        ]
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        [
+          42
+        ]
+      ],
+      "expected": 42
+    },
+    {
+      "input": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "expected": 0
+    }
   ],
   "time_limit": 300
 }

@@ -1,13 +1,63 @@
 {
-  "title": "Sum Until Threshold",
+  "problem_number": 41,
+  "problem_name": "Sum Until Threshold",
+  "difficulty": "average",
+  "programming_language": "python",
   "description": "Write a function called `sum_until(limit)` that returns the sum of all positive integers from 1 up to but not exceeding the limit when added.",
-  "difficulty": "Medium",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[10]",
+    "[20]",
+    "[100]",
+    "[5]"
+  ],
+  "sample_outputs": [
+    "10",
+    "15",
+    "55",
+    "6"
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "def sum_until(limit):\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": [10], "expected": 10},
-    {"input": [20], "expected": 15},
-    {"input": [100], "expected": 55},
-    {"input": [5], "expected": 6}
+    {
+      "input": [
+        10
+      ],
+      "expected": 10
+    },
+    {
+      "input": [
+        20
+      ],
+      "expected": 15
+    },
+    {
+      "input": [
+        100
+      ],
+      "expected": 55
+    },
+    {
+      "input": [
+        5
+      ],
+      "expected": 6
+    }
   ],
   "time_limit": 300
 }

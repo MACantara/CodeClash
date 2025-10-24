@@ -1,13 +1,63 @@
 {
-  "title": "Count Vowels",
+  "problem_number": 20,
+  "problem_name": "Count Vowels",
+  "difficulty": "easy",
+  "programming_language": "python",
   "description": "Write a function called `count_vowels(s)` that counts and returns the number of vowels (a, e, i, o, u) in a string (case-insensitive).",
-  "difficulty": "Easy",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "['hello']",
+    "['Python']",
+    "['aeiou']",
+    "['bcdfg']"
+  ],
+  "sample_outputs": [
+    "2",
+    "1",
+    "5",
+    "0"
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "def count_vowels(s):\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": ["hello"], "expected": 2},
-    {"input": ["Python"], "expected": 1},
-    {"input": ["aeiou"], "expected": 5},
-    {"input": ["bcdfg"], "expected": 0}
+    {
+      "input": [
+        "hello"
+      ],
+      "expected": 2
+    },
+    {
+      "input": [
+        "Python"
+      ],
+      "expected": 1
+    },
+    {
+      "input": [
+        "aeiou"
+      ],
+      "expected": 5
+    },
+    {
+      "input": [
+        "bcdfg"
+      ],
+      "expected": 0
+    }
   ],
   "time_limit": 300
 }

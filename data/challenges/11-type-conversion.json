@@ -1,13 +1,67 @@
 {
-  "title": "Type Conversion",
+  "problem_number": 11,
+  "problem_name": "Type Conversion",
+  "difficulty": "easy",
+  "programming_language": "python",
   "description": "Write a function called `convert_and_sum(str_num1, str_num2)` that takes two string numbers, converts them to integers, and returns their sum.",
-  "difficulty": "Easy",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "['10', '20']",
+    "['5', '15']",
+    "['-3', '3']",
+    "['100', '200']"
+  ],
+  "sample_outputs": [
+    "30",
+    "20",
+    "0",
+    "300"
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "def convert_and_sum(str_num1, str_num2):\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": ["10", "20"], "expected": 30},
-    {"input": ["5", "15"], "expected": 20},
-    {"input": ["-3", "3"], "expected": 0},
-    {"input": ["100", "200"], "expected": 300}
+    {
+      "input": [
+        "10",
+        "20"
+      ],
+      "expected": 30
+    },
+    {
+      "input": [
+        "5",
+        "15"
+      ],
+      "expected": 20
+    },
+    {
+      "input": [
+        "-3",
+        "3"
+      ],
+      "expected": 0
+    },
+    {
+      "input": [
+        "100",
+        "200"
+      ],
+      "expected": 300
+    }
   ],
   "time_limit": 300
 }

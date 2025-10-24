@@ -1,14 +1,69 @@
 {
-  "title": "Valid Parentheses",
+  "problem_number": 7,
+  "problem_name": "Valid Parentheses",
+  "difficulty": "difficult",
+  "programming_language": "python",
   "description": "Write a function called `is_valid(s)` that returns True if the parentheses string is valid (properly opened and closed).",
-  "difficulty": "Hard",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "['()']",
+    "['()[]{}']",
+    "['(]']",
+    "['([)]']"
+  ],
+  "sample_outputs": [
+    "True",
+    "True",
+    "False",
+    "False"
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "def is_valid(s):\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": ["()"], "expected": true},
-    {"input": ["()[]{}"], "expected": true},
-    {"input": ["(]"], "expected": false},
-    {"input": ["([)]"], "expected": false},
-    {"input": ["{[]}"], "expected": true}
+    {
+      "input": [
+        "()"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "()[]{}"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "(]"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "([)]"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "{[]}"
+      ],
+      "expected": true
+    }
   ],
   "time_limit": 300
 }

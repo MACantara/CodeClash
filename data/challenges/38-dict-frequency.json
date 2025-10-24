@@ -1,13 +1,83 @@
 {
-  "title": "Count Character Frequency",
+  "problem_number": 38,
+  "problem_name": "Count Character Frequency",
+  "difficulty": "average",
+  "programming_language": "python",
   "description": "Write a function called `char_frequency(s)` that returns a dictionary with character counts for each character in the string.",
-  "difficulty": "Medium",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "['hello']",
+    "['aaa']",
+    "['abc']",
+    "['programming']"
+  ],
+  "sample_outputs": [
+    "{'h': 1, 'e': 1, 'l': 2, 'o': 1}",
+    "{'a': 3}",
+    "{'a': 1, 'b': 1, 'c': 1}",
+    "{'p': 1, 'r': 2, 'o': 1, 'g': 2, 'a': 1, 'm': 2, 'i': 1, 'n': 1}"
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "def char_frequency(s):\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": ["hello"], "expected": {"h": 1, "e": 1, "l": 2, "o": 1}},
-    {"input": ["aaa"], "expected": {"a": 3}},
-    {"input": ["abc"], "expected": {"a": 1, "b": 1, "c": 1}},
-    {"input": ["programming"], "expected": {"p": 1, "r": 2, "o": 1, "g": 2, "a": 1, "m": 2, "i": 1, "n": 1}}
+    {
+      "input": [
+        "hello"
+      ],
+      "expected": {
+        "h": 1,
+        "e": 1,
+        "l": 2,
+        "o": 1
+      }
+    },
+    {
+      "input": [
+        "aaa"
+      ],
+      "expected": {
+        "a": 3
+      }
+    },
+    {
+      "input": [
+        "abc"
+      ],
+      "expected": {
+        "a": 1,
+        "b": 1,
+        "c": 1
+      }
+    },
+    {
+      "input": [
+        "programming"
+      ],
+      "expected": {
+        "p": 1,
+        "r": 2,
+        "o": 1,
+        "g": 2,
+        "a": 1,
+        "m": 2,
+        "i": 1,
+        "n": 1
+      }
+    }
   ],
   "time_limit": 300
 }

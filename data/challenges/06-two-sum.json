@@ -1,12 +1,78 @@
 {
-  "title": "Two Sum",
+  "problem_number": 6,
+  "problem_name": "Two Sum",
+  "difficulty": "average",
+  "programming_language": "python",
   "description": "Write a function called `two_sum(nums, target)` that returns indices of two numbers that add up to the target.",
-  "difficulty": "Medium",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[[2, 7, 11, 15], 9]",
+    "[[3, 2, 4], 6]",
+    "[[3, 3], 6]"
+  ],
+  "sample_outputs": [
+    "[0, 1]",
+    "[1, 2]",
+    "[0, 1]"
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "def two_sum(nums, target):\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": [[2, 7, 11, 15], 9], "expected": [0, 1]},
-    {"input": [[3, 2, 4], 6], "expected": [1, 2]},
-    {"input": [[3, 3], 6], "expected": [0, 1]}
+    {
+      "input": [
+        [
+          2,
+          7,
+          11,
+          15
+        ],
+        9
+      ],
+      "expected": [
+        0,
+        1
+      ]
+    },
+    {
+      "input": [
+        [
+          3,
+          2,
+          4
+        ],
+        6
+      ],
+      "expected": [
+        1,
+        2
+      ]
+    },
+    {
+      "input": [
+        [
+          3,
+          3
+        ],
+        6
+      ],
+      "expected": [
+        0,
+        1
+      ]
+    }
   ],
   "time_limit": 300
 }

@@ -1,13 +1,67 @@
 {
-  "title": "Format Output with Variables",
+  "problem_number": 9,
+  "problem_name": "Format Output with Variables",
+  "difficulty": "easy",
+  "programming_language": "python",
   "description": "Write a function called `format_greeting(name, age)` that returns a formatted string: 'Hello, [name]! You are [age] years old.'",
-  "difficulty": "Easy",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "['Alice', 25]",
+    "['Bob', 30]",
+    "['Charlie', 18]",
+    "['Diana', 45]"
+  ],
+  "sample_outputs": [
+    "Hello, Alice! You are 25 years old.",
+    "Hello, Bob! You are 30 years old.",
+    "Hello, Charlie! You are 18 years old.",
+    "Hello, Diana! You are 45 years old."
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "def format_greeting(name, age):\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": ["Alice", 25], "expected": "Hello, Alice! You are 25 years old."},
-    {"input": ["Bob", 30], "expected": "Hello, Bob! You are 30 years old."},
-    {"input": ["Charlie", 18], "expected": "Hello, Charlie! You are 18 years old."},
-    {"input": ["Diana", 45], "expected": "Hello, Diana! You are 45 years old."}
+    {
+      "input": [
+        "Alice",
+        25
+      ],
+      "expected": "Hello, Alice! You are 25 years old."
+    },
+    {
+      "input": [
+        "Bob",
+        30
+      ],
+      "expected": "Hello, Bob! You are 30 years old."
+    },
+    {
+      "input": [
+        "Charlie",
+        18
+      ],
+      "expected": "Hello, Charlie! You are 18 years old."
+    },
+    {
+      "input": [
+        "Diana",
+        45
+      ],
+      "expected": "Hello, Diana! You are 45 years old."
+    }
   ],
   "time_limit": 300
 }

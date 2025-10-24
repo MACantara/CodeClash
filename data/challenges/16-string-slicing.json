@@ -1,13 +1,63 @@
 {
-  "title": "Extract Substring",
+  "problem_number": 16,
+  "problem_name": "Extract Substring",
+  "difficulty": "easy",
+  "programming_language": "python",
   "description": "Write a function called `extract_middle(s)` that returns the middle portion of a string from index 2 to index -2 (excluding the last 2 characters).",
-  "difficulty": "Easy",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "['Python']",
+    "['Programming']",
+    "['Hello']",
+    "['abcdef']"
+  ],
+  "sample_outputs": [
+    "tho",
+    "ogrammin",
+    "ll",
+    "cd"
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "def extract_middle(s):\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": ["Python"], "expected": "tho"},
-    {"input": ["Programming"], "expected": "ogrammin"},
-    {"input": ["Hello"], "expected": "ll"},
-    {"input": ["abcdef"], "expected": "cd"}
+    {
+      "input": [
+        "Python"
+      ],
+      "expected": "tho"
+    },
+    {
+      "input": [
+        "Programming"
+      ],
+      "expected": "ogrammin"
+    },
+    {
+      "input": [
+        "Hello"
+      ],
+      "expected": "ll"
+    },
+    {
+      "input": [
+        "abcdef"
+      ],
+      "expected": "cd"
+    }
   ],
   "time_limit": 300
 }

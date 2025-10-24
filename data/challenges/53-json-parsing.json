@@ -1,13 +1,63 @@
 {
-  "title": "JSON Parsing",
+  "problem_number": 53,
+  "problem_name": "JSON Parsing",
+  "difficulty": "easy",
+  "programming_language": "python",
   "description": "Write a function called `parse_json_string(json_str)` that parses a JSON string and returns the value of the 'name' key. Use the json module.",
-  "difficulty": "Easy",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "['{\"name\": \"Alice\", \"age\": 30}']",
+    "['{\"name\": \"Bob\", \"city\": \"NYC\"}']",
+    "['{\"age\": 25, \"name\": \"Charlie\"}']",
+    "['{\"name\": \"Diana\"}']"
+  ],
+  "sample_outputs": [
+    "Alice",
+    "Bob",
+    "Charlie",
+    "Diana"
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "import json\n\ndef parse_json_string(json_str):\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": ["{\"name\": \"Alice\", \"age\": 30}"], "expected": "Alice"},
-    {"input": ["{\"name\": \"Bob\", \"city\": \"NYC\"}"], "expected": "Bob"},
-    {"input": ["{\"age\": 25, \"name\": \"Charlie\"}"], "expected": "Charlie"},
-    {"input": ["{\"name\": \"Diana\"}"], "expected": "Diana"}
+    {
+      "input": [
+        "{\"name\": \"Alice\", \"age\": 30}"
+      ],
+      "expected": "Alice"
+    },
+    {
+      "input": [
+        "{\"name\": \"Bob\", \"city\": \"NYC\"}"
+      ],
+      "expected": "Bob"
+    },
+    {
+      "input": [
+        "{\"age\": 25, \"name\": \"Charlie\"}"
+      ],
+      "expected": "Charlie"
+    },
+    {
+      "input": [
+        "{\"name\": \"Diana\"}"
+      ],
+      "expected": "Diana"
+    }
   ],
   "time_limit": 300
 }

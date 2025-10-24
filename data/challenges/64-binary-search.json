@@ -1,13 +1,92 @@
 {
-  "title": "Binary Search",
+  "problem_number": 64,
+  "problem_name": "Binary Search",
+  "difficulty": "average",
+  "programming_language": "python",
   "description": "Write a function called `binary_search(sorted_arr, target)` that returns the index of target in a sorted array, or -1 if not found. Use binary search algorithm.",
-  "difficulty": "Medium",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[[1, 2, 3, 4, 5, 6, 7], 5]",
+    "[[10, 20, 30, 40, 50], 30]",
+    "[[1, 3, 5, 7, 9], 4]",
+    "[[2, 4, 6, 8], 2]"
+  ],
+  "sample_outputs": [
+    "4",
+    "2",
+    "-1",
+    "0"
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "def binary_search(sorted_arr, target):\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": [[1, 2, 3, 4, 5, 6, 7], 5], "expected": 4},
-    {"input": [[10, 20, 30, 40, 50], 30], "expected": 2},
-    {"input": [[1, 3, 5, 7, 9], 4], "expected": -1},
-    {"input": [[2, 4, 6, 8], 2], "expected": 0}
+    {
+      "input": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        5
+      ],
+      "expected": 4
+    },
+    {
+      "input": [
+        [
+          10,
+          20,
+          30,
+          40,
+          50
+        ],
+        30
+      ],
+      "expected": 2
+    },
+    {
+      "input": [
+        [
+          1,
+          3,
+          5,
+          7,
+          9
+        ],
+        4
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        [
+          2,
+          4,
+          6,
+          8
+        ],
+        2
+      ],
+      "expected": 0
+    }
   ],
   "time_limit": 300
 }

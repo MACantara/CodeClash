@@ -1,13 +1,76 @@
 {
-  "title": "Hash Table - Word Count",
+  "problem_number": 62,
+  "problem_name": "Hash Table - Word Count",
+  "difficulty": "easy",
+  "programming_language": "python",
   "description": "Write a function called `count_words(text)` that returns a dictionary with word counts. Split by spaces and ignore case.",
-  "difficulty": "Easy",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "['hello world hello']",
+    "['Python is fun Python']",
+    "['one two three']",
+    "['a a a']"
+  ],
+  "sample_outputs": [
+    "{'hello': 2, 'world': 1}",
+    "{'python': 2, 'is': 1, 'fun': 1}",
+    "{'one': 1, 'two': 1, 'three': 1}",
+    "{'a': 3}"
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "def count_words(text):\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": ["hello world hello"], "expected": {"hello": 2, "world": 1}},
-    {"input": ["Python is fun Python"], "expected": {"python": 2, "is": 1, "fun": 1}},
-    {"input": ["one two three"], "expected": {"one": 1, "two": 1, "three": 1}},
-    {"input": ["a a a"], "expected": {"a": 3}}
+    {
+      "input": [
+        "hello world hello"
+      ],
+      "expected": {
+        "hello": 2,
+        "world": 1
+      }
+    },
+    {
+      "input": [
+        "Python is fun Python"
+      ],
+      "expected": {
+        "python": 2,
+        "is": 1,
+        "fun": 1
+      }
+    },
+    {
+      "input": [
+        "one two three"
+      ],
+      "expected": {
+        "one": 1,
+        "two": 1,
+        "three": 1
+      }
+    },
+    {
+      "input": [
+        "a a a"
+      ],
+      "expected": {
+        "a": 3
+      }
+    }
   ],
   "time_limit": 300
 }

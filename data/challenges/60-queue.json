@@ -1,13 +1,122 @@
 {
-  "title": "Queue Implementation",
+  "problem_number": 60,
+  "problem_name": "Queue Implementation",
+  "difficulty": "average",
+  "programming_language": "python",
   "description": "Write a function called `process_queue(operations)` that simulates a queue using collections.deque. Operations: ('enqueue', value) or ('dequeue',). Return the final queue as a list.",
-  "difficulty": "Medium",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[[['enqueue', 1], ['enqueue', 2], ['dequeue'], ['enqueue', 3]]]",
+    "[[['enqueue', 'a'], ['enqueue', 'b'], ['enqueue', 'c']]]",
+    "[[['enqueue', 5], ['dequeue']]]",
+    "[[['enqueue', 10], ['enqueue', 20], ['dequeue'], ['dequeue']]]"
+  ],
+  "sample_outputs": [
+    "[2, 3]",
+    "['a', 'b', 'c']",
+    "[]",
+    "[]"
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "from collections import deque\n\ndef process_queue(operations):\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": [[["enqueue", 1], ["enqueue", 2], ["dequeue"], ["enqueue", 3]]], "expected": [2, 3]},
-    {"input": [[["enqueue", "a"], ["enqueue", "b"], ["enqueue", "c"]]], "expected": ["a", "b", "c"]},
-    {"input": [[["enqueue", 5], ["dequeue"]]], "expected": []},
-    {"input": [[["enqueue", 10], ["enqueue", 20], ["dequeue"], ["dequeue"]]], "expected": []}
+    {
+      "input": [
+        [
+          [
+            "enqueue",
+            1
+          ],
+          [
+            "enqueue",
+            2
+          ],
+          [
+            "dequeue"
+          ],
+          [
+            "enqueue",
+            3
+          ]
+        ]
+      ],
+      "expected": [
+        2,
+        3
+      ]
+    },
+    {
+      "input": [
+        [
+          [
+            "enqueue",
+            "a"
+          ],
+          [
+            "enqueue",
+            "b"
+          ],
+          [
+            "enqueue",
+            "c"
+          ]
+        ]
+      ],
+      "expected": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "input": [
+        [
+          [
+            "enqueue",
+            5
+          ],
+          [
+            "dequeue"
+          ]
+        ]
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        [
+          [
+            "enqueue",
+            10
+          ],
+          [
+            "enqueue",
+            20
+          ],
+          [
+            "dequeue"
+          ],
+          [
+            "dequeue"
+          ]
+        ]
+      ],
+      "expected": []
+    }
   ],
   "time_limit": 300
 }

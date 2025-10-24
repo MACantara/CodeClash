@@ -1,13 +1,94 @@
 {
-  "title": "Lambda Filter",
+  "problem_number": 46,
+  "problem_name": "Lambda Filter",
+  "difficulty": "easy",
+  "programming_language": "python",
   "description": "Write a function called `filter_strings(strings, min_length)` that uses a lambda function to filter strings with length >= min_length.",
-  "difficulty": "Easy",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[['apple', 'pie', 'banana'], 5]",
+    "[['a', 'ab', 'abc', 'abcd'], 3]",
+    "[['hello', 'hi', 'hey'], 4]",
+    "[['one', 'two', 'three'], 4]"
+  ],
+  "sample_outputs": [
+    "['apple', 'banana']",
+    "['abc', 'abcd']",
+    "['hello']",
+    "['three']"
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "def filter_strings(strings, min_length):\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": [["apple", "pie", "banana"], 5], "expected": ["apple", "banana"]},
-    {"input": [["a", "ab", "abc", "abcd"], 3], "expected": ["abc", "abcd"]},
-    {"input": [["hello", "hi", "hey"], 4], "expected": ["hello"]},
-    {"input": [["one", "two", "three"], 4], "expected": ["three"]}
+    {
+      "input": [
+        [
+          "apple",
+          "pie",
+          "banana"
+        ],
+        5
+      ],
+      "expected": [
+        "apple",
+        "banana"
+      ]
+    },
+    {
+      "input": [
+        [
+          "a",
+          "ab",
+          "abc",
+          "abcd"
+        ],
+        3
+      ],
+      "expected": [
+        "abc",
+        "abcd"
+      ]
+    },
+    {
+      "input": [
+        [
+          "hello",
+          "hi",
+          "hey"
+        ],
+        4
+      ],
+      "expected": [
+        "hello"
+      ]
+    },
+    {
+      "input": [
+        [
+          "one",
+          "two",
+          "three"
+        ],
+        4
+      ],
+      "expected": [
+        "three"
+      ]
+    }
   ],
   "time_limit": 300
 }

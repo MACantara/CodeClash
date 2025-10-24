@@ -1,13 +1,67 @@
 {
-  "title": "Default Arguments",
+  "problem_number": 44,
+  "problem_name": "Default Arguments",
+  "difficulty": "easy",
+  "programming_language": "python",
   "description": "Write a function called `power(base, exponent=2)` that returns base raised to the power of exponent. If exponent is not provided, square the base.",
-  "difficulty": "Easy",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[3, 3]",
+    "[5, 2]",
+    "[2, 4]",
+    "[10, 1]"
+  ],
+  "sample_outputs": [
+    "27",
+    "25",
+    "16",
+    "10"
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "def power(base, exponent=2):\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": [3, 3], "expected": 27},
-    {"input": [5, 2], "expected": 25},
-    {"input": [2, 4], "expected": 16},
-    {"input": [10, 1], "expected": 10}
+    {
+      "input": [
+        3,
+        3
+      ],
+      "expected": 27
+    },
+    {
+      "input": [
+        5,
+        2
+      ],
+      "expected": 25
+    },
+    {
+      "input": [
+        2,
+        4
+      ],
+      "expected": 16
+    },
+    {
+      "input": [
+        10,
+        1
+      ],
+      "expected": 10
+    }
   ],
   "time_limit": 300
 }

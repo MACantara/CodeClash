@@ -1,13 +1,71 @@
 {
-  "title": "Boolean Logic",
+  "problem_number": 21,
+  "problem_name": "Boolean Logic",
+  "difficulty": "easy",
+  "programming_language": "python",
   "description": "Write a function called `check_range(num, min_val, max_val)` that returns True if num is between min_val and max_val (inclusive), False otherwise.",
-  "difficulty": "Easy",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[5, 1, 10]",
+    "[15, 1, 10]",
+    "[1, 1, 10]",
+    "[10, 1, 10]"
+  ],
+  "sample_outputs": [
+    "True",
+    "False",
+    "True",
+    "True"
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "def check_range(num, min_val, max_val):\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": [5, 1, 10], "expected": true},
-    {"input": [15, 1, 10], "expected": false},
-    {"input": [1, 1, 10], "expected": true},
-    {"input": [10, 1, 10], "expected": true}
+    {
+      "input": [
+        5,
+        1,
+        10
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        15,
+        1,
+        10
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        1,
+        1,
+        10
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        10,
+        1,
+        10
+      ],
+      "expected": true
+    }
   ],
   "time_limit": 300
 }

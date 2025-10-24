@@ -1,13 +1,86 @@
 {
-  "title": "Custom Iterator",
+  "problem_number": 52,
+  "problem_name": "Custom Iterator",
+  "difficulty": "difficult",
+  "programming_language": "python",
   "description": "Create a class `Counter` that implements __iter__ and __next__ to count from 0 to n-1. Write function `count_to(n)` that returns a list of all values from Counter(n).",
-  "difficulty": "Hard",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[5]",
+    "[3]",
+    "[1]",
+    "[10]"
+  ],
+  "sample_outputs": [
+    "[0, 1, 2, 3, 4]",
+    "[0, 1, 2]",
+    "[0]",
+    "[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]"
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "class Counter:\n    # Write your code here\n    pass\n\ndef count_to(n):\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": [5], "expected": [0, 1, 2, 3, 4]},
-    {"input": [3], "expected": [0, 1, 2]},
-    {"input": [1], "expected": [0]},
-    {"input": [10], "expected": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
+    {
+      "input": [
+        5
+      ],
+      "expected": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "input": [
+        3
+      ],
+      "expected": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "input": [
+        1
+      ],
+      "expected": [
+        0
+      ]
+    },
+    {
+      "input": [
+        10
+      ],
+      "expected": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    }
   ],
   "time_limit": 300
 }

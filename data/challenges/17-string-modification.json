@@ -1,13 +1,63 @@
 {
-  "title": "String Modifications",
+  "problem_number": 17,
+  "problem_name": "String Modifications",
+  "difficulty": "easy",
+  "programming_language": "python",
   "description": "Write a function called `modify_string(s)` that returns the string in uppercase with all spaces removed.",
-  "difficulty": "Easy",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "['hello world']",
+    "['python programming']",
+    "['code clash']",
+    "['a b c']"
+  ],
+  "sample_outputs": [
+    "HELLOWORLD",
+    "PYTHONPROGRAMMING",
+    "CODECLASH",
+    "ABC"
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "def modify_string(s):\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": ["hello world"], "expected": "HELLOWORLD"},
-    {"input": ["python programming"], "expected": "PYTHONPROGRAMMING"},
-    {"input": ["code clash"], "expected": "CODECLASH"},
-    {"input": ["a b c"], "expected": "ABC"}
+    {
+      "input": [
+        "hello world"
+      ],
+      "expected": "HELLOWORLD"
+    },
+    {
+      "input": [
+        "python programming"
+      ],
+      "expected": "PYTHONPROGRAMMING"
+    },
+    {
+      "input": [
+        "code clash"
+      ],
+      "expected": "CODECLASH"
+    },
+    {
+      "input": [
+        "a b c"
+      ],
+      "expected": "ABC"
+    }
   ],
   "time_limit": 300
 }

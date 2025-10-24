@@ -1,13 +1,63 @@
 {
-  "title": "Fibonacci Sequence",
+  "problem_number": 5,
+  "problem_name": "Fibonacci Sequence",
+  "difficulty": "average",
+  "programming_language": "python",
   "description": "Write a function called `fibonacci(n)` that returns the nth Fibonacci number (0-indexed).",
-  "difficulty": "Medium",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[0]",
+    "[1]",
+    "[5]",
+    "[10]"
+  ],
+  "sample_outputs": [
+    "0",
+    "1",
+    "5",
+    "55"
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "def fibonacci(n):\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": [0], "expected": 0},
-    {"input": [1], "expected": 1},
-    {"input": [5], "expected": 5},
-    {"input": [10], "expected": 55}
+    {
+      "input": [
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "input": [
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "input": [
+        5
+      ],
+      "expected": 5
+    },
+    {
+      "input": [
+        10
+      ],
+      "expected": 55
+    }
   ],
   "time_limit": 300
 }

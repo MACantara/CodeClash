@@ -1,13 +1,82 @@
 {
-  "title": "String Concatenation",
+  "problem_number": 18,
+  "problem_name": "String Concatenation",
+  "difficulty": "easy",
+  "programming_language": "python",
   "description": "Write a function called `join_with_separator(words, separator)` that joins a list of words with the given separator.",
-  "difficulty": "Easy",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[['apple', 'banana', 'cherry'], ', ']",
+    "[['one', 'two', 'three'], '-']",
+    "[['hello', 'world'], ' ']",
+    "[['a', 'b', 'c'], '']"
+  ],
+  "sample_outputs": [
+    "apple, banana, cherry",
+    "one-two-three",
+    "hello world",
+    "abc"
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "def join_with_separator(words, separator):\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": [["apple", "banana", "cherry"], ", "], "expected": "apple, banana, cherry"},
-    {"input": [["one", "two", "three"], "-"], "expected": "one-two-three"},
-    {"input": [["hello", "world"], " "], "expected": "hello world"},
-    {"input": [["a", "b", "c"], ""], "expected": "abc"}
+    {
+      "input": [
+        [
+          "apple",
+          "banana",
+          "cherry"
+        ],
+        ", "
+      ],
+      "expected": "apple, banana, cherry"
+    },
+    {
+      "input": [
+        [
+          "one",
+          "two",
+          "three"
+        ],
+        "-"
+      ],
+      "expected": "one-two-three"
+    },
+    {
+      "input": [
+        [
+          "hello",
+          "world"
+        ],
+        " "
+      ],
+      "expected": "hello world"
+    },
+    {
+      "input": [
+        [
+          "a",
+          "b",
+          "c"
+        ],
+        ""
+      ],
+      "expected": "abc"
+    }
   ],
   "time_limit": 300
 }

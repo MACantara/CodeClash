@@ -1,13 +1,79 @@
 {
-  "title": "Swap Variables",
+  "problem_number": 10,
+  "problem_name": "Swap Variables",
+  "difficulty": "easy",
+  "programming_language": "python",
   "description": "Write a function called `swap_values(a, b)` that returns a tuple with the values swapped.",
-  "difficulty": "Easy",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[1, 2]",
+    "['hello', 'world']",
+    "[True, False]",
+    "[10.5, 20.3]"
+  ],
+  "sample_outputs": [
+    "[2, 1]",
+    "['world', 'hello']",
+    "[False, True]",
+    "[20.3, 10.5]"
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "def swap_values(a, b):\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": [1, 2], "expected": [2, 1]},
-    {"input": ["hello", "world"], "expected": ["world", "hello"]},
-    {"input": [true, false], "expected": [false, true]},
-    {"input": [10.5, 20.3], "expected": [20.3, 10.5]}
+    {
+      "input": [
+        1,
+        2
+      ],
+      "expected": [
+        2,
+        1
+      ]
+    },
+    {
+      "input": [
+        "hello",
+        "world"
+      ],
+      "expected": [
+        "world",
+        "hello"
+      ]
+    },
+    {
+      "input": [
+        true,
+        false
+      ],
+      "expected": [
+        false,
+        true
+      ]
+    },
+    {
+      "input": [
+        10.5,
+        20.3
+      ],
+      "expected": [
+        20.3,
+        10.5
+      ]
+    }
   ],
   "time_limit": 300
 }

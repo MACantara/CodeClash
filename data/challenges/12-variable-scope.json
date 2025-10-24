@@ -1,13 +1,55 @@
 {
-  "title": "Global Counter",
+  "problem_number": 12,
+  "problem_name": "Global Counter",
+  "difficulty": "average",
+  "programming_language": "python",
   "description": "Write a function called `increment_counter()` that uses a global variable `counter` (initially 0) and increments it by 1 each time it's called. The function should return the new counter value.",
-  "difficulty": "Medium",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[]",
+    "[]",
+    "[]",
+    "[]"
+  ],
+  "sample_outputs": [
+    "1",
+    "2",
+    "3",
+    "4"
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "counter = 0\n\ndef increment_counter():\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": [], "expected": 1},
-    {"input": [], "expected": 2},
-    {"input": [], "expected": 3},
-    {"input": [], "expected": 4}
+    {
+      "input": [],
+      "expected": 1
+    },
+    {
+      "input": [],
+      "expected": 2
+    },
+    {
+      "input": [],
+      "expected": 3
+    },
+    {
+      "input": [],
+      "expected": 4
+    }
   ],
   "time_limit": 300
 }

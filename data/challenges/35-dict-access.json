@@ -1,13 +1,81 @@
 {
-  "title": "Dictionary Access",
+  "problem_number": 35,
+  "problem_name": "Dictionary Access",
+  "difficulty": "easy",
+  "programming_language": "python",
   "description": "Write a function called `get_value_safe(d, key, default)` that returns the value for the key if it exists, otherwise returns the default value.",
-  "difficulty": "Easy",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[{'name': 'Alice', 'age': 30}, 'name', 'Unknown']",
+    "[{'name': 'Bob'}, 'age', 0]",
+    "[{'x': 10, 'y': 20}, 'z', -1]",
+    "[{'color': 'red'}, 'color', 'blue']"
+  ],
+  "sample_outputs": [
+    "Alice",
+    "0",
+    "-1",
+    "red"
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "def get_value_safe(d, key, default):\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": [{"name": "Alice", "age": 30}, "name", "Unknown"], "expected": "Alice"},
-    {"input": [{"name": "Bob"}, "age", 0], "expected": 0},
-    {"input": [{"x": 10, "y": 20}, "z", -1], "expected": -1},
-    {"input": [{"color": "red"}, "color", "blue"], "expected": "red"}
+    {
+      "input": [
+        {
+          "name": "Alice",
+          "age": 30
+        },
+        "name",
+        "Unknown"
+      ],
+      "expected": "Alice"
+    },
+    {
+      "input": [
+        {
+          "name": "Bob"
+        },
+        "age",
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "input": [
+        {
+          "x": 10,
+          "y": 20
+        },
+        "z",
+        -1
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        {
+          "color": "red"
+        },
+        "color",
+        "blue"
+      ],
+      "expected": "red"
+    }
   ],
   "time_limit": 300
 }

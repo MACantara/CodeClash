@@ -1,13 +1,79 @@
 {
-  "title": "Tuple Unpacking",
+  "problem_number": 29,
+  "problem_name": "Tuple Unpacking",
+  "difficulty": "easy",
+  "programming_language": "python",
   "description": "Write a function called `unpack_tuple(data)` that takes a tuple of (name, age, city) and returns a formatted string: '{name} is {age} years old and lives in {city}'.",
-  "difficulty": "Easy",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[['Alice', 30, 'NYC']]",
+    "[['Bob', 25, 'LA']]",
+    "[['Charlie', 35, 'Chicago']]",
+    "[['Diana', 28, 'Boston']]"
+  ],
+  "sample_outputs": [
+    "Alice is 30 years old and lives in NYC",
+    "Bob is 25 years old and lives in LA",
+    "Charlie is 35 years old and lives in Chicago",
+    "Diana is 28 years old and lives in Boston"
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "def unpack_tuple(data):\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": [["Alice", 30, "NYC"]], "expected": "Alice is 30 years old and lives in NYC"},
-    {"input": [["Bob", 25, "LA"]], "expected": "Bob is 25 years old and lives in LA"},
-    {"input": [["Charlie", 35, "Chicago"]], "expected": "Charlie is 35 years old and lives in Chicago"},
-    {"input": [["Diana", 28, "Boston"]], "expected": "Diana is 28 years old and lives in Boston"}
+    {
+      "input": [
+        [
+          "Alice",
+          30,
+          "NYC"
+        ]
+      ],
+      "expected": "Alice is 30 years old and lives in NYC"
+    },
+    {
+      "input": [
+        [
+          "Bob",
+          25,
+          "LA"
+        ]
+      ],
+      "expected": "Bob is 25 years old and lives in LA"
+    },
+    {
+      "input": [
+        [
+          "Charlie",
+          35,
+          "Chicago"
+        ]
+      ],
+      "expected": "Charlie is 35 years old and lives in Chicago"
+    },
+    {
+      "input": [
+        [
+          "Diana",
+          28,
+          "Boston"
+        ]
+      ],
+      "expected": "Diana is 28 years old and lives in Boston"
+    }
   ],
   "time_limit": 300
 }

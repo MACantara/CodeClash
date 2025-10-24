@@ -1,13 +1,87 @@
 {
-  "title": "Invert Dictionary",
+  "problem_number": 37,
+  "problem_name": "Invert Dictionary",
+  "difficulty": "average",
+  "programming_language": "python",
   "description": "Write a function called `invert_dict(d)` that swaps keys and values in a dictionary. Assume all values are unique.",
-  "difficulty": "Medium",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[{'a': 1, 'b': 2, 'c': 3}]",
+    "[{'name': 'Alice', 'age': '30'}]",
+    "[{'x': '10', 'y': '20'}]",
+    "[{'key': 'value'}]"
+  ],
+  "sample_outputs": [
+    "{'1': 'a', '2': 'b', '3': 'c'}",
+    "{'Alice': 'name', '30': 'age'}",
+    "{'10': 'x', '20': 'y'}",
+    "{'value': 'key'}"
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "def invert_dict(d):\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": [{"a": 1, "b": 2, "c": 3}], "expected": {"1": "a", "2": "b", "3": "c"}},
-    {"input": [{"name": "Alice", "age": "30"}], "expected": {"Alice": "name", "30": "age"}},
-    {"input": [{"x": "10", "y": "20"}], "expected": {"10": "x", "20": "y"}},
-    {"input": [{"key": "value"}], "expected": {"value": "key"}}
+    {
+      "input": [
+        {
+          "a": 1,
+          "b": 2,
+          "c": 3
+        }
+      ],
+      "expected": {
+        "1": "a",
+        "2": "b",
+        "3": "c"
+      }
+    },
+    {
+      "input": [
+        {
+          "name": "Alice",
+          "age": "30"
+        }
+      ],
+      "expected": {
+        "Alice": "name",
+        "30": "age"
+      }
+    },
+    {
+      "input": [
+        {
+          "x": "10",
+          "y": "20"
+        }
+      ],
+      "expected": {
+        "10": "x",
+        "20": "y"
+      }
+    },
+    {
+      "input": [
+        {
+          "key": "value"
+        }
+      ],
+      "expected": {
+        "value": "key"
+      }
+    }
   ],
   "time_limit": 300
 }

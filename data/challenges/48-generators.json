@@ -1,13 +1,86 @@
 {
-  "title": "Number Generator",
+  "problem_number": 48,
+  "problem_name": "Number Generator",
+  "difficulty": "average",
+  "programming_language": "python",
   "description": "Write a function called `generate_numbers(n)` that is a generator yielding numbers from 0 to n-1. Return the list of all generated numbers.",
-  "difficulty": "Medium",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[5]",
+    "[3]",
+    "[1]",
+    "[10]"
+  ],
+  "sample_outputs": [
+    "[0, 1, 2, 3, 4]",
+    "[0, 1, 2]",
+    "[0]",
+    "[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]"
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "def generate_numbers(n):\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": [5], "expected": [0, 1, 2, 3, 4]},
-    {"input": [3], "expected": [0, 1, 2]},
-    {"input": [1], "expected": [0]},
-    {"input": [10], "expected": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
+    {
+      "input": [
+        5
+      ],
+      "expected": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "input": [
+        3
+      ],
+      "expected": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "input": [
+        1
+      ],
+      "expected": [
+        0
+      ]
+    },
+    {
+      "input": [
+        10
+      ],
+      "expected": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    }
   ],
   "time_limit": 300
 }

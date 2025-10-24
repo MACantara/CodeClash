@@ -1,13 +1,134 @@
 {
-  "title": "Set Union and Intersection",
+  "problem_number": 32,
+  "problem_name": "Set Union and Intersection",
+  "difficulty": "easy",
+  "programming_language": "python",
   "description": "Write a function called `set_operations(set1, set2)` that returns a tuple with (union, intersection) of two sets as lists (sorted).",
-  "difficulty": "Easy",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[[1, 2, 3], [2, 3, 4]]",
+    "[['a', 'b'], ['b', 'c']]",
+    "[[1, 2], [3, 4]]",
+    "[[5, 6, 7], [5, 6, 7]]"
+  ],
+  "sample_outputs": [
+    "[[1, 2, 3, 4], [2, 3]]",
+    "[['a', 'b', 'c'], ['b']]",
+    "[[1, 2, 3, 4], []]",
+    "[[5, 6, 7], [5, 6, 7]]"
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "def set_operations(set1, set2):\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": [[1, 2, 3], [2, 3, 4]], "expected": [[1, 2, 3, 4], [2, 3]]},
-    {"input": [["a", "b"], ["b", "c"]], "expected": [["a", "b", "c"], ["b"]]},
-    {"input": [[1, 2], [3, 4]], "expected": [[1, 2, 3, 4], []]},
-    {"input": [[5, 6, 7], [5, 6, 7]], "expected": [[5, 6, 7], [5, 6, 7]]}
+    {
+      "input": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          2,
+          3,
+          4
+        ],
+        [
+          2,
+          3
+        ]
+      ]
+    },
+    {
+      "input": [
+        [
+          "a",
+          "b"
+        ],
+        [
+          "b",
+          "c"
+        ]
+      ],
+      "expected": [
+        [
+          "a",
+          "b",
+          "c"
+        ],
+        [
+          "b"
+        ]
+      ]
+    },
+    {
+      "input": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          2,
+          3,
+          4
+        ],
+        []
+      ]
+    },
+    {
+      "input": [
+        [
+          5,
+          6,
+          7
+        ],
+        [
+          5,
+          6,
+          7
+        ]
+      ],
+      "expected": [
+        [
+          5,
+          6,
+          7
+        ],
+        [
+          5,
+          6,
+          7
+        ]
+      ]
+    }
   ],
   "time_limit": 300
 }

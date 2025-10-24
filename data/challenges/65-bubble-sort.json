@@ -1,13 +1,99 @@
 {
-  "title": "Bubble Sort",
+  "problem_number": 65,
+  "problem_name": "Bubble Sort",
+  "difficulty": "average",
+  "programming_language": "python",
   "description": "Write a function called `bubble_sort(arr)` that implements the bubble sort algorithm and returns the sorted array.",
-  "difficulty": "Medium",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[[5, 2, 8, 1, 9]]",
+    "[[3, 3, 1, 2]]",
+    "[[10, 5, 3, 8]]",
+    "[[1]]"
+  ],
+  "sample_outputs": [
+    "[1, 2, 5, 8, 9]",
+    "[1, 2, 3, 3]",
+    "[3, 5, 8, 10]",
+    "[1]"
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "def bubble_sort(arr):\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": [[5, 2, 8, 1, 9]], "expected": [1, 2, 5, 8, 9]},
-    {"input": [[3, 3, 1, 2]], "expected": [1, 2, 3, 3]},
-    {"input": [[10, 5, 3, 8]], "expected": [3, 5, 8, 10]},
-    {"input": [[1]], "expected": [1]}
+    {
+      "input": [
+        [
+          5,
+          2,
+          8,
+          1,
+          9
+        ]
+      ],
+      "expected": [
+        1,
+        2,
+        5,
+        8,
+        9
+      ]
+    },
+    {
+      "input": [
+        [
+          3,
+          3,
+          1,
+          2
+        ]
+      ],
+      "expected": [
+        1,
+        2,
+        3,
+        3
+      ]
+    },
+    {
+      "input": [
+        [
+          10,
+          5,
+          3,
+          8
+        ]
+      ],
+      "expected": [
+        3,
+        5,
+        8,
+        10
+      ]
+    },
+    {
+      "input": [
+        [
+          1
+        ]
+      ],
+      "expected": [
+        1
+      ]
+    }
   ],
   "time_limit": 300
 }

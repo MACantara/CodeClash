@@ -1,13 +1,67 @@
 {
-  "title": "Safe Division with Casting",
+  "problem_number": 15,
+  "problem_name": "Safe Division with Casting",
+  "difficulty": "average",
+  "programming_language": "python",
   "description": "Write a function called `safe_divide(a, b)` that converts both inputs to floats and returns their division result rounded to 2 decimal places. Return None if b is 0.",
-  "difficulty": "Medium",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "['10', '3']",
+    "[7, 2]",
+    "['15', '5']",
+    "[10, 0]"
+  ],
+  "sample_outputs": [
+    "3.33",
+    "3.5",
+    "3.0",
+    "None"
+  ],
+  "explanations": [
+    "Example explanation",
+    "Example explanation",
+    "Example explanation",
+    "Example explanation"
+  ],
+  "notes": [
+    "Pay attention to edge cases",
+    "Test with different input values"
+  ],
+  "hints": [
+    "Break down the problem into smaller steps",
+    "Think about potential edge cases"
+  ],
   "starter_code": "def safe_divide(a, b):\n    # Write your code here\n    pass",
   "test_cases": [
-    {"input": ["10", "3"], "expected": 3.33},
-    {"input": [7, 2], "expected": 3.5},
-    {"input": ["15", "5"], "expected": 3.0},
-    {"input": [10, 0], "expected": null}
+    {
+      "input": [
+        "10",
+        "3"
+      ],
+      "expected": 3.33
+    },
+    {
+      "input": [
+        7,
+        2
+      ],
+      "expected": 3.5
+    },
+    {
+      "input": [
+        "15",
+        "5"
+      ],
+      "expected": 3.0
+    },
+    {
+      "input": [
+        10,
+        0
+      ],
+      "expected": null
+    }
   ],
   "time_limit": 300
 }
