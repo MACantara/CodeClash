@@ -53,7 +53,7 @@ def difficulty_selector():
 
 @challenges_bp.route('/random-challenge/<difficulty>')
 def random_challenge(difficulty):
-    """Get a random challenge by difficulty level"""
+    """Get a random challenge by difficulty level - returns JSON"""
     valid_difficulties = ['foundational', 'easy', 'average', 'difficult']
     
     if difficulty.lower() not in valid_difficulties:
@@ -74,8 +74,12 @@ def random_challenge(difficulty):
     # Select a random challenge
     selected_challenge = random.choice(filtered_challenges)
     
-    # Return redirect URL to the challenge page
-    return redirect(url_for('challenges.view_challenge', problem_number=selected_challenge['problem_number']))
+    # Return JSON with the challenge details
+    return jsonify({
+        'problem_number': selected_challenge['problem_number'],
+        'problem_name': selected_challenge['problem_name'],
+        'difficulty': selected_challenge['difficulty']
+    })
 
 
 @challenges_bp.route('/challenge/<int:problem_number>')
