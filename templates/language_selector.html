@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block title %}Select Programming Language - CodeClash{% endblock %}
+
+{% block content %}
+<div class="min-h-screen flex items-center justify-center px-2 sm:px-4 py-8">
+    <div class="max-w-5xl w-full">
+        <!-- Header -->
+        <div class="text-center mb-8 sm:mb-12">
+            <div class="flex justify-center mb-4">
+                <i class="bi bi-code-square text-5xl sm:text-6xl text-blue-500 animate-pulse"></i>
+            </div>
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-blue-500 to-cyan-600 bg-clip-text text-transparent">
+                Select Programming Language
+            </h1>
+            <p class="text-base sm:text-xl text-gray-300 px-4">
+                Choose your preferred programming language to solve challenges
+            </p>
+        </div>
+
+        <!-- Language Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mb-8">
+            <!-- Python -->
+            <div class="language-card bg-gradient-to-br from-blue-900/30 to-blue-800/30 border-2 border-blue-600 rounded-lg p-8 hover:scale-105 transition-transform cursor-pointer"
+                 onclick="selectLanguage('python')">
+                <div class="text-center">
+                    <i class="bi bi-file-earmark-code text-5xl sm:text-6xl text-blue-400 mb-4"></i>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-blue-400 mb-3">Python</h2>
+                    <p class="text-sm text-gray-300 mb-4">
+                        Dynamic, versatile programming language<br/>
+                        <span class="text-xs text-gray-400">Great for beginners and professionals</span>
+                    </p>
+                    <div class="bg-blue-600/20 rounded px-4 py-2 text-sm font-semibold text-blue-400 inline-block">
+                        <span id="python-count">...</span> challenges
+                    </div>
+                </div>
+            </div>
+
+            <!-- Java -->
+            <div class="language-card bg-gradient-to-br from-orange-900/30 to-orange-800/30 border-2 border-orange-600 rounded-lg p-8 hover:scale-105 transition-transform cursor-pointer"
+                 onclick="selectLanguage('java')">
+                <div class="text-center">
+                    <i class="bi bi-cup text-5xl sm:text-6xl text-orange-400 mb-4"></i>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-orange-400 mb-3">Java</h2>
+                    <p class="text-sm text-gray-300 mb-4">
+                        Object-oriented enterprise language<br/>
+                        <span class="text-xs text-gray-400">Industry standard & robust</span>
+                    </p>
+                    <div class="bg-orange-600/20 rounded px-4 py-2 text-sm font-semibold text-orange-400 inline-block">
+                        <span id="java-count">...</span> challenges
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back Button -->
+        <div class="text-center">
+            <a href="/" 
+               class="inline-flex items-center gap-2 bg-gray-700 hover:bg-gray-600 text-white font-semibold py-3 px-6 rounded-lg transition">
+                <i class="bi bi-arrow-left"></i>
+                Back to Home
+            </a>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div id="loading" class="hidden fixed inset-0 bg-gray-900/80 flex items-center justify-center z-50">
+            <div class="bg-gray-800 p-8 rounded-lg border border-gray-700">
+                <div class="flex items-center gap-4">
+                    <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+                    <span class="text-lg">Loading challenges...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Load challenge counts by programming language
+async function loadLanguageCounts() {
+    try {
+        const response = await fetch('/api/challenges/by-language');
+        const data = await response.json();
+        
+        // Update the UI with counts
+        document.getElementById('python-count').textContent = data.python || 0;
+        document.getElementById('java-count').textContent = data.java || 0;
+        
+    } catch (error) {
+        console.error('Error loading language counts:', error);
+        // Set default values on error
+        document.getElementById('python-count').textContent = '0';
+        document.getElementById('java-count').textContent = '0';
+    }
+}
+
+// Select a programming language and navigate to difficulty selector
+function selectLanguage(language) {
+    // Show loading indicator
+    document.getElementById('loading').classList.remove('hidden');
+    
+    // Navigate to difficulty selector with language parameter
+    window.location.href = `/difficulty-selector?language=${language}`;
+}
+
+// Load counts when page loads
+document.addEventListener('DOMContentLoaded', loadLanguageCounts);
+</script>
+{% endblock %}
