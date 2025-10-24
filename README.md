@@ -131,25 +131,65 @@ Each challenge includes:
 
 ## Adding New Challenges
 
-To add new challenges, create JSON files in the `data/challenges/` directory following this format:
+To add new challenges, create JSON files in the `data/challenges/` directory following this comprehensive format:
 
 ```json
 {
-  "id": 1,
-  "title": "Challenge Title",
-  "description": "Problem description with examples...",
-  "difficulty": "Easy",
-  "starter_code": "def solution():\n    # Write your code here\n    pass",
-  "test_cases": [
-    {
-      "input": "input_value",
-      "expected": "expected_output",
-      "description": "Test case description"
-    }
+  "problem_number": 1,
+  "problem_name": "Sum of Two Numbers",
+  "difficulty": "foundational",
+  "programming_language": "python",
+  "description": "Write a function that takes two numbers as input and returns their sum. This is a basic introduction to functions and arithmetic operations.",
+  "input_specification": "Two integers separated by a space on a single line",
+  "output_specification": "A single integer representing the sum of the two input numbers",
+  "sample_inputs": [
+    "5 3",
+    "10 -5",
+    "-2 -3"
   ],
-  "time_limit": 300
+  "sample_outputs": [
+    "8",
+    "5",
+    "-5"
+  ],
+  "explanations": [
+    "5 + 3 = 8",
+    "10 + (-5) = 5",
+    "(-2) + (-3) = -5"
+  ],
+  "notes": [
+    "Handle negative numbers",
+    "Ensure the function works with edge cases"
+  ],
+  "hints": [
+    "Use the + operator to add two numbers",
+    "Remember that a + b = b + a"
+  ],
+  "starter_code": "def sum_two_numbers(a, b):\n    # Write your code here\n    pass",
+  "test_cases": [
+    {"input": [5, 3], "expected": 8},
+    {"input": [10, -5], "expected": 5},
+    {"input": [-2, -3], "expected": -5}
+  ]
 }
 ```
+
+### Field Descriptions
+
+- **problem_number**: Unique identifier for the challenge (integer)
+- **problem_name**: Descriptive title of the challenge
+- **difficulty**: Level of difficulty - `foundational`, `easy`, `average`, or `difficult`
+- **programming_language**: Target language - `python` or `java`
+- **description**: Detailed explanation of the problem
+- **input_specification**: Format and description of input data
+- **output_specification**: Format and description of expected output
+- **sample_inputs**: Array of example inputs as strings
+- **sample_outputs**: Array of corresponding expected outputs as strings
+- **explanations**: Optional array explaining each sample input/output pair
+- **notes**: Array of important considerations or edge cases
+- **hints**: Optional array of hints to help solve the problem
+- **starter_code**: Template code for the user to complete
+- **test_cases**: Array of test cases with `input` and `expected` fields
 
 The challenges will be automatically loaded from the JSON files in the `data/challenges/` directory when the application starts.
 
