@@ -32,7 +32,7 @@ def load_challenge_by_number(problem_number):
     return None
 
 
-@challenges_bp.route('/challenges')
+@challenges_bp.route('/get-challenges')
 def get_challenges():
     """Get all available challenges - served from JSON files"""
     challenges_data = load_all_challenges()
