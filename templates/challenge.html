@@ -41,9 +41,8 @@
             </div>
         </div>
 
-        <!-- Two Column Layout -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <!-- Left Column - Problem Description -->
+        <!-- Challenge Content -->
+        <div class="max-w-4xl mx-auto">
             <div class="space-y-6">
                 <!-- Description -->
                 <div class="bg-gray-800 rounded-lg p-4 sm:p-6 border border-gray-700">
@@ -139,51 +138,6 @@
                 </div>
                 {% endif %}
             </div>
-
-            <!-- Right Column - Code Editor -->
-            <div class="space-y-6">
-                <!-- Code Editor -->
-                <div class="bg-gray-800 rounded-lg p-4 sm:p-6 border border-gray-700 sticky top-4">
-                    <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
-                        <i class="bi bi-code-slash text-blue-500"></i>
-                        Your Solution
-                    </h2>
-                    
-                    <div class="mb-4">
-                        <textarea id="code-editor" 
-                                  class="w-full bg-gray-900 text-gray-100 p-4 rounded font-mono text-sm border border-gray-700 focus:border-blue-500 focus:outline-none"
-                                  rows="20"
-                                  spellcheck="false">{{ challenge.starter_code }}</textarea>
-                    </div>
-
-                    <!-- Action Buttons -->
-                    <div class="flex flex-col sm:flex-row gap-3">
-                        <button id="runBtn" onclick="runCode()" 
-                                class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition flex items-center justify-center gap-2">
-                            <i class="bi bi-play-fill"></i>
-                            Run Code
-                        </button>
-                        <button id="submitBtn" onclick="submitCode()" 
-                                class="flex-1 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg transition flex items-center justify-center gap-2">
-                            <i class="bi bi-check-circle"></i>
-                            Submit
-                        </button>
-                        <button onclick="resetCode()" 
-                                class="bg-gray-600 hover:bg-gray-700 text-white font-semibold py-3 px-4 rounded-lg transition">
-                            <i class="bi bi-arrow-counterclockwise"></i>
-                        </button>
-                    </div>
-
-                    <!-- Output Area -->
-                    <div id="output-area" class="mt-4 hidden">
-                        <h3 class="font-semibold mb-2 flex items-center gap-2">
-                            <i class="bi bi-terminal"></i>
-                            Output
-                        </h3>
-                        <div id="output-content" class="bg-gray-900 p-4 rounded border border-gray-700 font-mono text-sm"></div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
@@ -191,9 +145,6 @@
 
 {% block scripts %}
 <script>
-const challenge = {{ challenge | tojson }};
-const starterCode = `{{ challenge.starter_code }}`;
-
 // Toggle hints visibility
 function toggleHints() {
     const hintsContent = document.getElementById('hints-content');
@@ -203,117 +154,5 @@ function toggleHints() {
     hintsIcon.classList.toggle('bi-chevron-down');
     hintsIcon.classList.toggle('bi-chevron-up');
 }
-
-// Reset code to starter code
-function resetCode() {
-    if (confirm('Are you sure you want to reset your code?')) {
-        document.getElementById('code-editor').value = starterCode;
-        window.CodeClash.showNotification('Code reset to starter template', 'info');
-    }
-}
-
-// Run code (test with sample inputs)
-async function runCode() {
-    const code = document.getElementById('code-editor').value;
-    const outputArea = document.getElementById('output-area');
-    const outputContent = document.getElementById('output-content');
-    
-    // Show output area
-    outputArea.classList.remove('hidden');
-    outputContent.innerHTML = '<div class="text-gray-400">Running tests...</div>';
-    
-    try {
-        const response = await fetch('/api/run-code', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                code: code,
-                problem_number: challenge.problem_number,
-                test_mode: true
-            })
-        });
-        
-        const result = await response.json();
-        
-        if (result.error) {
-            outputContent.innerHTML = `<div class="text-red-400"><i class="bi bi-x-circle"></i> Error: ${result.error}</div>`;
-        } else {
-            // Display test results
-            let html = '<div class="space-y-2">';
-            result.results.forEach((test, idx) => {
-                const icon = test.passed ? '<i class="bi bi-check-circle text-green-400"></i>' : '<i class="bi bi-x-circle text-red-400"></i>';
-                const color = test.passed ? 'text-green-400' : 'text-red-400';
-                html += `<div class="${color}">${icon} Test ${idx + 1}: ${test.passed ? 'Passed' : 'Failed'}</div>`;
-                if (!test.passed) {
-                    html += `<div class="text-gray-400 text-xs ml-6">Expected: ${test.expected}, Got: ${test.actual}</div>`;
-                }
-            });
-            html += '</div>';
-            outputContent.innerHTML = html;
-        }
-        
-    } catch (error) {
-        console.error('Error running code:', error);
-        outputContent.innerHTML = '<div class="text-red-400"><i class="bi bi-x-circle"></i> Failed to run code</div>';
-    }
-}
-
-// Submit code
-async function submitCode() {
-    const code = document.getElementById('code-editor').value;
-    
-    if (!code || code.trim() === starterCode.trim()) {
-        window.CodeClash.showNotification('Please write some code before submitting', 'warning');
-        return;
-    }
-    
-    const outputArea = document.getElementById('output-area');
-    const outputContent = document.getElementById('output-content');
-    
-    // Show output area
-    outputArea.classList.remove('hidden');
-    outputContent.innerHTML = '<div class="text-gray-400">Submitting your solution...</div>';
-    
-    try {
-        const response = await fetch('/api/run-code', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                code: code,
-                problem_number: challenge.problem_number,
-                test_mode: false
-            })
-        });
-        
-        const result = await response.json();
-        
-        if (result.error) {
-            outputContent.innerHTML = `<div class="text-red-400"><i class="bi bi-x-circle"></i> Error: ${result.error}</div>`;
-            window.CodeClash.showNotification('Submission failed', 'error');
-        } else if (result.all_passed) {
-            outputContent.innerHTML = '<div class="text-green-400 text-lg"><i class="bi bi-check-circle"></i> All tests passed! 🎉</div>';
-            window.CodeClash.showNotification('Challenge completed successfully!', 'success');
-        } else {
-            outputContent.innerHTML = `<div class="text-yellow-400"><i class="bi bi-exclamation-triangle"></i> ${result.passed}/${result.total} tests passed</div>`;
-            window.CodeClash.showNotification('Some tests failed', 'warning');
-        }
-        
-    } catch (error) {
-        console.error('Error submitting code:', error);
-        outputContent.innerHTML = '<div class="text-red-400"><i class="bi bi-x-circle"></i> Failed to submit code</div>';
-        window.CodeClash.showNotification('Submission failed', 'error');
-    }
-}
-
-// Auto-resize textarea
-const textarea = document.getElementById('code-editor');
-textarea.addEventListener('input', function() {
-    this.style.height = 'auto';
-    this.style.height = this.scrollHeight + 'px';
-});
 </script>
 {% endblock %}
