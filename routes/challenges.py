@@ -53,7 +53,7 @@ def difficulty_selector():
 
 @challenges_bp.route('/random-challenge/<difficulty>')
 def random_challenge(difficulty):
-    """Get a random challenge by difficulty level - returns JSON"""
+    """Get a random challenge by difficulty level - returns JSON for AJAX"""
     valid_difficulties = ['foundational', 'easy', 'average', 'difficult']
     
     if difficulty.lower() not in valid_difficulties:
@@ -80,6 +80,33 @@ def random_challenge(difficulty):
         'problem_name': selected_challenge['problem_name'],
         'difficulty': selected_challenge['difficulty']
     })
+
+
+@challenges_bp.route('/random/<difficulty>')
+def random_challenge_direct(difficulty):
+    """Directly navigate to a random challenge by difficulty - returns HTML"""
+    valid_difficulties = ['foundational', 'easy', 'average', 'difficult']
+    
+    if difficulty.lower() not in valid_difficulties:
+        return render_template('404.html', message='Invalid difficulty level'), 404
+    
+    # Load all challenges
+    challenges = load_all_challenges()
+    
+    # Filter by difficulty
+    filtered_challenges = [
+        c for c in challenges 
+        if c.get('difficulty', '').lower() == difficulty.lower()
+    ]
+    
+    if not filtered_challenges:
+        return render_template('404.html', message=f'No challenges found for difficulty: {difficulty}'), 404
+    
+    # Select a random challenge
+    selected_challenge = random.choice(filtered_challenges)
+    
+    # Render the challenge page directly
+    return render_template('challenge.html', challenge=selected_challenge)
 
 
 @challenges_bp.route('/challenge/<int:problem_number>')
