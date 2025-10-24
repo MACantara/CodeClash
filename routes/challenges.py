@@ -215,31 +215,3 @@ def view_challenge(problem_number):
     
     return render_template('challenge.html', challenge=challenge)
 
-
-@challenges_bp.route('/api/run-code', methods=['POST'])
-def run_code():
-    """API endpoint to run/test code (placeholder for now)"""
-    from flask import request
-    
-    data = request.get_json()
-    code = data.get('code', '')
-    problem_number = data.get('problem_number')
-    test_mode = data.get('test_mode', False)
-    
-    # Load the challenge to get test cases
-    challenge = load_challenge_by_number(problem_number)
-    
-    if not challenge:
-        return jsonify({'error': 'Challenge not found'}), 404
-    
-    # This is a placeholder - in a real implementation, you'd:
-    # 1. Execute the code safely in a sandboxed environment
-    # 2. Run it against the test cases
-    # 3. Return the results
-    
-    # For now, return a mock response
-    return jsonify({
-        'error': 'Code execution is not yet implemented. This feature requires a secure sandbox environment.',
-        'note': 'You can copy the code and test it locally in your Python environment.'
-    })
-
