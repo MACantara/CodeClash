@@ -1,0 +1,196 @@
+{% extends "base.html" %}
+
+{% block title %}All Challenges - CodeClash{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-2 sm:px-4 py-6 sm:py-8">
+    <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl sm:text-4xl font-bold mb-3 bg-gradient-to-r from-blue-500 to-cyan-600 bg-clip-text text-transparent">
+                All Challenges
+            </h1>
+            <p class="text-gray-400">Browse and solve Python coding challenges</p>
+        </div>
+
+        <!-- Filters -->
+        <div class="bg-gray-800 rounded-lg p-4 sm:p-6 mb-6 border border-gray-700">
+            <div class="flex flex-col sm:flex-row gap-4 items-center justify-between">
+                <div class="flex flex-wrap gap-2 justify-center sm:justify-start">
+                    <button onclick="filterByDifficulty('all')" 
+                            class="difficulty-filter active px-4 py-2 rounded-lg font-semibold transition"
+                            data-difficulty="all">
+                        All
+                    </button>
+                    <button onclick="filterByDifficulty('foundational')" 
+                            class="difficulty-filter px-4 py-2 rounded-lg font-semibold transition"
+                            data-difficulty="foundational">
+                        <span class="inline-block w-2 h-2 rounded-full bg-green-500 mr-2"></span>
+                        Foundational
+                    </button>
+                    <button onclick="filterByDifficulty('easy')" 
+                            class="difficulty-filter px-4 py-2 rounded-lg font-semibold transition"
+                            data-difficulty="easy">
+                        <span class="inline-block w-2 h-2 rounded-full bg-blue-500 mr-2"></span>
+                        Easy
+                    </button>
+                    <button onclick="filterByDifficulty('average')" 
+                            class="difficulty-filter px-4 py-2 rounded-lg font-semibold transition"
+                            data-difficulty="average">
+                        <span class="inline-block w-2 h-2 rounded-full bg-yellow-500 mr-2"></span>
+                        Average
+                    </button>
+                    <button onclick="filterByDifficulty('difficult')" 
+                            class="difficulty-filter px-4 py-2 rounded-lg font-semibold transition"
+                            data-difficulty="difficult">
+                        <span class="inline-block w-2 h-2 rounded-full bg-red-500 mr-2"></span>
+                        Difficult
+                    </button>
+                </div>
+                <div class="text-gray-400">
+                    <span id="challenge-count">0</span> challenges
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loading" class="text-center py-12">
+            <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+            <p class="text-gray-400 mt-4">Loading challenges...</p>
+        </div>
+
+        <!-- Challenges Grid -->
+        <div id="challenges-grid" class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            <!-- Challenges will be populated here -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="empty-state" class="hidden text-center py-12">
+            <i class="bi bi-inbox text-6xl text-gray-600 mb-4"></i>
+            <p class="text-gray-400 text-lg">No challenges found for this difficulty.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+let allChallenges = [];
+let currentFilter = 'all';
+
+// Load all challenges
+async function loadChallenges() {
+    try {
+        const response = await fetch('/api/challenges/data');
+        allChallenges = await response.json();
+        displayChallenges(allChallenges);
+        document.getElementById('loading').classList.add('hidden');
+        document.getElementById('challenges-grid').classList.remove('hidden');
+    } catch (error) {
+        console.error('Error loading challenges:', error);
+        document.getElementById('loading').innerHTML = '<p class="text-red-400">Failed to load challenges</p>';
+    }
+}
+
+// Display challenges
+function displayChallenges(challenges) {
+    const grid = document.getElementById('challenges-grid');
+    const emptyState = document.getElementById('empty-state');
+    
+    if (challenges.length === 0) {
+        grid.classList.add('hidden');
+        emptyState.classList.remove('hidden');
+        document.getElementById('challenge-count').textContent = '0';
+        return;
+    }
+    
+    grid.classList.remove('hidden');
+    emptyState.classList.add('hidden');
+    document.getElementById('challenge-count').textContent = challenges.length;
+    
+    grid.innerHTML = challenges.map(challenge => {
+        const difficultyColors = {
+            foundational: 'bg-green-600/20 text-green-400 border-green-600',
+            easy: 'bg-blue-600/20 text-blue-400 border-blue-600',
+            average: 'bg-yellow-600/20 text-yellow-400 border-yellow-600',
+            difficult: 'bg-red-600/20 text-red-400 border-red-600'
+        };
+        
+        const colorClass = difficultyColors[challenge.difficulty.toLowerCase()] || 'bg-gray-600/20 text-gray-400 border-gray-600';
+        
+        return `
+            <div class="bg-gray-800 rounded-lg p-4 sm:p-6 border border-gray-700 hover:border-blue-500 transition cursor-pointer"
+                 onclick="location.href='/challenge/${challenge.problem_number}'">
+                <div class="flex items-start justify-between mb-3">
+                    <span class="text-xs font-semibold px-2 py-1 rounded-full border ${colorClass}">
+                        ${challenge.difficulty.charAt(0).toUpperCase() + challenge.difficulty.slice(1)}
+                    </span>
+                    <span class="text-xs text-gray-500">#${challenge.problem_number}</span>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-2 line-clamp-2">${challenge.problem_name}</h3>
+                <p class="text-sm text-gray-400 line-clamp-3 mb-4">${challenge.description}</p>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2 text-xs text-gray-500">
+                        <i class="bi bi-clock"></i>
+                        <span>${Math.floor(challenge.time_limit / 60)} min</span>
+                    </div>
+                    <button class="text-blue-400 hover:text-blue-300 text-sm font-semibold">
+                        Solve <i class="bi bi-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+// Filter challenges by difficulty
+function filterByDifficulty(difficulty) {
+    currentFilter = difficulty;
+    
+    // Update active button
+    document.querySelectorAll('.difficulty-filter').forEach(btn => {
+        btn.classList.remove('active', 'bg-blue-600', 'text-white');
+        btn.classList.add('bg-gray-700', 'text-gray-300');
+    });
+    
+    const activeBtn = document.querySelector(`[data-difficulty="${difficulty}"]`);
+    activeBtn.classList.add('active', 'bg-blue-600', 'text-white');
+    activeBtn.classList.remove('bg-gray-700', 'text-gray-300');
+    
+    // Filter challenges
+    if (difficulty === 'all') {
+        displayChallenges(allChallenges);
+    } else {
+        const filtered = allChallenges.filter(c => c.difficulty.toLowerCase() === difficulty.toLowerCase());
+        displayChallenges(filtered);
+    }
+}
+
+// Load challenges on page load
+document.addEventListener('DOMContentLoaded', loadChallenges);
+</script>
+
+<style>
+.difficulty-filter.active {
+    @apply bg-blue-600 text-white;
+}
+
+.difficulty-filter {
+    @apply bg-gray-700 text-gray-300 hover:bg-gray-600;
+}
+
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+</style>
+{% endblock %}
