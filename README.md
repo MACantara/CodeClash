@@ -81,8 +81,7 @@ CodeClash/
 │       ├── db.js          # IndexedDB client-side storage
 │       └── main.js        # JavaScript utilities
 └── data/                  # Challenge and achievement data
-    ├── challenges/        # JSON files with coding challenges
-    └── achievements/      # JSON files with achievement definitions
+    └── challenges/        # JSON files with coding challenges
 ```
 
 ## Challenges Included
