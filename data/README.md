@@ -71,8 +71,7 @@ Each challenge JSON file follows this comprehensive template:
     {"input": [10, 20], "expected": 30},
     {"input": [-5, 5], "expected": 0},
     {"input": [0, 0], "expected": 0}
-  ],
-  "time_limit": 300
+  ]
 }
 ```
 
@@ -96,7 +95,6 @@ Each challenge JSON file follows this comprehensive template:
 | **hints** | Array | Helpful hints to guide the solver without giving away the solution |
 | **starter_code** | String | Template code with function signature and comments |
 | **test_cases** | Array | Structured test cases with input/expected output pairs |
-| **time_limit** | Integer | Time limit in seconds (typically 300s) |
 
 ## Achievements
 
