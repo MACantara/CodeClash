@@ -31,7 +31,7 @@
                     <h1 class="text-2xl sm:text-3xl font-bold text-white">{{ challenge.problem_name }}</h1>
                 </div>
                 <div class="flex gap-2">
-                    <button onclick="location.href='/random-challenge/{{ challenge.difficulty }}'" 
+                    <button onclick="location.href='/random/{{ challenge.difficulty }}'" 
                             class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition flex items-center gap-2">
                         <i class="bi bi-shuffle"></i>
                         <span class="hidden sm:inline">Another {{ challenge.difficulty.capitalize() }}</span>
