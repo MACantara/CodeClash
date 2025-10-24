@@ -1,117 +1,231 @@
-{% extends "base.html" %}
+{% extends "base.html" %}{% extends "base.html" %}
 
-{% block title %}CodeClash - Home{% endblock %}
 
-{% block content %}
-<div class="min-h-screen flex items-center justify-center px-2 sm:px-4 py-8 sm:py-0">
-    <div class="max-w-4xl w-full">
-        <!-- Hero Section -->
-        <div class="text-center mb-8 sm:mb-12">
-            <div class="flex justify-center mb-4 sm:mb-6">
-                <i class="bi bi-lightning-charge-fill text-6xl sm:text-7xl md:text-8xl text-yellow-500 animate-pulse"></i>
-            </div>
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
-                CodeClash
-            </h1>
-            <p class="text-base sm:text-xl md:text-2xl text-gray-300 mb-6 sm:mb-8 px-4">
-                Challenge developers in 1v1 Python tournaments
-            </p>
-            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center text-gray-400 text-sm sm:text-base px-4">
-                <div class="flex items-center justify-center gap-2">
-                    <i class="bi bi-speedometer2 text-blue-500"></i>
-                    <span>Speed Matters</span>
-                </div>
-                <div class="flex items-center justify-center gap-2">
-                    <i class="bi bi-bug text-red-500"></i>
-                    <span>Zero Errors</span>
-                </div>
-                <div class="flex items-center justify-center gap-2">
-                    <i class="bi bi-trophy-fill text-yellow-500"></i>
-                    <span>Climb Rankings</span>
-                </div>
-            </div>
-        </div>
 
-        {% if not session.get('user_id') %}
-        <!-- Login/Register Card -->
-        <div class="bg-gray-800 rounded-lg shadow-2xl p-4 sm:p-6 md:p-8 border border-gray-700">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-                <!-- Login Form -->
-                <div>
-                    <h2 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 flex items-center gap-2">
-                        <i class="bi bi-box-arrow-in-right text-blue-500"></i>
-                        <span>Login</span>
-                    </h2>
-                    <form id="loginForm">
-                        <div class="mb-3 sm:mb-4">
-                            <label class="block text-gray-300 mb-2 text-sm sm:text-base">Username</label>
-                            <input type="text" 
-                                   id="loginUsername" 
-                                   class="w-full px-3 sm:px-4 py-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:border-blue-500 text-white text-sm sm:text-base"
+{% block title %}CodeClash - Practice Python Challenges{% endblock %}{% block title %}CodeClash - Home{% endblock %}
+
+
+
+{% block content %}{% block content %}
+
+<div class="min-h-screen flex items-center justify-center px-2 sm:px-4 py-8 sm:py-0"><div class="min-h-screen flex items-center justify-center px-2 sm:px-4 py-8 sm:py-0">
+
+    <div class="max-w-4xl w-full">    <div class="max-w-4xl w-full">
+
+        <!-- Hero Section -->        <!-- Hero Section -->
+
+        <div class="text-center mb-8 sm:mb-12">        <div class="text-center mb-8 sm:mb-12">
+
+            <div class="flex justify-center mb-4 sm:mb-6">            <div class="flex justify-center mb-4 sm:mb-6">
+
+                <i class="bi bi-lightning-charge-fill text-6xl sm:text-7xl md:text-8xl text-yellow-500 animate-pulse"></i>                <i class="bi bi-lightning-charge-fill text-6xl sm:text-7xl md:text-8xl text-yellow-500 animate-pulse"></i>
+
+            </div>            </div>
+
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+
+                CodeClash                CodeClash
+
+            </h1>            </h1>
+
+            <p class="text-base sm:text-xl md:text-2xl text-gray-300 mb-6 sm:mb-8 px-4">            <p class="text-base sm:text-xl md:text-2xl text-gray-300 mb-6 sm:mb-8 px-4">
+
+                Practice Python coding challenges                Challenge developers in 1v1 Python tournaments
+
+            </p>            </p>
+
+            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center text-gray-400 text-sm sm:text-base px-4">            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center text-gray-400 text-sm sm:text-base px-4">
+
+                <div class="flex items-center justify-center gap-2">                <div class="flex items-center justify-center gap-2">
+
+                    <i class="bi bi-speedometer2 text-blue-500"></i>                    <i class="bi bi-speedometer2 text-blue-500"></i>
+
+                    <span>Test Your Speed</span>                    <span>Speed Matters</span>
+
+                </div>                </div>
+
+                <div class="flex items-center justify-center gap-2">                <div class="flex items-center justify-center gap-2">
+
+                    <i class="bi bi-bug text-red-500"></i>                    <i class="bi bi-bug text-red-500"></i>
+
+                    <span>Write Clean Code</span>                    <span>Zero Errors</span>
+
+                </div>                </div>
+
+                <div class="flex items-center justify-center gap-2">                <div class="flex items-center justify-center gap-2">
+
+                    <i class="bi bi-trophy-fill text-yellow-500"></i>                    <i class="bi bi-trophy-fill text-yellow-500"></i>
+
+                    <span>Improve Your Skills</span>                    <span>Climb Rankings</span>
+
+                </div>                </div>
+
+            </div>            </div>
+
+        </div>        </div>
+
+
+
+        <!-- Practice Mode Card -->        {% if not session.get('user_id') %}
+
+        <div class="bg-gray-800 rounded-lg shadow-2xl p-6 sm:p-8 border border-gray-700">        <!-- Login/Register Card -->
+
+            <h2 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center">Start Practicing</h2>        <div class="bg-gray-800 rounded-lg shadow-2xl p-4 sm:p-6 md:p-8 border border-gray-700">
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+
+            <!-- Practice Mode Button -->                <!-- Login Form -->
+
+            <div class="flex justify-center mb-8">                <div>
+
+                <button onclick="startPractice()"                     <h2 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 flex items-center gap-2">
+
+                   class="bg-gradient-to-br from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold py-6 sm:py-8 px-8 sm:px-12 rounded-lg transition transform hover:scale-105 flex flex-col items-center justify-center gap-3 border-2 border-blue-500 shadow-xl">                        <i class="bi bi-box-arrow-in-right text-blue-500"></i>
+
+                    <i class="bi bi-book-fill text-4xl sm:text-5xl"></i>                        <span>Login</span>
+
+                    <div class="text-center">                    </h2>
+
+                        <div class="text-xl sm:text-2xl font-bold">Practice Mode</div>                    <form id="loginForm">
+
+                        <div class="text-xs sm:text-sm opacity-90">Solve a random challenge</div>                        <div class="mb-3 sm:mb-4">
+
+                    </div>                            <label class="block text-gray-300 mb-2 text-sm sm:text-base">Username</label>
+
+                </button>                            <input type="text" 
+
+            </div>                                   id="loginUsername" 
+
+        </div>                                   class="w-full px-3 sm:px-4 py-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:border-blue-500 text-white text-sm sm:text-base"
+
                                    placeholder="Enter username"
-                                   required>
-                        </div>
-                        <button type="submit" 
-                                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 sm:py-3 rounded transition transform hover:scale-105 text-sm sm:text-base">
-                            <i class="bi bi-box-arrow-in-right"></i> Login
-                        </button>
-                    </form>
-                    <div id="loginMessage" class="mt-3 sm:mt-4 text-center text-sm sm:text-base"></div>
-                </div>
 
-                <!-- Register Form -->
-                <div>
-                    <h2 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 flex items-center gap-2">
-                        <i class="bi bi-person-plus text-green-500"></i>
-                        <span>Register</span>
-                    </h2>
-                    <form id="registerForm">
-                        <div class="mb-3 sm:mb-4">
-                            <label class="block text-gray-300 mb-2 text-sm sm:text-base">Username</label>
-                            <input type="text" 
+        <!-- Features -->                                   required>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-8 sm:mt-12">                        </div>
+
+            <div class="bg-gray-800 p-4 sm:p-6 rounded-lg border border-gray-700 text-center">                        <button type="submit" 
+
+                <i class="bi bi-clock-history text-3xl sm:text-4xl text-blue-500 mb-2 sm:mb-3"></i>                                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 sm:py-3 rounded transition transform hover:scale-105 text-sm sm:text-base">
+
+                <h3 class="text-lg sm:text-xl font-bold mb-2">Timed Challenges</h3>                            <i class="bi bi-box-arrow-in-right"></i> Login
+
+                <p class="text-sm sm:text-base text-gray-400">Solve coding challenges with time tracking</p>                        </button>
+
+            </div>                    </form>
+
+            <div class="bg-gray-800 p-4 sm:p-6 rounded-lg border border-gray-700 text-center">                    <div id="loginMessage" class="mt-3 sm:mt-4 text-center text-sm sm:text-base"></div>
+
+                <i class="bi bi-check-circle text-3xl sm:text-4xl text-green-500 mb-2 sm:mb-3"></i>                </div>
+
+                <h3 class="text-lg sm:text-xl font-bold mb-2">Instant Feedback</h3>
+
+                <p class="text-sm sm:text-base text-gray-400">Get immediate results on your code submissions</p>                <!-- Register Form -->
+
+            </div>                <div>
+
+            <div class="bg-gray-800 p-4 sm:p-6 rounded-lg border border-gray-700 text-center">                    <h2 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 flex items-center gap-2">
+
+                <i class="bi bi-code-square text-3xl sm:text-4xl text-purple-500 mb-2 sm:mb-3"></i>                        <i class="bi bi-person-plus text-green-500"></i>
+
+                <h3 class="text-lg sm:text-xl font-bold mb-2">Python Challenges</h3>                        <span>Register</span>
+
+                <p class="text-sm sm:text-base text-gray-400">Algorithmic problems from easy to hard difficulty</p>                    </h2>
+
+            </div>                    <form id="registerForm">
+
+        </div>                        <div class="mb-3 sm:mb-4">
+
+    </div>                            <label class="block text-gray-300 mb-2 text-sm sm:text-base">Username</label>
+
+</div>                            <input type="text" 
+
                                    id="registerUsername" 
-                                   class="w-full px-3 sm:px-4 py-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:border-green-500 text-white text-sm sm:text-base"
-                                   placeholder="Choose username"
-                                   required>
-                        </div>
-                        <button type="submit" 
-                                class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 sm:py-3 rounded transition transform hover:scale-105 text-sm sm:text-base">
-                            <i class="bi bi-person-plus"></i> Register
-                        </button>
-                    </form>
-                    <div id="registerMessage" class="mt-3 sm:mt-4 text-center text-sm sm:text-base"></div>
-                </div>
-            </div>
-        </div>
-        {% else %}
-        <!-- Logged In View -->
-        <div class="bg-gray-800 rounded-lg shadow-2xl p-6 sm:p-8 border border-gray-700">
-            <h2 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center">Welcome back, {{ session.get('username') }}!</h2>
-            
-            <!-- Game Mode Selection -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-8">
-                <!-- 1v1 PvP Mode -->
-                <a href="/lobby" 
-                   class="bg-gradient-to-br from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-6 sm:py-8 px-4 sm:px-6 rounded-lg transition transform hover:scale-105 flex flex-col items-center justify-center gap-3 border-2 border-red-500 shadow-xl">
-                    <i class="bi bi-flag-fill text-4xl sm:text-5xl"></i>
-                    <div class="text-center">
-                        <div class="text-xl sm:text-2xl font-bold">1v1 PvP Battle</div>
-                        <div class="text-xs sm:text-sm opacity-90">Compete against other players</div>
-                    </div>
-                </a>
-                
-                <!-- Practice Mode -->
-                <a href="/lobby" 
-                   class="bg-gradient-to-br from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold py-6 sm:py-8 px-4 sm:px-6 rounded-lg transition transform hover:scale-105 flex flex-col items-center justify-center gap-3 border-2 border-blue-500 shadow-xl"
-                   onclick="startPractice(); return false;">
-                    <i class="bi bi-book-fill text-4xl sm:text-5xl"></i>
-                    <div class="text-center">
-                        <div class="text-xl sm:text-2xl font-bold">Practice Mode</div>
-                        <div class="text-xs sm:text-sm opacity-90">Solve challenges solo</div>
-                    </div>
-                </a>
-            </div>
-            
+
+<script>                                   class="w-full px-3 sm:px-4 py-2 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:border-green-500 text-white text-sm sm:text-base"
+
+    // Start practice mode                                   placeholder="Choose username"
+
+    async function startPractice() {                                   required>
+
+        try {                        </div>
+
+            const response = await fetch('/challenges', {                        <button type="submit" 
+
+                method: 'GET',                                class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 sm:py-3 rounded transition transform hover:scale-105 text-sm sm:text-base">
+
+                headers: { 'Content-Type': 'application/json' }                            <i class="bi bi-person-plus"></i> Register
+
+            });                        </button>
+
+                                </form>
+
+            let challenges = await response.json();                    <div id="registerMessage" class="mt-3 sm:mt-4 text-center text-sm sm:text-base"></div>
+
+                            </div>
+
+            if (challenges.length === 0) {            </div>
+
+                alert('No challenges available');        </div>
+
+                return;        {% else %}
+
+            }        <!-- Logged In View -->
+
+                    <div class="bg-gray-800 rounded-lg shadow-2xl p-6 sm:p-8 border border-gray-700">
+
+            // Pick a random challenge            <h2 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center">Welcome back, {{ session.get('username') }}!</h2>
+
+            const challenge = challenges[Math.floor(Math.random() * challenges.length)];            
+
+                        <!-- Game Mode Selection -->
+
+            // Create a practice match            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-8">
+
+            const createResponse = await fetch('/match/create', {                <!-- 1v1 PvP Mode -->
+
+                method: 'POST',                <a href="/lobby" 
+
+                headers: { 'Content-Type': 'application/json' },                   class="bg-gradient-to-br from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-6 sm:py-8 px-4 sm:px-6 rounded-lg transition transform hover:scale-105 flex flex-col items-center justify-center gap-3 border-2 border-red-500 shadow-xl">
+
+                body: JSON.stringify({                    <i class="bi bi-flag-fill text-4xl sm:text-5xl"></i>
+
+                    challenge_id: challenge.id                    <div class="text-center">
+
+                })                        <div class="text-xl sm:text-2xl font-bold">1v1 PvP Battle</div>
+
+            });                        <div class="text-xs sm:text-sm opacity-90">Compete against other players</div>
+
+                                </div>
+
+            const matchData = await createResponse.json();                </a>
+
+                            
+
+            if (matchData.success) {                <!-- Practice Mode -->
+
+                window.location.href = `/match/${matchData.match_id}`;                <a href="/lobby" 
+
+            } else {                   class="bg-gradient-to-br from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold py-6 sm:py-8 px-4 sm:px-6 rounded-lg transition transform hover:scale-105 flex flex-col items-center justify-center gap-3 border-2 border-blue-500 shadow-xl"
+
+                alert(matchData.message || 'Failed to start practice');                   onclick="startPractice(); return false;">
+
+            }                    <i class="bi bi-book-fill text-4xl sm:text-5xl"></i>
+
+        } catch (error) {                    <div class="text-center">
+
+            console.error(error);                        <div class="text-xl sm:text-2xl font-bold">Practice Mode</div>
+
+            alert('Error starting practice mode');                        <div class="text-xs sm:text-sm opacity-90">Solve challenges solo</div>
+
+        }                    </div>
+
+    }                </a>
+
+</script>            </div>
+
+{% endblock %}            
+
             <!-- Secondary Actions -->
             <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                 <a href="/leaderboard" 

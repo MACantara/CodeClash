@@ -8,22 +8,12 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 # Import all models
-from .user import User, UserStatistics
 from .challenge import Challenge
 from .match import Match
-from .lobby import Lobby, LobbyPlayer, LobbyInvitation
-from .achievement import Achievement, UserAchievement
 
 # Export all models
 __all__ = [
     'db',
-    'User',
-    'UserStatistics',
     'Challenge',
     'Match',
-    'Lobby',
-    'LobbyPlayer',
-    'LobbyInvitation',
-    'Achievement',
-    'UserAchievement',
 ]
