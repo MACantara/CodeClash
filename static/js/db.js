@@ -313,6 +313,9 @@ const SolvedChallengesDB = {
      * Save a solved challenge
      */
     async save(challenge) {
+        if (!db) {
+            await initDB();
+        }
         return new Promise((resolve, reject) => {
             const transaction = db.transaction(['solved_challenges'], 'readwrite');
             const store = transaction.objectStore('solved_challenges');
@@ -335,6 +338,9 @@ const SolvedChallengesDB = {
      * Get all solved challenges
      */
     async getAll() {
+        if (!db) {
+            await initDB();
+        }
         return new Promise((resolve, reject) => {
             const transaction = db.transaction(['solved_challenges'], 'readonly');
             const store = transaction.objectStore('solved_challenges');
@@ -349,6 +355,9 @@ const SolvedChallengesDB = {
      * Get solved challenge by problem number
      */
     async getById(problemNumber) {
+        if (!db) {
+            await initDB();
+        }
         return new Promise((resolve, reject) => {
             const transaction = db.transaction(['solved_challenges'], 'readonly');
             const store = transaction.objectStore('solved_challenges');
@@ -363,6 +372,9 @@ const SolvedChallengesDB = {
      * Get solved challenges by difficulty
      */
     async getByDifficulty(difficulty) {
+        if (!db) {
+            await initDB();
+        }
         return new Promise((resolve, reject) => {
             const transaction = db.transaction(['solved_challenges'], 'readonly');
             const store = transaction.objectStore('solved_challenges');
@@ -378,6 +390,9 @@ const SolvedChallengesDB = {
      * Get solved challenges by language
      */
     async getByLanguage(language) {
+        if (!db) {
+            await initDB();
+        }
         return new Promise((resolve, reject) => {
             const transaction = db.transaction(['solved_challenges'], 'readonly');
             const store = transaction.objectStore('solved_challenges');
@@ -454,6 +469,9 @@ const SolvedChallengesDB = {
      * Delete a solved challenge
      */
     async delete(problemNumber) {
+        if (!db) {
+            await initDB();
+        }
         return new Promise((resolve, reject) => {
             const transaction = db.transaction(['solved_challenges'], 'readwrite');
             const store = transaction.objectStore('solved_challenges');
@@ -468,6 +486,9 @@ const SolvedChallengesDB = {
      * Clear all solved challenges
      */
     async clear() {
+        if (!db) {
+            await initDB();
+        }
         return new Promise((resolve, reject) => {
             const transaction = db.transaction(['solved_challenges'], 'readwrite');
             const store = transaction.objectStore('solved_challenges');
@@ -524,9 +545,11 @@ async function loadChallengesFromServer() {
 // Initialize database when script loads
 if (typeof window !== 'undefined') {
     window.addEventListener('DOMContentLoaded', initializeDatabase);
+    // Make SolvedChallengesDB globally available
+    window.SolvedChallengesDB = SolvedChallengesDB;
 }
 
 // Export for module usage
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { initDB, ChallengeDB, MatchDB, initializeDatabase };
+    module.exports = { initDB, ChallengeDB, MatchDB, SolvedChallengesDB, initializeDatabase };
 }
