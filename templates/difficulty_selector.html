@@ -5,6 +5,14 @@
 {% block content %}
 <div class="min-h-screen flex items-center justify-center px-2 sm:px-4 py-8">
     <div class="max-w-5xl w-full">
+        <!-- Back Button -->
+        <div class="mb-4">
+            <a href="/language-selector" class="inline-flex items-center gap-2 text-gray-400 hover:text-white transition">
+                <i class="bi bi-arrow-left"></i>
+                <span>Back to Language Selector</span>
+            </a>
+        </div>
+
         <!-- Header -->
         <div class="text-center mb-8 sm:mb-12">
             <div class="flex justify-center mb-4">
@@ -14,7 +22,7 @@
                 Random Challenge
             </h1>
             <p class="text-base sm:text-xl text-gray-300 px-4">
-                Choose a difficulty level and get a random challenge to solve
+                Choose a difficulty level and get a random <span id="language-name">challenge</span> to solve
             </p>
         </div>
 
@@ -98,11 +106,19 @@
 
 {% block scripts %}
 <script>
+// Get language from URL parameter
+const urlParams = new URLSearchParams(window.location.search);
+const selectedLanguage = urlParams.get('language') || 'python';
+
 // Load challenge counts by difficulty
 async function loadChallengeCounts() {
     try {
-        const response = await fetch('/api/challenges/data');
-        const challenges = await response.json();
+        const response = await fetch(`/api/challenges/by-difficulty?language=${selectedLanguage}`);
+        const data = await response.json();
+        
+        // Update language name in header
+        const languageName = selectedLanguage.charAt(0).toUpperCase() + selectedLanguage.slice(1);
+        document.getElementById('language-name').textContent = languageName;
         
         // Count challenges by difficulty
         const counts = {
@@ -112,7 +128,7 @@ async function loadChallengeCounts() {
             difficult: 0
         };
         
-        challenges.forEach(challenge => {
+        data.challenges.forEach(challenge => {
             const difficulty = challenge.difficulty.toLowerCase();
             if (counts.hasOwnProperty(difficulty)) {
                 counts[difficulty]++;
@@ -140,7 +156,7 @@ async function selectRandomChallenge(difficulty) {
     document.getElementById('loading').classList.remove('hidden');
     
     try {
-        const response = await fetch(`/random-challenge/${difficulty}`);
+        const response = await fetch(`/api/random-challenge/${selectedLanguage}/${difficulty}`);
         const data = await response.json();
         
         if (data.error) {
