@@ -1,0 +1,80 @@
+{
+  "problem_number": 29,
+  "problem_name": "Tuple Unpacking",
+  "difficulty": "easy",
+  "programming_language": "java",
+  "description": "Write a method called `unpack_tuple(data)` that takes a tuple of (name, age, city) and returns a formatted string: '{name} is {age} years old and lives in {city}'.",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[['Alice', 30, 'NYC']]",
+    "[['Bob', 25, 'LA']]",
+    "[['Charlie', 35, 'Chicago']]",
+    "[['Diana', 28, 'Boston']]"
+  ],
+  "sample_outputs": [
+    "Alice is 30 years old and lives in NYC",
+    "Bob is 25 years old and lives in LA",
+    "Charlie is 35 years old and lives in Chicago",
+    "Diana is 28 years old and lives in Boston"
+  ],
+  "explanations": [
+    "For input [['Alice', 30, 'NYC']], output is Alice is 30 years old and lives in NYC",
+    "For input [['Bob', 25, 'LA']], output is Bob is 25 years old and lives in LA",
+    "For input [['Charlie', 35, 'Chicago']], output is Charlie is 35 years old and lives in Chicago",
+    "For input [['Diana', 28, 'Boston']], output is Diana is 28 years old and lives in Boston"
+  ],
+  "notes": [
+    "Implement the Tuple Unpacking problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void tupleUnpacking() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        [
+          "Alice",
+          30,
+          "NYC"
+        ]
+      ],
+      "expected": "Alice is 30 years old and lives in NYC"
+    },
+    {
+      "input": [
+        [
+          "Bob",
+          25,
+          "LA"
+        ]
+      ],
+      "expected": "Bob is 25 years old and lives in LA"
+    },
+    {
+      "input": [
+        [
+          "Charlie",
+          35,
+          "Chicago"
+        ]
+      ],
+      "expected": "Charlie is 35 years old and lives in Chicago"
+    },
+    {
+      "input": [
+        [
+          "Diana",
+          28,
+          "Boston"
+        ]
+      ],
+      "expected": "Diana is 28 years old and lives in Boston"
+    }
+  ]
+}

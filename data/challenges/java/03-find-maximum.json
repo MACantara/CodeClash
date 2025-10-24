@@ -1,0 +1,80 @@
+{
+  "problem_number": 3,
+  "problem_name": "Find Maximum",
+  "difficulty": "easy",
+  "programming_language": "java",
+  "description": "Write a method called `findMaximum(int[] numbers)` that returns the largest number in an array.",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[[1, 5, 3, 9, 2]]",
+    "[[-1, -5, -3]]",
+    "[[42]]",
+    "[[0, 0, 0]]"
+  ],
+  "sample_outputs": [
+    "9",
+    "-1",
+    "42",
+    "0"
+  ],
+  "explanations": [
+    "Maximum of [1, 5, 3] is 5",
+    "Maximum of [10, 20, 30] is 30",
+    "Maximum of negative numbers [-1, -5, -3] is -1",
+    "Single element list [42] has maximum 42"
+  ],
+  "notes": [
+    "Use Python's built-in max() function",
+    "Handle lists with negative numbers correctly",
+    "Works with any list of comparable elements"
+  ],
+  "hints": [
+    "Use Arrays.stream().max() for modern Java",
+    "Or iterate through array tracking maximum",
+    "Handle negative numbers correctly"
+  ],
+  "starter_code": "public class Solution {\n    public static int findMaximum(int[] numbers) {\n        // Write your code here\n        return 0;\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        [
+          1,
+          5,
+          3,
+          9,
+          2
+        ]
+      ],
+      "expected": 9
+    },
+    {
+      "input": [
+        [
+          -1,
+          -5,
+          -3
+        ]
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        [
+          42
+        ]
+      ],
+      "expected": 42
+    },
+    {
+      "input": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "expected": 0
+    }
+  ]
+}

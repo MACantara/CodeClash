@@ -1,0 +1,87 @@
+{
+  "problem_number": 63,
+  "problem_name": "Linear Search",
+  "difficulty": "easy",
+  "programming_language": "java",
+  "description": "Write a method called `linear_search(arr, target)` that returns the index of target in arr, or -1 if not found.",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[[1, 2, 3, 4, 5], 3]",
+    "[[10, 20, 30, 40], 40]",
+    "[[5, 10, 15], 7]",
+    "[['a', 'b', 'c'], 'b']"
+  ],
+  "sample_outputs": [
+    "2",
+    "3",
+    "-1",
+    "1"
+  ],
+  "explanations": [
+    "For input [[1, 2, 3, 4, 5], 3], output is 2",
+    "For input [[10, 20, 30, 40], 40], output is 3",
+    "For input [[5, 10, 15], 7], output is -1",
+    "For input [['a', 'b', 'c'], 'b'], output is 1"
+  ],
+  "notes": [
+    "Implement the Linear Search problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void linearSearch() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        3
+      ],
+      "expected": 2
+    },
+    {
+      "input": [
+        [
+          10,
+          20,
+          30,
+          40
+        ],
+        40
+      ],
+      "expected": 3
+    },
+    {
+      "input": [
+        [
+          5,
+          10,
+          15
+        ],
+        7
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        [
+          "a",
+          "b",
+          "c"
+        ],
+        "b"
+      ],
+      "expected": 1
+    }
+  ]
+}

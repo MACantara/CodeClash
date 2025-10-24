@@ -1,0 +1,64 @@
+{
+  "problem_number": 58,
+  "problem_name": "String to File-like Operations",
+  "difficulty": "easy",
+  "programming_language": "java",
+  "description": "Write a method called `count_lines(text)` that counts the number of non-empty lines in a text string (simulate file reading). Split by newline.",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "['line1\\\\nline2\\\\nline3']",
+    "['hello\\\\n\\\\nworld']",
+    "['single line']",
+    "['a\\\\nb\\\\nc\\\\nd']"
+  ],
+  "sample_outputs": [
+    "3",
+    "2",
+    "1",
+    "4"
+  ],
+  "explanations": [
+    "For input ['line1\\\\nline2\\\\nline3'], output is 3",
+    "For input ['hello\\\\n\\\\nworld'], output is 2",
+    "For input ['single line'], output is 1",
+    "For input ['a\\\\nb\\\\nc\\\\nd'], output is 4"
+  ],
+  "notes": [
+    "Implement the String to File-like Operations problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void stringToFile-likeOperations() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        "line1\\nline2\\nline3"
+      ],
+      "expected": 3
+    },
+    {
+      "input": [
+        "hello\\n\\nworld"
+      ],
+      "expected": 2
+    },
+    {
+      "input": [
+        "single line"
+      ],
+      "expected": 1
+    },
+    {
+      "input": [
+        "a\\nb\\nc\\nd"
+      ],
+      "expected": 4
+    }
+  ]
+}

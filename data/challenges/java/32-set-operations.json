@@ -1,0 +1,135 @@
+{
+  "problem_number": 32,
+  "problem_name": "Set Union and Intersection",
+  "difficulty": "easy",
+  "programming_language": "java",
+  "description": "Write a method called `set_operations(set1, set2)` that returns a tuple with (union, intersection) of two sets as lists (sorted).",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[[1, 2, 3], [2, 3, 4]]",
+    "[['a', 'b'], ['b', 'c']]",
+    "[[1, 2], [3, 4]]",
+    "[[5, 6, 7], [5, 6, 7]]"
+  ],
+  "sample_outputs": [
+    "[[1, 2, 3, 4], [2, 3]]",
+    "[['a', 'b', 'c'], ['b']]",
+    "[[1, 2, 3, 4], []]",
+    "[[5, 6, 7], [5, 6, 7]]"
+  ],
+  "explanations": [
+    "For input [[1, 2, 3], [2, 3, 4]], output is [[1, 2, 3, 4], [2, 3]]",
+    "For input [['a', 'b'], ['b', 'c']], output is [['a', 'b', 'c'], ['b']]",
+    "For input [[1, 2], [3, 4]], output is [[1, 2, 3, 4], []]",
+    "For input [[5, 6, 7], [5, 6, 7]], output is [[5, 6, 7], [5, 6, 7]]"
+  ],
+  "notes": [
+    "Implement the Set Union and Intersection problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void setUnionAndIntersection() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          2,
+          3,
+          4
+        ],
+        [
+          2,
+          3
+        ]
+      ]
+    },
+    {
+      "input": [
+        [
+          "a",
+          "b"
+        ],
+        [
+          "b",
+          "c"
+        ]
+      ],
+      "expected": [
+        [
+          "a",
+          "b",
+          "c"
+        ],
+        [
+          "b"
+        ]
+      ]
+    },
+    {
+      "input": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          2,
+          3,
+          4
+        ],
+        []
+      ]
+    },
+    {
+      "input": [
+        [
+          5,
+          6,
+          7
+        ],
+        [
+          5,
+          6,
+          7
+        ]
+      ],
+      "expected": [
+        [
+          5,
+          6,
+          7
+        ],
+        [
+          5,
+          6,
+          7
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "problem_number": 15,
+  "problem_name": "Safe Division with Casting",
+  "difficulty": "average",
+  "programming_language": "java",
+  "description": "Write a method called `safe_divide(a, b)` that converts both inputs to floats and returns their division result rounded to 2 decimal places. Return None if b is 0.",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "['10', '3']",
+    "[7, 2]",
+    "['15', '5']",
+    "[10, 0]"
+  ],
+  "sample_outputs": [
+    "3.33",
+    "3.5",
+    "3.0",
+    "None"
+  ],
+  "explanations": [
+    "For input ['10', '3'], output is 3.33",
+    "For input [7, 2], output is 3.5",
+    "For input ['15', '5'], output is 3.0",
+    "For input [10, 0], output is None"
+  ],
+  "notes": [
+    "Implement the Safe Division with Casting problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void safeDivisionWithCasting() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        "10",
+        "3"
+      ],
+      "expected": 3.33
+    },
+    {
+      "input": [
+        7,
+        2
+      ],
+      "expected": 3.5
+    },
+    {
+      "input": [
+        "15",
+        "5"
+      ],
+      "expected": 3.0
+    },
+    {
+      "input": [
+        10,
+        0
+      ],
+      "expected": null
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "problem_number": 55,
+  "problem_name": "Math Operations",
+  "difficulty": "easy",
+  "programming_language": "java",
+  "description": "Write a method called `calculate_sqrt_ceil(n)` that returns the ceiling of the square root of n. Use the math module.",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[10]",
+    "[16]",
+    "[20]",
+    "[1]"
+  ],
+  "sample_outputs": [
+    "4",
+    "4",
+    "5",
+    "1"
+  ],
+  "explanations": [
+    "For input [10], output is 4",
+    "For input [16], output is 4",
+    "For input [20], output is 5",
+    "For input [1], output is 1"
+  ],
+  "notes": [
+    "Implement the Math Operations problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void mathOperations() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        10
+      ],
+      "expected": 4
+    },
+    {
+      "input": [
+        16
+      ],
+      "expected": 4
+    },
+    {
+      "input": [
+        20
+      ],
+      "expected": 5
+    },
+    {
+      "input": [
+        1
+      ],
+      "expected": 1
+    }
+  ]
+}

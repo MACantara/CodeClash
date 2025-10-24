@@ -1,0 +1,84 @@
+{
+  "problem_number": 38,
+  "problem_name": "Count Character Frequency",
+  "difficulty": "average",
+  "programming_language": "java",
+  "description": "Write a method called `char_frequency(s)` that returns a dictionary with character counts for each character in the string.",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "['hello']",
+    "['aaa']",
+    "['abc']",
+    "['programming']"
+  ],
+  "sample_outputs": [
+    "{'h': 1, 'e': 1, 'l': 2, 'o': 1}",
+    "{'a': 3}",
+    "{'a': 1, 'b': 1, 'c': 1}",
+    "{'p': 1, 'r': 2, 'o': 1, 'g': 2, 'a': 1, 'm': 2, 'i': 1, 'n': 1}"
+  ],
+  "explanations": [
+    "For input ['hello'], output is {'h': 1, 'e': 1, 'l': 2, 'o': 1}",
+    "For input ['aaa'], output is {'a': 3}",
+    "For input ['abc'], output is {'a': 1, 'b': 1, 'c': 1}",
+    "For input ['programming'], output is {'p': 1, 'r': 2, 'o': 1, 'g': 2, 'a': 1, 'm': 2, 'i': 1, 'n': 1}"
+  ],
+  "notes": [
+    "Implement the Count Character Frequency problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void countCharacterFrequency() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        "hello"
+      ],
+      "expected": {
+        "h": 1,
+        "e": 1,
+        "l": 2,
+        "o": 1
+      }
+    },
+    {
+      "input": [
+        "aaa"
+      ],
+      "expected": {
+        "a": 3
+      }
+    },
+    {
+      "input": [
+        "abc"
+      ],
+      "expected": {
+        "a": 1,
+        "b": 1,
+        "c": 1
+      }
+    },
+    {
+      "input": [
+        "programming"
+      ],
+      "expected": {
+        "p": 1,
+        "r": 2,
+        "o": 1,
+        "g": 2,
+        "a": 1,
+        "m": 2,
+        "i": 1,
+        "n": 1
+      }
+    }
+  ]
+}

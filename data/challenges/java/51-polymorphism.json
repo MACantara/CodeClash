@@ -1,0 +1,64 @@
+{
+  "problem_number": 51,
+  "problem_name": "Method Overriding",
+  "difficulty": "average",
+  "programming_language": "java",
+  "description": "Create a base class `Shape` with area() returning 0. Create `Circle` subclass with __init__(radius) that overrides area() to return π*r². Write method `get_circle_area(radius)` (use 3.14 for π).",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[5]",
+    "[10]",
+    "[3]",
+    "[1]"
+  ],
+  "sample_outputs": [
+    "78.5",
+    "314.0",
+    "28.26",
+    "3.14"
+  ],
+  "explanations": [
+    "For input [5], output is 78.5",
+    "For input [10], output is 314.0",
+    "For input [3], output is 28.26",
+    "For input [1], output is 3.14"
+  ],
+  "notes": [
+    "Implement the Method Overriding problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void methodOverriding() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        5
+      ],
+      "expected": 78.5
+    },
+    {
+      "input": [
+        10
+      ],
+      "expected": 314.0
+    },
+    {
+      "input": [
+        3
+      ],
+      "expected": 28.26
+    },
+    {
+      "input": [
+        1
+      ],
+      "expected": 3.14
+    }
+  ]
+}

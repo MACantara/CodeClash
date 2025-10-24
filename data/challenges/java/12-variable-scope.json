@@ -1,0 +1,56 @@
+{
+  "problem_number": 12,
+  "problem_name": "Global Counter",
+  "difficulty": "average",
+  "programming_language": "java",
+  "description": "Write a method called `increment_counter()` that uses a global variable `counter` (initially 0) and increments it by 1 each time it's called. The method should return the new counter value.",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[]",
+    "[]",
+    "[]",
+    "[]"
+  ],
+  "sample_outputs": [
+    "1",
+    "2",
+    "3",
+    "4"
+  ],
+  "explanations": [
+    "For input [], output is 1",
+    "For input [], output is 2",
+    "For input [], output is 3",
+    "For input [], output is 4"
+  ],
+  "notes": [
+    "Implement the Global Counter problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void globalCounter() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [],
+      "expected": 1
+    },
+    {
+      "input": [],
+      "expected": 2
+    },
+    {
+      "input": [],
+      "expected": 3
+    },
+    {
+      "input": [],
+      "expected": 4
+    }
+  ]
+}

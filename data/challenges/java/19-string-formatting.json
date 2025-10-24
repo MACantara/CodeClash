@@ -1,0 +1,68 @@
+{
+  "problem_number": 19,
+  "problem_name": "Format String Template",
+  "difficulty": "easy",
+  "programming_language": "java",
+  "description": "Write a method called `create_email(name, domain)` that returns an email address in the format: '{name}@{domain}.com' (all lowercase).",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "['John', 'example']",
+    "['Alice', 'company']",
+    "['BOB', 'TEST']",
+    "['Sarah', 'gmail']"
+  ],
+  "sample_outputs": [
+    "john@example.com",
+    "alice@company.com",
+    "bob@test.com",
+    "sarah@gmail.com"
+  ],
+  "explanations": [
+    "For input ['John', 'example'], output is john@example.com",
+    "For input ['Alice', 'company'], output is alice@company.com",
+    "For input ['BOB', 'TEST'], output is bob@test.com",
+    "For input ['Sarah', 'gmail'], output is sarah@gmail.com"
+  ],
+  "notes": [
+    "Implement the Format String Template problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void formatStringTemplate() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        "John",
+        "example"
+      ],
+      "expected": "john@example.com"
+    },
+    {
+      "input": [
+        "Alice",
+        "company"
+      ],
+      "expected": "alice@company.com"
+    },
+    {
+      "input": [
+        "BOB",
+        "TEST"
+      ],
+      "expected": "bob@test.com"
+    },
+    {
+      "input": [
+        "Sarah",
+        "gmail"
+      ],
+      "expected": "sarah@gmail.com"
+    }
+  ]
+}

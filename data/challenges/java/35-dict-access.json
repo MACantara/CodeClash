@@ -1,0 +1,82 @@
+{
+  "problem_number": 35,
+  "problem_name": "Dictionary Access",
+  "difficulty": "easy",
+  "programming_language": "java",
+  "description": "Write a method called `get_value_safe(d, key, default)` that returns the value for the key if it exists, otherwise returns the default value.",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[{'name': 'Alice', 'age': 30}, 'name', 'Unknown']",
+    "[{'name': 'Bob'}, 'age', 0]",
+    "[{'x': 10, 'y': 20}, 'z', -1]",
+    "[{'color': 'red'}, 'color', 'blue']"
+  ],
+  "sample_outputs": [
+    "Alice",
+    "0",
+    "-1",
+    "red"
+  ],
+  "explanations": [
+    "For input [{'name': 'Alice', 'age': 30}, 'name', 'Unknown'], output is Alice",
+    "For input [{'name': 'Bob'}, 'age', 0], output is 0",
+    "For input [{'x': 10, 'y': 20}, 'z', -1], output is -1",
+    "For input [{'color': 'red'}, 'color', 'blue'], output is red"
+  ],
+  "notes": [
+    "Implement the Dictionary Access problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void dictionaryAccess() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        {
+          "name": "Alice",
+          "age": 30
+        },
+        "name",
+        "Unknown"
+      ],
+      "expected": "Alice"
+    },
+    {
+      "input": [
+        {
+          "name": "Bob"
+        },
+        "age",
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "input": [
+        {
+          "x": 10,
+          "y": 20
+        },
+        "z",
+        -1
+      ],
+      "expected": -1
+    },
+    {
+      "input": [
+        {
+          "color": "red"
+        },
+        "color",
+        "blue"
+      ],
+      "expected": "red"
+    }
+  ]
+}

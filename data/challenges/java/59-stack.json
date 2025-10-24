@@ -1,0 +1,127 @@
+{
+  "problem_number": 59,
+  "problem_name": "Implement Stack Operations",
+  "difficulty": "average",
+  "programming_language": "java",
+  "description": "Write a method called `stack_operations(operations)` that simulates a stack. Operations is a list of tuples: ('push', value) or ('pop',). Return the final stack as a list.",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[[['push', 1], ['push', 2], ['pop'], ['push', 3]]]",
+    "[[['push', 5], ['push', 10], ['push', 15]]]",
+    "[[['push', 1], ['pop'], ['push', 2], ['pop']]]",
+    "[[['push', 'a'], ['push', 'b']]]"
+  ],
+  "sample_outputs": [
+    "[1, 3]",
+    "[5, 10, 15]",
+    "[]",
+    "['a', 'b']"
+  ],
+  "explanations": [
+    "For input [[['push', 1], ['push', 2], ['pop'], ['push', 3]]], output is [1, 3]",
+    "For input [[['push', 5], ['push', 10], ['push', 15]]], output is [5, 10, 15]",
+    "For input [[['push', 1], ['pop'], ['push', 2], ['pop']]], output is []",
+    "For input [[['push', 'a'], ['push', 'b']]], output is ['a', 'b']"
+  ],
+  "notes": [
+    "Implement the Implement Stack Operations problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void implementStackOperations() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        [
+          [
+            "push",
+            1
+          ],
+          [
+            "push",
+            2
+          ],
+          [
+            "pop"
+          ],
+          [
+            "push",
+            3
+          ]
+        ]
+      ],
+      "expected": [
+        1,
+        3
+      ]
+    },
+    {
+      "input": [
+        [
+          [
+            "push",
+            5
+          ],
+          [
+            "push",
+            10
+          ],
+          [
+            "push",
+            15
+          ]
+        ]
+      ],
+      "expected": [
+        5,
+        10,
+        15
+      ]
+    },
+    {
+      "input": [
+        [
+          [
+            "push",
+            1
+          ],
+          [
+            "pop"
+          ],
+          [
+            "push",
+            2
+          ],
+          [
+            "pop"
+          ]
+        ]
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        [
+          [
+            "push",
+            "a"
+          ],
+          [
+            "push",
+            "b"
+          ]
+        ]
+      ],
+      "expected": [
+        "a",
+        "b"
+      ]
+    }
+  ]
+}

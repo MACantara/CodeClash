@@ -1,0 +1,80 @@
+{
+  "problem_number": 10,
+  "problem_name": "Swap Variables",
+  "difficulty": "easy",
+  "programming_language": "java",
+  "description": "Write a method called `swap_values(a, b)` that returns a tuple with the values swapped.",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[1, 2]",
+    "['hello', 'world']",
+    "[True, False]",
+    "[10.5, 20.3]"
+  ],
+  "sample_outputs": [
+    "[2, 1]",
+    "['world', 'hello']",
+    "[False, True]",
+    "[20.3, 10.5]"
+  ],
+  "explanations": [
+    "Swapping 1 and 2 gives (2, 1)",
+    "Swapping 10 and 20 gives (20, 10)",
+    "Swapping -5 and 5 gives (5, -5)",
+    "Swapping 0 and 0 gives (0, 0)"
+  ],
+  "notes": [
+    "Java allows tuple unpacking for swapping",
+    "No temporary variable needed",
+    "Works with any data types"
+  ],
+  "hints": [
+    "Use tuple unpacking: a, b = b, a",
+    "Return values as a tuple",
+    "Java makes swapping very simple"
+  ],
+  "starter_code": "public class Solution {\n    public static void swapVariables() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        1,
+        2
+      ],
+      "expected": [
+        2,
+        1
+      ]
+    },
+    {
+      "input": [
+        "hello",
+        "world"
+      ],
+      "expected": [
+        "world",
+        "hello"
+      ]
+    },
+    {
+      "input": [
+        true,
+        false
+      ],
+      "expected": [
+        false,
+        true
+      ]
+    },
+    {
+      "input": [
+        10.5,
+        20.3
+      ],
+      "expected": [
+        20.3,
+        10.5
+      ]
+    }
+  ]
+}

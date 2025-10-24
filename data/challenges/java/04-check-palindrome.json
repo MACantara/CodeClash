@@ -1,0 +1,64 @@
+{
+  "problem_number": 4,
+  "problem_name": "Check Palindrome",
+  "difficulty": "average",
+  "programming_language": "java",
+  "description": "Write a method called `isPalindrome(String s)` that returns true if the string reads the same forwards and backwards, false otherwise.",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "['racecar']",
+    "['hello']",
+    "['A man a plan a canal Panama']",
+    "['']"
+  ],
+  "sample_outputs": [
+    "True",
+    "False",
+    "True",
+    "True"
+  ],
+  "explanations": [
+    "'racecar' reads the same forwards and backwards",
+    "'hello' does not read the same both ways",
+    "Empty string is considered a palindrome",
+    "Single character 'a' is a palindrome"
+  ],
+  "notes": [
+    "Palindromes read the same forwards and backwards",
+    "Case-sensitive comparison",
+    "Empty strings and single characters are palindromes"
+  ],
+  "hints": [
+    "Compare string with its reverse",
+    "Use StringBuilder.reverse()",
+    "Or use two-pointer approach"
+  ],
+  "starter_code": "public class Solution {\n    public static boolean isPalindrome(String s) {\n        // Write your code here\n        return false;\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        "racecar"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "hello"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "A man a plan a canal Panama"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        ""
+      ],
+      "expected": true
+    }
+  ]
+}

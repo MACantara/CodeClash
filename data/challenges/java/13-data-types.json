@@ -1,0 +1,70 @@
+{
+  "problem_number": 13,
+  "problem_name": "Check Data Type",
+  "difficulty": "easy",
+  "programming_language": "java",
+  "description": "Write a method called `identify_type(value)` that returns the type name of the input value as a string (e.g., 'int', 'str', 'list', 'dict').",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[42]",
+    "['hello']",
+    "[[1, 2, 3]]",
+    "[{'key': 'value'}]"
+  ],
+  "sample_outputs": [
+    "int",
+    "str",
+    "list",
+    "dict"
+  ],
+  "explanations": [
+    "For input [42], output is int",
+    "For input ['hello'], output is str",
+    "For input [[1, 2, 3]], output is list",
+    "For input [{'key': 'value'}], output is dict"
+  ],
+  "notes": [
+    "Implement the Check Data Type problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void checkDataType() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        42
+      ],
+      "expected": "int"
+    },
+    {
+      "input": [
+        "hello"
+      ],
+      "expected": "str"
+    },
+    {
+      "input": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected": "list"
+    },
+    {
+      "input": [
+        {
+          "key": "value"
+        }
+      ],
+      "expected": "dict"
+    }
+  ]
+}

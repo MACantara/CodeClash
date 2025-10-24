@@ -1,0 +1,100 @@
+{
+  "problem_number": 65,
+  "problem_name": "Bubble Sort",
+  "difficulty": "average",
+  "programming_language": "java",
+  "description": "Write a method called `bubble_sort(arr)` that implements the bubble sort algorithm and returns the sorted array.",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[[5, 2, 8, 1, 9]]",
+    "[[3, 3, 1, 2]]",
+    "[[10, 5, 3, 8]]",
+    "[[1]]"
+  ],
+  "sample_outputs": [
+    "[1, 2, 5, 8, 9]",
+    "[1, 2, 3, 3]",
+    "[3, 5, 8, 10]",
+    "[1]"
+  ],
+  "explanations": [
+    "For input [[5, 2, 8, 1, 9]], output is [1, 2, 5, 8, 9]",
+    "For input [[3, 3, 1, 2]], output is [1, 2, 3, 3]",
+    "For input [[10, 5, 3, 8]], output is [3, 5, 8, 10]",
+    "For input [[1]], output is [1]"
+  ],
+  "notes": [
+    "Implement the Bubble Sort problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void bubbleSort() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        [
+          5,
+          2,
+          8,
+          1,
+          9
+        ]
+      ],
+      "expected": [
+        1,
+        2,
+        5,
+        8,
+        9
+      ]
+    },
+    {
+      "input": [
+        [
+          3,
+          3,
+          1,
+          2
+        ]
+      ],
+      "expected": [
+        1,
+        2,
+        3,
+        3
+      ]
+    },
+    {
+      "input": [
+        [
+          10,
+          5,
+          3,
+          8
+        ]
+      ],
+      "expected": [
+        3,
+        5,
+        8,
+        10
+      ]
+    },
+    {
+      "input": [
+        [
+          1
+        ]
+      ],
+      "expected": [
+        1
+      ]
+    }
+  ]
+}

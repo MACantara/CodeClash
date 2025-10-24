@@ -1,0 +1,72 @@
+{
+  "problem_number": 42,
+  "problem_name": "Range Sum",
+  "difficulty": "easy",
+  "programming_language": "java",
+  "description": "Write a method called `sum_range(start, end, step)` that returns the sum of numbers from start to end (exclusive) with the given step.",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[1, 10, 1]",
+    "[0, 10, 2]",
+    "[5, 15, 3]",
+    "[10, 20, 5]"
+  ],
+  "sample_outputs": [
+    "45",
+    "20",
+    "24",
+    "30"
+  ],
+  "explanations": [
+    "For input [1, 10, 1], output is 45",
+    "For input [0, 10, 2], output is 20",
+    "For input [5, 15, 3], output is 24",
+    "For input [10, 20, 5], output is 30"
+  ],
+  "notes": [
+    "Implement the Range Sum problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void rangeSum() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        1,
+        10,
+        1
+      ],
+      "expected": 45
+    },
+    {
+      "input": [
+        0,
+        10,
+        2
+      ],
+      "expected": 20
+    },
+    {
+      "input": [
+        5,
+        15,
+        3
+      ],
+      "expected": 24
+    },
+    {
+      "input": [
+        10,
+        20,
+        5
+      ],
+      "expected": 30
+    }
+  ]
+}

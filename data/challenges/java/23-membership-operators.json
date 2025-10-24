@@ -1,0 +1,85 @@
+{
+  "problem_number": 23,
+  "problem_name": "Identity and Membership",
+  "difficulty": "easy",
+  "programming_language": "java",
+  "description": "Write a method called `check_membership(item, collection)` that returns True if item is in collection, False otherwise.",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[5, [1, 2, 3, 4, 5]]",
+    "['a', ['x', 'y', 'z']]",
+    "['hello', ['hello', 'world']]",
+    "[0, [1, 2, 3]]"
+  ],
+  "sample_outputs": [
+    "True",
+    "False",
+    "True",
+    "False"
+  ],
+  "explanations": [
+    "For input [5, [1, 2, 3, 4, 5]], output is True",
+    "For input ['a', ['x', 'y', 'z']], output is False",
+    "For input ['hello', ['hello', 'world']], output is True",
+    "For input [0, [1, 2, 3]], output is False"
+  ],
+  "notes": [
+    "Implement the Identity and Membership problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void identityAndMembership() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        5,
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "a",
+        [
+          "x",
+          "y",
+          "z"
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "hello",
+        [
+          "hello",
+          "world"
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        0,
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected": false
+    }
+  ]
+}

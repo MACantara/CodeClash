@@ -1,0 +1,64 @@
+{
+  "problem_number": 57,
+  "problem_name": "Parse Integer Safely",
+  "difficulty": "easy",
+  "programming_language": "java",
+  "description": "Write a method called `parse_int_safe(s)` that tries to convert a string to int. If it fails (ValueError), return None.",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "['123']",
+    "['abc']",
+    "['45']",
+    "['12.5']"
+  ],
+  "sample_outputs": [
+    "123",
+    "None",
+    "45",
+    "None"
+  ],
+  "explanations": [
+    "For input ['123'], output is 123",
+    "For input ['abc'], output is None",
+    "For input ['45'], output is 45",
+    "For input ['12.5'], output is None"
+  ],
+  "notes": [
+    "Implement the Parse Integer Safely problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void parseIntegerSafely() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        "123"
+      ],
+      "expected": 123
+    },
+    {
+      "input": [
+        "abc"
+      ],
+      "expected": null
+    },
+    {
+      "input": [
+        "45"
+      ],
+      "expected": 45
+    },
+    {
+      "input": [
+        "12.5"
+      ],
+      "expected": null
+    }
+  ]
+}

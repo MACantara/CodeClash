@@ -1,0 +1,68 @@
+{
+  "problem_number": 1,
+  "problem_name": "Sum of Two Numbers",
+  "difficulty": "foundational",
+  "programming_language": "java",
+  "description": "Write a method that takes two numbers as input and returns their sum. This is a fundamental introduction to methods and basic arithmetic operations in Java.",
+  "input_specification": "Two integers or floats separated by a space on a single line, or passed as function parameters",
+  "output_specification": "A single number representing the sum of the two input numbers",
+  "sample_inputs": [
+    "2 3",
+    "10 20",
+    "-5 5",
+    "0 0"
+  ],
+  "sample_outputs": [
+    "5",
+    "30",
+    "0",
+    "0"
+  ],
+  "explanations": [
+    "2 + 3 = 5",
+    "10 + 20 = 30",
+    "(-5) + 5 = 0. Adding opposites results in zero.",
+    "0 + 0 = 0. Adding zero to zero is zero."
+  ],
+  "notes": [
+    "Handle both positive and negative numbers",
+    "Works with integer and floating-point numbers",
+    "Addition is commutative: a + b = b + a"
+  ],
+  "hints": [
+    "Use the addition operator (+) in Python",
+    "Define a function that takes two parameters",
+    "Return the result of adding the two parameters"
+  ],
+  "starter_code": "public class Solution {\n    public static int addNumbers(int a, int b) {\n        // Write your code here\n        return 0;\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        2,
+        3
+      ],
+      "expected": 5
+    },
+    {
+      "input": [
+        10,
+        20
+      ],
+      "expected": 30
+    },
+    {
+      "input": [
+        -5,
+        5
+      ],
+      "expected": 0
+    },
+    {
+      "input": [
+        0,
+        0
+      ],
+      "expected": 0
+    }
+  ]
+}

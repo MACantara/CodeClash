@@ -1,0 +1,97 @@
+{
+  "problem_number": 36,
+  "problem_name": "Merge Dictionaries",
+  "difficulty": "easy",
+  "programming_language": "java",
+  "description": "Write a method called `merge_dicts(dict1, dict2)` that merges two dictionaries. If a key exists in both, use the value from dict2.",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[{'a': 1, 'b': 2}, {'b': 3, 'c': 4}]",
+    "[{'x': 10}, {'y': 20}]",
+    "[{'name': 'Alice'}, {'name': 'Bob', 'age': 30}]",
+    "[{}, {'key': 'value'}]"
+  ],
+  "sample_outputs": [
+    "{'a': 1, 'b': 3, 'c': 4}",
+    "{'x': 10, 'y': 20}",
+    "{'name': 'Bob', 'age': 30}",
+    "{'key': 'value'}"
+  ],
+  "explanations": [
+    "For input [{'a': 1, 'b': 2}, {'b': 3, 'c': 4}], output is {'a': 1, 'b': 3, 'c': 4}",
+    "For input [{'x': 10}, {'y': 20}], output is {'x': 10, 'y': 20}",
+    "For input [{'name': 'Alice'}, {'name': 'Bob', 'age': 30}], output is {'name': 'Bob', 'age': 30}",
+    "For input [{}, {'key': 'value'}], output is {'key': 'value'}"
+  ],
+  "notes": [
+    "Implement the Merge Dictionaries problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void mergeDictionaries() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        {
+          "a": 1,
+          "b": 2
+        },
+        {
+          "b": 3,
+          "c": 4
+        }
+      ],
+      "expected": {
+        "a": 1,
+        "b": 3,
+        "c": 4
+      }
+    },
+    {
+      "input": [
+        {
+          "x": 10
+        },
+        {
+          "y": 20
+        }
+      ],
+      "expected": {
+        "x": 10,
+        "y": 20
+      }
+    },
+    {
+      "input": [
+        {
+          "name": "Alice"
+        },
+        {
+          "name": "Bob",
+          "age": 30
+        }
+      ],
+      "expected": {
+        "name": "Bob",
+        "age": 30
+      }
+    },
+    {
+      "input": [
+        {},
+        {
+          "key": "value"
+        }
+      ],
+      "expected": {
+        "key": "value"
+      }
+    }
+  ]
+}

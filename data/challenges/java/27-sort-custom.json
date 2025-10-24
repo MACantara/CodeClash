@@ -1,0 +1,96 @@
+{
+  "problem_number": 27,
+  "problem_name": "Sort by Custom Key",
+  "difficulty": "easy",
+  "programming_language": "java",
+  "description": "Write a method called `sort_by_length(strings)` that returns a list of strings sorted by their length (shortest first).",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[['apple', 'pie', 'banana']]",
+    "[['a', 'abc', 'ab']]",
+    "[['hello', 'hi', 'hey']]",
+    "[['one', 'two', 'three']]"
+  ],
+  "sample_outputs": [
+    "['pie', 'apple', 'banana']",
+    "['a', 'ab', 'abc']",
+    "['hi', 'hey', 'hello']",
+    "['one', 'two', 'three']"
+  ],
+  "explanations": [
+    "For input [['apple', 'pie', 'banana']], output is ['pie', 'apple', 'banana']",
+    "For input [['a', 'abc', 'ab']], output is ['a', 'ab', 'abc']",
+    "For input [['hello', 'hi', 'hey']], output is ['hi', 'hey', 'hello']",
+    "For input [['one', 'two', 'three']], output is ['one', 'two', 'three']"
+  ],
+  "notes": [
+    "Implement the Sort by Custom Key problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void sortByCustomKey() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        [
+          "apple",
+          "pie",
+          "banana"
+        ]
+      ],
+      "expected": [
+        "pie",
+        "apple",
+        "banana"
+      ]
+    },
+    {
+      "input": [
+        [
+          "a",
+          "abc",
+          "ab"
+        ]
+      ],
+      "expected": [
+        "a",
+        "ab",
+        "abc"
+      ]
+    },
+    {
+      "input": [
+        [
+          "hello",
+          "hi",
+          "hey"
+        ]
+      ],
+      "expected": [
+        "hi",
+        "hey",
+        "hello"
+      ]
+    },
+    {
+      "input": [
+        [
+          "one",
+          "two",
+          "three"
+        ]
+      ],
+      "expected": [
+        "one",
+        "two",
+        "three"
+      ]
+    }
+  ]
+}

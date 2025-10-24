@@ -1,0 +1,64 @@
+{
+  "problem_number": 2,
+  "problem_name": "Reverse a String",
+  "difficulty": "easy",
+  "programming_language": "java",
+  "description": "Write a method called `reverseString(String s)` that returns the reversed version of the input string.",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "['hello']",
+    "['Python']",
+    "['']",
+    "['a']"
+  ],
+  "sample_outputs": [
+    "olleh",
+    "nohtyP",
+    "",
+    "a"
+  ],
+  "explanations": [
+    "'hello' reversed is 'olleh'",
+    "'python' reversed is 'nohtyp'",
+    "Empty string reversed is still empty",
+    "Single character 'a' reversed is 'a'"
+  ],
+  "notes": [
+    "Strings in Python are immutable",
+    "Python provides slicing syntax for reversing: s[::-1]",
+    "Works with any string including empty strings and single characters"
+  ],
+  "hints": [
+    "Use StringBuilder with reverse() method",
+    "Or convert to char array and reverse manually",
+    "Java strings are immutable"
+  ],
+  "starter_code": "public class Solution {\n    public static String reverseString(String s) {\n        // Write your code here\n        return \"\";\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        "hello"
+      ],
+      "expected": "olleh"
+    },
+    {
+      "input": [
+        "Python"
+      ],
+      "expected": "nohtyP"
+    },
+    {
+      "input": [
+        ""
+      ],
+      "expected": ""
+    },
+    {
+      "input": [
+        "a"
+      ],
+      "expected": "a"
+    }
+  ]
+}

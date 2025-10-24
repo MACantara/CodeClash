@@ -1,0 +1,83 @@
+{
+  "problem_number": 18,
+  "problem_name": "String Concatenation",
+  "difficulty": "easy",
+  "programming_language": "java",
+  "description": "Write a method called `join_with_separator(words, separator)` that joins a list of words with the given separator.",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[['apple', 'banana', 'cherry'], ', ']",
+    "[['one', 'two', 'three'], '-']",
+    "[['hello', 'world'], ' ']",
+    "[['a', 'b', 'c'], '']"
+  ],
+  "sample_outputs": [
+    "apple, banana, cherry",
+    "one-two-three",
+    "hello world",
+    "abc"
+  ],
+  "explanations": [
+    "For input [['apple', 'banana', 'cherry'], ', '], output is apple, banana, cherry",
+    "For input [['one', 'two', 'three'], '-'], output is one-two-three",
+    "For input [['hello', 'world'], ' '], output is hello world",
+    "For input [['a', 'b', 'c'], ''], output is abc"
+  ],
+  "notes": [
+    "Implement the String Concatenation problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void stringConcatenation() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        [
+          "apple",
+          "banana",
+          "cherry"
+        ],
+        ", "
+      ],
+      "expected": "apple, banana, cherry"
+    },
+    {
+      "input": [
+        [
+          "one",
+          "two",
+          "three"
+        ],
+        "-"
+      ],
+      "expected": "one-two-three"
+    },
+    {
+      "input": [
+        [
+          "hello",
+          "world"
+        ],
+        " "
+      ],
+      "expected": "hello world"
+    },
+    {
+      "input": [
+        [
+          "a",
+          "b",
+          "c"
+        ],
+        ""
+      ],
+      "expected": "abc"
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "problem_number": 25,
+  "problem_name": "Remove Duplicates",
+  "difficulty": "average",
+  "programming_language": "java",
+  "description": "Write a method called `remove_duplicates(lst)` that returns a new list with duplicates removed while preserving the original order.",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[[1, 2, 2, 3, 4, 4, 5]]",
+    "[['a', 'b', 'a', 'c']]",
+    "[[1, 1, 1, 1]]",
+    "[[5, 4, 3, 2, 1]]"
+  ],
+  "sample_outputs": [
+    "[1, 2, 3, 4, 5]",
+    "['a', 'b', 'c']",
+    "[1]",
+    "[5, 4, 3, 2, 1]"
+  ],
+  "explanations": [
+    "For input [[1, 2, 2, 3, 4, 4, 5]], output is [1, 2, 3, 4, 5]",
+    "For input [['a', 'b', 'a', 'c']], output is ['a', 'b', 'c']",
+    "For input [[1, 1, 1, 1]], output is [1]",
+    "For input [[5, 4, 3, 2, 1]], output is [5, 4, 3, 2, 1]"
+  ],
+  "notes": [
+    "Implement the Remove Duplicates problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void removeDuplicates() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        [
+          1,
+          2,
+          2,
+          3,
+          4,
+          4,
+          5
+        ]
+      ],
+      "expected": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "input": [
+        [
+          "a",
+          "b",
+          "a",
+          "c"
+        ]
+      ],
+      "expected": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "input": [
+        [
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "expected": [
+        1
+      ]
+    },
+    {
+      "input": [
+        [
+          5,
+          4,
+          3,
+          2,
+          1
+        ]
+      ],
+      "expected": [
+        5,
+        4,
+        3,
+        2,
+        1
+      ]
+    }
+  ]
+}

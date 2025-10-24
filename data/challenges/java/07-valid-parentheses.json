@@ -1,0 +1,70 @@
+{
+  "problem_number": 7,
+  "problem_name": "Valid Parentheses",
+  "difficulty": "difficult",
+  "programming_language": "java",
+  "description": "Write a method called `isValid(String s)` that determines if brackets are valid (properly opened and closed).",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "['()']",
+    "['()[]{}']",
+    "['(]']",
+    "['([)]']"
+  ],
+  "sample_outputs": [
+    "True",
+    "True",
+    "False",
+    "False"
+  ],
+  "explanations": [
+    "'()' is valid - opening and closing match",
+    "'()[]{}' is valid - all pairs match correctly",
+    "'(]' is invalid - wrong closing bracket",
+    "']' is invalid - closing without opening"
+  ],
+  "notes": [
+    "Must close brackets in correct order",
+    "Every opening bracket must have matching closing bracket",
+    "Use a stack data structure for efficient solution"
+  ],
+  "hints": [
+    "Use Stack to track opening brackets",
+    "When you see closing bracket, check if it matches stack top",
+    "String is valid if stack is empty at the end"
+  ],
+  "starter_code": "public class Solution {\n    public static boolean isValid(String s) {\n        // Write your code here\n        return false;\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        "()"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "()[]{}"
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        "(]"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "([)]"
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        "{[]}"
+      ],
+      "expected": true
+    }
+  ]
+}

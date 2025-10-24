@@ -1,0 +1,107 @@
+{
+  "problem_number": 33,
+  "problem_name": "Set Difference",
+  "difficulty": "average",
+  "programming_language": "java",
+  "description": "Write a method called `symmetric_difference(set1, set2)` that returns elements that are in either set1 or set2, but not in both (as a sorted list).",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[[1, 2, 3], [2, 3, 4]]",
+    "[['a', 'b', 'c'], ['b', 'c', 'd']]",
+    "[[1, 2], [3, 4]]",
+    "[[5, 6], [5, 6]]"
+  ],
+  "sample_outputs": [
+    "[1, 4]",
+    "['a', 'd']",
+    "[1, 2, 3, 4]",
+    "[]"
+  ],
+  "explanations": [
+    "For input [[1, 2, 3], [2, 3, 4]], output is [1, 4]",
+    "For input [['a', 'b', 'c'], ['b', 'c', 'd']], output is ['a', 'd']",
+    "For input [[1, 2], [3, 4]], output is [1, 2, 3, 4]",
+    "For input [[5, 6], [5, 6]], output is []"
+  ],
+  "notes": [
+    "Implement the Set Difference problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void setDifference() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "expected": [
+        1,
+        4
+      ]
+    },
+    {
+      "input": [
+        [
+          "a",
+          "b",
+          "c"
+        ],
+        [
+          "b",
+          "c",
+          "d"
+        ]
+      ],
+      "expected": [
+        "a",
+        "d"
+      ]
+    },
+    {
+      "input": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "expected": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "input": [
+        [
+          5,
+          6
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "expected": []
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "problem_number": 21,
+  "problem_name": "Boolean Logic",
+  "difficulty": "easy",
+  "programming_language": "java",
+  "description": "Write a method called `check_range(num, min_val, max_val)` that returns True if num is between min_val and max_val (inclusive), False otherwise.",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[5, 1, 10]",
+    "[15, 1, 10]",
+    "[1, 1, 10]",
+    "[10, 1, 10]"
+  ],
+  "sample_outputs": [
+    "True",
+    "False",
+    "True",
+    "True"
+  ],
+  "explanations": [
+    "For input [5, 1, 10], output is True",
+    "For input [15, 1, 10], output is False",
+    "For input [1, 1, 10], output is True",
+    "For input [10, 1, 10], output is True"
+  ],
+  "notes": [
+    "Implement the Boolean Logic problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void booleanLogic() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        5,
+        1,
+        10
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        15,
+        1,
+        10
+      ],
+      "expected": false
+    },
+    {
+      "input": [
+        1,
+        1,
+        10
+      ],
+      "expected": true
+    },
+    {
+      "input": [
+        10,
+        1,
+        10
+      ],
+      "expected": true
+    }
+  ]
+}

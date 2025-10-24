@@ -1,0 +1,104 @@
+{
+  "problem_number": 30,
+  "problem_name": "Tuple to List Conversion",
+  "difficulty": "average",
+  "programming_language": "java",
+  "description": "Write a method called `tuple_to_list_modify(tup, index, value)` that converts a tuple to a list, modifies the element at index, and returns it as a tuple.",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[[1, 2, 3], 1, 10]",
+    "[['a', 'b', 'c'], 0, 'z']",
+    "[[5, 10, 15, 20], 3, 25]",
+    "[[True, False], 1, True]"
+  ],
+  "sample_outputs": [
+    "[1, 10, 3]",
+    "['z', 'b', 'c']",
+    "[5, 10, 15, 25]",
+    "[True, True]"
+  ],
+  "explanations": [
+    "For input [[1, 2, 3], 1, 10], output is [1, 10, 3]",
+    "For input [['a', 'b', 'c'], 0, 'z'], output is ['z', 'b', 'c']",
+    "For input [[5, 10, 15, 20], 3, 25], output is [5, 10, 15, 25]",
+    "For input [[True, False], 1, True], output is [True, True]"
+  ],
+  "notes": [
+    "Implement the Tuple to List Conversion problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void tupleToListConversion() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        [
+          1,
+          2,
+          3
+        ],
+        1,
+        10
+      ],
+      "expected": [
+        1,
+        10,
+        3
+      ]
+    },
+    {
+      "input": [
+        [
+          "a",
+          "b",
+          "c"
+        ],
+        0,
+        "z"
+      ],
+      "expected": [
+        "z",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "input": [
+        [
+          5,
+          10,
+          15,
+          20
+        ],
+        3,
+        25
+      ],
+      "expected": [
+        5,
+        10,
+        15,
+        25
+      ]
+    },
+    {
+      "input": [
+        [
+          true,
+          false
+        ],
+        1,
+        true
+      ],
+      "expected": [
+        true,
+        true
+      ]
+    }
+  ]
+}

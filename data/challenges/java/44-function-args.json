@@ -1,0 +1,68 @@
+{
+  "problem_number": 44,
+  "problem_name": "Default Arguments",
+  "difficulty": "easy",
+  "programming_language": "java",
+  "description": "Write a method called `power(base, exponent=2)` that returns base raised to the power of exponent. If exponent is not provided, square the base.",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[3, 3]",
+    "[5, 2]",
+    "[2, 4]",
+    "[10, 1]"
+  ],
+  "sample_outputs": [
+    "27",
+    "25",
+    "16",
+    "10"
+  ],
+  "explanations": [
+    "For input [3, 3], output is 27",
+    "For input [5, 2], output is 25",
+    "For input [2, 4], output is 16",
+    "For input [10, 1], output is 10"
+  ],
+  "notes": [
+    "Implement the Default Arguments problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void defaultArguments() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        3,
+        3
+      ],
+      "expected": 27
+    },
+    {
+      "input": [
+        5,
+        2
+      ],
+      "expected": 25
+    },
+    {
+      "input": [
+        2,
+        4
+      ],
+      "expected": 16
+    },
+    {
+      "input": [
+        10,
+        1
+      ],
+      "expected": 10
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "problem_number": 17,
+  "problem_name": "String Modifications",
+  "difficulty": "easy",
+  "programming_language": "java",
+  "description": "Write a method called `modify_string(s)` that returns the string in uppercase with all spaces removed.",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "['hello world']",
+    "['python programming']",
+    "['code clash']",
+    "['a b c']"
+  ],
+  "sample_outputs": [
+    "HELLOWORLD",
+    "PYTHONPROGRAMMING",
+    "CODECLASH",
+    "ABC"
+  ],
+  "explanations": [
+    "For input ['hello world'], output is HELLOWORLD",
+    "For input ['python programming'], output is PYTHONPROGRAMMING",
+    "For input ['code clash'], output is CODECLASH",
+    "For input ['a b c'], output is ABC"
+  ],
+  "notes": [
+    "Implement the String Modifications problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void stringModifications() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        "hello world"
+      ],
+      "expected": "HELLOWORLD"
+    },
+    {
+      "input": [
+        "python programming"
+      ],
+      "expected": "PYTHONPROGRAMMING"
+    },
+    {
+      "input": [
+        "code clash"
+      ],
+      "expected": "CODECLASH"
+    },
+    {
+      "input": [
+        "a b c"
+      ],
+      "expected": "ABC"
+    }
+  ]
+}

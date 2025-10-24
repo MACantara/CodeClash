@@ -1,0 +1,68 @@
+{
+  "problem_number": 9,
+  "problem_name": "Format Output with Variables",
+  "difficulty": "easy",
+  "programming_language": "java",
+  "description": "Write a method called `format_greeting(name, age)` that returns a formatted string: 'Hello, [name]! You are [age] years old.'",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "['Alice', 25]",
+    "['Bob', 30]",
+    "['Charlie', 18]",
+    "['Diana', 45]"
+  ],
+  "sample_outputs": [
+    "Hello, Alice! You are 25 years old.",
+    "Hello, Bob! You are 30 years old.",
+    "Hello, Charlie! You are 18 years old.",
+    "Hello, Diana! You are 45 years old."
+  ],
+  "explanations": [
+    "For name='Alice', age=25: 'My name is Alice and I am 25 years old'",
+    "For name='Bob', age=30: 'My name is Bob and I am 30 years old'",
+    "For name='X', age=1: 'My name is X and I am 1 years old'",
+    "For name='', age=0: 'My name is  and I am 0 years old'"
+  ],
+  "notes": [
+    "Use f-strings or .format() for string formatting",
+    "Handle empty strings and edge cases",
+    "Follow exact format specification"
+  ],
+  "hints": [
+    "Java f-strings: f'My name is {name}...'",
+    "Or use .format(): 'My name is {}...'.format(name)",
+    "Make sure spacing matches exactly"
+  ],
+  "starter_code": "public class Solution {\n    public static void formatOutputWithVariables() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        "Alice",
+        25
+      ],
+      "expected": "Hello, Alice! You are 25 years old."
+    },
+    {
+      "input": [
+        "Bob",
+        30
+      ],
+      "expected": "Hello, Bob! You are 30 years old."
+    },
+    {
+      "input": [
+        "Charlie",
+        18
+      ],
+      "expected": "Hello, Charlie! You are 18 years old."
+    },
+    {
+      "input": [
+        "Diana",
+        45
+      ],
+      "expected": "Hello, Diana! You are 45 years old."
+    }
+  ]
+}

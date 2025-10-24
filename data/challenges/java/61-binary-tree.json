@@ -1,0 +1,123 @@
+{
+  "problem_number": 61,
+  "problem_name": "Binary Tree Traversal",
+  "difficulty": "difficult",
+  "programming_language": "java",
+  "description": "Given a binary tree as nested lists [value, left, right], write `inorder_traversal(tree)` that returns inorder traversal. None represents no child.",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[[1, [2, None, None], [3, None, None]]]",
+    "[[5, [3, [1, None, None], [4, None, None]], [7, None, None]]]",
+    "[[10, None, None]]",
+    "[[2, [1, None, None], None]]"
+  ],
+  "sample_outputs": [
+    "[2, 1, 3]",
+    "[1, 3, 4, 5, 7]",
+    "[10]",
+    "[1, 2]"
+  ],
+  "explanations": [
+    "For input [[1, [2, None, None], [3, None, None]]], output is [2, 1, 3]",
+    "For input [[5, [3, [1, None, None], [4, None, None]], [7, None, None]]], output is [1, 3, 4, 5, 7]",
+    "For input [[10, None, None]], output is [10]",
+    "For input [[2, [1, None, None], None]], output is [1, 2]"
+  ],
+  "notes": [
+    "Implement the Binary Tree Traversal problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void binaryTreeTraversal() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        [
+          1,
+          [
+            2,
+            null,
+            null
+          ],
+          [
+            3,
+            null,
+            null
+          ]
+        ]
+      ],
+      "expected": [
+        2,
+        1,
+        3
+      ]
+    },
+    {
+      "input": [
+        [
+          5,
+          [
+            3,
+            [
+              1,
+              null,
+              null
+            ],
+            [
+              4,
+              null,
+              null
+            ]
+          ],
+          [
+            7,
+            null,
+            null
+          ]
+        ]
+      ],
+      "expected": [
+        1,
+        3,
+        4,
+        5,
+        7
+      ]
+    },
+    {
+      "input": [
+        [
+          10,
+          null,
+          null
+        ]
+      ],
+      "expected": [
+        10
+      ]
+    },
+    {
+      "input": [
+        [
+          2,
+          [
+            1,
+            null,
+            null
+          ],
+          null
+        ]
+      ],
+      "expected": [
+        1,
+        2
+      ]
+    }
+  ]
+}

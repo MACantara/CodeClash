@@ -1,0 +1,71 @@
+{
+  "problem_number": 54,
+  "problem_name": "Regular Expression Match",
+  "difficulty": "average",
+  "programming_language": "java",
+  "description": "Write a method called `find_emails(text)` that uses regex to find and return a list of all email addresses in the text (format: word@word.word). Use the re module.",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "['Contact us at info@example.com']",
+    "['Email: john@test.com or jane@test.com']",
+    "['No emails here']",
+    "['Send to admin@site.org']"
+  ],
+  "sample_outputs": [
+    "['info@example.com']",
+    "['john@test.com', 'jane@test.com']",
+    "[]",
+    "['admin@site.org']"
+  ],
+  "explanations": [
+    "For input ['Contact us at info@example.com'], output is ['info@example.com']",
+    "For input ['Email: john@test.com or jane@test.com'], output is ['john@test.com', 'jane@test.com']",
+    "For input ['No emails here'], output is []",
+    "For input ['Send to admin@site.org'], output is ['admin@site.org']"
+  ],
+  "notes": [
+    "Implement the Regular Expression Match problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void regularExpressionMatch() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        "Contact us at info@example.com"
+      ],
+      "expected": [
+        "info@example.com"
+      ]
+    },
+    {
+      "input": [
+        "Email: john@test.com or jane@test.com"
+      ],
+      "expected": [
+        "john@test.com",
+        "jane@test.com"
+      ]
+    },
+    {
+      "input": [
+        "No emails here"
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        "Send to admin@site.org"
+      ],
+      "expected": [
+        "admin@site.org"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "problem_number": 62,
+  "problem_name": "Hash Table - Word Count",
+  "difficulty": "easy",
+  "programming_language": "java",
+  "description": "Write a method called `count_words(text)` that returns a dictionary with word counts. Split by spaces and ignore case.",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "['hello world hello']",
+    "['Python is fun Python']",
+    "['one two three']",
+    "['a a a']"
+  ],
+  "sample_outputs": [
+    "{'hello': 2, 'world': 1}",
+    "{'python': 2, 'is': 1, 'fun': 1}",
+    "{'one': 1, 'two': 1, 'three': 1}",
+    "{'a': 3}"
+  ],
+  "explanations": [
+    "For input ['hello world hello'], output is {'hello': 2, 'world': 1}",
+    "For input ['Python is fun Python'], output is {'python': 2, 'is': 1, 'fun': 1}",
+    "For input ['one two three'], output is {'one': 1, 'two': 1, 'three': 1}",
+    "For input ['a a a'], output is {'a': 3}"
+  ],
+  "notes": [
+    "Implement the Hash Table - Word Count problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void hashTable-WordCount() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        "hello world hello"
+      ],
+      "expected": {
+        "hello": 2,
+        "world": 1
+      }
+    },
+    {
+      "input": [
+        "Python is fun Python"
+      ],
+      "expected": {
+        "python": 2,
+        "is": 1,
+        "fun": 1
+      }
+    },
+    {
+      "input": [
+        "one two three"
+      ],
+      "expected": {
+        "one": 1,
+        "two": 1,
+        "three": 1
+      }
+    },
+    {
+      "input": [
+        "a a a"
+      ],
+      "expected": {
+        "a": 3
+      }
+    }
+  ]
+}

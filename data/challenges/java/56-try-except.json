@@ -1,0 +1,68 @@
+{
+  "problem_number": 56,
+  "problem_name": "Safe Division with Exception",
+  "difficulty": "easy",
+  "programming_language": "java",
+  "description": "Write a method called `divide_safe(a, b)` that returns the division result. If division by zero occurs, catch the exception and return 'Error'.",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[10, 2]",
+    "[15, 3]",
+    "[10, 0]",
+    "[100, 4]"
+  ],
+  "sample_outputs": [
+    "5.0",
+    "5.0",
+    "Error",
+    "25.0"
+  ],
+  "explanations": [
+    "For input [10, 2], output is 5.0",
+    "For input [15, 3], output is 5.0",
+    "For input [10, 0], output is Error",
+    "For input [100, 4], output is 25.0"
+  ],
+  "notes": [
+    "Implement the Safe Division with Exception problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void safeDivisionWithException() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        10,
+        2
+      ],
+      "expected": 5.0
+    },
+    {
+      "input": [
+        15,
+        3
+      ],
+      "expected": 5.0
+    },
+    {
+      "input": [
+        10,
+        0
+      ],
+      "expected": "Error"
+    },
+    {
+      "input": [
+        100,
+        4
+      ],
+      "expected": 25.0
+    }
+  ]
+}

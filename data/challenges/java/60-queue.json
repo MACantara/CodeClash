@@ -1,0 +1,123 @@
+{
+  "problem_number": 60,
+  "problem_name": "Queue Implementation",
+  "difficulty": "average",
+  "programming_language": "java",
+  "description": "Write a method called `process_queue(operations)` that simulates a queue using collections.deque. Operations: ('enqueue', value) or ('dequeue',). Return the final queue as a list.",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[[['enqueue', 1], ['enqueue', 2], ['dequeue'], ['enqueue', 3]]]",
+    "[[['enqueue', 'a'], ['enqueue', 'b'], ['enqueue', 'c']]]",
+    "[[['enqueue', 5], ['dequeue']]]",
+    "[[['enqueue', 10], ['enqueue', 20], ['dequeue'], ['dequeue']]]"
+  ],
+  "sample_outputs": [
+    "[2, 3]",
+    "['a', 'b', 'c']",
+    "[]",
+    "[]"
+  ],
+  "explanations": [
+    "For input [[['enqueue', 1], ['enqueue', 2], ['dequeue'], ['enqueue', 3]]], output is [2, 3]",
+    "For input [[['enqueue', 'a'], ['enqueue', 'b'], ['enqueue', 'c']]], output is ['a', 'b', 'c']",
+    "For input [[['enqueue', 5], ['dequeue']]], output is []",
+    "For input [[['enqueue', 10], ['enqueue', 20], ['dequeue'], ['dequeue']]], output is []"
+  ],
+  "notes": [
+    "Implement the Queue Implementation problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void queueImplementation() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        [
+          [
+            "enqueue",
+            1
+          ],
+          [
+            "enqueue",
+            2
+          ],
+          [
+            "dequeue"
+          ],
+          [
+            "enqueue",
+            3
+          ]
+        ]
+      ],
+      "expected": [
+        2,
+        3
+      ]
+    },
+    {
+      "input": [
+        [
+          [
+            "enqueue",
+            "a"
+          ],
+          [
+            "enqueue",
+            "b"
+          ],
+          [
+            "enqueue",
+            "c"
+          ]
+        ]
+      ],
+      "expected": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "input": [
+        [
+          [
+            "enqueue",
+            5
+          ],
+          [
+            "dequeue"
+          ]
+        ]
+      ],
+      "expected": []
+    },
+    {
+      "input": [
+        [
+          [
+            "enqueue",
+            10
+          ],
+          [
+            "enqueue",
+            20
+          ],
+          [
+            "dequeue"
+          ],
+          [
+            "dequeue"
+          ]
+        ]
+      ],
+      "expected": []
+    }
+  ]
+}

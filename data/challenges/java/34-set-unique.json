@@ -1,0 +1,108 @@
+{
+  "problem_number": 34,
+  "problem_name": "Unique Elements",
+  "difficulty": "easy",
+  "programming_language": "java",
+  "description": "Write a method called `get_unique_elements(lst)` that returns a sorted list of unique elements from the input list.",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[[1, 2, 2, 3, 4, 4, 5]]",
+    "[['apple', 'banana', 'apple']]",
+    "[[5, 5, 5]]",
+    "[[3, 1, 4, 1, 5, 9, 2, 6]]"
+  ],
+  "sample_outputs": [
+    "[1, 2, 3, 4, 5]",
+    "['apple', 'banana']",
+    "[5]",
+    "[1, 2, 3, 4, 5, 6, 9]"
+  ],
+  "explanations": [
+    "For input [[1, 2, 2, 3, 4, 4, 5]], output is [1, 2, 3, 4, 5]",
+    "For input [['apple', 'banana', 'apple']], output is ['apple', 'banana']",
+    "For input [[5, 5, 5]], output is [5]",
+    "For input [[3, 1, 4, 1, 5, 9, 2, 6]], output is [1, 2, 3, 4, 5, 6, 9]"
+  ],
+  "notes": [
+    "Implement the Unique Elements problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void uniqueElements() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        [
+          1,
+          2,
+          2,
+          3,
+          4,
+          4,
+          5
+        ]
+      ],
+      "expected": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "input": [
+        [
+          "apple",
+          "banana",
+          "apple"
+        ]
+      ],
+      "expected": [
+        "apple",
+        "banana"
+      ]
+    },
+    {
+      "input": [
+        [
+          5,
+          5,
+          5
+        ]
+      ],
+      "expected": [
+        5
+      ]
+    },
+    {
+      "input": [
+        [
+          3,
+          1,
+          4,
+          1,
+          5,
+          9,
+          2,
+          6
+        ]
+      ],
+      "expected": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        9
+      ]
+    }
+  ]
+}

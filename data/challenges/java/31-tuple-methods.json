@@ -1,0 +1,90 @@
+{
+  "problem_number": 31,
+  "problem_name": "Count in Tuple",
+  "difficulty": "easy",
+  "programming_language": "java",
+  "description": "Write a method called `count_occurrences(tup, value)` that returns the number of times a value appears in a tuple.",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[[1, 2, 3, 2, 2, 4], 2]",
+    "[['a', 'b', 'a', 'c', 'a'], 'a']",
+    "[[5, 5, 5, 5], 5]",
+    "[[1, 2, 3], 4]"
+  ],
+  "sample_outputs": [
+    "3",
+    "3",
+    "4",
+    "0"
+  ],
+  "explanations": [
+    "For input [[1, 2, 3, 2, 2, 4], 2], output is 3",
+    "For input [['a', 'b', 'a', 'c', 'a'], 'a'], output is 3",
+    "For input [[5, 5, 5, 5], 5], output is 4",
+    "For input [[1, 2, 3], 4], output is 0"
+  ],
+  "notes": [
+    "Implement the Count in Tuple problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void countInTuple() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        [
+          1,
+          2,
+          3,
+          2,
+          2,
+          4
+        ],
+        2
+      ],
+      "expected": 3
+    },
+    {
+      "input": [
+        [
+          "a",
+          "b",
+          "a",
+          "c",
+          "a"
+        ],
+        "a"
+      ],
+      "expected": 3
+    },
+    {
+      "input": [
+        [
+          5,
+          5,
+          5,
+          5
+        ],
+        5
+      ],
+      "expected": 4
+    },
+    {
+      "input": [
+        [
+          1,
+          2,
+          3
+        ],
+        4
+      ],
+      "expected": 0
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "problem_number": 53,
+  "problem_name": "JSON Parsing",
+  "difficulty": "easy",
+  "programming_language": "java",
+  "description": "Write a method called `parse_json_string(json_str)` that parses a JSON string and returns the value of the 'name' key. Use the json module.",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "['{\"name\": \"Alice\", \"age\": 30}']",
+    "['{\"name\": \"Bob\", \"city\": \"NYC\"}']",
+    "['{\"age\": 25, \"name\": \"Charlie\"}']",
+    "['{\"name\": \"Diana\"}']"
+  ],
+  "sample_outputs": [
+    "Alice",
+    "Bob",
+    "Charlie",
+    "Diana"
+  ],
+  "explanations": [
+    "For input ['{\"name\": \"Alice\", \"age\": 30}'], output is Alice",
+    "For input ['{\"name\": \"Bob\", \"city\": \"NYC\"}'], output is Bob",
+    "For input ['{\"age\": 25, \"name\": \"Charlie\"}'], output is Charlie",
+    "For input ['{\"name\": \"Diana\"}'], output is Diana"
+  ],
+  "notes": [
+    "Implement the JSON Parsing problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void jsonParsing() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        "{\"name\": \"Alice\", \"age\": 30}"
+      ],
+      "expected": "Alice"
+    },
+    {
+      "input": [
+        "{\"name\": \"Bob\", \"city\": \"NYC\"}"
+      ],
+      "expected": "Bob"
+    },
+    {
+      "input": [
+        "{\"age\": 25, \"name\": \"Charlie\"}"
+      ],
+      "expected": "Charlie"
+    },
+    {
+      "input": [
+        "{\"name\": \"Diana\"}"
+      ],
+      "expected": "Diana"
+    }
+  ]
+}

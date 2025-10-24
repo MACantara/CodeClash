@@ -1,0 +1,64 @@
+{
+  "problem_number": 5,
+  "problem_name": "Fibonacci Sequence",
+  "difficulty": "average",
+  "programming_language": "java",
+  "description": "Write a method called `fibonacci(int n)` that returns the nth Fibonacci number (0-indexed).",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[0]",
+    "[1]",
+    "[5]",
+    "[10]"
+  ],
+  "sample_outputs": [
+    "0",
+    "1",
+    "5",
+    "55"
+  ],
+  "explanations": [
+    "F(0) = 0 by definition",
+    "F(1) = 1 by definition",
+    "F(5) = F(4) + F(3) = 3 + 2 = 5",
+    "F(10) = 55 (sum of previous Fibonacci numbers)"
+  ],
+  "notes": [
+    "Fibonacci sequence: each number is sum of previous two",
+    "Base cases: F(0) = 0, F(1) = 1",
+    "Can be solved iteratively or recursively"
+  ],
+  "hints": [
+    "Start with base cases F(0)=0 and F(1)=1",
+    "Use iteration or recursion",
+    "Each number is the sum of the two preceding ones"
+  ],
+  "starter_code": "public class Solution {\n    public static int fibonacci(int n) {\n        // Write your code here\n        return 0;\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "input": [
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "input": [
+        5
+      ],
+      "expected": 5
+    },
+    {
+      "input": [
+        10
+      ],
+      "expected": 55
+    }
+  ]
+}

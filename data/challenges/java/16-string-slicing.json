@@ -1,0 +1,64 @@
+{
+  "problem_number": 16,
+  "problem_name": "Extract Substring",
+  "difficulty": "easy",
+  "programming_language": "java",
+  "description": "Write a method called `extract_middle(s)` that returns the middle portion of a string from index 2 to index -2 (excluding the last 2 characters).",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "['Python']",
+    "['Programming']",
+    "['Hello']",
+    "['abcdef']"
+  ],
+  "sample_outputs": [
+    "tho",
+    "ogrammin",
+    "ll",
+    "cd"
+  ],
+  "explanations": [
+    "For input ['Python'], output is tho",
+    "For input ['Programming'], output is ogrammin",
+    "For input ['Hello'], output is ll",
+    "For input ['abcdef'], output is cd"
+  ],
+  "notes": [
+    "Implement the Extract Substring problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void extractSubstring() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        "Python"
+      ],
+      "expected": "tho"
+    },
+    {
+      "input": [
+        "Programming"
+      ],
+      "expected": "ogrammin"
+    },
+    {
+      "input": [
+        "Hello"
+      ],
+      "expected": "ll"
+    },
+    {
+      "input": [
+        "abcdef"
+      ],
+      "expected": "cd"
+    }
+  ]
+}

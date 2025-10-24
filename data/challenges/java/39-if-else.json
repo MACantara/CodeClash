@@ -1,0 +1,64 @@
+{
+  "problem_number": 39,
+  "problem_name": "Grade Calculator",
+  "difficulty": "easy",
+  "programming_language": "java",
+  "description": "Write a method called `get_grade(score)` that returns 'A' for 90+, 'B' for 80-89, 'C' for 70-79, 'D' for 60-69, and 'F' for below 60.",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[95]",
+    "[85]",
+    "[75]",
+    "[55]"
+  ],
+  "sample_outputs": [
+    "A",
+    "B",
+    "C",
+    "F"
+  ],
+  "explanations": [
+    "For input [95], output is A",
+    "For input [85], output is B",
+    "For input [75], output is C",
+    "For input [55], output is F"
+  ],
+  "notes": [
+    "Implement the Grade Calculator problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void gradeCalculator() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        95
+      ],
+      "expected": "A"
+    },
+    {
+      "input": [
+        85
+      ],
+      "expected": "B"
+    },
+    {
+      "input": [
+        75
+      ],
+      "expected": "C"
+    },
+    {
+      "input": [
+        55
+      ],
+      "expected": "F"
+    }
+  ]
+}

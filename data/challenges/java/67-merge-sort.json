@@ -1,0 +1,108 @@
+{
+  "problem_number": 67,
+  "problem_name": "Merge Sort",
+  "difficulty": "difficult",
+  "programming_language": "java",
+  "description": "Write a method called `merge_sort(arr)` that implements the merge sort algorithm and returns the sorted array.",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "[[38, 27, 43, 3, 9, 82, 10]]",
+    "[[12, 11, 13, 5, 6, 7]]",
+    "[[5, 2, 8, 1]]",
+    "[[1]]"
+  ],
+  "sample_outputs": [
+    "[3, 9, 10, 27, 38, 43, 82]",
+    "[5, 6, 7, 11, 12, 13]",
+    "[1, 2, 5, 8]",
+    "[1]"
+  ],
+  "explanations": [
+    "For input [[38, 27, 43, 3, 9, 82, 10]], output is [3, 9, 10, 27, 38, 43, 82]",
+    "For input [[12, 11, 13, 5, 6, 7]], output is [5, 6, 7, 11, 12, 13]",
+    "For input [[5, 2, 8, 1]], output is [1, 2, 5, 8]",
+    "For input [[1]], output is [1]"
+  ],
+  "notes": [
+    "Implement the Merge Sort problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void mergeSort() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        [
+          38,
+          27,
+          43,
+          3,
+          9,
+          82,
+          10
+        ]
+      ],
+      "expected": [
+        3,
+        9,
+        10,
+        27,
+        38,
+        43,
+        82
+      ]
+    },
+    {
+      "input": [
+        [
+          12,
+          11,
+          13,
+          5,
+          6,
+          7
+        ]
+      ],
+      "expected": [
+        5,
+        6,
+        7,
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "input": [
+        [
+          5,
+          2,
+          8,
+          1
+        ]
+      ],
+      "expected": [
+        1,
+        2,
+        5,
+        8
+      ]
+    },
+    {
+      "input": [
+        [
+          1
+        ]
+      ],
+      "expected": [
+        1
+      ]
+    }
+  ]
+}

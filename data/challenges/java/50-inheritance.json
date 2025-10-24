@@ -1,0 +1,64 @@
+{
+  "problem_number": 50,
+  "problem_name": "Class Inheritance",
+  "difficulty": "average",
+  "programming_language": "java",
+  "description": "Create a base class `Animal` with __init__(name) and a `Dog` subclass that adds a method bark() returning '{name} says Woof!'. Write a method called `make_dog_bark(name)` that creates a Dog and returns the bark message.",
+  "input_specification": "Input format will be provided.",
+  "output_specification": "Expected output format will be shown.",
+  "sample_inputs": [
+    "['Buddy']",
+    "['Max']",
+    "['Charlie']",
+    "['Rocky']"
+  ],
+  "sample_outputs": [
+    "Buddy says Woof!",
+    "Max says Woof!",
+    "Charlie says Woof!",
+    "Rocky says Woof!"
+  ],
+  "explanations": [
+    "For input ['Buddy'], output is Buddy says Woof!",
+    "For input ['Max'], output is Max says Woof!",
+    "For input ['Charlie'], output is Charlie says Woof!",
+    "For input ['Rocky'], output is Rocky says Woof!"
+  ],
+  "notes": [
+    "Implement the Class Inheritance problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
+  ],
+  "hints": [
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
+  ],
+  "starter_code": "public class Solution {\n    public static void classInheritance() {\n        // Write your code here\n    }\n}",
+  "test_cases": [
+    {
+      "input": [
+        "Buddy"
+      ],
+      "expected": "Buddy says Woof!"
+    },
+    {
+      "input": [
+        "Max"
+      ],
+      "expected": "Max says Woof!"
+    },
+    {
+      "input": [
+        "Charlie"
+      ],
+      "expected": "Charlie says Woof!"
+    },
+    {
+      "input": [
+        "Rocky"
+      ],
+      "expected": "Rocky says Woof!"
+    }
+  ]
+}
