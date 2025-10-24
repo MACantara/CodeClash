@@ -8,7 +8,7 @@
         <!-- Header -->
         <header class="mb-8 sm:mb-12">
             <nav class="mb-6" aria-label="Breadcrumb">
-                <a href="/" class="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded px-2 py-1" aria-label="Go back to home">
+                <a href="/" class="cursor-pointer inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded px-2 py-1" aria-label="Go back to home">
                     <i class="bi bi-arrow-left" aria-hidden="true"></i>
                     <span>Back to Home</span>
                 </a>
@@ -23,7 +23,7 @@
                     <p class="text-lg text-gray-300">Track your progress and performance</p>
                 </div>
                 <button onclick="clearAllData()" 
-                        class="bg-red-600 hover:bg-red-500 text-white px-5 py-3 rounded-lg transition-all duration-200 hover:shadow-lg flex items-center gap-2 focus:outline-none focus:ring-4 focus:ring-red-400 focus:ring-offset-2 focus:ring-offset-gray-900"
+                        class="cursor-pointer bg-red-600 hover:bg-red-500 text-white px-5 py-3 rounded-lg transition-all duration-200 hover:shadow-lg flex items-center gap-2 focus:outline-none focus:ring-4 focus:ring-red-400 focus:ring-offset-2 focus:ring-offset-gray-900"
                         aria-label="Clear all analytics data">
                     <i class="bi bi-trash" aria-hidden="true"></i>
                     <span>Clear All Data</span>
@@ -47,7 +47,7 @@
             <h2 class="text-2xl font-bold text-white mb-3">No Data Yet</h2>
             <p class="text-lg text-gray-300 mb-6">Start solving challenges to see your analytics!</p>
             <a href="/language-selector" 
-               class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-lg transition-all duration-200 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-gray-900">
+               class="cursor-pointer inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-lg transition-all duration-200 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-gray-900">
                 <i class="bi bi-code-slash" aria-hidden="true"></i>
                 <span>Start Solving</span>
             </a>
@@ -176,7 +176,7 @@
                 <!-- Filter Controls -->
                 <div class="mb-6 flex flex-wrap gap-4">
                     <select id="filter-difficulty" 
-                            class="bg-gray-700 text-white px-4 py-2 rounded-lg border-2 border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                            class="cursor-pointer bg-gray-700 text-white px-4 py-2 rounded-lg border-2 border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
                             aria-label="Filter by difficulty">
                         <option value="all">All Difficulties</option>
                         <option value="foundational">Foundational</option>
@@ -186,7 +186,7 @@
                     </select>
 
                     <select id="filter-language" 
-                            class="bg-gray-700 text-white px-4 py-2 rounded-lg border-2 border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                            class="cursor-pointer bg-gray-700 text-white px-4 py-2 rounded-lg border-2 border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
                             aria-label="Filter by language">
                         <option value="all">All Languages</option>
                         <option value="python">Python</option>
@@ -194,7 +194,7 @@
                     </select>
 
                     <select id="sort-by" 
-                            class="bg-gray-700 text-white px-4 py-2 rounded-lg border-2 border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                            class="cursor-pointer bg-gray-700 text-white px-4 py-2 rounded-lg border-2 border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
                             aria-label="Sort by">
                         <option value="recent">Most Recent</option>
                         <option value="oldest">Oldest First</option>

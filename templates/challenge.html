@@ -7,7 +7,7 @@
     <div class="max-w-6xl mx-auto">
         <!-- Back Button -->
         <nav class="mb-6" aria-label="Breadcrumb">
-            <a href="/difficulty-selector" class="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded px-2 py-1" aria-label="Go back to difficulty selector">
+            <a href="/difficulty-selector" class="cursor-pointer inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded px-2 py-1" aria-label="Go back to difficulty selector">
                 <i class="bi bi-arrow-left" aria-hidden="true"></i>
                 <span>Back to Difficulty Selector</span>
             </a>
@@ -41,14 +41,14 @@
                     
                     <!-- Solved It Button -->
                     <button id="solved-button" onclick="markAsSolved()" 
-                            class="bg-green-600 hover:bg-green-500 text-white px-5 py-3 rounded-lg transition-all duration-200 hover:shadow-lg flex items-center gap-2 justify-center focus:outline-none focus:ring-4 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-gray-900"
+                            class="cursor-pointer bg-green-600 hover:bg-green-500 text-white px-5 py-3 rounded-lg transition-all duration-200 hover:shadow-lg flex items-center gap-2 justify-center focus:outline-none focus:ring-4 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-gray-900"
                             aria-label="Mark challenge as solved">
                         <i class="bi bi-check-circle" aria-hidden="true"></i>
                         <span>Solved It!</span>
                     </button>
                     
                     <button onclick="location.href='/random/{{ challenge.difficulty }}'" 
-                            class="bg-purple-600 hover:bg-purple-500 text-white px-5 py-3 rounded-lg transition-all duration-200 hover:shadow-lg flex items-center gap-2 justify-center focus:outline-none focus:ring-4 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-gray-900"
+                            class="cursor-pointer bg-purple-600 hover:bg-purple-500 text-white px-5 py-3 rounded-lg transition-all duration-200 hover:shadow-lg flex items-center gap-2 justify-center focus:outline-none focus:ring-4 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-gray-900"
                             aria-label="Get another {{ challenge.difficulty }} challenge">
                         <i class="bi bi-shuffle" aria-hidden="true"></i>
                         <span class="hidden sm:inline">Another {{ challenge.difficulty.capitalize() }}</span>
@@ -126,7 +126,7 @@
                 {% if challenge.hints %}
                 <section class="bg-gray-800 rounded-xl p-6 sm:p-8 border-2 border-gray-700" aria-labelledby="hints-heading">
                     <button onclick="toggleHints()" 
-                            class="w-full flex items-center justify-between text-2xl font-bold mb-2 text-white hover:text-purple-400 transition-colors focus:outline-none focus:ring-2 focus:ring-purple-400 rounded p-2"
+                            class="cursor-pointer w-full flex items-center justify-between text-2xl font-bold mb-2 text-white hover:text-purple-400 transition-colors focus:outline-none focus:ring-2 focus:ring-purple-400 rounded p-2"
                             aria-expanded="false"
                             aria-controls="hints-content"
                             id="hints-button">
