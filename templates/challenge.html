@@ -3,141 +3,154 @@
 {% block title %}{{ challenge.problem_name }} - CodeClash{% endblock %}
 
 {% block content %}
-<div class="container mx-auto px-2 sm:px-4 py-6 sm:py-8">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
     <div class="max-w-6xl mx-auto">
         <!-- Back Button -->
-        <div class="mb-4">
-            <a href="/difficulty-selector" class="inline-flex items-center gap-2 text-gray-400 hover:text-white transition">
-                <i class="bi bi-arrow-left"></i>
+        <nav class="mb-6" aria-label="Breadcrumb">
+            <a href="/difficulty-selector" class="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded px-2 py-1" aria-label="Go back to difficulty selector">
+                <i class="bi bi-arrow-left" aria-hidden="true"></i>
                 <span>Back to Difficulty Selector</span>
             </a>
-        </div>
+        </nav>
 
         <!-- Challenge Header -->
-        <div class="bg-gray-800 rounded-lg p-4 sm:p-6 mb-6 border border-gray-700">
+        <header class="bg-gray-800 rounded-xl p-6 sm:p-8 mb-8 border-2 border-gray-700">
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
                 <div>
-                    <div class="flex items-center gap-3 mb-2">
-                        <span class="text-sm font-semibold px-3 py-1 rounded-full
-                            {% if challenge.difficulty == 'foundational' %}bg-green-600/20 text-green-400 border border-green-600
-                            {% elif challenge.difficulty == 'easy' %}bg-blue-600/20 text-blue-400 border border-blue-600
-                            {% elif challenge.difficulty == 'average' %}bg-yellow-600/20 text-yellow-400 border border-yellow-600
-                            {% elif challenge.difficulty == 'difficult' %}bg-red-600/20 text-red-400 border border-red-600
-                            {% endif %}">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-base font-semibold px-4 py-2 rounded-lg
+                            {% if challenge.difficulty == 'foundational' %}bg-green-600/30 text-green-300 border-2 border-green-500
+                            {% elif challenge.difficulty == 'easy' %}bg-blue-600/30 text-blue-300 border-2 border-blue-500
+                            {% elif challenge.difficulty == 'average' %}bg-yellow-600/30 text-yellow-300 border-2 border-yellow-500
+                            {% elif challenge.difficulty == 'difficult' %}bg-red-600/30 text-red-300 border-2 border-red-500
+                            {% endif %}"
+                            role="status"
+                            aria-label="Difficulty level: {{ challenge.difficulty }}">
                             {{ challenge.difficulty.capitalize() }}
                         </span>
-                        <span class="text-sm text-gray-400">#{{ challenge.problem_number }}</span>
+                        <span class="text-base text-gray-400" aria-label="Problem number {{ challenge.problem_number }}">#{{ challenge.problem_number }}</span>
                     </div>
-                    <h1 class="text-2xl sm:text-3xl font-bold text-white">{{ challenge.problem_name }}</h1>
+                    <h1 class="text-3xl sm:text-4xl font-bold text-white">{{ challenge.problem_name }}</h1>
                 </div>
-                <div class="flex gap-2">
+                <div class="flex gap-3">
                     <button onclick="location.href='/random/{{ challenge.difficulty }}'" 
-                            class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition flex items-center gap-2">
-                        <i class="bi bi-shuffle"></i>
+                            class="bg-purple-600 hover:bg-purple-500 text-white px-5 py-3 rounded-lg transition-all duration-200 hover:shadow-lg flex items-center gap-2 focus:outline-none focus:ring-4 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-gray-900"
+                            aria-label="Get another {{ challenge.difficulty }} challenge">
+                        <i class="bi bi-shuffle" aria-hidden="true"></i>
                         <span class="hidden sm:inline">Another {{ challenge.difficulty.capitalize() }}</span>
                         <span class="sm:hidden">Random</span>
                     </button>
                 </div>
             </div>
-        </div>
+        </header>
 
         <!-- Challenge Content -->
         <div class="max-w-4xl mx-auto">
-            <div class="space-y-6">
+            <article class="space-y-8">
                 <!-- Description -->
-                <div class="bg-gray-800 rounded-lg p-4 sm:p-6 border border-gray-700">
-                    <h2 class="text-xl font-bold mb-3 flex items-center gap-2">
-                        <i class="bi bi-file-text text-blue-500"></i>
+                <section class="bg-gray-800 rounded-xl p-6 sm:p-8 border-2 border-gray-700" aria-labelledby="description-heading">
+                    <h2 id="description-heading" class="text-2xl font-bold mb-4 flex items-center gap-3">
+                        <i class="bi bi-file-text text-blue-400 text-xl" aria-hidden="true"></i>
                         Description
                     </h2>
-                    <p class="text-gray-300 leading-relaxed">{{ challenge.description }}</p>
-                </div>
+                    <p class="text-gray-200 leading-relaxed text-lg">{{ challenge.description }}</p>
+                </section>
 
                 <!-- Input/Output Specifications -->
-                <div class="bg-gray-800 rounded-lg p-4 sm:p-6 border border-gray-700">
-                    <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
-                        <i class="bi bi-arrow-left-right text-green-500"></i>
-                        Input/Output
+                <section class="bg-gray-800 rounded-xl p-6 sm:p-8 border-2 border-gray-700" aria-labelledby="io-heading">
+                    <h2 id="io-heading" class="text-2xl font-bold mb-6 flex items-center gap-3">
+                        <i class="bi bi-arrow-left-right text-green-400 text-xl" aria-hidden="true"></i>
+                        Input/Output Specifications
                     </h2>
-                    <div class="space-y-4">
+                    <div class="space-y-6">
                         <div>
-                            <h3 class="font-semibold text-green-400 mb-2">Input:</h3>
-                            <p class="text-sm text-gray-300">{{ challenge.input_specification }}</p>
+                            <h3 class="font-bold text-lg text-green-300 mb-3 flex items-center gap-2">
+                                <i class="bi bi-box-arrow-in-right" aria-hidden="true"></i>
+                                Input:
+                            </h3>
+                            <p class="text-base text-gray-200 leading-relaxed pl-6">{{ challenge.input_specification }}</p>
                         </div>
                         <div>
-                            <h3 class="font-semibold text-blue-400 mb-2">Output:</h3>
-                            <p class="text-sm text-gray-300">{{ challenge.output_specification }}</p>
+                            <h3 class="font-bold text-lg text-blue-300 mb-3 flex items-center gap-2">
+                                <i class="bi bi-box-arrow-right" aria-hidden="true"></i>
+                                Output:
+                            </h3>
+                            <p class="text-base text-gray-200 leading-relaxed pl-6">{{ challenge.output_specification }}</p>
                         </div>
                     </div>
-                </div>
+                </section>
 
                 <!-- Examples -->
-                <div class="bg-gray-800 rounded-lg p-4 sm:p-6 border border-gray-700">
-                    <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
-                        <i class="bi bi-lightbulb text-yellow-500"></i>
+                <section class="bg-gray-800 rounded-xl p-6 sm:p-8 border-2 border-gray-700" aria-labelledby="examples-heading">
+                    <h2 id="examples-heading" class="text-2xl font-bold mb-6 flex items-center gap-3">
+                        <i class="bi bi-lightbulb text-yellow-400 text-xl" aria-hidden="true"></i>
                         Examples
                     </h2>
-                    <div class="space-y-4">
+                    <div class="space-y-6">
                         {% for i in range(challenge.sample_inputs|length) %}
-                        <div class="bg-gray-900 rounded p-3 border border-gray-700">
-                            <div class="mb-2">
-                                <span class="text-xs font-semibold text-gray-400">Input:</span>
-                                <code class="block bg-gray-950 p-2 rounded mt-1 text-sm text-green-400">{{ challenge.sample_inputs[i] }}</code>
+                        <article class="bg-gray-900 rounded-lg p-5 border-2 border-gray-700" aria-label="Example {{ i + 1 }}">
+                            <div class="mb-4">
+                                <span class="text-sm font-bold text-gray-400 block mb-2">Input:</span>
+                                <code class="block bg-gray-950 p-4 rounded-lg text-base text-green-300 font-mono border border-gray-700" role="text">{{ challenge.sample_inputs[i] }}</code>
                             </div>
-                            <div class="mb-2">
-                                <span class="text-xs font-semibold text-gray-400">Output:</span>
-                                <code class="block bg-gray-950 p-2 rounded mt-1 text-sm text-blue-400">{{ challenge.sample_outputs[i] }}</code>
+                            <div class="mb-4">
+                                <span class="text-sm font-bold text-gray-400 block mb-2">Output:</span>
+                                <code class="block bg-gray-950 p-4 rounded-lg text-base text-blue-300 font-mono border border-gray-700" role="text">{{ challenge.sample_outputs[i] }}</code>
                             </div>
                             {% if challenge.explanations and i < challenge.explanations|length %}
                             <div>
-                                <span class="text-xs font-semibold text-gray-400">Explanation:</span>
-                                <p class="text-sm text-gray-300 mt-1">{{ challenge.explanations[i] }}</p>
+                                <span class="text-sm font-bold text-gray-400 block mb-2">Explanation:</span>
+                                <p class="text-base text-gray-200 leading-relaxed">{{ challenge.explanations[i] }}</p>
                             </div>
                             {% endif %}
-                        </div>
+                        </article>
                         {% endfor %}
                     </div>
-                </div>
+                </section>
 
                 <!-- Hints (Collapsible) -->
                 {% if challenge.hints %}
-                <div class="bg-gray-800 rounded-lg p-4 sm:p-6 border border-gray-700">
-                    <button onclick="toggleHints()" class="w-full flex items-center justify-between text-xl font-bold mb-2">
-                        <span class="flex items-center gap-2">
-                            <i class="bi bi-question-circle text-purple-500"></i>
+                <section class="bg-gray-800 rounded-xl p-6 sm:p-8 border-2 border-gray-700" aria-labelledby="hints-heading">
+                    <button onclick="toggleHints()" 
+                            class="w-full flex items-center justify-between text-2xl font-bold mb-2 text-white hover:text-purple-400 transition-colors focus:outline-none focus:ring-2 focus:ring-purple-400 rounded p-2"
+                            aria-expanded="false"
+                            aria-controls="hints-content"
+                            id="hints-button">
+                        <span class="flex items-center gap-3">
+                            <i class="bi bi-question-circle text-purple-400 text-xl" aria-hidden="true"></i>
                             Hints
                         </span>
-                        <i id="hints-icon" class="bi bi-chevron-down"></i>
+                        <i id="hints-icon" class="bi bi-chevron-down transition-transform" aria-hidden="true"></i>
                     </button>
-                    <div id="hints-content" class="hidden space-y-2 mt-4">
+                    <div id="hints-content" class="hidden space-y-3 mt-6" role="region" aria-labelledby="hints-heading">
                         {% for hint in challenge.hints %}
-                        <div class="bg-gray-900 rounded p-3 text-sm text-gray-300 flex items-start gap-2">
-                            <i class="bi bi-lightbulb-fill text-yellow-500 mt-1"></i>
+                        <div class="bg-gray-900 rounded-lg p-4 text-base text-gray-200 flex items-start gap-3 border border-gray-700">
+                            <i class="bi bi-lightbulb-fill text-yellow-400 mt-1 text-lg" aria-hidden="true"></i>
                             <span>{{ hint }}</span>
                         </div>
                         {% endfor %}
                     </div>
-                </div>
+                </section>
                 {% endif %}
 
                 <!-- Notes -->
                 {% if challenge.notes %}
-                <div class="bg-gray-800 rounded-lg p-4 sm:p-6 border border-gray-700">
-                    <h2 class="text-xl font-bold mb-3 flex items-center gap-2">
-                        <i class="bi bi-info-circle text-cyan-500"></i>
+                <section class="bg-gray-800 rounded-xl p-6 sm:p-8 border-2 border-gray-700" aria-labelledby="notes-heading">
+                    <h2 id="notes-heading" class="text-2xl font-bold mb-4 flex items-center gap-3">
+                        <i class="bi bi-info-circle text-cyan-400 text-xl" aria-hidden="true"></i>
                         Notes
                     </h2>
-                    <ul class="space-y-2">
+                    <ul class="space-y-3" role="list">
                         {% for note in challenge.notes %}
-                        <li class="text-sm text-gray-300 flex items-start gap-2">
-                            <i class="bi bi-dot text-cyan-500 text-xl"></i>
+                        <li class="text-base text-gray-200 flex items-start gap-3 leading-relaxed">
+                            <i class="bi bi-dot text-cyan-400 text-2xl" aria-hidden="true"></i>
                             <span>{{ note }}</span>
                         </li>
                         {% endfor %}
                     </ul>
-                </div>
+                </section>
                 {% endif %}
-            </div>
+            </article>
         </div>
     </div>
 </div>
@@ -145,14 +158,39 @@
 
 {% block scripts %}
 <script>
-// Toggle hints visibility
+// Toggle hints visibility with accessibility support
 function toggleHints() {
     const hintsContent = document.getElementById('hints-content');
     const hintsIcon = document.getElementById('hints-icon');
+    const hintsButton = document.getElementById('hints-button');
+    
+    const isHidden = hintsContent.classList.contains('hidden');
     
     hintsContent.classList.toggle('hidden');
     hintsIcon.classList.toggle('bi-chevron-down');
     hintsIcon.classList.toggle('bi-chevron-up');
+    hintsIcon.classList.toggle('rotate-180');
+    
+    // Update ARIA attribute
+    hintsButton.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+    
+    // Announce to screen readers
+    if (window.CodeClash) {
+        window.CodeClash.showNotification(
+            isHidden ? 'Hints revealed' : 'Hints hidden',
+            'info'
+        );
+    }
 }
+
+// Keyboard shortcut to toggle hints (H key)
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'h' || e.key === 'H') {
+        const hintsButton = document.getElementById('hints-button');
+        if (hintsButton) {
+            toggleHints();
+        }
+    }
+});
 </script>
 {% endblock %}

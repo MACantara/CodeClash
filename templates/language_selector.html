@@ -3,71 +3,74 @@
 {% block title %}Select Programming Language - CodeClash{% endblock %}
 
 {% block content %}
-<div class="min-h-screen flex items-center justify-center px-2 sm:px-4 py-8">
+<div class="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12">
     <div class="max-w-5xl w-full">
         <!-- Header -->
-        <div class="text-center mb-8 sm:mb-12">
-            <div class="flex justify-center mb-4">
-                <i class="bi bi-code-square text-5xl sm:text-6xl text-blue-500 animate-pulse"></i>
+        <header class="text-center mb-12 sm:mb-16">
+            <div class="flex justify-center mb-6" role="img" aria-label="Code square icon">
+                <i class="bi bi-code-square text-6xl sm:text-7xl text-blue-400 animate-pulse" aria-hidden="true"></i>
             </div>
-            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-blue-500 to-cyan-600 bg-clip-text text-transparent">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent">
                 Select Programming Language
             </h1>
-            <p class="text-base sm:text-xl text-gray-300 px-4">
+            <p class="text-lg sm:text-xl text-gray-200 px-4 leading-relaxed">
                 Choose your preferred programming language to solve challenges
             </p>
-        </div>
+        </header>
 
         <!-- Language Cards -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mb-8">
+        <section class="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-10 mb-10" aria-label="Programming language options">
             <!-- Python -->
-            <div class="language-card bg-gradient-to-br from-blue-900/30 to-blue-800/30 border-2 border-blue-600 rounded-lg p-8 hover:scale-105 transition-transform cursor-pointer"
-                 onclick="selectLanguage('python')">
-                <div class="text-center">
-                    <i class="bi bi-file-earmark-code text-5xl sm:text-6xl text-blue-400 mb-4"></i>
-                    <h2 class="text-2xl sm:text-3xl font-bold text-blue-400 mb-3">Python</h2>
-                    <p class="text-sm text-gray-300 mb-4">
-                        Dynamic, versatile programming language<br/>
-                        <span class="text-xs text-gray-400">Great for beginners and professionals</span>
-                    </p>
-                    <div class="bg-blue-600/20 rounded px-4 py-2 text-sm font-semibold text-blue-400 inline-block">
-                        <span id="python-count">...</span> challenges
-                    </div>
+            <button class="language-card group bg-gradient-to-br from-blue-900/40 to-blue-800/40 border-2 border-blue-500 hover:border-blue-400 rounded-xl p-10 hover:scale-105 transition-all duration-200 cursor-pointer text-center focus:outline-none focus:ring-4 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-gray-900 hover:shadow-2xl"
+                    onclick="selectLanguage('python')"
+                    aria-label="Select Python programming language">
+                <i class="bi bi-file-earmark-code text-6xl sm:text-7xl text-blue-400 mb-5 group-hover:scale-110 transition-transform duration-200" aria-hidden="true"></i>
+                <h2 class="text-3xl sm:text-4xl font-bold text-blue-300 mb-4">Python</h2>
+                <p class="text-base text-gray-200 mb-2 leading-relaxed">
+                    Dynamic, versatile programming language
+                </p>
+                <p class="text-sm text-gray-400 mb-6">
+                    Great for beginners and professionals
+                </p>
+                <div class="bg-blue-600/30 rounded-lg px-5 py-3 text-base font-semibold text-blue-200 inline-block border border-blue-500" role="status" aria-live="polite">
+                    <span id="python-count" aria-label="Number of Python challenges">...</span> challenges available
                 </div>
-            </div>
+            </button>
 
             <!-- Java -->
-            <div class="language-card bg-gradient-to-br from-orange-900/30 to-orange-800/30 border-2 border-orange-600 rounded-lg p-8 hover:scale-105 transition-transform cursor-pointer"
-                 onclick="selectLanguage('java')">
-                <div class="text-center">
-                    <i class="bi bi-cup text-5xl sm:text-6xl text-orange-400 mb-4"></i>
-                    <h2 class="text-2xl sm:text-3xl font-bold text-orange-400 mb-3">Java</h2>
-                    <p class="text-sm text-gray-300 mb-4">
-                        Object-oriented enterprise language<br/>
-                        <span class="text-xs text-gray-400">Industry standard & robust</span>
-                    </p>
-                    <div class="bg-orange-600/20 rounded px-4 py-2 text-sm font-semibold text-orange-400 inline-block">
-                        <span id="java-count">...</span> challenges
-                    </div>
+            <button class="language-card group bg-gradient-to-br from-orange-900/40 to-orange-800/40 border-2 border-orange-500 hover:border-orange-400 rounded-xl p-10 hover:scale-105 transition-all duration-200 cursor-pointer text-center focus:outline-none focus:ring-4 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-gray-900 hover:shadow-2xl"
+                    onclick="selectLanguage('java')"
+                    aria-label="Select Java programming language">
+                <i class="bi bi-cup text-6xl sm:text-7xl text-orange-400 mb-5 group-hover:scale-110 transition-transform duration-200" aria-hidden="true"></i>
+                <h2 class="text-3xl sm:text-4xl font-bold text-orange-300 mb-4">Java</h2>
+                <p class="text-base text-gray-200 mb-2 leading-relaxed">
+                    Object-oriented enterprise language
+                </p>
+                <p class="text-sm text-gray-400 mb-6">
+                    Industry standard & robust
+                </p>
+                <div class="bg-orange-600/30 rounded-lg px-5 py-3 text-base font-semibold text-orange-200 inline-block border border-orange-500" role="status" aria-live="polite">
+                    <span id="java-count" aria-label="Number of Java challenges">...</span> challenges available
                 </div>
-            </div>
-        </div>
+            </button>
+        </section>
 
         <!-- Back Button -->
         <div class="text-center">
             <a href="/" 
-               class="inline-flex items-center gap-2 bg-gray-700 hover:bg-gray-600 text-white font-semibold py-3 px-6 rounded-lg transition">
-                <i class="bi bi-arrow-left"></i>
+               class="inline-flex items-center gap-3 bg-gray-700 hover:bg-gray-600 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-200 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+               aria-label="Go back to home page">
+                <i class="bi bi-arrow-left text-lg" aria-hidden="true"></i>
                 Back to Home
             </a>
         </div>
 
         <!-- Loading Indicator -->
-        <div id="loading" class="hidden fixed inset-0 bg-gray-900/80 flex items-center justify-center z-50">
-            <div class="bg-gray-800 p-8 rounded-lg border border-gray-700">
-                <div class="flex items-center gap-4">
-                    <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
-                    <span class="text-lg">Loading challenges...</span>
+        <div id="loading" class="hidden fixed inset-0 bg-gray-900/90 flex items-center justify-center z-50" role="alert" aria-live="assertive">
+            <div class="bg-gray-800 p-10 rounded-xl border-2 border-gray-700 shadow-2xl">
+                <div class="flex items-center gap-5">
+                    <div class="animate-spin rounded-full h-10 w-10 border-4 border-blue-400 border-t-transparent" aria-hidden="true"></div>
+                    <span class="text-xl text-white">Loading challenges...</span>
                 </div>
             </div>
         </div>
@@ -84,25 +87,49 @@ async function loadLanguageCounts() {
         const data = await response.json();
         
         // Update the UI with counts
-        document.getElementById('python-count').textContent = data.python || 0;
-        document.getElementById('java-count').textContent = data.java || 0;
+        const pythonCount = data.python || 0;
+        const javaCount = data.java || 0;
+        
+        document.getElementById('python-count').textContent = pythonCount;
+        document.getElementById('java-count').textContent = javaCount;
+        
+        // Announce to screen readers
+        if (pythonCount > 0 || javaCount > 0) {
+            console.log(`Loaded ${pythonCount} Python and ${javaCount} Java challenges`);
+        }
         
     } catch (error) {
         console.error('Error loading language counts:', error);
         // Set default values on error
         document.getElementById('python-count').textContent = '0';
         document.getElementById('java-count').textContent = '0';
+        
+        // Show error notification
+        if (window.CodeClash) {
+            window.CodeClash.showNotification('Failed to load challenge counts', 'error');
+        }
     }
 }
 
 // Select a programming language and navigate to difficulty selector
 function selectLanguage(language) {
     // Show loading indicator
-    document.getElementById('loading').classList.remove('hidden');
+    const loadingEl = document.getElementById('loading');
+    loadingEl.classList.remove('hidden');
+    loadingEl.setAttribute('aria-busy', 'true');
     
     // Navigate to difficulty selector with language parameter
     window.location.href = `/difficulty-selector?language=${language}`;
 }
+
+// Keyboard navigation support
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'p' || e.key === 'P') {
+        selectLanguage('python');
+    } else if (e.key === 'j' || e.key === 'J') {
+        selectLanguage('java');
+    }
+});
 
 // Load counts when page loads
 document.addEventListener('DOMContentLoaded', loadLanguageCounts);

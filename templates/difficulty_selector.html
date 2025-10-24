@@ -3,100 +3,97 @@
 {% block title %}Select Difficulty - CodeClash{% endblock %}
 
 {% block content %}
-<div class="min-h-screen flex items-center justify-center px-2 sm:px-4 py-8">
+<div class="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12">
     <div class="max-w-5xl w-full">
         <!-- Back Button -->
-        <div class="mb-4">
-            <a href="/language-selector" class="inline-flex items-center gap-2 text-gray-400 hover:text-white transition">
-                <i class="bi bi-arrow-left"></i>
+        <nav class="mb-6" aria-label="Breadcrumb">
+            <a href="/language-selector" class="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-purple-400 rounded px-2 py-1" aria-label="Go back to language selector">
+                <i class="bi bi-arrow-left" aria-hidden="true"></i>
                 <span>Back to Language Selector</span>
             </a>
-        </div>
+        </nav>
 
         <!-- Header -->
-        <div class="text-center mb-8 sm:mb-12">
-            <div class="flex justify-center mb-4">
-                <i class="bi bi-shuffle text-5xl sm:text-6xl text-purple-500 animate-pulse"></i>
+        <header class="text-center mb-12 sm:mb-16">
+            <div class="flex justify-center mb-6" role="img" aria-label="Shuffle icon">
+                <i class="bi bi-shuffle text-6xl sm:text-7xl text-purple-400 animate-pulse" aria-hidden="true"></i>
             </div>
-            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text text-transparent">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
                 Random Challenge
             </h1>
-            <p class="text-base sm:text-xl text-gray-300 px-4">
-                Choose a difficulty level and get a random <span id="language-name">challenge</span> to solve
+            <p class="text-lg sm:text-xl text-gray-200 px-4 leading-relaxed">
+                Choose a difficulty level and get a random <span id="language-name" class="font-semibold text-purple-300">challenge</span> to solve
             </p>
-        </div>
+        </header>
 
         <!-- Difficulty Cards -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
+        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-12" aria-label="Difficulty level options">
             <!-- Foundational -->
-            <div class="difficulty-card bg-gradient-to-br from-green-900/30 to-green-800/30 border-2 border-green-600 rounded-lg p-6 hover:scale-105 transition-transform cursor-pointer"
-                 onclick="selectRandomChallenge('foundational')">
-                <div class="text-center">
-                    <i class="bi bi-star text-4xl sm:text-5xl text-green-500 mb-3"></i>
-                    <h2 class="text-xl sm:text-2xl font-bold text-green-400 mb-2">Foundational</h2>
-                    <p class="text-sm text-gray-300 mb-4">Perfect for beginners</p>
-                    <div class="bg-green-600/20 rounded px-3 py-1 text-sm font-semibold text-green-400">
-                        <span id="foundational-count">...</span> challenges
-                    </div>
+            <button class="difficulty-card group bg-gradient-to-br from-green-900/40 to-green-800/40 border-2 border-green-500 hover:border-green-400 rounded-xl p-8 hover:scale-105 transition-all duration-200 cursor-pointer text-center focus:outline-none focus:ring-4 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-gray-900 hover:shadow-2xl"
+                    onclick="selectRandomChallenge('foundational')"
+                    aria-label="Select foundational difficulty level">
+                <i class="bi bi-star text-5xl sm:text-6xl text-green-400 mb-4 group-hover:scale-110 transition-transform duration-200" aria-hidden="true"></i>
+                <h2 class="text-2xl sm:text-3xl font-bold text-green-300 mb-3">Foundational</h2>
+                <p class="text-base text-gray-200 mb-5 leading-relaxed">Perfect for beginners</p>
+                <div class="bg-green-600/30 rounded-lg px-4 py-2 text-base font-semibold text-green-200 border border-green-500" role="status" aria-live="polite">
+                    <span id="foundational-count" aria-label="Number of foundational challenges">...</span> challenges
                 </div>
-            </div>
+            </button>
 
             <!-- Easy -->
-            <div class="difficulty-card bg-gradient-to-br from-blue-900/30 to-blue-800/30 border-2 border-blue-600 rounded-lg p-6 hover:scale-105 transition-transform cursor-pointer"
-                 onclick="selectRandomChallenge('easy')">
-                <div class="text-center">
-                    <i class="bi bi-emoji-smile text-4xl sm:text-5xl text-blue-500 mb-3"></i>
-                    <h2 class="text-xl sm:text-2xl font-bold text-blue-400 mb-2">Easy</h2>
-                    <p class="text-sm text-gray-300 mb-4">Simple problems to practice</p>
-                    <div class="bg-blue-600/20 rounded px-3 py-1 text-sm font-semibold text-blue-400">
-                        <span id="easy-count">...</span> challenges
-                    </div>
+            <button class="difficulty-card group bg-gradient-to-br from-blue-900/40 to-blue-800/40 border-2 border-blue-500 hover:border-blue-400 rounded-xl p-8 hover:scale-105 transition-all duration-200 cursor-pointer text-center focus:outline-none focus:ring-4 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-gray-900 hover:shadow-2xl"
+                    onclick="selectRandomChallenge('easy')"
+                    aria-label="Select easy difficulty level">
+                <i class="bi bi-emoji-smile text-5xl sm:text-6xl text-blue-400 mb-4 group-hover:scale-110 transition-transform duration-200" aria-hidden="true"></i>
+                <h2 class="text-2xl sm:text-3xl font-bold text-blue-300 mb-3">Easy</h2>
+                <p class="text-base text-gray-200 mb-5 leading-relaxed">Simple problems to practice</p>
+                <div class="bg-blue-600/30 rounded-lg px-4 py-2 text-base font-semibold text-blue-200 border border-blue-500" role="status" aria-live="polite">
+                    <span id="easy-count" aria-label="Number of easy challenges">...</span> challenges
                 </div>
-            </div>
+            </button>
 
             <!-- Average/Medium -->
-            <div class="difficulty-card bg-gradient-to-br from-yellow-900/30 to-yellow-800/30 border-2 border-yellow-600 rounded-lg p-6 hover:scale-105 transition-transform cursor-pointer"
-                 onclick="selectRandomChallenge('average')">
-                <div class="text-center">
-                    <i class="bi bi-lightning-charge text-4xl sm:text-5xl text-yellow-500 mb-3"></i>
-                    <h2 class="text-xl sm:text-2xl font-bold text-yellow-400 mb-2">Average</h2>
-                    <p class="text-sm text-gray-300 mb-4">Moderate difficulty level</p>
-                    <div class="bg-yellow-600/20 rounded px-3 py-1 text-sm font-semibold text-yellow-400">
-                        <span id="average-count">...</span> challenges
-                    </div>
+            <button class="difficulty-card group bg-gradient-to-br from-yellow-900/40 to-yellow-800/40 border-2 border-yellow-500 hover:border-yellow-400 rounded-xl p-8 hover:scale-105 transition-all duration-200 cursor-pointer text-center focus:outline-none focus:ring-4 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-gray-900 hover:shadow-2xl"
+                    onclick="selectRandomChallenge('average')"
+                    aria-label="Select average difficulty level">
+                <i class="bi bi-lightning-charge text-5xl sm:text-6xl text-yellow-400 mb-4 group-hover:scale-110 transition-transform duration-200" aria-hidden="true"></i>
+                <h2 class="text-2xl sm:text-3xl font-bold text-yellow-300 mb-3">Average</h2>
+                <p class="text-base text-gray-200 mb-5 leading-relaxed">Moderate difficulty level</p>
+                <div class="bg-yellow-600/30 rounded-lg px-4 py-2 text-base font-semibold text-yellow-200 border border-yellow-500" role="status" aria-live="polite">
+                    <span id="average-count" aria-label="Number of average challenges">...</span> challenges
                 </div>
-            </div>
+            </button>
 
             <!-- Difficult -->
-            <div class="difficulty-card bg-gradient-to-br from-red-900/30 to-red-800/30 border-2 border-red-600 rounded-lg p-6 hover:scale-105 transition-transform cursor-pointer"
-                 onclick="selectRandomChallenge('difficult')">
-                <div class="text-center">
-                    <i class="bi bi-fire text-4xl sm:text-5xl text-red-500 mb-3"></i>
-                    <h2 class="text-xl sm:text-2xl font-bold text-red-400 mb-2">Difficult</h2>
-                    <p class="text-sm text-gray-300 mb-4">Advanced challenges</p>
-                    <div class="bg-red-600/20 rounded px-3 py-1 text-sm font-semibold text-red-400">
-                        <span id="difficult-count">...</span> challenges
-                    </div>
+            <button class="difficulty-card group bg-gradient-to-br from-red-900/40 to-red-800/40 border-2 border-red-500 hover:border-red-400 rounded-xl p-8 hover:scale-105 transition-all duration-200 cursor-pointer text-center focus:outline-none focus:ring-4 focus:ring-red-400 focus:ring-offset-2 focus:ring-offset-gray-900 hover:shadow-2xl"
+                    onclick="selectRandomChallenge('difficult')"
+                    aria-label="Select difficult difficulty level">
+                <i class="bi bi-fire text-5xl sm:text-6xl text-red-400 mb-4 group-hover:scale-110 transition-transform duration-200" aria-hidden="true"></i>
+                <h2 class="text-2xl sm:text-3xl font-bold text-red-300 mb-3">Difficult</h2>
+                <p class="text-base text-gray-200 mb-5 leading-relaxed">Advanced challenges</p>
+                <div class="bg-red-600/30 rounded-lg px-4 py-2 text-base font-semibold text-red-200 border border-red-500" role="status" aria-live="polite">
+                    <span id="difficult-count" aria-label="Number of difficult challenges">...</span> challenges
                 </div>
-            </div>
-        </div>
+            </button>
+        </section>
 
         <!-- Or Browse All -->
         <div class="text-center">
-            <p class="text-gray-400 mb-4">Or</p>
+            <p class="text-gray-300 mb-5 text-lg">Or</p>
             <a href="/challenges" 
-               class="inline-flex items-center gap-2 bg-gray-700 hover:bg-gray-600 text-white font-semibold py-3 px-6 rounded-lg transition">
-                <i class="bi bi-list-ul"></i>
+               class="inline-flex items-center gap-3 bg-gray-700 hover:bg-gray-600 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-200 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+               aria-label="Browse all challenges">
+                <i class="bi bi-list-ul text-lg" aria-hidden="true"></i>
                 Browse All Challenges
             </a>
         </div>
 
         <!-- Loading Indicator -->
-        <div id="loading" class="hidden fixed inset-0 bg-gray-900/80 flex items-center justify-center z-50">
-            <div class="bg-gray-800 p-8 rounded-lg border border-gray-700">
-                <div class="flex items-center gap-4">
-                    <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-500"></div>
-                    <span class="text-lg">Selecting a random challenge...</span>
+        <div id="loading" class="hidden fixed inset-0 bg-gray-900/90 flex items-center justify-center z-50" role="alert" aria-live="assertive" aria-busy="false">
+            <div class="bg-gray-800 p-10 rounded-xl border-2 border-gray-700 shadow-2xl">
+                <div class="flex items-center gap-5">
+                    <div class="animate-spin rounded-full h-10 w-10 border-4 border-purple-400 border-t-transparent" aria-hidden="true"></div>
+                    <span class="text-xl text-white">Selecting a random challenge...</span>
                 </div>
             </div>
         </div>
@@ -141,31 +138,45 @@ async function loadChallengeCounts() {
         document.getElementById('average-count').textContent = counts.average;
         document.getElementById('difficult-count').textContent = counts.difficult;
         
+        // Announce to screen readers if counts are loaded
+        if (counts.foundational > 0 || counts.easy > 0 || counts.average > 0 || counts.difficult > 0) {
+            console.log(`Loaded challenges: ${counts.foundational} foundational, ${counts.easy} easy, ${counts.average} average, ${counts.difficult} difficult`);
+        }
+        
     } catch (error) {
         console.error('Error loading challenge counts:', error);
         // Set default values on error
         ['foundational', 'easy', 'average', 'difficult'].forEach(diff => {
             document.getElementById(`${diff}-count`).textContent = '0';
         });
+        
+        // Show error notification
+        if (window.CodeClash) {
+            window.CodeClash.showNotification('Failed to load challenge counts', 'error');
+        }
     }
 }
 
 // Select a random challenge by difficulty
 async function selectRandomChallenge(difficulty) {
     // Show loading indicator
-    document.getElementById('loading').classList.remove('hidden');
+    const loadingEl = document.getElementById('loading');
+    loadingEl.classList.remove('hidden');
+    loadingEl.setAttribute('aria-busy', 'true');
     
     try {
         const response = await fetch(`/api/random-challenge/${selectedLanguage}/${difficulty}`);
         const data = await response.json();
         
         if (data.error) {
+            loadingEl.classList.add('hidden');
+            loadingEl.setAttribute('aria-busy', 'false');
+            
             if (window.CodeClash) {
                 window.CodeClash.showNotification(data.error, 'error');
             } else {
                 alert(data.error);
             }
-            document.getElementById('loading').classList.add('hidden');
             return;
         }
         
@@ -174,14 +185,37 @@ async function selectRandomChallenge(difficulty) {
         
     } catch (error) {
         console.error('Error selecting random challenge:', error);
+        loadingEl.classList.add('hidden');
+        loadingEl.setAttribute('aria-busy', 'false');
+        
         if (window.CodeClash) {
             window.CodeClash.showNotification('Failed to load challenge. Please try again.', 'error');
         } else {
             alert('Failed to load challenge. Please try again.');
         }
-        document.getElementById('loading').classList.add('hidden');
     }
 }
+
+// Keyboard shortcuts for difficulty selection
+document.addEventListener('keydown', (e) => {
+    // Only trigger if not in an input field
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    
+    switch(e.key.toLowerCase()) {
+        case 'f':
+            selectRandomChallenge('foundational');
+            break;
+        case 'e':
+            selectRandomChallenge('easy');
+            break;
+        case 'a':
+            selectRandomChallenge('average');
+            break;
+        case 'd':
+            selectRandomChallenge('difficult');
+            break;
+    }
+});
 
 // Load counts when page loads
 document.addEventListener('DOMContentLoaded', loadChallengeCounts);
