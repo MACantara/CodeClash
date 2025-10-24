@@ -20,3 +20,9 @@ def challenges_list():
 def language_selector():
     """Language selector page"""
     return render_template('language_selector.html')
+
+
+@pages_bp.route('/analytics')
+def analytics():
+    """Analytics page"""
+    return render_template('analytics.html')
