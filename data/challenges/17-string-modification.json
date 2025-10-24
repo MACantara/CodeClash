@@ -58,6 +58,5 @@
       ],
       "expected": "ABC"
     }
-  ],
-  "time_limit": 300
+  ]
 }

@@ -58,6 +58,5 @@
       ],
       "expected": "cd"
     }
-  ],
-  "time_limit": 300
+  ]
 }

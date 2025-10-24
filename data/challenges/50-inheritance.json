@@ -58,6 +58,5 @@
       ],
       "expected": "Rocky says Woof!"
     }
-  ],
-  "time_limit": 300
+  ]
 }

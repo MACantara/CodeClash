@@ -77,6 +77,5 @@
       ],
       "expected": "abc"
     }
-  ],
-  "time_limit": 300
+  ]
 }
