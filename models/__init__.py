@@ -1,19 +1,12 @@
 """
-Models package initialization.
-Exports all models for easy importing.
+Models package - SQLAlchemy removed, using IndexedDB client-side storage
+These are now just data structure definitions for reference
 """
-from flask_sqlalchemy import SQLAlchemy
 
-# Initialize SQLAlchemy instance
-db = SQLAlchemy()
-
-# Import all models
-from .challenge import Challenge
-from .match import Match
-
-# Export all models
+# No database instance needed - using IndexedDB
+# Export model names for backwards compatibility
 __all__ = [
-    'db',
     'Challenge',
     'Match',
 ]
+
