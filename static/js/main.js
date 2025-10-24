@@ -25,7 +25,7 @@ function showNotification(message, type = 'info') {
             <i class="bi ${icons[type]} text-xl" aria-hidden="true"></i>
             <span class="font-medium">${message}</span>
             <button onclick="this.parentElement.parentElement.remove()" 
-                    class="ml-2 hover:bg-white/20 rounded p-1 transition-colors focus:outline-none focus:ring-2 focus:ring-white"
+                    class="cursor-pointer ml-2 hover:bg-white/20 rounded p-1 transition-colors focus:outline-none focus:ring-2 focus:ring-white"
                     aria-label="Close notification">
                 <i class="bi bi-x-lg" aria-hidden="true"></i>
             </button>

@@ -19,18 +19,20 @@
     "0"
   ],
   "explanations": [
-    "Example explanation",
-    "Example explanation",
-    "Example explanation",
-    "Example explanation"
+    "Maximum of [1, 5, 3] is 5",
+    "Maximum of [10, 20, 30] is 30",
+    "Maximum of negative numbers [-1, -5, -3] is -1",
+    "Single element list [42] has maximum 42"
   ],
   "notes": [
-    "Pay attention to edge cases",
-    "Test with different input values"
+    "Use Python's built-in max() function",
+    "Handle lists with negative numbers correctly",
+    "Works with any list of comparable elements"
   ],
   "hints": [
-    "Break down the problem into smaller steps",
-    "Think about potential edge cases"
+    "Python has a built-in max() function",
+    "Consider what happens with negative numbers",
+    "The maximum is the largest value in the list"
   ],
   "starter_code": "def find_max(numbers):\n    # Write your code here\n    pass",
   "test_cases": [

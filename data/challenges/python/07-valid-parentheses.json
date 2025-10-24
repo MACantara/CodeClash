@@ -19,18 +19,20 @@
     "False"
   ],
   "explanations": [
-    "Example explanation",
-    "Example explanation",
-    "Example explanation",
-    "Example explanation"
+    "'()' is valid - opening and closing match",
+    "'()[]{}' is valid - all pairs match correctly",
+    "'(]' is invalid - wrong closing bracket",
+    "']' is invalid - closing without opening"
   ],
   "notes": [
-    "Pay attention to edge cases",
-    "Test with different input values"
+    "Must close brackets in correct order",
+    "Every opening bracket must have matching closing bracket",
+    "Use a stack data structure for efficient solution"
   ],
   "hints": [
-    "Break down the problem into smaller steps",
-    "Think about potential edge cases"
+    "Use a stack to track opening brackets",
+    "When you see closing bracket, check if it matches stack top",
+    "String is valid if stack is empty at the end"
   ],
   "starter_code": "def is_valid(s):\n    # Write your code here\n    pass",
   "test_cases": [

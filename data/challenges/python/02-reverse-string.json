@@ -19,18 +19,20 @@
     "a"
   ],
   "explanations": [
-    "Example explanation",
-    "Example explanation",
-    "Example explanation",
-    "Example explanation"
+    "'hello' reversed is 'olleh'",
+    "'python' reversed is 'nohtyp'",
+    "Empty string reversed is still empty",
+    "Single character 'a' reversed is 'a'"
   ],
   "notes": [
-    "Pay attention to edge cases",
-    "Test with different input values"
+    "Strings in Python are immutable",
+    "Python provides slicing syntax for reversing: s[::-1]",
+    "Works with any string including empty strings and single characters"
   ],
   "hints": [
-    "Break down the problem into smaller steps",
-    "Think about potential edge cases"
+    "Use Python's string slicing with negative step",
+    "The slice notation [::-1] reverses a sequence",
+    "Alternatively, use reversed() function with join()"
   ],
   "starter_code": "def reverse_string(s):\n    # Write your code here\n    pass",
   "test_cases": [

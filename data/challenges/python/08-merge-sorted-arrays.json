@@ -19,18 +19,20 @@
     "[1, 2]"
   ],
   "explanations": [
-    "Example explanation",
-    "Example explanation",
-    "Example explanation",
-    "Example explanation"
+    "Merging [1,2,3] and [2,3,4] gives [1,2,2,3,3,4]",
+    "Merging [1,3,5] and [2,4,6] gives [1,2,3,4,5,6]",
+    "Empty array with [1,2] gives [1,2]",
+    "Two empty arrays give empty array []"
   ],
   "notes": [
-    "Pay attention to edge cases",
-    "Test with different input values"
+    "Both input arrays are already sorted",
+    "Result should also be sorted",
+    "Handle empty arrays correctly"
   ],
   "hints": [
-    "Break down the problem into smaller steps",
-    "Think about potential edge cases"
+    "Use two pointers, one for each array",
+    "Compare elements and add smaller one first",
+    "Don't forget remaining elements from either array"
   ],
   "starter_code": "def merge_sorted(arr1, arr2):\n    # Write your code here\n    pass",
   "test_cases": [

@@ -19,18 +19,20 @@
     "[20.3, 10.5]"
   ],
   "explanations": [
-    "Example explanation",
-    "Example explanation",
-    "Example explanation",
-    "Example explanation"
+    "Swapping 1 and 2 gives (2, 1)",
+    "Swapping 10 and 20 gives (20, 10)",
+    "Swapping -5 and 5 gives (5, -5)",
+    "Swapping 0 and 0 gives (0, 0)"
   ],
   "notes": [
-    "Pay attention to edge cases",
-    "Test with different input values"
+    "Python allows tuple unpacking for swapping",
+    "No temporary variable needed",
+    "Works with any data types"
   ],
   "hints": [
-    "Break down the problem into smaller steps",
-    "Think about potential edge cases"
+    "Use tuple unpacking: a, b = b, a",
+    "Return values as a tuple",
+    "Python makes swapping very simple"
   ],
   "starter_code": "def swap_values(a, b):\n    # Write your code here\n    pass",
   "test_cases": [

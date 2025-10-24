@@ -19,18 +19,20 @@
     "True"
   ],
   "explanations": [
-    "Example explanation",
-    "Example explanation",
-    "Example explanation",
-    "Example explanation"
+    "'racecar' reads the same forwards and backwards",
+    "'hello' does not read the same both ways",
+    "Empty string is considered a palindrome",
+    "Single character 'a' is a palindrome"
   ],
   "notes": [
-    "Pay attention to edge cases",
-    "Test with different input values"
+    "Palindromes read the same forwards and backwards",
+    "Case-sensitive comparison",
+    "Empty strings and single characters are palindromes"
   ],
   "hints": [
-    "Break down the problem into smaller steps",
-    "Think about potential edge cases"
+    "Compare the string with its reverse",
+    "Use string slicing [::-1] to reverse",
+    "Return True if string equals its reverse"
   ],
   "starter_code": "def is_palindrome(s):\n    # Write your code here\n    pass",
   "test_cases": [

@@ -17,17 +17,20 @@
     "[0, 1]"
   ],
   "explanations": [
-    "Example explanation",
-    "Example explanation",
-    "Example explanation"
+    "In [2, 7, 11, 15], indices 0 and 1 give 2+7=9",
+    "In [3, 2, 4], indices 1 and 2 give 2+4=6",
+    "In [3, 3], indices 0 and 1 give 3+3=6",
+    "In [1, 2, 3, 4], indices 0 and 3 give 1+4=5"
   ],
   "notes": [
-    "Pay attention to edge cases",
-    "Test with different input values"
+    "Return indices, not the values themselves",
+    "Each input has exactly one solution",
+    "Cannot use the same element twice"
   ],
   "hints": [
-    "Break down the problem into smaller steps",
-    "Think about potential edge cases"
+    "Use a hash map to store seen numbers",
+    "For each number, check if target-number exists",
+    "Time complexity can be O(n) with hash map"
   ],
   "starter_code": "def two_sum(nums, target):\n    # Write your code here\n    pass",
   "test_cases": [

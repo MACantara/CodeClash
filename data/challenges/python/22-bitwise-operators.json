@@ -19,18 +19,20 @@
     "[1, 15, 14]"
   ],
   "explanations": [
-    "Example explanation",
-    "Example explanation",
-    "Example explanation",
-    "Example explanation"
+    "For input [5, 3], output is [1, 7, 6]",
+    "For input [12, 10], output is [8, 14, 6]",
+    "For input [7, 7], output is [7, 7, 0]",
+    "For input [15, 1], output is [1, 15, 14]"
   ],
   "notes": [
-    "Pay attention to edge cases",
-    "Test with different input values"
+    "Implement the Bitwise Operations problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
   ],
   "hints": [
-    "Break down the problem into smaller steps",
-    "Think about potential edge cases"
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
   ],
   "starter_code": "def bitwise_and_or(a, b):\n    # Write your code here\n    pass",
   "test_cases": [

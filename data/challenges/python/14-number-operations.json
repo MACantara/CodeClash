@@ -19,18 +19,20 @@
     "{'sum': 110, 'difference': 90, 'product': 1000, 'quotient': 10}"
   ],
   "explanations": [
-    "Example explanation",
-    "Example explanation",
-    "Example explanation",
-    "Example explanation"
+    "For input [10, 5], output is {'sum': 15, 'difference': 5, 'product': 50, 'quotient': 2}",
+    "For input [20, 4], output is {'sum': 24, 'difference': 16, 'product': 80, 'quotient': 5}",
+    "For input [15, 3], output is {'sum': 18, 'difference': 12, 'product': 45, 'quotient': 5}",
+    "For input [100, 10], output is {'sum': 110, 'difference': 90, 'product': 1000, 'quotient': 10}"
   ],
   "notes": [
-    "Pay attention to edge cases",
-    "Test with different input values"
+    "Implement the Number Operations problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
   ],
   "hints": [
-    "Break down the problem into smaller steps",
-    "Think about potential edge cases"
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
   ],
   "starter_code": "def calculate(a, b):\n    # Write your code here\n    pass",
   "test_cases": [

@@ -19,18 +19,20 @@
     "{'key': 'value'}"
   ],
   "explanations": [
-    "Example explanation",
-    "Example explanation",
-    "Example explanation",
-    "Example explanation"
+    "For input [{'a': 1, 'b': 2}, {'b': 3, 'c': 4}], output is {'a': 1, 'b': 3, 'c': 4}",
+    "For input [{'x': 10}, {'y': 20}], output is {'x': 10, 'y': 20}",
+    "For input [{'name': 'Alice'}, {'name': 'Bob', 'age': 30}], output is {'name': 'Bob', 'age': 30}",
+    "For input [{}, {'key': 'value'}], output is {'key': 'value'}"
   ],
   "notes": [
-    "Pay attention to edge cases",
-    "Test with different input values"
+    "Implement the Merge Dictionaries problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
   ],
   "hints": [
-    "Break down the problem into smaller steps",
-    "Think about potential edge cases"
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
   ],
   "starter_code": "def merge_dicts(dict1, dict2):\n    # Write your code here\n    pass",
   "test_cases": [

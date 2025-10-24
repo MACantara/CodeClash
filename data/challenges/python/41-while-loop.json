@@ -19,18 +19,20 @@
     "6"
   ],
   "explanations": [
-    "Example explanation",
-    "Example explanation",
-    "Example explanation",
-    "Example explanation"
+    "For input [10], output is 10",
+    "For input [20], output is 15",
+    "For input [100], output is 55",
+    "For input [5], output is 6"
   ],
   "notes": [
-    "Pay attention to edge cases",
-    "Test with different input values"
+    "Implement the Sum Until Threshold problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
   ],
   "hints": [
-    "Break down the problem into smaller steps",
-    "Think about potential edge cases"
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
   ],
   "starter_code": "def sum_until(limit):\n    # Write your code here\n    pass",
   "test_cases": [

@@ -19,18 +19,20 @@
     "[1, 2, 3, 4, 5, 6, 9]"
   ],
   "explanations": [
-    "Example explanation",
-    "Example explanation",
-    "Example explanation",
-    "Example explanation"
+    "For input [[1, 2, 2, 3, 4, 4, 5]], output is [1, 2, 3, 4, 5]",
+    "For input [['apple', 'banana', 'apple']], output is ['apple', 'banana']",
+    "For input [[5, 5, 5]], output is [5]",
+    "For input [[3, 1, 4, 1, 5, 9, 2, 6]], output is [1, 2, 3, 4, 5, 6, 9]"
   ],
   "notes": [
-    "Pay attention to edge cases",
-    "Test with different input values"
+    "Implement the Unique Elements problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
   ],
   "hints": [
-    "Break down the problem into smaller steps",
-    "Think about potential edge cases"
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
   ],
   "starter_code": "def get_unique_elements(lst):\n    # Write your code here\n    pass",
   "test_cases": [

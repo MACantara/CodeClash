@@ -19,18 +19,20 @@
     "55"
   ],
   "explanations": [
-    "Example explanation",
-    "Example explanation",
-    "Example explanation",
-    "Example explanation"
+    "F(0) = 0 by definition",
+    "F(1) = 1 by definition",
+    "F(5) = F(4) + F(3) = 3 + 2 = 5",
+    "F(10) = 55 (sum of previous Fibonacci numbers)"
   ],
   "notes": [
-    "Pay attention to edge cases",
-    "Test with different input values"
+    "Fibonacci sequence: each number is sum of previous two",
+    "Base cases: F(0) = 0, F(1) = 1",
+    "Can be solved iteratively or recursively"
   ],
   "hints": [
-    "Break down the problem into smaller steps",
-    "Think about potential edge cases"
+    "Start with base cases F(0)=0 and F(1)=1",
+    "Use iteration or recursion",
+    "Each number is the sum of the two preceding ones"
   ],
   "starter_code": "def fibonacci(n):\n    # Write your code here\n    pass",
   "test_cases": [

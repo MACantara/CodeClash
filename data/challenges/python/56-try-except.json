@@ -19,18 +19,20 @@
     "25.0"
   ],
   "explanations": [
-    "Example explanation",
-    "Example explanation",
-    "Example explanation",
-    "Example explanation"
+    "For input [10, 2], output is 5.0",
+    "For input [15, 3], output is 5.0",
+    "For input [10, 0], output is Error",
+    "For input [100, 4], output is 25.0"
   ],
   "notes": [
-    "Pay attention to edge cases",
-    "Test with different input values"
+    "Implement the Safe Division with Exception problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
   ],
   "hints": [
-    "Break down the problem into smaller steps",
-    "Think about potential edge cases"
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
   ],
   "starter_code": "def divide_safe(a, b):\n    # Write your code here\n    pass",
   "test_cases": [

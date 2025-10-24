@@ -19,18 +19,20 @@
     "Hello, Diana! You are 45 years old."
   ],
   "explanations": [
-    "Example explanation",
-    "Example explanation",
-    "Example explanation",
-    "Example explanation"
+    "For name='Alice', age=25: 'My name is Alice and I am 25 years old'",
+    "For name='Bob', age=30: 'My name is Bob and I am 30 years old'",
+    "For name='X', age=1: 'My name is X and I am 1 years old'",
+    "For name='', age=0: 'My name is  and I am 0 years old'"
   ],
   "notes": [
-    "Pay attention to edge cases",
-    "Test with different input values"
+    "Use f-strings or .format() for string formatting",
+    "Handle empty strings and edge cases",
+    "Follow exact format specification"
   ],
   "hints": [
-    "Break down the problem into smaller steps",
-    "Think about potential edge cases"
+    "Python f-strings: f'My name is {name}...'",
+    "Or use .format(): 'My name is {}...'.format(name)",
+    "Make sure spacing matches exactly"
   ],
   "starter_code": "def format_greeting(name, age):\n    # Write your code here\n    pass",
   "test_cases": [

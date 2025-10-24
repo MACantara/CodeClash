@@ -19,18 +19,20 @@
     "ABC"
   ],
   "explanations": [
-    "Example explanation",
-    "Example explanation",
-    "Example explanation",
-    "Example explanation"
+    "For input ['hello world'], output is HELLOWORLD",
+    "For input ['python programming'], output is PYTHONPROGRAMMING",
+    "For input ['code clash'], output is CODECLASH",
+    "For input ['a b c'], output is ABC"
   ],
   "notes": [
-    "Pay attention to edge cases",
-    "Test with different input values"
+    "Implement the String Modifications problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
   ],
   "hints": [
-    "Break down the problem into smaller steps",
-    "Think about potential edge cases"
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
   ],
   "starter_code": "def modify_string(s):\n    # Write your code here\n    pass",
   "test_cases": [

@@ -19,18 +19,20 @@
     "cd"
   ],
   "explanations": [
-    "Example explanation",
-    "Example explanation",
-    "Example explanation",
-    "Example explanation"
+    "For input ['Python'], output is tho",
+    "For input ['Programming'], output is ogrammin",
+    "For input ['Hello'], output is ll",
+    "For input ['abcdef'], output is cd"
   ],
   "notes": [
-    "Pay attention to edge cases",
-    "Test with different input values"
+    "Implement the Extract Substring problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
   ],
   "hints": [
-    "Break down the problem into smaller steps",
-    "Think about potential edge cases"
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
   ],
   "starter_code": "def extract_middle(s):\n    # Write your code here\n    pass",
   "test_cases": [

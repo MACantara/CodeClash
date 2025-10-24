@@ -19,18 +19,20 @@
     "4"
   ],
   "explanations": [
-    "Example explanation",
-    "Example explanation",
-    "Example explanation",
-    "Example explanation"
+    "For input [], output is 1",
+    "For input [], output is 2",
+    "For input [], output is 3",
+    "For input [], output is 4"
   ],
   "notes": [
-    "Pay attention to edge cases",
-    "Test with different input values"
+    "Implement the Global Counter problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
   ],
   "hints": [
-    "Break down the problem into smaller steps",
-    "Think about potential edge cases"
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
   ],
   "starter_code": "counter = 0\n\ndef increment_counter():\n    # Write your code here\n    pass",
   "test_cases": [

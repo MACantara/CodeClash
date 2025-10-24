@@ -19,18 +19,20 @@
     "10"
   ],
   "explanations": [
-    "Example explanation",
-    "Example explanation",
-    "Example explanation",
-    "Example explanation"
+    "For input [3, 3], output is 27",
+    "For input [5, 2], output is 25",
+    "For input [2, 4], output is 16",
+    "For input [10, 1], output is 10"
   ],
   "notes": [
-    "Pay attention to edge cases",
-    "Test with different input values"
+    "Implement the Default Arguments problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
   ],
   "hints": [
-    "Break down the problem into smaller steps",
-    "Think about potential edge cases"
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
   ],
   "starter_code": "def power(base, exponent=2):\n    # Write your code here\n    pass",
   "test_cases": [

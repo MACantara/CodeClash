@@ -19,18 +19,20 @@
     "30"
   ],
   "explanations": [
-    "Example explanation",
-    "Example explanation",
-    "Example explanation",
-    "Example explanation"
+    "For input [1, 10, 1], output is 45",
+    "For input [0, 10, 2], output is 20",
+    "For input [5, 15, 3], output is 24",
+    "For input [10, 20, 5], output is 30"
   ],
   "notes": [
-    "Pay attention to edge cases",
-    "Test with different input values"
+    "Implement the Range Sum problem correctly",
+    "Consider edge cases and boundary conditions",
+    "Test your solution with various inputs"
   ],
   "hints": [
-    "Break down the problem into smaller steps",
-    "Think about potential edge cases"
+    "Read the problem description carefully",
+    "Start with the base case or simple scenario",
+    "Build up to the complete solution step by step"
   ],
   "starter_code": "def sum_range(start, end, step):\n    # Write your code here\n    pass",
   "test_cases": [
