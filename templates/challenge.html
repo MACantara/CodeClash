@@ -32,9 +32,23 @@
                     </div>
                     <h1 class="text-3xl sm:text-4xl font-bold text-white">{{ challenge.problem_name }}</h1>
                 </div>
-                <div class="flex gap-3">
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                    <!-- Timer Display -->
+                    <div class="bg-gray-700 px-5 py-3 rounded-lg border-2 border-gray-600 flex items-center gap-3">
+                        <i class="bi bi-stopwatch text-blue-400 text-xl" aria-hidden="true"></i>
+                        <span id="timer-display" class="text-xl font-mono text-white" role="timer" aria-live="polite" aria-label="Time elapsed">00:00</span>
+                    </div>
+                    
+                    <!-- Solved It Button -->
+                    <button id="solved-button" onclick="markAsSolved()" 
+                            class="bg-green-600 hover:bg-green-500 text-white px-5 py-3 rounded-lg transition-all duration-200 hover:shadow-lg flex items-center gap-2 justify-center focus:outline-none focus:ring-4 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-gray-900"
+                            aria-label="Mark challenge as solved">
+                        <i class="bi bi-check-circle" aria-hidden="true"></i>
+                        <span>Solved It!</span>
+                    </button>
+                    
                     <button onclick="location.href='/random/{{ challenge.difficulty }}'" 
-                            class="bg-purple-600 hover:bg-purple-500 text-white px-5 py-3 rounded-lg transition-all duration-200 hover:shadow-lg flex items-center gap-2 focus:outline-none focus:ring-4 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-gray-900"
+                            class="bg-purple-600 hover:bg-purple-500 text-white px-5 py-3 rounded-lg transition-all duration-200 hover:shadow-lg flex items-center gap-2 justify-center focus:outline-none focus:ring-4 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-gray-900"
                             aria-label="Get another {{ challenge.difficulty }} challenge">
                         <i class="bi bi-shuffle" aria-hidden="true"></i>
                         <span class="hidden sm:inline">Another {{ challenge.difficulty.capitalize() }}</span>
@@ -191,6 +205,116 @@ document.addEventListener('keydown', (e) => {
             toggleHints();
         }
     }
+});
+
+// Timer functionality
+let timerStartTime = null;
+let timerInterval = null;
+let elapsedSeconds = 0;
+
+function startTimer() {
+    timerStartTime = Date.now();
+    elapsedSeconds = 0;
+    
+    timerInterval = setInterval(() => {
+        elapsedSeconds = Math.floor((Date.now() - timerStartTime) / 1000);
+        updateTimerDisplay(elapsedSeconds);
+    }, 1000);
+}
+
+function stopTimer() {
+    if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+    }
+    return elapsedSeconds;
+}
+
+function updateTimerDisplay(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    const display = `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+    document.getElementById('timer-display').textContent = display;
+}
+
+// Mark challenge as solved
+async function markAsSolved() {
+    const timeElapsed = stopTimer();
+    const solvedButton = document.getElementById('solved-button');
+    
+    // Disable button to prevent multiple clicks
+    solvedButton.disabled = true;
+    solvedButton.innerHTML = '<i class="bi bi-check-circle" aria-hidden="true"></i><span>Saving...</span>';
+    
+    const challengeData = {
+        problem_number: {{ challenge.problem_number }},
+        problem_name: "{{ challenge.problem_name }}",
+        difficulty: "{{ challenge.difficulty }}",
+        programming_language: "{{ challenge.programming_language }}",
+        time_elapsed: timeElapsed,
+        solved_at: new Date().toISOString()
+    };
+    
+    try {
+        // Save to IndexedDB
+        await window.CodeClash.db.saveSolvedChallenge(challengeData);
+        
+        // Update button to show success
+        solvedButton.innerHTML = '<i class="bi bi-check-circle-fill" aria-hidden="true"></i><span>Saved!</span>';
+        solvedButton.classList.remove('bg-green-600', 'hover:bg-green-500');
+        solvedButton.classList.add('bg-green-700', 'cursor-not-allowed');
+        
+        // Show success notification
+        if (window.showNotification) {
+            const timeStr = formatTime(timeElapsed);
+            window.showNotification(`Challenge completed in ${timeStr}! Time saved to analytics.`, 'success');
+        }
+        
+        // Offer to go to analytics or next challenge
+        setTimeout(() => {
+            const goToAnalytics = confirm('Challenge saved! Would you like to view your analytics?');
+            if (goToAnalytics) {
+                window.location.href = '/analytics';
+            }
+        }, 1500);
+        
+    } catch (error) {
+        console.error('Error saving challenge:', error);
+        solvedButton.disabled = false;
+        solvedButton.innerHTML = '<i class="bi bi-check-circle" aria-hidden="true"></i><span>Solved It!</span>';
+        
+        if (window.showNotification) {
+            window.showNotification('Error saving progress. Please try again.', 'error');
+        }
+    }
+}
+
+function formatTime(seconds) {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    if (mins > 0) {
+        return `${mins}m ${secs}s`;
+    }
+    return `${secs}s`;
+}
+
+// Start timer when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    startTimer();
+    
+    // Check if this challenge was already solved
+    window.CodeClash.db.getChallengeById({{ challenge.problem_number }}).then(solved => {
+        if (solved) {
+            const solvedButton = document.getElementById('solved-button');
+            solvedButton.disabled = true;
+            solvedButton.innerHTML = '<i class="bi bi-check-circle-fill" aria-hidden="true"></i><span>Already Solved</span>';
+            solvedButton.classList.remove('bg-green-600', 'hover:bg-green-500');
+            solvedButton.classList.add('bg-gray-700', 'cursor-not-allowed');
+            solvedButton.setAttribute('aria-label', 'Challenge already solved');
+        }
+    }).catch(err => {
+        console.error('Error checking solved status:', err);
+    });
 });
 </script>
 {% endblock %}
