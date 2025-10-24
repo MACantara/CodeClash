@@ -78,10 +78,10 @@ def match(match_id):
                                 </div>
                                 <div>
                                     <span class="font-bold text-blue-400">Difficulty:</span> 
-                                    <span class="px-2 py-1 rounded text-sm ${{{
+                                    <span class="px-2 py-1 rounded text-sm ${{
                                         challenge && challenge.difficulty === 'Easy' ? 'bg-green-600' :
                                         challenge && challenge.difficulty === 'Medium' ? 'bg-yellow-600' : 'bg-red-600'
-                                    }}}">${{challenge ? challenge.difficulty : 'N/A'}}</span>
+                                    }}">${{challenge ? challenge.difficulty : 'N/A'}}</span>
                                 </div>
                                 <div>
                                     <span class="font-bold text-blue-400">Status:</span> 
