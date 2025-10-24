@@ -4,7 +4,7 @@
  */
 
 const DB_NAME = 'CodeClashDB';
-const DB_VERSION = 1;
+const DB_VERSION = 2;
 let db = null;
 
 /**
@@ -44,6 +44,16 @@ async function initDB() {
                 matchStore.createIndex('status', 'status', { unique: false });
                 matchStore.createIndex('created_at', 'created_at', { unique: false });
                 console.log('✅ Created matches store');
+            }
+
+            // Create solved challenges object store
+            if (!db.objectStoreNames.contains('solved_challenges')) {
+                const solvedStore = db.createObjectStore('solved_challenges', { keyPath: 'problem_number' });
+                solvedStore.createIndex('difficulty', 'difficulty', { unique: false });
+                solvedStore.createIndex('programming_language', 'programming_language', { unique: false });
+                solvedStore.createIndex('solved_at', 'solved_at', { unique: false });
+                solvedStore.createIndex('time_elapsed', 'time_elapsed', { unique: false });
+                console.log('✅ Created solved_challenges store');
             }
 
             console.log('✅ Database upgrade complete');
@@ -287,6 +297,180 @@ const MatchDB = {
         return new Promise((resolve, reject) => {
             const transaction = db.transaction(['matches'], 'readwrite');
             const store = transaction.objectStore('matches');
+            const request = store.clear();
+
+            request.onsuccess = () => resolve();
+            request.onerror = () => reject(request.error);
+        });
+    }
+};
+
+/**
+ * Solved Challenges CRUD Operations
+ */
+const SolvedChallengesDB = {
+    /**
+     * Save a solved challenge
+     */
+    async save(challenge) {
+        return new Promise((resolve, reject) => {
+            const transaction = db.transaction(['solved_challenges'], 'readwrite');
+            const store = transaction.objectStore('solved_challenges');
+            
+            const request = store.put({
+                problem_number: challenge.problem_number,
+                problem_name: challenge.problem_name,
+                difficulty: challenge.difficulty,
+                programming_language: challenge.programming_language,
+                time_elapsed: challenge.time_elapsed,
+                solved_at: challenge.solved_at || new Date().toISOString()
+            });
+
+            request.onsuccess = () => resolve(request.result);
+            request.onerror = () => reject(request.error);
+        });
+    },
+
+    /**
+     * Get all solved challenges
+     */
+    async getAll() {
+        return new Promise((resolve, reject) => {
+            const transaction = db.transaction(['solved_challenges'], 'readonly');
+            const store = transaction.objectStore('solved_challenges');
+            const request = store.getAll();
+
+            request.onsuccess = () => resolve(request.result);
+            request.onerror = () => reject(request.error);
+        });
+    },
+
+    /**
+     * Get solved challenge by problem number
+     */
+    async getById(problemNumber) {
+        return new Promise((resolve, reject) => {
+            const transaction = db.transaction(['solved_challenges'], 'readonly');
+            const store = transaction.objectStore('solved_challenges');
+            const request = store.get(problemNumber);
+
+            request.onsuccess = () => resolve(request.result);
+            request.onerror = () => reject(request.error);
+        });
+    },
+
+    /**
+     * Get solved challenges by difficulty
+     */
+    async getByDifficulty(difficulty) {
+        return new Promise((resolve, reject) => {
+            const transaction = db.transaction(['solved_challenges'], 'readonly');
+            const store = transaction.objectStore('solved_challenges');
+            const index = store.index('difficulty');
+            const request = index.getAll(difficulty);
+
+            request.onsuccess = () => resolve(request.result);
+            request.onerror = () => reject(request.error);
+        });
+    },
+
+    /**
+     * Get solved challenges by language
+     */
+    async getByLanguage(language) {
+        return new Promise((resolve, reject) => {
+            const transaction = db.transaction(['solved_challenges'], 'readonly');
+            const store = transaction.objectStore('solved_challenges');
+            const index = store.index('programming_language');
+            const request = index.getAll(language);
+
+            request.onsuccess = () => resolve(request.result);
+            request.onerror = () => reject(request.error);
+        });
+    },
+
+    /**
+     * Get statistics
+     */
+    async getStats() {
+        const all = await this.getAll();
+        
+        const stats = {
+            total: all.length,
+            byDifficulty: {
+                foundational: 0,
+                easy: 0,
+                average: 0,
+                difficult: 0
+            },
+            byLanguage: {},
+            averageTime: 0,
+            fastestTime: null,
+            slowestTime: null,
+            recentlySolved: []
+        };
+
+        if (all.length === 0) return stats;
+
+        let totalTime = 0;
+        let fastest = Infinity;
+        let slowest = 0;
+
+        all.forEach(challenge => {
+            // Count by difficulty
+            if (stats.byDifficulty.hasOwnProperty(challenge.difficulty)) {
+                stats.byDifficulty[challenge.difficulty]++;
+            }
+
+            // Count by language
+            if (!stats.byLanguage[challenge.programming_language]) {
+                stats.byLanguage[challenge.programming_language] = 0;
+            }
+            stats.byLanguage[challenge.programming_language]++;
+
+            // Calculate time stats
+            totalTime += challenge.time_elapsed;
+            if (challenge.time_elapsed < fastest) {
+                fastest = challenge.time_elapsed;
+                stats.fastestTime = challenge;
+            }
+            if (challenge.time_elapsed > slowest) {
+                slowest = challenge.time_elapsed;
+                stats.slowestTime = challenge;
+            }
+        });
+
+        stats.averageTime = Math.floor(totalTime / all.length);
+
+        // Get 5 most recently solved
+        stats.recentlySolved = all
+            .sort((a, b) => new Date(b.solved_at) - new Date(a.solved_at))
+            .slice(0, 5);
+
+        return stats;
+    },
+
+    /**
+     * Delete a solved challenge
+     */
+    async delete(problemNumber) {
+        return new Promise((resolve, reject) => {
+            const transaction = db.transaction(['solved_challenges'], 'readwrite');
+            const store = transaction.objectStore('solved_challenges');
+            const request = store.delete(problemNumber);
+
+            request.onsuccess = () => resolve();
+            request.onerror = () => reject(request.error);
+        });
+    },
+
+    /**
+     * Clear all solved challenges
+     */
+    async clear() {
+        return new Promise((resolve, reject) => {
+            const transaction = db.transaction(['solved_challenges'], 'readwrite');
+            const store = transaction.objectStore('solved_challenges');
             const request = store.clear();
 
             request.onsuccess = () => resolve();
