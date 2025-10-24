@@ -268,7 +268,33 @@ window.CodeClash = {
     copyToClipboard,
     highlightCode,
     autoResizeTextarea,
-    showKeyboardShortcuts
+    showKeyboardShortcuts,
+    db: {
+        saveSolvedChallenge: async (challenge) => {
+            if (typeof SolvedChallengesDB !== 'undefined') {
+                return await SolvedChallengesDB.save(challenge);
+            }
+            throw new Error('Database not initialized');
+        },
+        getChallengeById: async (problemNumber) => {
+            if (typeof SolvedChallengesDB !== 'undefined') {
+                return await SolvedChallengesDB.getById(problemNumber);
+            }
+            throw new Error('Database not initialized');
+        },
+        getAllSolved: async () => {
+            if (typeof SolvedChallengesDB !== 'undefined') {
+                return await SolvedChallengesDB.getAll();
+            }
+            throw new Error('Database not initialized');
+        },
+        getStats: async () => {
+            if (typeof SolvedChallengesDB !== 'undefined') {
+                return await SolvedChallengesDB.getStats();
+            }
+            throw new Error('Database not initialized');
+        }
+    }
 };
 
 // Make notification function globally available for inline onclick handlers
