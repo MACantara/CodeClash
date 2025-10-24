@@ -1,32 +1,23 @@
-# CodeClash - 1v1 Python Tournament Platform
+# CodeClash - Python Challenge Platform
 
-A Flask-based web application for competitive 1v1 Python programming tournaments with real-time leaderboards and a practice mode for solo challenges.
+A Flask-based web application for practicing Python coding challenges with client-side storage using IndexedDB. All data is stored locally in your browser.
 
 ## Features
 
-- **Practice Mode**: Solve Python challenges at your own pace
-- **Instant Feedback**: Automatic code testing with detailed results
 - **Multiple Challenges**: 50+ Python problems from Easy to Hard difficulty
-- **Time Tracking**: Track your solving time for each challenge
+- **Challenge Browsing**: View all available challenges via API
+- **Instant Feedback**: Challenges include test cases for validation
 - **Live Code Editor**: Write and test your solutions in the browser with Ace Editor
-- **Error Detection**: Get immediate feedback on code errors
-- **Matchmaking Lobby System**: Find opponents through various matchmaking options
-- **Quick Match**: Get instantly matched with available players or create custom rooms
-- **Difficulty-Based Matching**: Choose to match with players on specific difficulty levels
-- **Custom Lobby Rooms**: Create your own rooms and wait for challengers
-- **Public/Private Lobbies**: Control room visibility
-- **Real-time Lobby Updates**: See available rooms and player counts in real-time
-- **1v1 Tournament System**: Challenge other developers to coding duels
-- **Real-time Scoring**: Automatic code testing with instant feedback
-- **Victory Conditions**: Win by solving problems with fewer errors and faster time
-- **Global Leaderboard**: Track your progress and compete for the top spot
-- **Rating System**: Earn or lose rating points based on match outcomes
+- **Client-Side Storage**: All match and challenge data stored locally in IndexedDB
+- **No Code Execution**: Code execution disabled for security
+- **Responsive Design**: Built with Tailwind CSS for all screen sizes
+- **Challenge Data**: Comprehensive Python coding challenges with descriptions and examples
 
 ## Technologies Used
 
 - **Backend**: Python 3, Flask
-- **Database**: SQLite (SQLAlchemy ORM)
 - **Frontend**: HTML5, Tailwind CSS, JavaScript
+- **Client Storage**: IndexedDB (browser-based)
 - **Code Editor**: Ace Editor
 - **Icons**: Bootstrap Icons
 
@@ -49,88 +40,45 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-4. Initialize the database:
-```bash
-python init_db.py
-```
-
-5. (Optional) Seed with sample challenges and achievements:
-```bash
-python seed_data.py
-```
-
-6. Run the application:
+4. Run the application:
 ```bash
 python app.py
 ```
 
-7. Open your browser and navigate to:
+5. Open your browser and navigate to:
 ```
 http://localhost:5000
 ```
 
-## How to Play
+## How to Use
 
-### Method 1: Quick Match (Recommended for Beginners)
-
-1. **Register/Login**: Create an account or login with an existing username
-2. **Enter Lobby**: Click "Enter Lobby" from the home page
-3. **Quick Match**: Click the green "Quick Match" button or choose a specific difficulty
-4. **Auto-Match**: System will either match you with an existing lobby or create one for you
-5. **Wait**: Wait for an opponent to join (usually takes seconds)
-6. **Battle**: Once matched, you'll be redirected to the coding arena
-7. **Code Your Solution**: Write Python code to solve the problem
-8. **Submit**: Submit your solution when ready
-9. **Win**: The player with fewer errors wins; if tied, fastest time wins!
-
-### Method 2: Create Custom Room
-
-1. **Register/Login**: Create an account or login with an existing username
-2. **Enter Lobby**: Navigate to the Lobby page
-3. **Create Room**: Click "Create Room" and configure your preferences
-4. **Wait**: Wait for another player to join your room
-5. **Start Match**: Match begins automatically when room is full
-
-### Method 3: Join Existing Room
-
-1. **Register/Login**: Create an account or login with an existing username
-2. **Enter Lobby**: Navigate to the Lobby page
-3. **Browse Rooms**: See all available public lobbies
-4. **Join**: Click "Join" on any room you'd like to enter
-5. **Start Match**: Match begins immediately or when room fills up
+1. Navigate to `http://localhost:5000` to view the home page
+2. Browse available challenges from the challenges endpoint (`/challenges`)
+3. View match details at `/match/<match_id>` (data stored in browser's IndexedDB)
+4. Challenge data and match information are persisted locally in your browser using IndexedDB
 
 ## Project Structure
 
 ```
 CodeClash/
 ├── app.py                  # Main Flask application entry point
-├── config.py              # Application configuration and factory
-├── database.py            # Database initialization and schema
+├── config.py              # Application configuration (no database backend)
 ├── requirements.txt       # Python dependencies
 ├── README.md              # This file
 ├── .gitignore             # Git ignore rules
-├── models/                # Database models
-│   ├── __init__.py
-│   ├── challenge.py       # Challenge model
-│   └── match.py           # Match (practice session) model
 ├── routes/                # Application routes
 │   ├── __init__.py        # Routes registration
 │   ├── challenges.py      # Challenge endpoints
-│   ├── matches.py         # Match/practice endpoints
+│   ├── matches.py         # Match view endpoints
 │   └── pages.py           # Page rendering routes
-├── utils/                 # Utility functions
-│   ├── __init__.py
-│   └── code_testing.py    # Code execution and testing
 ├── templates/             # HTML templates
 │   ├── base.html          # Base layout with navigation
-│   ├── index.html         # Home/Login/Register page
-│   ├── lobby.html         # Matchmaking lobby
-│   ├── match.html         # Match/coding arena
-│   └── leaderboard.html   # Global leaderboard
+│   └── index.html         # Home page
 ├── static/                # Static assets
 │   ├── css/
 │   │   └── style.css      # Custom styles and animations
 │   └── js/
+│       ├── db.js          # IndexedDB client-side storage
 │       └── main.js        # JavaScript utilities
 └── data/                  # Challenge and achievement data
     ├── challenges/        # JSON files with coding challenges
@@ -168,67 +116,19 @@ Each challenge includes:
 - Automated test cases for validation
 - Difficulty rating (Easy, Medium, Hard)
 
-## Database Schema
-
-### Challenge
-- `id`: Primary key
-- `title`: Challenge name
-- `description`: Problem description
-- `difficulty`: Easy, Medium, or Hard
-- `starter_code`: Initial code template
-- `test_cases`: JSON array of test cases
-- `time_limit`: Suggested time limit in seconds
-
-### Match
-- `id`: Primary key
-- `challenge_id`: Foreign key to Challenge
-- `status`: Match status (active, completed)
-- `player_code`: Submitted solution code
-- `player_errors`: Number of test failures
-- `player_time`: Time taken to complete (seconds)
-- `player_submitted`: Whether solution was submitted
-- `started_at`: Match start timestamp
-- `ended_at`: Match end timestamp
-
 ## API Endpoints
 
 ### Challenges
-- `GET /challenges` - List all available challenges
-- `GET /api/challenges/data` - Get all challenges data for IndexedDB
+- `GET /challenges` - List all available challenges as JSON
+- `GET /api/challenges/data` - Get all challenges data for IndexedDB synchronization
 
 ### Matches
-- `POST /match/create` - Create a new practice session
-- `GET /match/<id>` - View match page
+- `POST /match/create` - Create a new match (client-side data stored in IndexedDB)
+- `GET /match/<id>` - View match page with IndexedDB-stored data
 - `GET /match/<id>/status` - Get match status
 
 ### Pages
 - `GET /` - Home page
-
-## Rating System
-
-- Start with 1000 rating points
-- Win: +25 points
-- Loss: -10 points
-- Matches won by fewest errors, then fastest time
-
-## Matchmaking System
-
-### How Matchmaking Works
-
-1. **Quick Match**: Automatically finds or creates a lobby based on availability
-2. **Difficulty Filter**: Optional filtering by Easy/Medium/Hard challenges
-3. **Lobby System**: Players wait in lobbies until match capacity is reached (2 players)
-4. **Auto-Start**: Match automatically starts when lobby is full
-5. **Real-time Updates**: Lobby list updates every 5 seconds, player status every 2 seconds
-
-### Lobby Features
-
-- **Public Lobbies**: Visible to all players in the lobby browser
-- **Private Lobbies**: Only accessible via direct invitation (future feature)
-- **Room Naming**: Custom names for personal lobbies
-- **Challenge Selection**: Host chooses the coding challenge
-- **Player Count Display**: See current players vs. max capacity
-- **Leave Anytime**: Players can leave lobbies before match starts
 
 ## Adding New Challenges
 
@@ -252,22 +152,26 @@ To add new challenges, create JSON files in the `data/challenges/` directory fol
 }
 ```
 
-Then run `python seed_data.py` to load them into the database.
+The challenges will be automatically loaded from the JSON files in the `data/challenges/` directory when the application starts.
 
 ## Future Enhancements
 
-- [x] Matchmaking lobby system
-- [x] Quick match feature
-- [x] Real-time multiplayer with WebSockets
-- [x] Tournament brackets with elimination rounds
-- [x] Match history and statistics
-- [x] Achievements and badges
-- [ ] Practice mode (solve challenges without competing)
+- [ ] User authentication and login system
+- [ ] Persistent backend database (SQLite/PostgreSQL)
+- [ ] Matchmaking lobby system
+- [ ] 1v1 PvP battles
+- [ ] Real-time multiplayer with WebSockets
+- [ ] Rating system for players
+- [ ] Global leaderboard
+- [ ] Code execution and automated testing
 - [ ] More programming languages (JavaScript, Java, C++)
-- [ ] Code replay feature
-- [ ] Friend system and invitations
+- [ ] Tournament brackets with elimination rounds
 - [ ] Chat functionality in lobbies
 - [ ] Spectator mode
+- [ ] Friend system and invitations
+- [ ] Code replay feature
+- [ ] Match history and statistics
+- [ ] Achievements and badges
 
 ## License
 
